@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamu Atamaları & KPSS İlan Eşleştirme</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body id="top" class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- ÜST MENÜ -->
+  <header class="bg-slate-900 text-white sticky top-0 z-40 shadow-md border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
+      <div class="flex items-center gap-3 sm:gap-5">
+        <a href="#top" onclick="goHome(event)" class="flex items-center gap-2 group">
+          <span class="bg-emerald-500 text-slate-950 font-extrabold px-2.5 py-1 rounded-md text-sm group-hover:bg-emerald-400 transition">KAMU</span>
+          <span class="font-bold text-base sm:text-lg tracking-tight">İlan & KPSS Rehberi</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-4 text-xs font-semibold text-slate-300">
+          <button type="button" onclick="goHome(event)" class="hover:text-white transition">Ana Sayfa</button>
+          <a href="#ilanlarSection" class="hover:text-white transition">Güncel İlanlar</a>
+          <a href="#bilgiMerkezi" class="hover:text-white transition">KPSS & Atama Bilgileri</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="goHome(event)" class="md:hidden bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs px-2.5 py-1.5 rounded-lg border border-slate-700">
+          Ana Sayfa
+        </button>
+        <div id="authArea" class="flex items-center gap-2"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ÜST SADE REKLAM ALANI -->
+  <div class="max-w-6xl mx-auto px-4 mt-4">
+    <div id="ad-slot-top" class="w-full bg-white border border-slate-200 rounded-xl py-3.5 px-4 text-center text-xs text-slate-500 shadow-2xs"></div>
+  </div>
+
+  <!-- ANA GİRİŞ & KILAVUZ KARTLARI -->
+  <section class="max-w-6xl mx-auto px-4 mt-5">
+    <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950 text-white rounded-2xl p-6 md:p-8 shadow-lg border border-slate-700/60">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="max-w-2xl">
+          <span class="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-semibold px-3 py-1 rounded-full mb-3">
+            6 Resmi/Kamu İlan Kaynağı • Kişiye Özel Eşleştirme
+          </span>
+          <h1 class="text-2xl md:text-3xl font-extrabold leading-tight tracking-tight">
+            KPSS Puanına ve Belgelerine Uygun Kamu İlanlarını Tek Ekranda Bul
+          </h1>
+          <p class="text-slate-300 text-sm md:text-base mt-2.5 leading-relaxed">
+            İlan başlıkları ve özetler herkese açıktır. Ücretsiz üye olduğunda mezuniyetini, KPSS puanını ve belgelerini profiline kaydedip <strong>Tam Uygun</strong> ve <strong>Sınırda (+3 Puan)</strong> ilanları görebilirsin.
+          </p>
+          <div class="flex flex-wrap items-center gap-3 mt-4">
+            <a href="#ilanlarSection" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition">
+              İlanları İncele
+            </a>
+            <button type="button" onclick="openAuthModal()" class="bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl border border-white/15 transition">
+              Profil Oluştur / Giriş
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3 shrink-0">
+          <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
+            <div class="text-lg font-extrabold text-emerald-300">6 Kaynak</div>
+            <div class="text-[11px] text-slate-300 mt-0.5">Kariyer Kapısı, İŞKUR, SBB, Memurlar.net, İşinolsa, İlan.gov</div>
+          </div>
+          <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
+            <div class="text-lg font-extrabold text-sky-300">11 Alan</div>
+            <div class="text-[11px] text-slate-300 mt-0.5">Sağlık, şoför, büro, mühendis, teknik, öğretmen, güvenlik vb.</div>
+          </div>
+          <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
+            <div class="text-lg font-extrabold text-amber-300">+3 Puan</div>
+            <div class="text-[11px] text-slate-300 mt-0.5">Taban puana sınırda kalan kadroları ayrı etiketle gösterir</div>
+          </div>
+          <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
+            <div class="text-lg font-extrabold text-teal-300">Özel Belge</div>
+            <div class="text-[11px] text-slate-300 mt-0.5">SRC, ÖGG, ehliyet, YDS veya kendi manuel belgeni ekle</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-7 pt-6 border-t border-white/10">
+        <div onclick="openGuideModal('kilavuz-ortaogretim')" class="cursor-pointer bg-white/10 hover:bg-white/15 transition border border-white/15 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-300">Kılavuz • Lise (P94)</span>
+            <span class="text-xs bg-slate-950/50 px-2 py-0.5 rounded">Rehberi Aç</span>
+          </div>
+          <h3 class="font-bold text-base mt-2">KPSS Ortaöğretim Tercih Kılavuzu</h3>
+          <p class="text-xs text-slate-300 mt-1">Şoför, hizmetli, sağlık teknisyeni, güvenlik ve memur kadroları.</p>
+        </div>
+
+        <div onclick="openGuideModal('kilavuz-onlisans')" class="cursor-pointer bg-white/10 hover:bg-white/15 transition border border-white/15 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-300">Kılavuz • 2 Yıllık (P93)</span>
+            <span class="text-xs bg-slate-950/50 px-2 py-0.5 rounded">Rehberi Aç</span>
+          </div>
+          <h3 class="font-bold text-base mt-2">KPSS Önlisans Atama & Taban Puanlar</h3>
+          <p class="text-xs text-slate-300 mt-1">Sağlık teknikerliği, tıbbi sekreterlik, adalet, bilişim ve teknik.</p>
+        </div>
+
+        <div onclick="openGuideModal('kilavuz-lisans')" class="cursor-pointer bg-white/10 hover:bg-white/15 transition border border-white/15 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-300">Kılavuz • 4 Yıllık (P3)</span>
+            <span class="text-xs bg-slate-950/50 px-2 py-0.5 rounded">Rehberi Aç</span>
+          </div>
+          <h3 class="font-bold text-base mt-2">KPSS Lisans Merkezi & Açıktan Atama</h3>
+          <p class="text-xs text-slate-300 mt-1">Hemşire, mühendis, İİBF, öğretmenlik, sosyal hizmet ve akademik.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KULLANICI PROFİLİ BÖLÜMÜ (ÜYE OLUNCA GÖRÜNÜR) -->
+  <section id="profileSection" class="hidden max-w-6xl mx-auto px-4 mt-6">
+    <div class="bg-white rounded-2xl shadow-sm border border-emerald-200 p-5 sm:p-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
+        <div>
+          <div class="flex items-center gap-2">
+            <h2 class="font-bold text-lg text-slate-900">Profilim & Eşleştirme Bilgilerim</h2>
+            <span id="profileSummaryBadge" class="text-xs bg-emerald-50 text-emerald-700 font-semibold px-2.5 py-0.5 rounded">Kayıtlı</span>
+          </div>
+          <p class="text-xs text-slate-500 mt-0.5">KPSS puanın, mezuniyetin ve belgelerin profilinde saklanır. İstediğin zaman güncelleyip eşleştirebilirsin.</p>
+        </div>
+        <button type="button" onclick="applyProfileMatch(true)" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-lg text-xs sm:text-sm transition shrink-0">
+          ✓ Profilime Göre Eşleştir
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Eğitim Düzeyi</label>
+          <select id="profileEdu" onchange="saveProfileFromUI()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-white">
+            <option value="ALL">Tümü</option>
+            <option value="Ortaöğretim">Ortaöğretim (Lise)</option>
+            <option value="Önlisans">Önlisans</option>
+            <option value="Lisans">Lisans</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">KPSS Puanın</label>
+          <input id="profileScore" oninput="saveProfileFromUI()" type="number" step="0.01" min="0" max="100" placeholder="Örn: 72" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Öncelikli Alan</label>
+          <select id="profileCat" onchange="saveProfileFromUI()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-white">
+            <option value="ALL">Tüm Kategoriler (11 Alan)</option>
+            <option value="Sağlık">Sağlık Personeli</option>
+            <option value="Şoför">Şoför / Ulaştırma</option>
+            <option value="Büro">Büro / Memur</option>
+            <option value="Mühendis">Mühendis / Mimar</option>
+            <option value="Teknik">Tekniker / Teknisyen</option>
+            <option value="Öğretmen">Öğretmen / Eğitmen</option>
+            <option value="Güvenlik">Güvenlik / Koruma (ÖGG)</option>
+            <option value="Destek">Destek / Hizmetli / Temizlik</option>
+            <option value="Adalet">Adalet / İnfaz Koruma</option>
+            <option value="Bilişim">Bilişim / Yazılım</option>
+            <option value="Sosyal">Sosyal Hizmet / Psikoloji</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-4 pt-3 border-t border-slate-100">
+        <label class="block text-xs font-semibold text-slate-600 mb-2">Mevcut Belgelerin:</label>
+        <div class="flex flex-wrap gap-2">
+          <label class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg text-xs cursor-pointer hover:bg-slate-100">
+            <input type="checkbox" value="Ehliyet" onchange="saveProfileFromUI()" class="profile-doc-check accent-emerald-600" /> B / D Sınıfı Ehliyet
+          </label>
+          <label class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg text-xs cursor-pointer hover:bg-slate-100">
+            <input type="checkbox" value="SRC" onchange="saveProfileFromUI()" class="profile-doc-check accent-emerald-600" /> SRC + Psikoteknik
+          </label>
+          <label class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg text-xs cursor-pointer hover:bg-slate-100">
+            <input type="checkbox" value="Güvenlik" onchange="saveProfileFromUI()" class="profile-doc-check accent-emerald-600" /> Silahlı / Silahsız ÖGG Kimliği
+          </label>
+          <label class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg text-xs cursor-pointer hover:bg-slate-100">
+            <input type="checkbox" value="Bilgisayar" onchange="saveProfileFromUI()" class="profile-doc-check accent-emerald-600" /> MEB Bilgisayar / Hijyen Sertifikası
+          </label>
+          <label class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg text-xs cursor-pointer hover:bg-slate-100">
+            <input type="checkbox" value="IlkYardim" onchange="saveProfileFromUI()" class="profile-doc-check accent-emerald-600" /> İlk Yardım Sertifikası
+          </label>
+          <label class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg text-xs cursor-pointer hover:bg-slate-100">
+            <input type="checkbox" value="YDS" onchange="saveProfileFromUI()" class="profile-doc-check accent-emerald-600" /> YDS / YÖKDİL Belgesi
+          </label>
+        </div>
+
+        <div class="mt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+          <input
+            id="profileCustomDocInput"
+            type="text"
+            maxlength="40"
+            onkeydown="if(event.key==='Enter'){event.preventDefault();addCustomDoc('profile');}"
+            placeholder="Farklı belgeni profiline ekle (Örn: Hijyen, SRC-4, Formasyon, İş Güvenliği...)"
+            class="flex-1 border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm focus:outline-none focus:border-emerald-600"
+          />
+          <button type="button" onclick="addCustomDoc('profile')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-4 py-2 rounded-lg text-xs sm:text-sm transition shrink-0">
+            + Belge Ekle
+          </button>
+        </div>
+        <p id="profileDocFeedback" class="text-[11px] text-slate-500 mt-1"></p>
+        <div id="profileCustomDocsList" class="flex flex-wrap gap-2 mt-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIZLI KATEGORİ FİLTRE ÇUBUĞU -->
+  <section class="max-w-6xl mx-auto px-4 mt-6">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+        <div>
+          <h2 class="font-bold text-base sm:text-lg text-slate-900">Kategorilere Göre Göz At</h2>
+          <p id="matchInfoText" class="text-xs text-slate-500">Üye olarak puan ve belgelerini profiline ekleyebilir, Tam Uygun ve Sınırda (+3 Puan) ilanları görebilirsin.</p>
+        </div>
+        <button type="button" onclick="resetFilters()" class="text-xs font-semibold text-emerald-700 hover:text-emerald-800 underline self-start sm:self-auto">Tüm İlanları Göster</button>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mt-3">
+        <button type="button" onclick="quickCategory('ALL')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-900 text-white">Tümü</button>
+        <button type="button" onclick="quickCategory('Sağlık')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🏥 Sağlık</button>
+        <button type="button" onclick="quickCategory('Şoför')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🚑 Şoför</button>
+        <button type="button" onclick="quickCategory('Büro')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">💼 Büro / Memur</button>
+        <button type="button" onclick="quickCategory('Mühendis')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">📐 Mühendis / Mimar</button>
+        <button type="button" onclick="quickCategory('Teknik')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">⚙️ Tekniker / Teknisyen</button>
+        <button type="button" onclick="quickCategory('Öğretmen')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">📚 Öğretmen</button>
+        <button type="button" onclick="quickCategory('Güvenlik')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🛡️ Güvenlik (ÖGG)</button>
+        <button type="button" onclick="quickCategory('Destek')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🧹 Destek / Hizmetli</button>
+        <button type="button" onclick="quickCategory('Adalet')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">⚖️ Adalet / İKM</button>
+        <button type="button" onclick="quickCategory('Bilişim')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">💻 Bilişim / Yazılım</button>
+        <button type="button" onclick="quickCategory('Sosyal')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🤝 Sosyal Hizmet</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- İLAN LİSTESİ -->
+  <main id="ilanlarSection" class="max-w-6xl mx-auto px-4 mt-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+      <h2 id="listHeading" class="font-bold text-lg text-slate-900">Güncel Kamu İş İlanları</h2>
+      <span id="resultCount" class="text-xs font-semibold text-slate-500"></span>
+    </div>
+
+    <div id="jobsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+    <!-- ALT SADE REKLAM ALANI -->
+    <div class="mt-8">
+      <div id="ad-slot-bottom" class="w-full bg-white border border-slate-200 rounded-xl py-4 px-4 text-center text-xs text-slate-500 shadow-2xs"></div>
+    </div>
+  </main>
+
+  <!-- KAMU & KPSS BİLGİ MERKEZİ -->
+  <section id="bilgiMerkezi" class="max-w-6xl mx-auto px-4 mt-10 pb-14 space-y-6">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Aday Bilgi Bankası</span>
+          <h2 class="text-xl font-extrabold text-slate-900 mt-0.5">KPSS Puan Türleri, Kadro Statüleri ve Başvuru Rehberi</h2>
+        </div>
+        <button type="button" onclick="goHome(event)" class="text-xs font-bold text-slate-700 hover:text-emerald-700 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition self-start sm:self-auto">
+          ↑ Ana Sayfaya Dön
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5">
+        <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-4">
+          <h3 class="font-bold text-slate-900 text-base">1. Temel KPSS Puan Türleri</h3>
+          <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+            Adayların büyük bölümünde merkezi ve kurum alımlarında üç temel puan türü öne çıkar:
+          </p>
+          <ul class="mt-3 space-y-2 text-xs text-slate-700">
+            <li class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+              <b>KPSS P3 (Lisans):</b> 4 yıllık mezunlar için merkezi yerleştirme ve birçok kurumsal memur alımında kullanılır.
+            </li>
+            <li class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+              <b>KPSS P93 (Ön Lisans):</b> 2 yıllık mezuniyet kadrolarında; sağlık teknikerliği, adalet, büro ve teknik pozisyonlarda aranır.
+            </li>
+            <li class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+              <b>KPSS P94 (Ortaöğretim):</b> Lise mezunları için hizmetli, şoför, memur ve güvenlik/destek alımlarında dikkate alınır.
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-4">
+          <h3 class="font-bold text-slate-900 text-base">2. Kadrolu, Sözleşmeli ve İşçi Alımı</h3>
+          <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+            İlan başvurusundan önce statü ve kanuni dayanağı kontrol etmek atama sonrası hakları doğru anlamayı sağlar:
+          </p>
+          <ul class="mt-3 space-y-2 text-xs text-slate-700">
+            <li class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+              <b>Kadrolu Memur (657/4-A):</b> Daimi kadro statüsündedir; derece/kademe, tayin ve görevde yükselme kuralları kadro mevzuatına tabidir.
+            </li>
+            <li class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+              <b>Sözleşmeli Personel (657/4-B vb.):</b> Kurum ihtiyaçlarına göre istihdam edilir; belirli hizmet süreleri sonrası kadroya geçiş düzenlemeleri bulunabilir.
+            </li>
+            <li class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+              <b>Kamu İşçisi (İŞKUR):</b> İŞKUR üzerinden yayımlanan alımlarda şartlar ve çalışma esasları memurluktan ayrılabilir.
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-4">
+          <h3 class="font-bold text-slate-900 text-base">3. Başvuru ve Yerleşme Hazırlığı</h3>
+          <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+            Tercih veya başvuru döneminde belgelerin ve nitelik kodlarının ilandaki şartlarla birebir örtüşmesi gerekir:
+          </p>
+          <ul class="mt-3 space-y-2 text-xs text-slate-700">
+            <li class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+              <b>Mezuniyet & KPSS Belgesi:</b> Diploma/mezuniyet belgesi ve geçerli KPSS sonuç belgesi sisteme uygun olmalıdır.
+            </li>
+            <li class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+              <b>Özel Belgeler:</b> Ehliyet sınıfı, SRC/psikoteknik, ÖGG kimlik kartı veya sertifikaların tarih ve kapsamı kontrol edilmelidir.
+            </li>
+            <li class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+              <b>Atama Evrakları:</b> Yerleşim yeri, adli sicil, askerlik durumu ve gerekirse sağlık kurulu raporu kurum duyurusuna göre hazırlanır.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALT BİLGİ & YASAL BİLGİLENDİRME (FOOTER) -->
+  <footer class="bg-slate-900 text-slate-300 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div>
+        <span class="font-bold text-white">KAMU İlan & KPSS Rehberi</span> • Kamuya açık ilan derleme ve aday bilgilendirme platformu.
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <button type="button" onclick="goHome(event)" class="text-emerald-400 hover:text-emerald-300 font-semibold">Ana Sayfa</button>
+        <button type="button" onclick="openLegalModal('kvkk')" class="text-slate-300 hover:text-white underline">Gizlilik & KVKK</button>
+        <button type="button" onclick="openLegalModal('cerez')" class="text-slate-300 hover:text-white underline">Çerez & Yerel Saklama</button>
+        <button type="button" onclick="openLegalModal('sorumluluk')" class="text-slate-300 hover:text-white underline">Sorumluluk Reddi</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ÜYELİK & PROFİL KAYIT MODALI -->
+  <div id="authModal" class="hidden fixed inset-0 bg-slate-950/70 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+      <button type="button" onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold">&times;</button>
+      <div class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded mb-2">Ücretsiz Üyelik & Profil</div>
+      <h3 class="text-xl font-extrabold text-slate-900">Üye Ol ve Profilini Oluştur</h3>
+      <p class="text-xs text-slate-600 mt-1">Kayıt olduğunda puanın, eğitim düzeyin ve belgelerin profiline kaydedilir; ilan detayları ve eşleşmeler açılır.</p>
+
+      <form onsubmit="handleRegister(event)" class="space-y-3 mt-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Ad Soyad</label>
+            <input id="regName" type="text" required placeholder="Örn: Ahmet Yılmaz" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">E-Posta Adresi</label>
+            <input id="regEmail" type="email" required placeholder="ornek@mail.com" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Eğitim Düzeyi</label>
+            <select id="regEdu" class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-sm bg-white">
+              <option value="ALL">Tümü</option>
+              <option value="Ortaöğretim">Ortaöğretim</option>
+              <option value="Önlisans">Önlisans</option>
+              <option value="Lisans">Lisans</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">KPSS Puanın</label>
+            <input id="regScore" type="number" step="0.01" min="0" max="100" placeholder="Örn: 72" class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Alan / Kategori</label>
+            <select id="regCat" class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-sm bg-white">
+              <option value="ALL">Tümü</option>
+              <option value="Sağlık">Sağlık</option>
+              <option value="Şoför">Şoför</option>
+              <option value="Büro">Büro / Memur</option>
+              <option value="Mühendis">Mühendis</option>
+              <option value="Teknik">Teknik</option>
+              <option value="Öğretmen">Öğretmen</option>
+              <option value="Güvenlik">Güvenlik</option>
+              <option value="Destek">Destek</option>
+              <option value="Adalet">Adalet</option>
+              <option value="Bilişim">Bilişim</option>
+              <option value="Sosyal">Sosyal</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pt-1">
+          <label class="block text-xs font-semibold text-slate-700 mb-1.5">Sahip Olduğun Belgeler:</label>
+          <div class="flex flex-wrap gap-1.5">
+            <label class="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded text-xs cursor-pointer">
+              <input type="checkbox" value="Ehliyet" class="reg-doc-check accent-emerald-600" /> Ehliyet
+            </label>
+            <label class="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded text-xs cursor-pointer">
+              <input type="checkbox" value="SRC" class="reg-doc-check accent-emerald-600" /> SRC / Psikoteknik
+            </label>
+            <label class="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded text-xs cursor-pointer">
+              <input type="checkbox" value="Güvenlik" class="reg-doc-check accent-emerald-600" /> ÖGG Kimliği
+            </label>
+            <label class="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded text-xs cursor-pointer">
+              <input type="checkbox" value="Bilgisayar" class="reg-doc-check accent-emerald-600" /> Bilgisayar / Sertifika
+            </label>
+            <label class="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded text-xs cursor-pointer">
+              <input type="checkbox" value="IlkYardim" class="reg-doc-check accent-emerald-600" /> İlk Yardım
+            </label>
+            <label class="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded text-xs cursor-pointer">
+              <input type="checkbox" value="YDS" class="reg-doc-check accent-emerald-600" /> YDS / YÖKDİL
+            </label>
+          </div>
+        </div>
+
+        <div class="pt-1">
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Farklı Belge Ekle (İsteğe Bağlı):</label>
+          <div class="flex gap-2">
+            <input
+              id="regCustomDocInput"
+              type="text"
+              maxlength="40"
+              onkeydown="if(event.key==='Enter'){event.preventDefault();addCustomDoc('reg');}"
+              placeholder="Örn: Hijyen, SRC-4, Formasyon..."
+              class="flex-1 border border-slate-300 rounded-lg px-3 py-1.5 text-xs sm:text-sm"
+            />
+            <button type="button" onclick="addCustomDoc('reg')" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold px-3 py-1.5 rounded-lg text-xs">
+              + Ekle
+            </button>
+          </div>
+          <p id="regDocFeedback" class="text-[11px] text-slate-500 mt-1"></p>
+          <div id="regCustomDocsList" class="flex flex-wrap gap-1.5 mt-1.5"></div>
+        </div>
+
+        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-sm transition mt-2">
+          Profilimi Kaydet ve İlanları Eşleştir
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DETAY, REHBER & YASAL BİLGİ MODALI -->
+  <div id="detailModal" class="hidden fixed inset-0 bg-slate-950/70 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button type="button" onclick="closeDetailModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold">&times;</button>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const AD_CONFIG = {
+      top: {
+        url: "",
+        label: "Sponsorlu Alan (Üst Yatay Banner — Link Sonradan Eklenecek)"
+      },
+      bottom: {
+        url: "",
+        label: "Sponsorlu Alan (Alt Yatay Banner — Link Sonradan Eklenecek)"
+      }
+    };
+
+    const LEGAL_DOCS = {
+      kvkk: {
+        badge: "Gizlilik & KVKK Bilgilendirme",
+        title: "Gizlilik ve Kişisel Verilerin İşlenmesine İlişkin Aydınlatma",
+        paragraphs: [
+          "Bu platformda ad soyad, e-posta, eğitim düzeyi, KPSS puanı ve belge tercihleri yalnızca ilan eşleştirme deneyimini kişiselleştirmek amacıyla kullanılır.",
+          "Girilen profil ve tercih bilgileri harici bir veritabanına aktarılmaksızın kullanıcının kendi tarayıcısındaki yerel depolama alanında (LocalStorage) tutulur; tarayıcı verileri temizlendiğinde veya çıkış yapıldığında sıfırlanabilir.",
+          "6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında veri sorumlusu ve iletişim bilgilerini platform yayına alındığında iletişim/künye bölümüne ekleyebilirsin."
+        ]
+      },
+      cerez: {
+        badge: "Çerez & Yerel Saklama",
+        title: "Çerezler ve Tarayıcı Yerel Depolama (LocalStorage) Politikası",
+        paragraphs: [
+          "Site; kullanıcı profilini, seçilen belgeleri ve puan bilgisini sayfa yenilendiğinde hatırlamak için tarayıcı yerel depolama teknolojilerini (LocalStorage) kullanır.",
+          "İlerleyen aşamalarda reklam bağlantıları veya üçüncü parti reklam/analitik servisleri aktif edildiğinde ilgili sağlayıcıların kendi çerez ve gizlilik kuralları geçerli olur.",
+          "Kullanıcılar tarayıcı ayarları üzerinden yerel depolama verilerini ve çerezleri diledikleri zaman silebilir veya engelleyebilirler."
+        ]
+      },
+      sorumluluk: {
+        badge: "Bilgilendirme & Sorumluluk Reddi",
+        title: "İlan Kaynakları ve Sorumluluk Reddi Metni",
+        paragraphs: [
+          "Bu site resmi bir devlet kurumu veya ÖSYM/İŞKUR/Kariyer Kapısı resmi portalı değildir; kamuya açık ilan sayfalarından otomatik derlenen özet bilgileri ve eşleştirme kolaylığı sunar.",
+          "İlan metinlerinde, taban puanlarda, başvuru tarihlerinde veya belge şartlarında kurumlar tarafından sonradan güncelleme yapılabilir. Başvuru öncesinde ilgili kurumun resmi duyuru ve kılavuzlarının kontrol edilmesi esastır.",
+          "İlanların otomatik eşleştirilmesinden veya üçüncü taraf bağlantıların kullanımından doğabilecek doğrudan ya da dolaylı sonuçlardan platform sorumlu değildir."
+        ]
+      }
+    };
+
+    function openLegalModal(key) {
+      const doc = LEGAL_DOCS[key];
+      if (!doc) return;
+      const bodyHtml = doc.paragraphs.map(p => `<p class="text-sm text-slate-700 leading-relaxed mt-3">${p}</p>`).join("");
+      document.getElementById("detailContent").innerHTML = `
+        <span class="inline-block bg-slate-100 text-slate-800 text-xs font-bold px-2.5 py-1 rounded">${doc.badge}</span>
+        <h3 class="text-xl font-extrabold text-slate-900 mt-2">${doc.title}</h3>
+        ${bodyHtml}
+        <button type="button" onclick="closeDetailModal()" class="mt-5 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-sm transition">
+          Kapat
+        </button>
+      `;
+      document.getElementById("detailModal").classList.remove("hidden");
+    }
+
+    function renderAdSlots() {
+      const slots = [
+        { el: document.getElementById("ad-slot-top"), cfg: AD_CONFIG.top },
+        { el: document.getElementById("ad-slot-bottom"), cfg: AD_CONFIG.bottom }
+      ];
+      slots.forEach(({ el, cfg }) => {
+        if (!el) return;
+        if (cfg.url && cfg.url.trim() !== "") {
+          el.innerHTML = `<a href="${cfg.url}" target="_blank" rel="noopener sponsored" class="inline-flex items-center justify-center gap-2 text-slate-700 hover:text-emerald-700 font-semibold"><span class="bg-slate-200 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Reklam</span><span>${cfg.label}</span></a>`;
+        } else {
+          el.innerHTML = `<span class="tracking-wide">${cfg.label}</span>`;
+        }
+      });
+    }
+
+    const NEAR_SCORE_MARGIN = 3;
+
+    const FALLBACK_ITEMS = [
+      {
+        id: "ilan-1",
+        source: "SBB Kamu Ilan",
+        category: "Sağlık",
+        education: "Önlisans",
+        minScore: 65,
+        requiredDocs: [],
+        title: "Sağlık Bakanlığı Sözleşmeli Sağlık Teknikeri Alımı",
+        institution: "T.C. Sağlık Bakanlığı",
+        deadline: "Başvurular Aktif",
+        summary: "İlk ve Acil Yardım, Tıbbi Sekreterlik ve Anestezi teknikerleri alımı.",
+        details: "KPSS P93 puan türünden en az 65 puan almış adaylar başvurabilir.",
+        officialUrl: "https://kamuilan.sbb.gov.tr/"
+      },
+      {
+        id: "ilan-2",
+        source: "Kariyer Kapisi",
+        category: "Şoför",
+        education: "Ortaöğretim",
+        minScore: 60,
+        requiredDocs: ["Ehliyet", "SRC"],
+        title: "Kamu Kurumlarına Kadrolu Şoför Alımı",
+        institution: "Kariyer Kapısı Kamu Alımları",
+        deadline: "Başvurular Aktif",
+        summary: "B/D sınıfı sürücü belgesi, SRC ve psikoteknik belgeli şoför alımı.",
+        details: "KPSS P94 en az 60 puan ve ilgili sürücü/SRC/psikoteknik belgeleri şarttır.",
+        officialUrl: "https://kariyerkapisi.gov.tr/isealim"
+      },
+      {
+        id: "ilan-3",
+        source: "Ilan.gov.tr",
+        category: "Öğretmen",
+        education: "Lisans",
+        minScore: 72,
+        requiredDocs: ["YDS"],
+        title: "Üniversiteler Kamu ve Akademik Personel Alımı",
+        institution: "İlan.gov.tr Kamu / Akademik",
+        deadline: "Başvurular Aktif",
+        summary: "Öğretim görevlisi, araştırma görevlisi ve idari personel alımları.",
+        details: "İlgili lisans/lisansüstü şartları, KPSS ve yabancı dil puanı aranır.",
+        officialUrl: "https://www.ilan.gov.tr/ilan/kategori/8/kamu-akademik-personel?ats=5&currentPage=0"
+      },
+      {
+        id: "ilan-4",
+        source: "Memurlar.net Ilan",
+        category: "Büro",
+        education: "Lisans",
+        minScore: 71,
+        requiredDocs: ["Bilgisayar"],
+        title: "Bakanlık ve Kurumlar Büro Personeli / Memur Alımı",
+        institution: "Memurlar.net İlan",
+        deadline: "Başvurular Aktif",
+        summary: "İİBF ve lisans mezunları için sözleşmeli büro ve memur alımları.",
+        details: "KPSS P3 puanı ve bilgisayar sertifikası/transkript şartları aranır.",
+        officialUrl: "https://ilan.memurlar.net/default.aspx"
+      },
+      {
+        id: "ilan-5",
+        source: "ISKUR Kamu",
+        category: "Güvenlik",
+        education: "Ortaöğretim",
+        minScore: 55,
+        requiredDocs: ["Güvenlik"],
+        title: "Kamu Kurumları Güvenlik Görevlisi ve Destek Alımı",
+        institution: "İŞKUR Kamu İlanları",
+        deadline: "Başvurular Aktif",
+        summary: "ÖGG kimlik kartlı güvenlik görevlisi ve kamu işçi/personel alımları.",
+        details: "Geçerli ÖGG kimlik kartı ve ilan şartlarına uygunluk aranır.",
+        officialUrl: "https://www.iskur.gov.tr/ilanlar/kamu-memur-alim-ilanlari/"
+      },
+      {
+        id: "ilan-6",
+        source: "Isinolsa Memur",
+        category: "Bilişim",
+        education: "Lisans",
+        minScore: 70,
+        requiredDocs: ["YDS"],
+        title: "Kamu Kurumları Bilişim ve Yazılım Personeli Alımı",
+        institution: "İşinolsa Memur Alımı",
+        deadline: "Başvurular Aktif",
+        summary: "Yazılım, ağ, sistem ve bilişim uzmanlığı kadroları.",
+        details: "İlgili mühendislik/bilişim bölümü ve KPSS/dil şartları uygulanır.",
+        officialUrl: "https://www.isinolsa.com/memur-alimi/"
+      }
+    ];
+
+    const GUIDES = {
+      "kilavuz-ortaogretim": {
+        title: "KPSS Ortaöğretim (Lise) Tercih ve Atama Kılavuzu",
+        summary: "Ortaöğretim KPSS (P94) puanı 2 yıl geçerlidir. Şoför, hizmetli, sağlık teknisyeni, güvenlik ve memur alımlarında mezuniyet ile belge kodlarının uyumu kritiktir.",
+        tips: [
+          "Lise diploması veya mezuniyet belgesi tercih döneminde e-Devlet/kurum sistemiyle uyumlu olmalıdır.",
+          "Şoför ve güvenlik kadrolarında sürücü sınıfı, SRC/psikoteknik veya ÖGG kimlik geçerlilik süresi kontrol edilmelidir.",
+          "Taban puanına +3 puan yakın ilanları kaçırmamak için profil puanını girip eşleştirme yapabilirsin."
+        ]
+      },
+      "kilavuz-onlisans": {
+        title: "KPSS Önlisans Tercih ve Taban Puan Rehberi",
+        summary: "Önlisans KPSS (P93) ile merkezi atamalar ve kurumsal alımlarda sağlık, teknik, adalet ve büro kadroları öne çıkar.",
+        tips: [
+          "Önlisans mezuniyet alanın ve varsa sertifikaların (bilgisayar, ilk yardım vb.) nitelik kodlarıyla eşleşmelidir.",
+          "Sözleşmeli ve açıktan alımlarda kurumların kendi duyurularındaki özel şartlar ayrıca incelenmelidir.",
+          "Profilindeki puan ve belgeleri güncelleyerek sana en yakın kadroları öne alabilirsin."
+        ]
+      },
+      "kilavuz-lisans": {
+        title: "KPSS Lisans Merkezi ve Açıktan Atama Kılavuzu",
+        summary: "Lisans KPSS (P3) ve akademik/sözleşmeli alımlarda bölüm şartları, mülakat/uygulama ve dil/belge kriterleri ilan metninde belirtilir.",
+        tips: [
+          "Merkezi yerleştirme ve kurumsal alımlarda lisans mezuniyet alanı temel belirleyicidir.",
+          "Bilişim, akademik veya özel uzmanlık ilanlarında YDS/YÖKDİL veya ek sertifikalar istenebilir.",
+          "Kendi belgelerini profiline manuel ekleyerek ilan metinleriyle otomatik eşleştirebilirsin."
+        ]
+      }
+    };
+
+    let ITEMS = [...FALLBACK_ITEMS];
+    let customDocs = [];
+    let lastRenderedList = [];
+
+    function goHome(e) {
+      if (e) e.preventDefault();
+      resetFilters();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function normalizeText(str) {
+      return (str || "")
+        .toLowerCase()
+        .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
+        .replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
+        .replace(/\s+/g, " ").trim();
+    }
+
+    const PRESET_DOC_KEYWORDS = {
+      EHLİYET: ["ehliyet", "surucu", "b sinifi", "d sinifi"],
+      SRC: ["src", "psikoteknik"],
+      GÜVENLİK: ["ogg", "guvenlik"],
+      BİLGİSAYAR: ["bilgisayar", "hijyen", "sertifika"],
+      İLKYARDİM: ["ilk yardim"],
+      YDS: ["yds", "yokdil", "yabanci dil"]
+    };
+
+    function doesItemMatchPresetDoc(item, docKey) {
+      if ((item.requiredDocs || []).includes(docKey)) return true;
+      const keywords = PRESET_DOC_KEYWORDS[normalizeText(docKey).toUpperCase()] || [normalizeText(docKey)];
+      const hay = normalizeText(`${item.title} ${item.summary} ${item.details} ${item.category}`);
+      return keywords.some(kw => hay.includes(kw));
+    }
+
+    function doesItemMatchCustomDoc(item, customDoc) {
+      const nDoc = normalizeText(customDoc);
+      if (!nDoc) return false;
+      const inReq = (item.requiredDocs || []).some(r => normalizeText(r).includes(nDoc) || nDoc.includes(normalizeText(r)));
+      if (inReq) return true;
+      const hay = normalizeText(`${item.title} ${item.summary} ${item.details} ${item.category} ${(item.requiredDocs || []).join(" ")}`);
+      return hay.includes(nDoc);
+    }
+
+    function renderCustomDocChips() {
+      const chipsHtml = customDocs.map((doc, idx) => `
+        <span class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold px-2.5 py-1 rounded-full">
+          📄 ${doc}
+          <button type="button" onclick="removeCustomDoc(${idx})" class="text-emerald-700 hover:text-red-600 font-bold">&times;</button>
+        </span>
+      `).join("");
+
+      const pList = document.getElementById("profileCustomDocsList");
+      const rList = document.getElementById("regCustomDocsList");
+      if (pList) pList.innerHTML = chipsHtml;
+      if (rList) rList.innerHTML = chipsHtml;
+    }
+
+    function addCustomDoc(mode) {
+      const isReg = mode === "reg";
+      const input = document.getElementById(isReg ? "regCustomDocInput" : "profileCustomDocInput");
+      const feedback = document.getElementById(isReg ? "regDocFeedback" : "profileDocFeedback");
+      const raw = (input.value || "").trim();
+
+      if (!raw) {
+        feedback.textContent = "Lütfen bir belge adı yazın.";
+        return;
+      }
+      if (customDocs.some(d => normalizeText(d) === normalizeText(raw))) {
+        feedback.textContent = `"${raw}" zaten ekli.`;
+        return;
+      }
+      customDocs.push(raw);
+      input.value = "";
+      renderCustomDocChips();
+      const cnt = ITEMS.filter(it => doesItemMatchCustomDoc(it, raw)).length;
+      feedback.textContent = `"${raw}" eklendi — ilanlarla uyumlu ${cnt} kayıt bulundu.`;
+      if (!isReg) saveProfileFromUI();
+    }
+
+    function removeCustomDoc(idx) {
+      customDocs.splice(idx, 1);
+      renderCustomDocChips();
+      if (getUser()) saveProfileFromUI();
+    }
+
+    function getUser() {
+      try { return JSON.parse(localStorage.getItem("kpss_user")); } catch (e) { return null; }
+    }
+
+    function getProfile() {
+      try { return JSON.parse(localStorage.getItem("kpss_profile")) || {}; } catch (e) { return {}; }
+    }
+
+    function scrollToProfile() {
+      const sec = document.getElementById("profileSection");
+      if (sec && !sec.classList.contains("hidden")) {
+        sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function renderAuthHeader() {
+      const user = getUser();
+      const area = document.getElementById("authArea");
+      const profileSec = document.getElementById("profileSection");
+
+      if (user) {
+        profileSec.classList.remove("hidden");
+        area.innerHTML = `
+          <span class="text-xs text-emerald-300 hidden lg:inline">Hoş geldin, <b>${user.name}</b></span>
+          <button type="button" onclick="scrollToProfile()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3 py-1.5 rounded-lg transition">Profilim</button>
+          <button type="button" onclick="logoutUser()" class="bg-slate-800 hover:bg-slate-700 text-xs px-3 py-1.5 rounded-lg border border-slate-700">Çıkış</button>
+        `;
+      } else {
+        profileSec.classList.add("hidden");
+        area.innerHTML = `
+          <button type="button" onclick="openAuthModal()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-lg transition">Üye Ol</button>
+        `;
+      }
+    }
+
+    function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById("regName").value.trim();
+      const email = document.getElementById("regEmail").value.trim();
+      const edu = document.getElementById("regEdu").value;
+      const scoreVal = document.getElementById("regScore").value;
+      const cat = document.getElementById("regCat").value;
+      const presetDocs = Array.from(document.querySelectorAll(".reg-doc-check:checked")).map(cb => cb.value);
+
+      localStorage.setItem("kpss_user", JSON.stringify({ name, email }));
+      localStorage.setItem("kpss_profile", JSON.stringify({ edu, scoreVal, cat, presetDocs, customDocs }));
+
+      closeAuthModal();
+      syncProfileToUI();
+      renderAuthHeader();
+      applyProfileMatch(false);
+    }
+
+    function logoutUser() {
+      localStorage.removeItem("kpss_user");
+      renderAuthHeader();
+      document.getElementById("matchInfoText").textContent = "Üye olarak puan ve belgelerini profiline ekleyebilir, Tam Uygun ve Sınırda (+3 Puan) ilanları görebilirsin.";
+      document.getElementById("listHeading").textContent = "Güncel Kamu İş İlanları";
+      renderJobs(ITEMS.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
+    }
+
+    function openAuthModal() {
+      renderCustomDocChips();
+      document.getElementById("authModal").classList.remove("hidden");
+    }
+    function closeAuthModal() { document.getElementById("authModal").classList.add("hidden"); }
+    function closeDetailModal() { document.getElementById("detailModal").classList.add("hidden"); }
+
+    function openGuideModal(guideId) {
+      const g = GUIDES[guideId];
+      if (!g) return;
+      const tipsHtml = g.tips.map(t => `<li class="text-xs sm:text-sm text-slate-700 leading-relaxed">• ${t}</li>`).join("");
+      document.getElementById("detailContent").innerHTML = `
+        <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded">KPSS İçerik Rehberi</span>
+        <h3 class="text-xl font-extrabold text-slate-900 mt-2">${g.title}</h3>
+        <p class="text-sm text-slate-700 leading-relaxed mt-3">${g.summary}</p>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mt-4">
+          <h4 class="text-xs font-bold uppercase text-slate-500 mb-2">Dikkat Edilmesi Gerekenler</h4>
+          <ul class="space-y-2">${tipsHtml}</ul>
+        </div>
+        <button type="button" onclick="closeDetailModal(); ${getUser() ? "scrollToProfile();" : "openAuthModal();"}" class="mt-5 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-sm transition">
+          ${getUser() ? "Profilime Git ve İlanları Eşleştir" : "Üye Ol ve Kendi Bilgilerinle Eşleştir"}
+        </button>
+      `;
+      document.getElementById("detailModal").classList.remove("hidden");
+    }
+
+    function openDetail(id) {
+      if (!getUser()) {
+        openAuthModal();
+        return;
+      }
+      const item = ITEMS.find(x => x.id === id);
+      if (!item) return;
+      const docsText = (item.requiredDocs || []).length > 0 ? item.requiredDocs.join(", ") : "Özel belge şartı yok";
+      document.getElementById("detailContent").innerHTML = `
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="bg-slate-900 text-white text-xs font-bold px-2.5 py-0.5 rounded">${item.category}</span>
+          <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-2.5 py-0.5 rounded">${item.education}</span>
+          <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded">${item.minScore > 0 ? "Min. " + item.minScore + " KPSS" : "KPSS / Şart İlanda"}</span>
+        </div>
+        <h3 class="text-xl font-extrabold text-slate-900 mt-3">${item.title}</h3>
+        <p class="text-xs font-semibold text-slate-500 mt-1">Kaynak: ${item.source || item.institution} • ${item.deadline}</p>
+        <p class="text-xs font-semibold text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-lg mt-3">Belgeler: ${docsText}</p>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mt-3">
+          <h4 class="text-xs font-bold uppercase text-slate-500 mb-1">İlan Detayı</h4>
+          <p class="text-sm text-slate-700 leading-relaxed">${item.details}</p>
+        </div>
+        <a href="${item.officialUrl}" target="_blank" rel="noopener" class="mt-5 inline-block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-sm">Resmi İlan Bağlantısına Git ↗</a>
+      `;
+      document.getElementById("detailModal").classList.remove("hidden");
+    }
+
+    function renderJobs(entries) {
+      lastRenderedList = entries;
+      const container = document.getElementById("jobsContainer");
+      const countEl = document.getElementById("resultCount");
+      const user = getUser();
+
+      const exactCount = entries.filter(e => e.matchType === "exact").length;
+      const nearCount = entries.filter(e => e.matchType === "near").length;
+      countEl.textContent = (exactCount > 0 || nearCount > 0)
+        ? `${exactCount} Tam Uygun • ${nearCount} Sınırda (Yakın Puan)`
+        : `${entries.length} ilan gösteriliyor`;
+
+      if (entries.length === 0) {
+        container.innerHTML = `<div class="col-span-full bg-white border border-slate-200 rounded-xl p-8 text-center"><p class="font-bold text-slate-700">Seçtiğin bilgilere uyan ilan bulunamadı.</p><p class="text-xs text-slate-500 mt-1">Profilindeki puan, eğitim, kategori veya belge ayarlarını değiştirip tekrar deneyebilirsin.</p></div>`;
+        return;
+      }
+
+      container.innerHTML = entries.map(({ item, matchType, diff, matchedCustomDocs }) => {
+        let badge = "";
+        let border = "border-slate-200 hover:border-slate-400";
+        if (matchType === "exact") {
+          badge = `<span class="bg-emerald-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded">✓ Tam Uygun</span>`;
+          border = "border-emerald-300 bg-emerald-50/20";
+        } else if (matchType === "near") {
+          badge = `<span class="bg-amber-500 text-slate-950 text-[11px] font-bold px-2.5 py-0.5 rounded">⚡ Sınırda (+${diff.toFixed(1)} Puan)</span>`;
+          border = "border-amber-300 bg-amber-50/25";
+        }
+
+        const customBadges = (matchedCustomDocs || []).map(cd => `<span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2 py-0.5 rounded">✓ Belge: ${cd}</span>`).join(" ");
+
+        return `
+          <article class="bg-white border ${border} transition rounded-xl p-5 flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="flex items-center justify-between gap-2 flex-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  ${badge}
+                  <span class="bg-slate-900 text-white text-xs font-bold px-2.5 py-0.5 rounded">${item.category}</span>
+                  <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-2.5 py-0.5 rounded">${item.education}</span>
+                </div>
+                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded">${item.minScore > 0 ? "Taban: " + item.minScore : "Detayda"}</span>
+              </div>
+              <h3 class="font-bold text-base text-slate-900 mt-3">${item.title}</h3>
+              <p class="text-xs font-medium text-slate-500 mt-0.5">${item.source || item.institution}</p>
+              <p class="text-xs text-slate-600 mt-2 line-clamp-2">${item.summary}</p>
+              <div class="flex flex-wrap gap-1.5 mt-3">${customBadges}</div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-400">${item.deadline}</span>
+              <button type="button" onclick="openDetail('${item.id}')" class="text-xs font-bold px-3.5 py-2 rounded-lg transition bg-slate-900 hover:bg-slate-800 text-white">
+                ${user ? "İlan Detayını Gör →" : "🔒 Detay İçin Üye Ol"}
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function saveProfileFromUI() {
+      const edu = document.getElementById("profileEdu").value;
+      const scoreVal = document.getElementById("profileScore").value;
+      const cat = document.getElementById("profileCat").value;
+      const presetDocs = Array.from(document.querySelectorAll(".profile-doc-check:checked")).map(cb => cb.value);
+      localStorage.setItem("kpss_profile", JSON.stringify({ edu, scoreVal, cat, presetDocs, customDocs }));
+      updateProfileSummaryBadge();
+    }
+
+    function updateProfileSummaryBadge() {
+      const p = getProfile();
+      const scoreTxt = p.scoreVal ? `${p.scoreVal} KPSS` : "Puan girilmedi";
+      const docCount = ((p.presetDocs || []).length) + ((p.customDocs || []).length);
+      document.getElementById("profileSummaryBadge").textContent = `${scoreTxt} • ${docCount} Belge`;
+      document.getElementById("matchInfoText").textContent = `Profilin (${scoreTxt}, ${docCount} belge) aktif. İlanlar tam uygunluk ve +3 puan sınırına göre sıralanıyor.`;
+    }
+
+    function applyProfileMatch(showToast = false) {
+      if (!getUser()) {
+        openAuthModal();
+        return;
+      }
+      saveProfileFromUI();
+      const p = getProfile();
+      const edu = p.edu || "ALL";
+      const score = p.scoreVal !== "" && p.scoreVal !== undefined ? Number(p.scoreVal) : null;
+      const cat = p.cat || "ALL";
+      const presetDocs = p.presetDocs || [];
+      const totalDocs = presetDocs.length + customDocs.length;
+
+      const matched = [];
+      ITEMS.forEach(item => {
+        if (edu !== "ALL" && item.education !== edu) return;
+        if (cat !== "ALL" && item.category !== cat) return;
+
+        const matchedCustom = customDocs.filter(cd => doesItemMatchCustomDoc(item, cd));
+        if (totalDocs > 0 && (item.requiredDocs || []).length > 0) {
+          const pOk = presetDocs.some(pd => doesItemMatchPresetDoc(item, pd));
+          const cOk = matchedCustom.length > 0;
+          if (!pOk && !cOk) return;
+        }
+
+        if (score !== null && item.minScore > 0) {
+          if (score >= item.minScore) {
+            matched.push({ item, matchType: "exact", diff: 0, matchedCustomDocs: matchedCustom });
+          } else if (item.minScore - score <= NEAR_SCORE_MARGIN) {
+            matched.push({ item, matchType: "near", diff: item.minScore - score, matchedCustomDocs: matchedCustom });
+          }
+        } else {
+          matched.push({
+            item,
+            matchType: (score !== null || matchedCustom.length > 0) ? "exact" : "normal",
+            diff: 0,
+            matchedCustomDocs: matchedCustom
+          });
+        }
+      });
+
+      matched.sort((a, b) => {
+        const aD = a.matchedCustomDocs.length > 0 ? -1 : 0;
+        const bD = b.matchedCustomDocs.length > 0 ? -1 : 0;
+        if (aD !== bD) return aD - bD;
+        return (a.matchType === "exact" ? -1 : 1) - (b.matchType === "exact" ? -1 : 1);
+      });
+
+      document.getElementById("listHeading").textContent = "Profiline Göre Eşleşen İlanlar";
+      renderJobs(matched);
+      if (showToast) {
+        document.getElementById("profileDocFeedback").textContent = "Profil eşleştirmesi güncellendi.";
+      }
+    }
+
+    function quickCategory(cat) {
+      if (cat === "ALL") {
+        document.getElementById("listHeading").textContent = "Güncel Kamu İş İlanları";
+        renderJobs(ITEMS.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
+      } else {
+        document.getElementById("listHeading").textContent = `${cat} Kategorisi İlanları`;
+        renderJobs(ITEMS.filter(x => x.category === cat).map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
+      }
+    }
+
+    function resetFilters() {
+      quickCategory("ALL");
+    }
+
+    function syncProfileToUI() {
+      const p = getProfile();
+      document.getElementById("profileEdu").value = p.edu || "ALL";
+      document.getElementById("profileScore").value = p.scoreVal || "";
+      document.getElementById("profileCat").value = p.cat || "ALL";
+      document.querySelectorAll(".profile-doc-check").forEach(cb => {
+        cb.checked = Array.isArray(p.presetDocs) && p.presetDocs.includes(cb.value);
+      });
+      if (Array.isArray(p.customDocs)) {
+        customDocs = [...p.customDocs];
+      }
+      renderCustomDocChips();
+      if (getUser()) updateProfileSummaryBadge();
+    }
+
+    async function initApp() {
+      renderAdSlots();
+      syncProfileToUI();
+      renderAuthHeader();
+      try {
+        const res = await fetch("./ilanlar.json", { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            ITEMS = data;
+          }
+        }
+      } catch (e) {}
+
+      if (getUser()) {
+        applyProfileMatch(false);
+      } else {
+        renderJobs(ITEMS.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
+      }
+    }
+
+    initApp();
+  </script>
+</body>
+</html>
