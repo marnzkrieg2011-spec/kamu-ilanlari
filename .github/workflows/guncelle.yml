@@ -2,8 +2,8 @@ name: Gunluk Kamu Ilanlari Guncelle
 
 on:
   schedule:
-    - cron: '0 6 * * *' # Her gun 06:00 UTC = 09:00 TSİ
-  workflow_dispatch: # İstediginde elle de tetikleyebilmen icin
+    - cron: "0 6 * * *" # Her gun 06:00 UTC = 09:00 TSİ
+  workflow_dispatch: # Istediginde elle de tetikleyebilmen icin
 
 permissions:
   contents: write
@@ -18,12 +18,16 @@ jobs:
       - name: Python kur
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Gerekli kutuphaneleri yukle
         run: pip install requests beautifulsoup4
 
       - name: Scraper calistir
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: python scraper.py
 
       - name: Degisiklikleri kaydet ve gonder
