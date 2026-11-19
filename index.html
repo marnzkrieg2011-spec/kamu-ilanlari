@@ -19,6 +19,7 @@
         <nav class="hidden md:flex items-center gap-4 text-xs font-semibold text-slate-300">
           <button type="button" onclick="goHome(event)" class="hover:text-white transition">Ana Sayfa</button>
           <a href="#ilanlarSection" class="hover:text-white transition">Güncel İlanlar</a>
+          <button type="button" onclick="openAskeriAlimlar(event)" class="hover:text-emerald-300 transition">Askeri Alımlar</button>
           <a href="#bilgiMerkezi" class="hover:text-white transition">KPSS & Atama Bilgileri</a>
         </nav>
       </div>
@@ -42,7 +43,7 @@
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div class="max-w-2xl">
           <span class="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-semibold px-3 py-1 rounded-full mb-3">
-            6 Resmi/Kamu İlan Kaynağı • Kişiye Özel Eşleştirme
+            Kamu İlanları & Askeri Temin/Duyuru Takibi • Kişiye Özel Eşleştirme
           </span>
           <h1 class="text-2xl md:text-3xl font-extrabold leading-tight tracking-tight">
             KPSS Puanına ve Belgelerine Uygun Kamu İlanlarını Tek Ekranda Bul
@@ -54,6 +55,9 @@
             <a href="#ilanlarSection" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition">
               İlanları İncele
             </a>
+            <button type="button" onclick="openAskeriAlimlar(event)" class="bg-amber-400/20 hover:bg-amber-400/30 text-amber-200 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl border border-amber-300/30 transition">
+              ⚔️ Askeri Alımlar
+            </button>
             <button type="button" onclick="openAuthModal()" class="bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl border border-white/15 transition">
               Profil Oluştur / Giriş
             </button>
@@ -62,15 +66,15 @@
 
         <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3 shrink-0">
           <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
-            <div class="text-lg font-extrabold text-emerald-300">6 Kaynak</div>
+            <div class="text-lg font-extrabold text-emerald-300">Çoklu Kaynak</div>
             <div class="text-[11px] text-slate-300 mt-0.5">Kariyer Kapısı, İŞKUR, SBB, Memurlar.net, İşinolsa, İlan.gov</div>
           </div>
           <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
-            <div class="text-lg font-extrabold text-sky-300">11 Alan</div>
-            <div class="text-[11px] text-slate-300 mt-0.5">Sağlık, şoför, büro, mühendis, teknik, öğretmen, güvenlik vb.</div>
+            <div class="text-lg font-extrabold text-amber-300">Askeri Temin</div>
+            <div class="text-[11px] text-slate-300 mt-0.5">MSB ve Jandarma güncel başvurular ve duyurular ayrı sekmede</div>
           </div>
           <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
-            <div class="text-lg font-extrabold text-amber-300">+3 Puan</div>
+            <div class="text-lg font-extrabold text-sky-300">+3 Puan</div>
             <div class="text-[11px] text-slate-300 mt-0.5">Taban puana sınırda kalan kadroları ayrı etiketle gösterir</div>
           </div>
           <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
@@ -204,7 +208,7 @@
     </div>
   </section>
 
-  <!-- HIZLI KATEGORİ FİLTRE ÇUBUĞU -->
+  <!-- HIZLI KATEGORİ & ASKERİ ALIMLAR FİLTRE ÇUBUĞU -->
   <section class="max-w-6xl mx-auto px-4 mt-6">
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
@@ -215,19 +219,20 @@
         <button type="button" onclick="resetFilters()" class="text-xs font-semibold text-emerald-700 hover:text-emerald-800 underline self-start sm:self-auto">Tüm İlanları Göster</button>
       </div>
 
-      <div class="flex flex-wrap gap-2 mt-3">
-        <button type="button" onclick="quickCategory('ALL')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-900 text-white">Tümü</button>
-        <button type="button" onclick="quickCategory('Sağlık')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🏥 Sağlık</button>
-        <button type="button" onclick="quickCategory('Şoför')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🚑 Şoför</button>
-        <button type="button" onclick="quickCategory('Büro')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">💼 Büro / Memur</button>
-        <button type="button" onclick="quickCategory('Mühendis')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">📐 Mühendis / Mimar</button>
-        <button type="button" onclick="quickCategory('Teknik')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">⚙️ Tekniker / Teknisyen</button>
-        <button type="button" onclick="quickCategory('Öğretmen')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">📚 Öğretmen</button>
-        <button type="button" onclick="quickCategory('Güvenlik')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🛡️ Güvenlik (ÖGG)</button>
-        <button type="button" onclick="quickCategory('Destek')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🧹 Destek / Hizmetli</button>
-        <button type="button" onclick="quickCategory('Adalet')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">⚖️ Adalet / İKM</button>
-        <button type="button" onclick="quickCategory('Bilişim')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">💻 Bilişim / Yazılım</button>
-        <button type="button" onclick="quickCategory('Sosyal')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🤝 Sosyal Hizmet</button>
+      <div id="categoryButtonsBar" class="flex flex-wrap gap-2 mt-3">
+        <button type="button" data-cat="ALL" onclick="quickCategory('ALL')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-900 text-white">Tümü</button>
+        <button type="button" data-cat="ASKERI" onclick="quickCategory('ASKERI')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-900 hover:bg-amber-200 border border-amber-300">⚔️ Askeri Alımlar</button>
+        <button type="button" data-cat="Sağlık" onclick="quickCategory('Sağlık')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🏥 Sağlık</button>
+        <button type="button" data-cat="Şoför" onclick="quickCategory('Şoför')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🚑 Şoför</button>
+        <button type="button" data-cat="Büro" onclick="quickCategory('Büro')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">💼 Büro / Memur</button>
+        <button type="button" data-cat="Mühendis" onclick="quickCategory('Mühendis')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">📐 Mühendis / Mimar</button>
+        <button type="button" data-cat="Teknik" onclick="quickCategory('Teknik')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">⚙️ Tekniker / Teknisyen</button>
+        <button type="button" data-cat="Öğretmen" onclick="quickCategory('Öğretmen')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">📚 Öğretmen</button>
+        <button type="button" data-cat="Güvenlik" onclick="quickCategory('Güvenlik')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🛡️ Güvenlik (ÖGG)</button>
+        <button type="button" data-cat="Destek" onclick="quickCategory('Destek')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🧹 Destek / Hizmetli</button>
+        <button type="button" data-cat="Adalet" onclick="quickCategory('Adalet')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">⚖️ Adalet / İKM</button>
+        <button type="button" data-cat="Bilişim" onclick="quickCategory('Bilişim')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">💻 Bilişim / Yazılım</button>
+        <button type="button" data-cat="Sosyal" onclick="quickCategory('Sosyal')" class="cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">🤝 Sosyal Hizmet</button>
       </div>
     </div>
   </section>
@@ -522,6 +527,7 @@
       {
         id: "ilan-1",
         source: "SBB Kamu Ilan",
+        group: "genel",
         category: "Sağlık",
         education: "Önlisans",
         minScore: 65,
@@ -536,6 +542,7 @@
       {
         id: "ilan-2",
         source: "Kariyer Kapisi",
+        group: "genel",
         category: "Şoför",
         education: "Ortaöğretim",
         minScore: 60,
@@ -550,6 +557,7 @@
       {
         id: "ilan-3",
         source: "Ilan.gov.tr",
+        group: "genel",
         category: "Öğretmen",
         education: "Lisans",
         minScore: 72,
@@ -564,6 +572,7 @@
       {
         id: "ilan-4",
         source: "Memurlar.net Ilan",
+        group: "genel",
         category: "Büro",
         education: "Lisans",
         minScore: 71,
@@ -578,6 +587,7 @@
       {
         id: "ilan-5",
         source: "ISKUR Kamu",
+        group: "genel",
         category: "Güvenlik",
         education: "Ortaöğretim",
         minScore: 55,
@@ -592,6 +602,7 @@
       {
         id: "ilan-6",
         source: "Isinolsa Memur",
+        group: "genel",
         category: "Bilişim",
         education: "Lisans",
         minScore: 70,
@@ -638,6 +649,38 @@
     let ITEMS = [...FALLBACK_ITEMS];
     let customDocs = [];
     let lastRenderedList = [];
+    let activeFilterCat = "ALL";
+
+    function isAskeriItem(item) {
+      if (!item) return false;
+      if (item.group === "askeri" || item.category === "Askeri") return true;
+      const src = (item.source || "").toLowerCase();
+      return src.includes("msb") || src.includes("jandarma") || src.includes("personel temin");
+    }
+
+    function setActiveCategoryButton(cat) {
+      activeFilterCat = cat;
+      document.querySelectorAll(".cat-btn").forEach(btn => {
+        const btnCat = btn.getAttribute("data-cat");
+        const isActive = btnCat === cat;
+        if (btnCat === "ASKERI") {
+          btn.className = isActive
+            ? "cat-btn px-3 py-1.5 rounded-full text-xs font-bold bg-amber-500 text-slate-950 border border-amber-500 shadow-xs"
+            : "cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-900 hover:bg-amber-200 border border-amber-300";
+        } else {
+          btn.className = isActive
+            ? "cat-btn px-3 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-white"
+            : "cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200";
+        }
+      });
+    }
+
+    function openAskeriAlimlar(e) {
+      if (e) e.preventDefault();
+      quickCategory("ASKERI");
+      const sec = document.getElementById("ilanlarSection");
+      if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
 
     function goHome(e) {
       if (e) e.preventDefault();
@@ -777,8 +820,7 @@
       localStorage.removeItem("kpss_user");
       renderAuthHeader();
       document.getElementById("matchInfoText").textContent = "Üye olarak puan ve belgelerini profiline ekleyebilir, Tam Uygun ve Sınırda (+3 Puan) ilanları görebilirsin.";
-      document.getElementById("listHeading").textContent = "Güncel Kamu İş İlanları";
-      renderJobs(ITEMS.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
+      quickCategory(activeFilterCat);
     }
 
     function openAuthModal() {
@@ -815,20 +857,21 @@
       const item = ITEMS.find(x => x.id === id);
       if (!item) return;
       const docsText = (item.requiredDocs || []).length > 0 ? item.requiredDocs.join(", ") : "Özel belge şartı yok";
+      const isAskeri = isAskeriItem(item);
       document.getElementById("detailContent").innerHTML = `
         <div class="flex items-center gap-2 flex-wrap">
-          <span class="bg-slate-900 text-white text-xs font-bold px-2.5 py-0.5 rounded">${item.category}</span>
+          <span class="${isAskeri ? "bg-amber-500 text-slate-950" : "bg-slate-900 text-white"} text-xs font-bold px-2.5 py-0.5 rounded">${isAskeri ? "Askeri Alım / Duyuru" : item.category}</span>
           <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-2.5 py-0.5 rounded">${item.education}</span>
-          <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded">${item.minScore > 0 ? "Min. " + item.minScore + " KPSS" : "KPSS / Şart İlanda"}</span>
+          <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded">${item.minScore > 0 ? "Min. " + item.minScore + " KPSS" : "Başvuru / Duyuru Şartları"}</span>
         </div>
         <h3 class="text-xl font-extrabold text-slate-900 mt-3">${item.title}</h3>
         <p class="text-xs font-semibold text-slate-500 mt-1">Kaynak: ${item.source || item.institution} • ${item.deadline}</p>
         <p class="text-xs font-semibold text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-lg mt-3">Belgeler: ${docsText}</p>
         <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mt-3">
-          <h4 class="text-xs font-bold uppercase text-slate-500 mb-1">İlan Detayı</h4>
+          <h4 class="text-xs font-bold uppercase text-slate-500 mb-1">${isAskeri ? "Temin / Duyuru Detayı" : "İlan Detayı"}</h4>
           <p class="text-sm text-slate-700 leading-relaxed">${item.details}</p>
         </div>
-        <a href="${item.officialUrl}" target="_blank" rel="noopener" class="mt-5 inline-block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-sm">Resmi İlan Bağlantısına Git ↗</a>
+        <a href="${item.officialUrl}" target="_blank" rel="noopener" class="mt-5 inline-block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-sm">Resmi Duyuru / Başvuru Sayfasına Git ↗</a>
       `;
       document.getElementById("detailModal").classList.remove("hidden");
     }
@@ -843,23 +886,35 @@
       const nearCount = entries.filter(e => e.matchType === "near").length;
       countEl.textContent = (exactCount > 0 || nearCount > 0)
         ? `${exactCount} Tam Uygun • ${nearCount} Sınırda (Yakın Puan)`
-        : `${entries.length} ilan gösteriliyor`;
+        : `${entries.length} kayıt gösteriliyor`;
 
       if (entries.length === 0) {
-        container.innerHTML = `<div class="col-span-full bg-white border border-slate-200 rounded-xl p-8 text-center"><p class="font-bold text-slate-700">Seçtiğin bilgilere uyan ilan bulunamadı.</p><p class="text-xs text-slate-500 mt-1">Profilindeki puan, eğitim, kategori veya belge ayarlarını değiştirip tekrar deneyebilirsin.</p></div>`;
+        const emptyMsg = activeFilterCat === "ASKERI"
+          ? "Şu an askeri alımlar/duyurular listesinde kayıt bulunamadı."
+          : "Seçtiğin bilgilere uyan ilan bulunamadı.";
+        container.innerHTML = `<div class="col-span-full bg-white border border-slate-200 rounded-xl p-8 text-center"><p class="font-bold text-slate-700">${emptyMsg}</p><p class="text-xs text-slate-500 mt-1">Günlük otomatik güncelleme (her gün 09:00) veya diğer kategoriler üzerinden kontrol edebilirsin.</p></div>`;
         return;
       }
 
       container.innerHTML = entries.map(({ item, matchType, diff, matchedCustomDocs }) => {
         let badge = "";
         let border = "border-slate-200 hover:border-slate-400";
+        const isAskeri = isAskeriItem(item);
+
         if (matchType === "exact") {
           badge = `<span class="bg-emerald-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded">✓ Tam Uygun</span>`;
           border = "border-emerald-300 bg-emerald-50/20";
         } else if (matchType === "near") {
           badge = `<span class="bg-amber-500 text-slate-950 text-[11px] font-bold px-2.5 py-0.5 rounded">⚡ Sınırda (+${diff.toFixed(1)} Puan)</span>`;
           border = "border-amber-300 bg-amber-50/25";
+        } else if (isAskeri) {
+          border = "border-amber-200 hover:border-amber-400";
         }
+
+        const catBadgeClass = isAskeri
+          ? "bg-amber-500 text-slate-950 text-xs font-bold px-2.5 py-0.5 rounded"
+          : "bg-slate-900 text-white text-xs font-bold px-2.5 py-0.5 rounded";
+        const catBadgeLabel = isAskeri ? "⚔️ Askeri Alım" : item.category;
 
         const customBadges = (matchedCustomDocs || []).map(cd => `<span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2 py-0.5 rounded">✓ Belge: ${cd}</span>`).join(" ");
 
@@ -869,10 +924,10 @@
               <div class="flex items-center justify-between gap-2 flex-wrap">
                 <div class="flex items-center gap-1.5 flex-wrap">
                   ${badge}
-                  <span class="bg-slate-900 text-white text-xs font-bold px-2.5 py-0.5 rounded">${item.category}</span>
+                  <span class="${catBadgeClass}">${catBadgeLabel}</span>
                   <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-2.5 py-0.5 rounded">${item.education}</span>
                 </div>
-                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded">${item.minScore > 0 ? "Taban: " + item.minScore : "Detayda"}</span>
+                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded">${item.minScore > 0 ? "Taban: " + item.minScore : (isAskeri ? "Temin / Duyuru" : "Detayda")}</span>
               </div>
               <h3 class="font-bold text-base text-slate-900 mt-3">${item.title}</h3>
               <p class="text-xs font-medium text-slate-500 mt-0.5">${item.source || item.institution}</p>
@@ -882,7 +937,7 @@
             <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
               <span class="text-[11px] font-semibold text-slate-400">${item.deadline}</span>
               <button type="button" onclick="openDetail('${item.id}')" class="text-xs font-bold px-3.5 py-2 rounded-lg transition bg-slate-900 hover:bg-slate-800 text-white">
-                ${user ? "İlan Detayını Gör →" : "🔒 Detay İçin Üye Ol"}
+                ${user ? "Detayı Gör →" : "🔒 Detay İçin Üye Ol"}
               </button>
             </div>
           </article>
@@ -920,10 +975,14 @@
       const presetDocs = p.presetDocs || [];
       const totalDocs = presetDocs.length + customDocs.length;
 
+      const basePool = activeFilterCat === "ASKERI"
+        ? ITEMS.filter(x => isAskeriItem(x))
+        : ITEMS.filter(x => !isAskeriItem(x));
+
       const matched = [];
-      ITEMS.forEach(item => {
+      basePool.forEach(item => {
         if (edu !== "ALL" && item.education !== edu) return;
-        if (cat !== "ALL" && item.category !== cat) return;
+        if (activeFilterCat !== "ASKERI" && cat !== "ALL" && item.category !== cat) return;
 
         const matchedCustom = customDocs.filter(cd => doesItemMatchCustomDoc(item, cd));
         if (totalDocs > 0 && (item.requiredDocs || []).length > 0) {
@@ -955,7 +1014,9 @@
         return (a.matchType === "exact" ? -1 : 1) - (b.matchType === "exact" ? -1 : 1);
       });
 
-      document.getElementById("listHeading").textContent = "Profiline Göre Eşleşen İlanlar";
+      document.getElementById("listHeading").textContent = activeFilterCat === "ASKERI"
+        ? "Askeri Alımlar — Güncel Başvurular ve Duyurular"
+        : "Profiline Göre Eşleşen İlanlar";
       renderJobs(matched);
       if (showToast) {
         document.getElementById("profileDocFeedback").textContent = "Profil eşleştirmesi güncellendi.";
@@ -963,12 +1024,19 @@
     }
 
     function quickCategory(cat) {
+      setActiveCategoryButton(cat);
       if (cat === "ALL") {
+        const genelIlanlar = ITEMS.filter(x => !isAskeriItem(x));
         document.getElementById("listHeading").textContent = "Güncel Kamu İş İlanları";
-        renderJobs(ITEMS.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
+        renderJobs(genelIlanlar.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
+      } else if (cat === "ASKERI") {
+        const askeriKayitlar = ITEMS.filter(x => isAskeriItem(x));
+        document.getElementById("listHeading").textContent = "Askeri Alımlar — Güncel Başvurular ve Duyurular";
+        renderJobs(askeriKayitlar.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
       } else {
+        const filtered = ITEMS.filter(x => !isAskeriItem(x) && x.category === cat);
         document.getElementById("listHeading").textContent = `${cat} Kategorisi İlanları`;
-        renderJobs(ITEMS.filter(x => x.category === cat).map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
+        renderJobs(filtered.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
       }
     }
 
@@ -1005,10 +1073,12 @@
         }
       } catch (e) {}
 
+      setActiveCategoryButton("ALL");
       if (getUser()) {
         applyProfileMatch(false);
       } else {
-        renderJobs(ITEMS.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
+        const genelIlanlar = ITEMS.filter(x => !isAskeriItem(x));
+        renderJobs(genelIlanlar.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
       }
     }
 
