@@ -58,6 +58,9 @@
             <button type="button" onclick="openAskeriAlimlar(event)" class="bg-amber-400/20 hover:bg-amber-400/30 text-amber-200 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl border border-amber-300/30 transition">
               ⚔️ Askeri Alımlar
             </button>
+            <a href="https://t.me/kamuilanlari_tr" target="_blank" rel="noopener" class="bg-sky-500/20 hover:bg-sky-500/30 text-sky-200 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl border border-sky-400/30 transition">
+              ✈️ Telegram Kanalı
+            </a>
             <button type="button" onclick="openAuthModal()" class="bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl border border-white/15 transition">
               Profil Oluştur / Giriş
             </button>
@@ -84,7 +87,28 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-7 pt-6 border-t border-white/10">
+      <!-- TELEGRAM KANAL & TOPLULUK BİLDİRİM KUTUSU -->
+      <div class="mt-6 bg-sky-950/50 border border-sky-400/25 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="bg-sky-400 text-slate-950 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full">Ücretsiz Telegram Akışı</span>
+            <span class="text-xs font-bold text-sky-200">@kamuilanlari_tr Kanalı & Topluluk</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-200 mt-1.5 leading-relaxed">
+            Telegram kanalımızda güncel ilan bildirimlerini <strong>ücretsiz</strong> alabilir, botumuza bağlanarak size özel alımlardan haberdar olabilir ve sohbet/topluluk grubumuz üzerinden diğer adaylarla bilgi paylaşabilirsin.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 shrink-0">
+          <a href="https://t.me/kamuilanlari_tr" target="_blank" rel="noopener" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-lg transition">
+            Kanala Katıl (@kamuilanlari_tr) ↗
+          </a>
+          <a href="https://t.me/kamu_ilan_kpss_bot" target="_blank" rel="noopener" class="bg-white/10 hover:bg-white/20 text-white font-semibold text-xs px-3.5 py-2 rounded-lg border border-white/15 transition">
+            Botu Başlat ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 pt-6 border-t border-white/10">
         <div onclick="openGuideModal('kilavuz-ortaogretim')" class="cursor-pointer bg-white/10 hover:bg-white/15 transition border border-white/15 rounded-xl p-4">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold uppercase tracking-wider text-emerald-300">Kılavuz • Lise (P94)</span>
@@ -163,6 +187,32 @@
             <option value="Bilişim">Bilişim / Yazılım</option>
             <option value="Sosyal">Sosyal Hizmet / Psikoloji</option>
           </select>
+        </div>
+      </div>
+
+      <!-- PROFİL TELEGRAM BİLDİRİM ALANI -->
+      <div class="mt-4 pt-3 border-t border-slate-100">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-start">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Telegram Kullanıcı Adı (Size özel alım açılırsa bildirim göndermek için)</label>
+            <input
+              id="profileTelegram"
+              oninput="saveProfileFromUI()"
+              type="text"
+              maxlength="40"
+              placeholder="Örn: @kullaniciadi"
+              class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
+            />
+            <p class="text-[11px] text-slate-500 mt-1">
+              Özel bildirim alabilmek için <a href="https://t.me/kamu_ilan_kpss_bot" target="_blank" rel="noopener" class="text-emerald-700 font-semibold underline">@kamu_ilan_kpss_bot</a> botunu başlatıp <b>/start</b> yazmayı unutma; genel akış için <a href="https://t.me/kamuilanlari_tr" target="_blank" rel="noopener" class="text-sky-700 font-semibold underline">@kamuilanlari_tr</a> kanalına ücretsiz katılabilirsin.
+            </p>
+          </div>
+          <div class="bg-sky-50 border border-sky-200/80 rounded-xl p-3 text-xs text-slate-700">
+            <div class="font-bold text-sky-900">Ücretsiz Kanal & Topluluk Bildirimi</div>
+            <p class="mt-1 leading-relaxed">
+              Yeni ilanlar <a href="https://t.me/kamuilanlari_tr" target="_blank" rel="noopener" class="font-bold text-sky-800 underline">t.me/kamuilanlari_tr</a> kanalında ücretsiz paylaşılır. İleride açılacak grup sohbeti ve duyurular da kanal üzerinden duyurulacaktır.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -327,7 +377,7 @@
   <footer class="bg-slate-900 text-slate-300 border-t border-slate-800">
     <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
       <div>
-        <span class="font-bold text-white">KAMU İlan & KPSS Rehberi</span> • Kamuya açık ilan derleme ve aday bilgilendirme platformu.
+        <span class="font-bold text-white">KAMU İlan & KPSS Rehberi</span> • <a href="https://t.me/kamuilanlari_tr" target="_blank" rel="noopener" class="text-sky-400 hover:text-sky-300 underline">@kamuilanlari_tr</a> kanalında ücretsiz ilan bildirimi.
       </div>
       <div class="flex flex-wrap items-center justify-center gap-4">
         <button type="button" onclick="goHome(event)" class="text-emerald-400 hover:text-emerald-300 font-semibold">Ana Sayfa</button>
@@ -389,6 +439,20 @@
               <option value="Sosyal">Sosyal</option>
             </select>
           </div>
+        </div>
+
+        <div class="pt-1">
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Telegram Kullanıcı Adı (Size özel alım açılırsa bildirim göndermek için)</label>
+          <input
+            id="regTelegram"
+            type="text"
+            maxlength="40"
+            placeholder="Örn: @kullaniciadi (İsteğe bağlı)"
+            class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
+          />
+          <p class="text-[11px] text-slate-500 mt-1">
+            Ayrıca <a href="https://t.me/kamuilanlari_tr" target="_blank" rel="noopener" class="text-sky-700 font-semibold underline">@kamuilanlari_tr</a> kanalından güncel ilan bildirimlerini ücretsiz alabilir ve sohbet/topluluk duyurularına ulaşabilirsin.
+          </p>
         </div>
 
         <div class="pt-1">
@@ -466,7 +530,7 @@
         badge: "Gizlilik & KVKK Bilgilendirme",
         title: "Gizlilik ve Kişisel Verilerin İşlenmesine İlişkin Aydınlatma",
         paragraphs: [
-          "Bu platformda ad soyad, e-posta, eğitim düzeyi, KPSS puanı ve belge tercihleri yalnızca ilan eşleştirme deneyimini kişiselleştirmek amacıyla kullanılır.",
+          "Bu platformda ad soyad, e-posta, eğitim düzeyi, KPSS puanı, Telegram kullanıcı adı ve belge tercihleri yalnızca ilan eşleştirme ve bildirim deneyimini kişiselleştirmek amacıyla kullanılır.",
           "Girilen profil ve tercih bilgileri harici bir veritabanına aktarılmaksızın kullanıcının kendi tarayıcısındaki yerel depolama alanında (LocalStorage) tutulur; tarayıcı verileri temizlendiğinde veya çıkış yapıldığında sıfırlanabilir.",
           "6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında veri sorumlusu ve iletişim bilgilerini platform yayına alındığında iletişim/künye bölümüne ekleyebilirsin."
         ]
@@ -475,7 +539,7 @@
         badge: "Çerez & Yerel Saklama",
         title: "Çerezler ve Tarayıcı Yerel Depolama (LocalStorage) Politikası",
         paragraphs: [
-          "Site; kullanıcı profilini, seçilen belgeleri ve puan bilgisini sayfa yenilendiğinde hatırlamak için tarayıcı yerel depolama teknolojilerini (LocalStorage) kullanır.",
+          "Site; kullanıcı profilini, seçilen belgeleri, Telegram bilgisini ve puan bilgisini sayfa yenilendiğinde hatırlamak için tarayıcı yerel depolama teknolojilerini (LocalStorage) kullanır.",
           "İlerleyen aşamalarda reklam bağlantıları veya üçüncü parti reklam/analitik servisleri aktif edildiğinde ilgili sağlayıcıların kendi çerez ve gizlilik kuralları geçerli olur.",
           "Kullanıcılar tarayıcı ayarları üzerinden yerel depolama verilerini ve çerezleri diledikleri zaman silebilir veya engelleyebilirler."
         ]
@@ -847,10 +911,11 @@
       const edu = document.getElementById("regEdu").value;
       const scoreVal = document.getElementById("regScore").value;
       const cat = document.getElementById("regCat").value;
+      const telegram = document.getElementById("regTelegram").value.trim();
       const presetDocs = Array.from(document.querySelectorAll(".reg-doc-check:checked")).map(cb => cb.value);
 
       localStorage.setItem("kpss_user", JSON.stringify({ name, email }));
-      localStorage.setItem("kpss_profile", JSON.stringify({ edu, scoreVal, cat, presetDocs, customDocs }));
+      localStorage.setItem("kpss_profile", JSON.stringify({ edu, scoreVal, cat, telegram, presetDocs, customDocs }));
 
       closeAuthModal();
       syncProfileToUI();
@@ -991,8 +1056,9 @@
       const edu = document.getElementById("profileEdu").value;
       const scoreVal = document.getElementById("profileScore").value;
       const cat = document.getElementById("profileCat").value;
+      const telegram = document.getElementById("profileTelegram").value.trim();
       const presetDocs = Array.from(document.querySelectorAll(".profile-doc-check:checked")).map(cb => cb.value);
-      localStorage.setItem("kpss_profile", JSON.stringify({ edu, scoreVal, cat, presetDocs, customDocs }));
+      localStorage.setItem("kpss_profile", JSON.stringify({ edu, scoreVal, cat, telegram, presetDocs, customDocs }));
       updateProfileSummaryBadge();
     }
 
@@ -1000,8 +1066,9 @@
       const p = getProfile();
       const scoreTxt = p.scoreVal ? `${p.scoreVal} KPSS` : "Puan girilmedi";
       const docCount = ((p.presetDocs || []).length) + ((p.customDocs || []).length);
-      document.getElementById("profileSummaryBadge").textContent = `${scoreTxt} • ${docCount} Belge`;
-      document.getElementById("matchInfoText").textContent = `Profilin (${scoreTxt}, ${docCount} belge) aktif. İlanlar tam uygunluk ve +3 puan sınırına göre sıralanıyor.`;
+      const tgTxt = p.telegram ? ` • ${p.telegram.startsWith("@") ? p.telegram : "@" + p.telegram}` : "";
+      document.getElementById("profileSummaryBadge").textContent = `${scoreTxt} • ${docCount} Belge${tgTxt}`;
+      document.getElementById("matchInfoText").textContent = `Profilin (${scoreTxt}, ${docCount} belge${tgTxt}) aktif. İlanlar tam uygunluk ve +3 puan sınırına göre sıralanıyor.`;
     }
 
     function applyProfileMatch(showToast = false) {
@@ -1091,6 +1158,7 @@
       document.getElementById("profileEdu").value = p.edu || "ALL";
       document.getElementById("profileScore").value = p.scoreVal || "";
       document.getElementById("profileCat").value = p.cat || "ALL";
+      document.getElementById("profileTelegram").value = p.telegram || "";
       document.querySelectorAll(".profile-doc-check").forEach(cb => {
         cb.checked = Array.isArray(p.presetDocs) && p.presetDocs.includes(cb.value);
       });
