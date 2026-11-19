@@ -1209,5 +1209,37 @@
     "details": "Bu kayıt Isinolsa Memur kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
     "officialUrl": "https://www.isinolsa.com/ogretmenlere-tren-biletinde-yuzde-50-indirim-aciklandi/",
     "fetchedAt": "2026-11-19T22:09:22.908082+00:00"
+  },
+  {
+    "id": "memurlar-410018",
+    "source": "Memurlar.net Ilan",
+    "group": "genel",
+    "category": "Öğretmen",
+    "education": "Lisans",
+    "minScore": 0,
+    "requiredDocs": [],
+    "title": "Necmettin Erbakan Üniversitesi Öğretim Üyesi ve Elemanı Alım İlanı",
+    "institution": "Memurlar.net Ilan",
+    "deadline": "Güncel İlan",
+    "summary": "Memurlar.net Ilan üzerinden yakalanan güncel alım/ilan kaydı.",
+    "details": "Bu kayıt Memurlar.net Ilan kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
+    "officialUrl": "https://ilan.memurlar.net/ilan/87035/necmettin-erbakan-universitesi-ogretim-uyesi-ve-elemani-alim-ilani.html",
+    "fetchedAt": "2026-11-19T22:23:58.618706+00:00"
+  },
+  {
+    "id": "memurlar-82691",
+    "source": "Memurlar.net Ilan",
+    "group": "genel",
+    "category": "Öğretmen",
+    "education": "Lisans",
+    "minScore": 0,
+    "requiredDocs": [],
+    "title": "Bartın Üniversitesi 1 Sözleşmeli Personel Alacak",
+    "institution": "Memurlar.net Ilan",
+    "deadline": "Güncel İlan",
+    "summary": "Memurlar.net Ilan üzerinden yakalanan güncel alım/ilan kaydı.",
+    "details": "Bu kayıt Memurlar.net Ilan kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
+    "officialUrl": "https://ilan.memurlar.net/ilan/87031/bartin-universitesi-1-sozlesmeli-personel-alacak.html",
+    "fetchedAt": "2026-11-19T22:23:58.619049+00:00"
   }
 ]
