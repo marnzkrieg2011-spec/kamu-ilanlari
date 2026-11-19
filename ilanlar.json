@@ -1033,5 +1033,37 @@
     "details": "Bu ilan Isinolsa Memur kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi ilan bağlantısını inceleyiniz.",
     "officialUrl": "https://www.isinolsa.com/cevre-bakanligi-kpss-2026-2-memur-alimi-500-kisilik-onceki-alimda-hangi-kadrolar-acildi/",
     "fetchedAt": "2026-11-19T20:32:36.921683+00:00"
+  },
+  {
+    "id": "memurlar-938078",
+    "source": "Memurlar.net Ilan",
+    "group": "genel",
+    "category": "Öğretmen",
+    "education": "Lisans",
+    "minScore": 0,
+    "requiredDocs": [],
+    "title": "İstanbul Üniversitesi-Cerrahpaşa Öğretim Üyesi ve Elemanı Alım İlanı",
+    "institution": "Memurlar.net Ilan",
+    "deadline": "Güncel İlan",
+    "summary": "Memurlar.net Ilan üzerinden yakalanan güncel alım/ilan kaydı.",
+    "details": "Bu kayıt Memurlar.net Ilan kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
+    "officialUrl": "https://ilan.memurlar.net/ilan/87029/istanbul-universitesi-cerrahpasa-ogretim-uyesi-ve-elemani-alim-ilani.html",
+    "fetchedAt": "2026-11-19T21:39:06.588626+00:00"
+  },
+  {
+    "id": "isinolsa-922558",
+    "source": "Isinolsa Memur",
+    "group": "genel",
+    "category": "Büro",
+    "education": "Lisans",
+    "minScore": 0,
+    "requiredDocs": [],
+    "title": "Memur Emekli Maaş",
+    "institution": "Isinolsa Memur",
+    "deadline": "Güncel İlan",
+    "summary": "Isinolsa Memur üzerinden yakalanan güncel alım/ilan kaydı.",
+    "details": "Bu kayıt Isinolsa Memur kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
+    "officialUrl": "https://www.isinolsa.com/memur-emekli-maas/",
+    "fetchedAt": "2026-11-19T21:39:06.725554+00:00"
   }
 ]
