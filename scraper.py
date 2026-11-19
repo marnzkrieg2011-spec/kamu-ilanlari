@@ -1,4 +1,5 @@
 import json
+import os
 import re
 from datetime import datetime, timezone
 from urllib.parse import urljoin
@@ -15,6 +16,19 @@ TARGET_SOURCES = [
     {"name": "MSB Personel Temin", "url": "https://personeltemin.msb.gov.tr/", "group": "askeri"},
     {"name": "Jandarma Personel Temin", "url": "https://personeltemin.jandarma.gov.tr/", "group": "askeri"},
 ]
+
+# Sana ozel bildirim dusecek kriterler (bos veya ALL birakilan kriterler filtrelenmez)
+ALERT_PROFILE = {
+    "education": "ALL",       # Ornek: "Lisans", "Önlisans", "Ortaöğretim" veya "ALL"
+    "min_user_score": None,   # Ornek: 72 veya None
+    "near_margin": 3,         # Sinirda (+3 puan) esigi
+    "categories": [],         # Ornek: ["Sağlık", "Şoför", "Bilişim"] veya []
+    "docs": [],               # Ornek: ["Ehliyet", "SRC", "Güvenlik"] veya []
+}
+
+# Kanalda yeni eklenen tum ilanlari paylasmak icin True yapabilirsin
+SHARE_ALL_NEW_TO_CHANNEL = True
+MAX_CHANNEL_ITEMS_PER_RUN = 15
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -95,6 +109,95 @@ def detect_docs(text_norm: str) -> list[str]:
     return found
 
 
+def is_matching_alert(item: dict) -> tuple[bool, str]:
+    prof = ALERT_PROFILE
+
+    edu_filter = prof.get("education", "ALL")
+    if edu_filter and edu_filter != "ALL" and item.get("education") != edu_filter:
+        return False, ""
+
+    cats = prof.get("categories") or []
+    if cats and item.get("category") not in cats:
+        return False, ""
+
+    user_docs = prof.get("docs") or []
+    req_docs = item.get("requiredDocs") or []
+    if user_docs and req_docs:
+        if not any(d in user_docs for d in req_docs):
+            return False, ""
+
+    score = prof.get("min_user_score")
+    min_score = item.get("minScore", 0)
+    margin = prof.get("near_margin", 3)
+
+    if score is not None and min_score > 0:
+        if score >= min_score:
+            return True, "Tam Uygun"
+        if min_score - score <= margin:
+            return True, f"Sınırda (+{min_score - score} Puan)"
+        return False, ""
+
+    return True, "Uygun İlan"
+
+
+def post_telegram_message(token: str, target_id: str, html_text: str, label: str) -> None:
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    try:
+        r = requests.post(
+            url,
+            json={
+                "chat_id": target_id,
+                "text": html_text,
+                "parse_mode": "HTML",
+                "disable_web_page_preview": True,
+            },
+            timeout=15,
+        )
+        r.raise_for_status()
+        print(f"Telegram bildirimi gonderildi ({label}).")
+    except Exception as exc:
+        print(f"[UYARI] Telegram bildirimi gonderilemedi ({label}): {exc}")
+
+
+def send_private_alert(token: str, chat_id: str, matched_entries: list[tuple[dict, str]]) -> None:
+    if not token or not chat_id or not matched_entries:
+        return
+
+    lines = [f"📢 <b>Yeni Uygun İlanlar ({len(matched_entries)})</b>\n"]
+    for item, tag in matched_entries[:12]:
+        score_txt = f" | Taban: {item['minScore']}" if item.get("minScore", 0) > 0 else ""
+        lines.append(
+            f"• <b>[{tag}]</b> {item['title']}\n"
+            f"  <i>{item['source']} • {item['category']} • {item['education']}{score_txt}</i>\n"
+            f"  🔗 <a href=\"{item['officialUrl']}\">İlana Git</a>"
+        )
+
+    if len(matched_entries) > 12:
+        lines.append(f"\n...ve {len(matched_entries) - 12} uygun ilan daha eklendi.")
+
+    post_telegram_message(token, chat_id, "\n".join(lines), f"ozel:{len(matched_entries)}")
+
+
+def send_channel_digest(token: str, channel_id: str, items_to_share: list[dict]) -> None:
+    if not token or not channel_id or not items_to_share:
+        return
+
+    batch = items_to_share[:MAX_CHANNEL_ITEMS_PER_RUN]
+    lines = [f"🏛️ <b>Güncel Kamu & KPSS İlanları ({len(batch)})</b>\n"]
+    for item in batch:
+        score_txt = f" • Taban: {item['minScore']}" if item.get("minScore", 0) > 0 else ""
+        lines.append(
+            f"• <b>{item['title']}</b>\n"
+            f"  <i>{item['category']} • {item['education']}{score_txt} ({item['source']})</i>\n"
+            f"  👉 <a href=\"{item['officialUrl']}\">Başvuru / Detay</a>"
+        )
+
+    if len(items_to_share) > MAX_CHANNEL_ITEMS_PER_RUN:
+        lines.append(f"\nToplam {len(items_to_share)} yeni ilan eklendi; kalanlar sitede.")
+
+    post_telegram_message(token, channel_id, "\n".join(lines), f"kanal:{len(batch)}")
+
+
 def fetch_source_items(source: dict) -> list[dict]:
     items = []
     group = source.get("group", "genel")
@@ -157,20 +260,46 @@ def run_scraper(output_path: str = "ilanlar.json") -> None:
         existing = []
 
     by_url = {item["officialUrl"]: item for item in existing if item.get("officialUrl")}
-    added_count = 0
+    newly_added = []
 
     for src in TARGET_SOURCES:
         pulled = fetch_source_items(src)
         for item in pulled:
             if item["officialUrl"] not in by_url:
                 by_url[item["officialUrl"]] = item
-                added_count += 1
+                newly_added.append(item)
 
     merged = list(by_url.values())
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(merged, f, ensure_ascii=False, indent=2)
 
-    print(f"Tamamlandı. Yeni eklenen ilan: {added_count} | Toplam kayıt: {len(merged)}")
+    token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+    chat_id = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+    channel_id = (os.environ.get("TELEGRAM_CHANNEL_ID") or "").strip()
+
+    matched_for_alert = []
+    for new_item in newly_added:
+        ok, tag = is_matching_alert(new_item)
+        if ok:
+            matched_for_alert.append((new_item, tag))
+
+    if matched_for_alert:
+        send_private_alert(token, chat_id, matched_for_alert)
+
+    channel_candidates = (
+        newly_added
+        if SHARE_ALL_NEW_TO_CHANNEL
+        else [item for item, _ in matched_for_alert]
+    )
+    if channel_candidates:
+        send_channel_digest(token, channel_id, channel_candidates)
+
+    print(
+        f"Tamamlandı. Yeni eklenen ilan: {len(newly_added)} | "
+        f"Özel bildirim: {len(matched_for_alert)} | "
+        f"Kanal paylaşımı: {min(len(channel_candidates), MAX_CHANNEL_ITEMS_PER_RUN) if channel_candidates else 0} | "
+        f"Toplam kayıt: {len(merged)}"
+    )
 
 
 if __name__ == "__main__":
