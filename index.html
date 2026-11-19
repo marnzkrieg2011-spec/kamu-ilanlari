@@ -71,7 +71,7 @@
           </div>
           <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
             <div class="text-lg font-extrabold text-amber-300">Askeri Temin</div>
-            <div class="text-[11px] text-slate-300 mt-0.5">MSB ve Jandarma güncel başvurular ve duyurular ayrı sekmede</div>
+            <div class="text-[11px] text-slate-300 mt-0.5">MSB ve Jandarma resmi başvuru ve duyuru ekranları</div>
           </div>
           <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
             <div class="text-lg font-extrabold text-sky-300">+3 Puan</div>
@@ -523,6 +523,41 @@
 
     const NEAR_SCORE_MARGIN = 3;
 
+    const ASKERI_OFFICIAL_CARDS = [
+      {
+        id: "askeri-msb-resmi",
+        source: "MSB Personel Temin",
+        group: "askeri",
+        category: "Askeri",
+        education: "Tüm Düzeyler",
+        minScore: 0,
+        requiredDocs: [],
+        title: "Milli Savunma Bakanlığı (MSB) Güncel Temin Başvuruları ve Duyurular",
+        institution: "T.C. Millî Savunma Bakanlığı Personel Temin",
+        deadline: "Resmi Portal",
+        summary: "Subay, astsubay, uzman çavuş/erbaş ve sözleşmeli personel/er temin başvuruları ile sınav/duyuru ekranı.",
+        details: "MSB Personel Temin sistemindeki güncel başvurular, kılavuzlar ve duyurular doğrudan resmi sitede yayımlanmaktadır. Başvuru takvimini ve şartları resmi portal üzerinden kontrol ediniz.",
+        officialUrl: "https://personeltemin.msb.gov.tr/",
+        isOfficialPortalCard: true
+      },
+      {
+        id: "askeri-jandarma-resmi",
+        source: "Jandarma Personel Temin",
+        group: "askeri",
+        category: "Askeri",
+        education: "Tüm Düzeyler",
+        minScore: 0,
+        requiredDocs: [],
+        title: "Jandarma ve Sahil Güvenlik Akademisi / Temin Güncel Duyurular",
+        institution: "Jandarma Personel Temin Sistemi",
+        deadline: "Resmi Portal",
+        summary: "Jandarma ve Sahil Güvenlik alımları, başvuru duyuruları ve aday bilgilendirme ekranı.",
+        details: "Jandarma Personel Temin sayfasındaki güncel başvuru duyuruları, şartlar ve başvuru adımları doğrudan resmi portal üzerinden yürütülmektedir.",
+        officialUrl: "https://personeltemin.jandarma.gov.tr/",
+        isOfficialPortalCard: true
+      }
+    ];
+
     const FALLBACK_ITEMS = [
       {
         id: "ilan-1",
@@ -656,6 +691,13 @@
       if (item.group === "askeri" || item.category === "Askeri") return true;
       const src = (item.source || "").toLowerCase();
       return src.includes("msb") || src.includes("jandarma") || src.includes("personel temin");
+    }
+
+    function getAskeriList() {
+      const scrapedAskeri = ITEMS.filter(x => isAskeriItem(x));
+      const existingUrls = new Set(scrapedAskeri.map(x => x.officialUrl));
+      const extraPortals = ASKERI_OFFICIAL_CARDS.filter(c => !existingUrls.has(c.officialUrl));
+      return [...scrapedAskeri, ...extraPortals];
     }
 
     function setActiveCategoryButton(cat) {
@@ -854,7 +896,8 @@
         openAuthModal();
         return;
       }
-      const item = ITEMS.find(x => x.id === id);
+      const allPool = [...ITEMS, ...ASKERI_OFFICIAL_CARDS];
+      const item = allPool.find(x => x.id === id);
       if (!item) return;
       const docsText = (item.requiredDocs || []).length > 0 ? item.requiredDocs.join(", ") : "Özel belge şartı yok";
       const isAskeri = isAskeriItem(item);
@@ -889,10 +932,7 @@
         : `${entries.length} kayıt gösteriliyor`;
 
       if (entries.length === 0) {
-        const emptyMsg = activeFilterCat === "ASKERI"
-          ? "Şu an askeri alımlar/duyurular listesinde kayıt bulunamadı."
-          : "Seçtiğin bilgilere uyan ilan bulunamadı.";
-        container.innerHTML = `<div class="col-span-full bg-white border border-slate-200 rounded-xl p-8 text-center"><p class="font-bold text-slate-700">${emptyMsg}</p><p class="text-xs text-slate-500 mt-1">Günlük otomatik güncelleme (her gün 09:00) veya diğer kategoriler üzerinden kontrol edebilirsin.</p></div>`;
+        container.innerHTML = `<div class="col-span-full bg-white border border-slate-200 rounded-xl p-8 text-center"><p class="font-bold text-slate-700">Seçtiğin bilgilere uyan ilan bulunamadı.</p><p class="text-xs text-slate-500 mt-1">Günlük otomatik güncelleme (her gün 09:00) veya diğer kategoriler üzerinden kontrol edebilirsin.</p></div>`;
         return;
       }
 
@@ -918,6 +958,10 @@
 
         const customBadges = (matchedCustomDocs || []).map(cd => `<span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2 py-0.5 rounded">✓ Belge: ${cd}</span>`).join(" ");
 
+        const actionButtonHtml = item.isOfficialPortalCard
+          ? `<a href="${item.officialUrl}" target="_blank" rel="noopener" class="text-xs font-bold px-3.5 py-2 rounded-lg transition bg-amber-500 hover:bg-amber-400 text-slate-950">Resmi Siteye Git ↗</a>`
+          : `<button type="button" onclick="openDetail('${item.id}')" class="text-xs font-bold px-3.5 py-2 rounded-lg transition bg-slate-900 hover:bg-slate-800 text-white">${user ? "Detayı Gör →" : "🔒 Detay İçin Üye Ol"}</button>`;
+
         return `
           <article class="bg-white border ${border} transition rounded-xl p-5 flex flex-col justify-between shadow-sm">
             <div>
@@ -936,9 +980,7 @@
             </div>
             <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
               <span class="text-[11px] font-semibold text-slate-400">${item.deadline}</span>
-              <button type="button" onclick="openDetail('${item.id}')" class="text-xs font-bold px-3.5 py-2 rounded-lg transition bg-slate-900 hover:bg-slate-800 text-white">
-                ${user ? "Detayı Gör →" : "🔒 Detay İçin Üye Ol"}
-              </button>
+              ${actionButtonHtml}
             </div>
           </article>
         `;
@@ -976,12 +1018,12 @@
       const totalDocs = presetDocs.length + customDocs.length;
 
       const basePool = activeFilterCat === "ASKERI"
-        ? ITEMS.filter(x => isAskeriItem(x))
+        ? getAskeriList()
         : ITEMS.filter(x => !isAskeriItem(x));
 
       const matched = [];
       basePool.forEach(item => {
-        if (edu !== "ALL" && item.education !== edu) return;
+        if (activeFilterCat !== "ASKERI" && edu !== "ALL" && item.education !== edu) return;
         if (activeFilterCat !== "ASKERI" && cat !== "ALL" && item.category !== cat) return;
 
         const matchedCustom = customDocs.filter(cd => doesItemMatchCustomDoc(item, cd));
@@ -1030,7 +1072,7 @@
         document.getElementById("listHeading").textContent = "Güncel Kamu İş İlanları";
         renderJobs(genelIlanlar.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
       } else if (cat === "ASKERI") {
-        const askeriKayitlar = ITEMS.filter(x => isAskeriItem(x));
+        const askeriKayitlar = getAskeriList();
         document.getElementById("listHeading").textContent = "Askeri Alımlar — Güncel Başvurular ve Duyurular";
         renderJobs(askeriKayitlar.map(item => ({ item, matchType: "normal", diff: 0, matchedCustomDocs: [] })));
       } else {
