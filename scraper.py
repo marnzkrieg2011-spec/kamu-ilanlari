@@ -6,12 +6,14 @@ import requests
 from bs4 import BeautifulSoup
 
 TARGET_SOURCES = [
-    {"name": "Kariyer Kapisi", "url": "https://kariyerkapisi.gov.tr/isealim"},
-    {"name": "ISKUR Kamu", "url": "https://www.iskur.gov.tr/ilanlar/kamu-memur-alim-ilanlari/"},
-    {"name": "Ilan.gov.tr", "url": "https://www.ilan.gov.tr/ilan/kategori/8/kamu-akademik-personel?ats=5&currentPage=0"},
-    {"name": "SBB Kamu Ilan", "url": "https://kamuilan.sbb.gov.tr/"},
-    {"name": "Memurlar.net Ilan", "url": "https://ilan.memurlar.net/default.aspx"},
-    {"name": "Isinolsa Memur", "url": "https://www.isinolsa.com/memur-alimi/"},
+    {"name": "Kariyer Kapisi", "url": "https://kariyerkapisi.gov.tr/isealim", "group": "genel"},
+    {"name": "ISKUR Kamu", "url": "https://www.iskur.gov.tr/ilanlar/kamu-memur-alim-ilanlari/", "group": "genel"},
+    {"name": "Ilan.gov.tr", "url": "https://www.ilan.gov.tr/ilan/kategori/8/kamu-akademik-personel?ats=5&currentPage=0", "group": "genel"},
+    {"name": "SBB Kamu Ilan", "url": "https://kamuilan.sbb.gov.tr/", "group": "genel"},
+    {"name": "Memurlar.net Ilan", "url": "https://ilan.memurlar.net/default.aspx", "group": "genel"},
+    {"name": "Isinolsa Memur", "url": "https://www.isinolsa.com/memur-alimi/", "group": "genel"},
+    {"name": "MSB Personel Temin", "url": "https://personeltemin.msb.gov.tr/", "group": "askeri"},
+    {"name": "Jandarma Personel Temin", "url": "https://personeltemin.jandarma.gov.tr/", "group": "askeri"},
 ]
 
 HEADERS = {
@@ -20,6 +22,7 @@ HEADERS = {
 }
 
 CATEGORY_RULES = {
+    "Askeri": ["uzman cavus", "uzman erbas", "sozlesmeli er", "astsubay", "subay", "muvazzaf", "jandarma", "msb", "tsk", "temin", "duyuru"],
     "Sağlık": ["hemsire", "saglik", "ebelik", "paramedik", "laboratuvar", "eczaci", "hastane", "dis", "tibbi sekreter"],
     "Şoför": ["sofor", "surucu", "ambulans", "agir vasita", "src", "psikoteknik", "nakliye"],
     "Mühendis": ["muhendis", "mimar", "sehir planlama"],
@@ -48,7 +51,9 @@ def normalize_tr(text: str) -> str:
     return re.sub(r"\s+", " ", (text or "").translate(table).lower()).strip()
 
 
-def detect_category(text_norm: str) -> str:
+def detect_category(text_norm: str, group: str = "genel") -> str:
+    if group == "askeri":
+        return "Askeri"
     for cat, keywords in CATEGORY_RULES.items():
         if any(kw in text_norm for kw in keywords):
             return cat
@@ -92,6 +97,7 @@ def detect_docs(text_norm: str) -> list[str]:
 
 def fetch_source_items(source: dict) -> list[dict]:
     items = []
+    group = source.get("group", "genel")
     try:
         resp = requests.get(source["url"], headers=HEADERS, timeout=15)
         resp.raise_for_status()
@@ -101,7 +107,7 @@ def fetch_source_items(source: dict) -> list[dict]:
         for a in soup.find_all("a", href=True):
             title = re.sub(r"\s+", " ", a.get_text(" ", strip=True))
             href = a["href"].strip()
-            if len(title) < 18 or len(title) > 180:
+            if len(title) < 15 or len(title) > 220:
                 continue
             if href.startswith("#") or href.startswith("javascript:"):
                 continue
@@ -111,22 +117,27 @@ def fetch_source_items(source: dict) -> list[dict]:
                 continue
 
             norm = normalize_tr(title)
-            if not any(k in norm for k in ["alim", "ilan", "memur", "personel", "sozlesmeli", "kadro", "tekniker", "hemsire", "sofor", "guvenlik", "ogretmen", "akademik"]):
+            keywords = ["alim", "ilan", "memur", "personel", "sozlesmeli", "kadro", "tekniker", "hemsire", "sofor", "guvenlik", "ogretmen", "akademik"]
+            if group == "askeri":
+                keywords += ["temin", "duyuru", "uzman", "astsubay", "subay", "erbas", "er", "aday", "sinav", "basvuru"]
+
+            if not any(k in norm for k in keywords):
                 continue
 
             seen_links.add(full_url)
             items.append({
                 "id": f"{normalize_tr(source['name'])[:8]}-{abs(hash(full_url)) % 1000000}",
                 "source": source["name"],
-                "category": detect_category(norm),
+                "group": group,
+                "category": detect_category(norm, group),
                 "education": detect_education(norm),
                 "minScore": detect_min_score(norm),
                 "requiredDocs": detect_docs(norm),
                 "title": title,
                 "institution": source["name"],
-                "deadline": "Güncel İlan",
-                "summary": f"{source['name']} üzerinden yakalanan güncel alım/ilan kaydı.",
-                "details": f"Bu ilan {source['name']} kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi ilan bağlantısını inceleyiniz.",
+                "deadline": "Güncel Duyuru / Temin" if group == "askeri" else "Güncel İlan",
+                "summary": f"{source['name']} üzerinden yakalanan güncel {'askeri temin/duyuru' if group == 'askeri' else 'alım/ilan'} kaydı.",
+                "details": f"Bu kayıt {source['name']} kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
                 "officialUrl": full_url,
                 "fetchedAt": datetime.now(timezone.utc).isoformat(),
             })
