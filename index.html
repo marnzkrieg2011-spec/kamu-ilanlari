@@ -10,13 +10,13 @@
 
   <!-- ÜST MENÜ -->
   <header class="bg-slate-950 text-white sticky top-0 z-40 shadow-md border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
-      <div class="flex items-center gap-3.5 min-w-0">
-        <a href="#top" onclick="goHome(event)" class="flex items-center gap-2 shrink-0 group">
-          <span class="bg-emerald-500 text-slate-950 font-extrabold px-2.5 py-1 rounded-md text-sm group-hover:bg-emerald-400 transition">KAMU</span>
-          <span class="font-bold text-base sm:text-lg tracking-tight">İlan & KPSS Rehberi</span>
+    <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2.5 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-3 min-w-0">
+        <a href="#top" onclick="goHome(event)" class="flex items-center gap-1.5 shrink-0 group">
+          <span class="bg-emerald-500 text-slate-950 font-extrabold px-2 py-0.5 rounded-md text-xs sm:text-sm group-hover:bg-emerald-400 transition">KAMU</span>
+          <span class="font-bold text-sm sm:text-lg tracking-tight truncate">İlan & KPSS Rehberi</span>
         </a>
-        <nav class="hidden lg:flex items-center gap-3 text-xs font-semibold text-slate-300">
+        <nav class="hidden xl:flex items-center gap-3 text-xs font-semibold text-slate-300">
           <button type="button" onclick="toggleKatiplikPanel(true)" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-lg font-extrabold transition cursor-pointer">⌨️ KÂTİPLİK & ANTRENMAN</button>
           <a href="#ilanlarSection" class="hover:text-emerald-300 transition">İLANLAR</a>
           <a href="#robotSection" class="hover:text-emerald-300 transition">TERCİH ROBOTU</a>
@@ -24,19 +24,19 @@
           <a href="#msuBolumu" class="hover:text-amber-300 transition">HARP OKULLARI</a>
           <a href="#uzmanErBolumu" class="hover:text-amber-300 transition">UZMAN & ER</a>
           <a href="#pomemBolumu" class="hover:text-sky-300 transition">POMEM</a>
-          <a href="#sohbetForumSssBolumu" class="hover:text-emerald-300 transition">SOHBET</a>
+          <a href="#sohbetForumSssBolumu" class="hover:text-emerald-300 transition">SSS & SOHBET</a>
         </nav>
       </div>
 
-      <div class="flex items-center gap-2 shrink-0">
-        <button type="button" onclick="openAuthModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs px-3 py-1.5 rounded-lg transition cursor-pointer">
-          👤 Üye Ol / Giriş Yap
+      <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+        <button type="button" onclick="openAuthModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg transition cursor-pointer">
+          👤 Üye Ol / Giriş
         </button>
-        <button type="button" onclick="toggleSavedOnly()" class="bg-amber-400/15 hover:bg-amber-400/25 text-amber-200 font-bold text-xs px-3 py-1.5 rounded-lg border border-amber-300/30 transition">
+        <button type="button" onclick="toggleSavedOnly()" class="bg-amber-400/15 hover:bg-amber-400/25 text-amber-200 font-bold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg border border-amber-300/30 transition">
           ★ Kayıtlı (<span id="savedCountHeader">0</span>)
         </button>
-        <a href="https://t.me/kamu_ilan_kpss_bot" target="_blank" rel="noopener" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-3 py-1.5 rounded-lg transition">
-          🤖 Telegram Bot
+        <a href="https://t.me/kamu_ilan_kpss_bot" target="_blank" rel="noopener" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg transition">
+          🤖 Bot
         </a>
       </div>
     </div>
@@ -336,7 +336,7 @@
     </div>
   </section>
 
-  <!-- GÖRSEL ARKA PLANLI 30 SAYFALIK OTOMATİK GEÇİŞLİ VİTRİN -->
+  <!-- GÖRSEL ARKA PLANLI 30 SAYFALIK OTOMATİK GEÇİŞLİ VİTRİN (2.5 SN) -->
   <section class="max-w-7xl mx-auto px-4 mt-6">
     <div id="heroBannerBox" class="relative text-white rounded-2xl p-6 md:p-8 shadow-lg border border-slate-800 overflow-hidden bg-slate-950">
       <div id="heroBgVisual" class="pointer-events-none absolute inset-0 opacity-35"></div>
@@ -518,7 +518,7 @@
     </div>
   </section>
 
-  <!-- HARP OKULLARI & ASKERÎ ÜNİVERSİTELER BÖLÜMÜ -->
+  <!-- HARP OKULLARI BÖLÜMÜ (İLK AÇILIŞTA KISALTILMIŞ / ▶ GÖSTER) -->
   <section id="msuBolumu" class="max-w-7xl mx-auto px-4 mt-8">
     <div class="bg-white rounded-2xl shadow-sm border border-amber-200 p-6">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
@@ -540,7 +540,7 @@
               class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-2.5 py-1 rounded-lg transition cursor-pointer"
               title="Bölümü Aç / Kısalt"
             >
-              ▼ Kısalt
+              ▶ Göster
             </button>
           </div>
           <p class="text-xs text-slate-500 mt-0.5">
@@ -555,7 +555,7 @@
         </div>
       </div>
 
-      <div id="msuBodyWrap" class="mt-4">
+      <div id="msuBodyWrap" class="hidden mt-4">
         <div id="msuCardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs"></div>
 
         <div class="mt-5 bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs space-y-2">
@@ -574,7 +574,7 @@
     </div>
   </section>
 
-  <!-- UZMAN ERBAŞ & ER BÖLÜMÜ (KARA, HAVA, DENİZ, JANDARMA) -->
+  <!-- UZMAN ERBAŞ & ER BÖLÜMÜ (İLK AÇILIŞTA KISALTILMIŞ / ▶ GÖSTER) -->
   <section id="uzmanErBolumu" class="max-w-7xl mx-auto px-4 mt-8">
     <div class="bg-white rounded-2xl shadow-sm border border-emerald-200 p-6">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
@@ -596,7 +596,7 @@
               class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-2.5 py-1 rounded-lg transition cursor-pointer"
               title="Bölümü Aç / Kısalt"
             >
-              ▼ Kısalt
+              ▶ Göster
             </button>
           </div>
           <p class="text-xs text-slate-500 mt-0.5">
@@ -612,14 +612,14 @@
         </div>
       </div>
 
-      <div id="uzmanBodyWrap" class="mt-4 space-y-4">
+      <div id="uzmanBodyWrap" class="hidden mt-4 space-y-4">
         <div id="forceDetailCard" class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-xs"></div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-xs" id="forceQuickCards"></div>
       </div>
     </div>
   </section>
 
-  <!-- POMEM BÖLÜMÜ (DARALTMA OKU + MÜLAKAT PENCERESİ + SON ALIM & ŞARTLAR) -->
+  <!-- POMEM BÖLÜMÜ (İLK AÇILIŞTA KISALTILMIŞ / ▶ GÖSTER) -->
   <section id="pomemBolumu" class="max-w-7xl mx-auto px-4 mt-8">
     <div class="bg-white rounded-2xl shadow-sm border border-sky-200 p-6">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
@@ -641,7 +641,7 @@
               class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-2.5 py-1 rounded-lg transition cursor-pointer"
               title="Bölümü Aç / Kısalt"
             >
-              ▼ Kısalt
+              ▶ Göster
             </button>
           </div>
           <p class="text-xs text-slate-500 mt-0.5">
@@ -653,7 +653,7 @@
         </a>
       </div>
 
-      <div id="pomemBodyWrap" class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+      <div id="pomemBodyWrap" class="hidden mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
         <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
           <div class="font-extrabold text-sm text-slate-900">Puan, Eğitim & Yaş Şartları</div>
           <p class="text-slate-700 leading-relaxed">
@@ -719,7 +719,7 @@
     </div>
   </section>
 
-  <!-- CANLI SOHBET + FORUM + 14 SORULUK SSS -->
+  <!-- CANLI SOHBET + FORUM + KATEGORİLİ SSS -->
   <section id="sohbetForumSssBolumu" class="max-w-7xl mx-auto px-4 mt-8 pb-14 space-y-6">
     <!-- CANLI SOHBET EKRANI -->
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
@@ -801,12 +801,24 @@
       <div id="forumList" class="mt-4 space-y-3 max-h-[580px] overflow-y-auto pr-1"></div>
     </div>
 
-    <!-- SSS -->
-    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-      <div class="pb-3 border-b border-slate-100">
-        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">SSS • Sıkça Sorulan Sorular (14 Soru)</span>
-        <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">KPSS, 2026 Üniversite Tercihi, Harp Okulu, Uzman, POMEM & Kâtiplik</h2>
+    <!-- KATEGORİLİ SSS -->
+    <div id="sssBolumu" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">SSS • Kategorilere Göre Sıkça Sorulan Sorular</span>
+          <h2 id="faqCategoryHeading" class="text-lg font-extrabold text-slate-900 mt-0.5">KPSS Soruları (12 Soru)</h2>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5" id="faqCategoryTabs">
+          <button type="button" onclick="selectFaqCategory('KPSS')" id="faqCat-KPSS" class="faq-cat-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-emerald-600 text-white transition">KPSS</button>
+          <button type="button" onclick="selectFaqCategory('UNIVERSITE')" id="faqCat-UNIVERSITE" class="faq-cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Üniversite</button>
+          <button type="button" onclick="selectFaqCategory('POMEM')" id="faqCat-POMEM" class="faq-cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">POMEM</button>
+          <button type="button" onclick="selectFaqCategory('HARP')" id="faqCat-HARP" class="faq-cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Harp Okulları</button>
+          <button type="button" onclick="selectFaqCategory('JANDARMA')" id="faqCat-JANDARMA" class="faq-cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Jandarma Uzman</button>
+          <button type="button" onclick="selectFaqCategory('KARA')" id="faqCat-KARA" class="faq-cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Kara Kuvvetleri</button>
+        </div>
       </div>
+
       <div id="faqAccordionList" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs sm:text-sm"></div>
     </div>
   </section>
@@ -954,7 +966,138 @@
       }
     };
 
+    const FAQ_BY_CATEGORY = {
+      KPSS: {
+        label: "KPSS Soruları",
+        items: [
+          { q: "1. KPSS lisans, önlisans ve ortaöğretim oturumları hangi puan türlerini üretir?", a: "Lisans oturumları Genel Yetenek-Genel Kültür (P3 vb.) ve alan oturumlarını; önlisans P93'ü; ortaöğretim ise P94 puanını üretir." },
+          { q: "2. KPSS puanı kaç yıl geçerli sayılır?", a: "Genel kural olarak sınav sonuçlarının ilanından itibaren iki yıl süreyle geçerlidir; öğretmenlik gibi özel düzenlemelerde ilgili mevzuat esas alınır." },
+          { q: "3. Merkezî yerleştirme ile kurumsal/sözleşmeli alım arasındaki fark nedir?", a: "Merkezî yerleştirmede yalnızca KPSS puanı ve tercih sıralaması esas alınır; kurumsal veya sözleşmeli alımlarda ek belge, uygulama sınavı veya sözlü mülakat bulunabilir." },
+          { q: "4. Tercih robotunda üst öğrenim seçince alt düzeyler neden görünür?", a: "Örneğin lisans mezunu olan bir aday, nitelik kodu engeli yoksa önlisans veya ortaöğretim düzeyindeki bazı ilanları da inceleyebilsin diye alt düzeyler dahil edilir." },
+          { q: "5. KPSS puan alanını boş bırakırsam ne olur?", a: "Puan filtresi uygulanmaz; öğrenim düzeyi, bölüm, şehir ve belge kriterlerine uygun ilanlar puan barajı olmadan listelenir." },
+          { q: "6. Çoklu il seçimi nasıl çalışır?", a: "Birden fazla il seçtiğinde seçilen illerdeki ilanlar ile 'Türkiye Geneli' ilanları birlikte gösterilir; seçim yapılmazsa tüm iller açıktır." },
+          { q: "7. Kâtiplik başvurularında KPSS şartı aranıyor mu?", a: "Evet, Adalet Bakanlığı alımlarında ilgili kılavuzda belirlenen KPSS puan türü ve taban puanını sağlamak gerekir." },
+          { q: "8. Engelli adaylar için EKPSS süreci nasıl işler?", a: "Engelli kamu personeli alımlarında EKPSS puanı ve ilgili kılavuz/kurum koşulları esas alınır." },
+          { q: "9. Aynı KPSS puanıyla birden fazla tercih döneminde başvuru yapılabilir mi?", a: "Puanın geçerlilik süresi içinde açılan tercih ve alım dönemlerinde kılavuz şartlarını sağlamak kaydıyla başvuru yapılabilir." },
+          { q: "10. Belge şartı olan kadrolarda belge ne zaman hazır olmalı?", a: "Ehliyet, SRC, sertifika veya diploma gibi belgelerin kılavuzda belirtilen başvuru süresi içinde geçerli ve hazır olması gerekir." },
+          { q: "11. Kaydettiğim ilanlar sayfa yenilenince silinir mi?", a: "Hayır, aynı tarayıcı ve cihazda LocalStorage üzerinde saklanır." },
+          { q: "12. Yeni KPSS ve kurum ilanlarından nasıl haberdar olurum?", a: "Sayfadaki Telegram Bot bağlantısı üzerinden @kamu_ilan_kpss_bot kanalını takip edebilir veya ilanları favorilere kaydedebilirsin." }
+        ]
+      },
+      UNIVERSITE: {
+        label: "Üniversite Tercih Soruları",
+        items: [
+          { q: "1. 2026 Üni. Robotu hangi puan türlerini destekler?", a: "SAY (Sayısal), EA (Eşit Ağırlık) ve SÖZ (Sözel) puan türlerine göre 2026 dönemi referans puan ve kontenjan bilgilerini gösterir." },
+          { q: "2. Taban puan ve başarı sıralaması birlikte neden değerlendirilmeli?", a: "Her yıl sınav zorluğu ve aday yoğunluğuna göre puanlar değişebileceği için hem başarı sırasını hem taban puanı birlikte incelemek gerekir." },
+          { q: "3. İkinci öğretim ve burslu/ücretli kontenjanlarda nelere dikkat edilmeli?", a: "Öğrenim türü, katkı payı/ücret koşulları ve programın özel şartları YKS tercih kılavuzunda dikkatle kontrol edilmelidir." },
+          { q: "4. Özel yetenek gerektiren bölümlerde süreç nasıl işler?", a: "Müzik, resim, spor veya tasarım gibi bölümlerde YKS puanının yanında kurumun özel yetenek sınavı/mülakatı uygulanır." },
+          { q: "5. Tercih listesi sıralaması nasıl yapılmalı?", a: "En çok istenen ve ulaşılabilir/hedef programlardan başlayarak gerçekçi bir sıralama oluşturmak tercih stratejisinde önemlidir." },
+          { q: "6. Ek yerleştirme döneminde nelere dikkat edilmeli?", a: "Boş kalan veya kayıt yaptırılmayan kontenjanlar için açılan ek yerleştirmede kılavuz kuralları ve tarihleri yeniden kontrol edilir." },
+          { q: "7. Yatay geçiş şartları üniversiteden üniversiteye değişir mi?", a: "Evet, merkezi yerleştirme puanıyla yatay geçiş veya GNO ile yatay geçiş koşulları YÖK mevzuatı ve üniversite senato kararlarına göre belirlenir." },
+          { q: "8. Çift anadal (ÇAP) ve yandal programları nasıl seçilir?", a: "Kayıt olunan lisans programında belirli başarı şartlarını sağlayan öğrenciler, ilgili fakülte kontenjanlarına göre ÇAP veya yandal başvurusu yapabilir." },
+          { q: "9. Hazırlık sınıfı bulunan bölümlerde muafiyet sınavı var mı?", a: "Yabancı dil hazırlık sınıfı olan programlarda dönem başında yapılan yeterlik/muafiyet sınavında başarılı olanlar doğrudan lisans derslerine geçebilir." },
+          { q: "10. KYK yurt ve burs başvuruları ne zaman yapılır?", a: "Üniversite kayıt ve yerleştirme takvimine paralel olarak Gençlik ve Spor Bakanlığı / KYK duyurularıyla ilan edilen tarihlerde yapılır." },
+          { q: "11. Şehir dışı tercih yaparken hangi kriterler öne çıkar?", a: "Bölüm kalitesi ve puan uyumu kadar barınma, ulaşım, yaşam maliyeti ve staj/iş olanakları da değerlendirilmelidir." },
+          { q: "12. Kesin kayıt için hangi belgeler istenir?", a: "Lise diploması/mezuniyet belgesi, kimlik, varsa askerlik durum belgesi ve üniversitenin kılavuzda duyurduğu diğer belgeler istenir." }
+        ]
+      },
+      POMEM: {
+        label: "POMEM Soruları",
+        items: [
+          { q: "1. POMEM başvurularında hangi KPSS puan türleri kullanılır?", a: "Lisans mezunları için KPSS P3, önlisans mezunları için KPSS P93 puan türü ve kılavuzda ilan edilen taban puan esas alınır." },
+          { q: "2. POMEM seçim aşamaları hangi sırayla ilerler?", a: "Başvuru ve ön incelemenin ardından adaylar boy-kilo/BKİ kontrolü, fiziki yeterlilik parkuru, sözlü mülakat, sağlık raporu ve güvenlik soruşturması aşamalarından geçer." },
+          { q: "3. Boy ve beden kitle indeksi (BKİ) kontrolü nasıl yapılır?", a: "Emniyet Teşkilatı Sağlık Şartları Yönetmeliğine göre erkek ve kadın adaylar için belirlenen boy ve BKİ sınırları ölçülür." },
+          { q: "4. Fiziki yeterlilik parkurunda en kritik nokta nedir?", a: "Parkur istasyonlarını hatasız tamamlamak ve belirlenen sürenin altında kalarak parkur puanını yüksek tutmaktır." },
+          { q: "5. Sözlü mülakatta komisyon neyi değerlendirir?", a: "Adayın ifade yeteneğini, özgüvenini, soru anlama ve cevaplama becerisini, genel kültür ve mesleki yatkınlığını puanlar." },
+          { q: "6. Mülakatı geçen adayları hangi aşama bekler?", a: "Tam teşekküllü hastaneden alınacak sağlık kurulu raporu ve güvenlik soruşturması/arşiv araştırması süreci tamamlanır." },
+          { q: "7. Asıl ve yedek aday belirlemesi nasıl yapılır?", a: "KPSS, fiziki parkur ve sözlü mülakat puanlarının kılavuzdaki ağırlıklarına göre hesaplanan başarı puanıyla asıl ve yedek listeler oluşturulur." },
+          { q: "8. Eğitim süresi boyunca adayların statüsü nedir?", a: "POMEM eğitimini başarıyla tamamlayan ve sağlık/güvenlik şartlarını sağlayan adaylar polis memuru olarak atanır." },
+          { q: "9. Yaş şartı nasıl hesaplanır?", a: "Kılavuzda belirtilen takvim yılı ve doğum tarihi aralığına göre yaş sınırı kontrol edilir." },
+          { q: "10. Adli sicil ve güvenlik soruşturması neden önemlidir?", a: "Emniyet teşkilatı kadrolarına girişte kanunda belirtilen suçlardan mahkûm olmamak ve güvenlik soruşturması/arşiv araştırmasından olumlu sonuç almak zorunludur." },
+          { q: "11. Parkur hazırlığına ne zaman başlanmalı?", a: "İlanı beklemeden kondisyon, çeviklik, denge ve kronometre çalışmasına erken başlamak parkur süresini ciddi şekilde iyileştirir." },
+          { q: "12. Güncel POMEM duyuruları nereden takip edilir?", a: "Polis Akademisi Başkanlığının resmî internet adresi (pa.edu.tr) üzerinden yayımlanan kılavuz ve duyurular takip edilmelidir." }
+        ]
+      },
+      HARP: {
+        label: "Harp Okulları Soruları",
+        items: [
+          { q: "1. Harp okullarına girmek için hangi sınavlara girmek gerekir?", a: "MSÜ (Millî Savunma Üniversitesi) sınavına ve YKS oturumlarına (TYT ve ilgili AYT oturumlarına) girip tercih yapmak gerekir." },
+          { q: "2. Hava, Kara ve Deniz Harp Okullarında hangi puan türleri öne çıkar?", a: "Hava ve Deniz Harp Okullarında SAY puanı; Kara Harp Okulunda ise SAY ve EA puan türleri ilgili kılavuza göre değerlendirilir." },
+          { q: "3. Harp okulları kartlarına tıklayınca hangi bilgiler açılır?", a: "İlgili okulun görev alanı, referans puan/kontenjan bilgisi, gereken şartlar ve mülakat/seçim aşamaları ayrıntılı pencerede görüntülenir." },
+          { q: "4. Seçim aşamalarında hangi testler uygulanır?", a: "Evrak ve boy-kilo ölçümü, Fiziki Yeterlilik Testi, psikolojik değerlendirme/psikomotor testler ve komisyon sözlü mülakatı yapılır." },
+          { q: "5. Fiziki Yeterlilik Testinde hangi hareketler yer alır?", a: "Genellikle mekik, şınav ve koşu istasyonlarından oluşan testte adayların kondisyon ve kas dayanıklılığı ölçülür." },
+          { q: "6. Sağlık yeteneği raporu neden önemlidir?", a: "TSK Sağlık Yeteneği Yönetmeliğine göre sınıf/okul uygunluğu verilmesi, harp okuluna kesin kayıt için zorunlu koşuldur." },
+          { q: "7. Uçuş ve deniz sınıflarında ek kriter var mı?", a: "Evet; uçuş sınıfı için uçuşa elverişlilik/psikomotor kriterleri, deniz sınıfı için denizcilik ve sağlık uygunluğu aranır." },
+          { q: "8. Lise son sınıf öğrencileri başvuru yapabilir mi?", a: "Evet, kılavuzda belirtilen şartları taşımak kaydıyla lise son sınıf öğrencileri ve mezunlar başvurabilir." },
+          { q: "9. Güvenlik soruşturması süreci nasıl işler?", a: "Adaylar için güvenlik soruşturması ve arşiv araştırması yapılır; olumlu sonuç alınması şarttır." },
+          { q: "10. Harp okullarında eğitim süresi kaç yıldır?", a: "Harp okullarında lisans düzeyinde 4 yıllık eğitim verilir ve mezuniyet sonrasında subay olarak nasbedilirler." },
+          { q: "11. Astsubay MYO ile Harp Okulu arasındaki temel fark nedir?", a: "Harp Okulları 4 yıllık lisans eğitimiyle subay, Astsubay MYO ise 2 yıllık önlisans eğitimiyle astsubay yetiştirir." },
+          { q: "12. Resmî kılavuz ve başvuru adresi neresidir?", a: "MSB Personel Temin Genel Müdürlüğü resmî sitesi (personeltemin.msb.gov.tr) üzerinden yayımlanan kılavuzlar esas alınır." }
+        ]
+      },
+      JANDARMA: {
+        label: "Jandarma Uzman Soruları",
+        items: [
+          { q: "1. Jandarma uzman erbaş alımlarında KPSS şartı aranıyor mu?", a: "Evet, dönemsel kılavuzlara göre ilgili KPSS puan şartı aranabilir; eğitim düzeyine ve kadroya göre genellikle 60–70 taban puan bandında koşullarla çağrı yapılır." },
+          { q: "2. Jandarma uzman erbaş başvurusu için en az hangi eğitim düzeyi gerekir?", a: "İlgili temin kılavuzuna göre en az lise ve dengi okul (veya kılavuzda belirtilen eğitim düzeyleri) mezunu olmak gerekir." },
+          { q: "3. Başvuru öncesinde yaş şartı nasıl kontrol edilir?", a: "Kılavuzda belirtilen başvuru yılının Ocak ayının ilk günü itibarıyla belirlenen yaş sınırını geçmemiş olmak gerekir." },
+          { q: "4. Boy ve kilo şartı nasıl uygulanır?", a: "Kılavuzdaki boy-kilo tablosuna göre asgari boy ve beden kitle indeksi aralığında olmak şarttır." },
+          { q: "5. Fiziki yeterlilik sınavı hangi aşamalardan oluşur?", a: "Adayların fiziki dayanıklılığını ölçen koşu, mekik, şınav ve ilgili parkur/spor aşamaları uygulanır." },
+          { q: "6. Sözlü mülakatta nelere dikkat edilmelidir?", a: "Soruları dikkatle dinlemek, net ve dürüst cevaplar vermek, duruş ve ifade düzenine özen göstermek önemlidir." },
+          { q: "7. Sağlık raporu hangi hastanelerden alınır?", a: "Kılavuzda yetkilendirilmiş tam teşekküllü hastanelerden sağlık kurulu raporu alınması gerekir." },
+          { q: "8. Güvenlik soruşturması ve arşiv araştırması zorunlu mudur?", a: "Evet, uzman erbaşlığa kabulde güvenlik soruşturması ve arşiv araştırmasının olumlu sonuçlanması şarttır." },
+          { q: "9. Ön başvuru sonrası aday çağrısı neye göre yapılır?", a: "Kılavuzda belirtilen puan türü/sıralama veya başvuru kriterlerine göre belirlenen kontenjan kadar aday sınava çağrılır." },
+          { q: "10. Temel eğitim ve nasıp süreci nasıl işler?", a: "Seçim aşamalarını ve sağlık/soruşturma sürecini başarıyla tamamlayan adaylar temel eğitime alınır." },
+          { q: "11. Başvuru belgeleri ne zaman hazırlanmalı?", a: "Kılavuz yayımlandığında istenen kimlik, diploma, KPSS sonuç belgesi ve diğer evraklar son başvuru tarihine kadar hazırlanmalıdır." },
+          { q: "12. Güncel jandarma alım duyuruları nereden takip edilir?", a: "Jandarma ve Sahil Güvenlik Akademisi / ilgili resmî temin duyuruları üzerinden güncel kılavuzlar takip edilmelidir." }
+        ]
+      },
+      KARA: {
+        label: "Kara Kuvvetleri Soruları",
+        items: [
+          { q: "1. Kara Kuvvetleri uzman erbaş alımlarında eğitim şartı nedir?", a: "Uzman onbaşı için en az ilköğretim/ortaokul, uzman çavuş için ise en az lise veya dengi okul mezunu olmak gerekir." },
+          { q: "2. Kara Kuvvetleri seçim aşamaları nelerdir?", a: "Evrak ve boy-kilo kontrolü, Fiziki Yeterlilik Testi, komisyon sözlü mülakatı, sağlık kurulu raporu ve güvenlik soruşturması aşamalarından oluşur." },
+          { q: "3. Sözlü mülakatta baraj puanı var mıdır?", a: "Mülakat değerlendirmesinde komisyon tarafından verilen puanın kılavuzdaki asgari baraj puanını (genellikle 100 üzerinden 70) geçmesi gerekir." },
+          { q: "4. Fiziki Yeterlilik Testine girerken nelere dikkat edilmeli?", a: "Spor kıyafetleri ve kılavuzda belirtilen sağlık/spor beyanı ile test alanına hazır bulunmak, ısınma ve tempo kontrolü yapmak önemlidir." },
+          { q: "5. Boy ve kilo ölçümü nasıl yapılır?", a: "Ölçümler ayakkabısız ve kılavuzdaki standartlara göre yapılır; boy-kilo tablosu dışındaki adaylar elenir." },
+          { q: "6. Hangi sınıf ve branşlarda görev alınabilir?", a: "Piyade, tank, topçu, istihkam, muhabere, ikmal, bakım ve idari/destek sınıflarında ihtiyaç ve niteliklere göre görevlendirilir." },
+          { q: "7. Sağlık kurulu raporunda nelere bakılır?", a: "TSK Sağlık Yeteneği Yönetmeliğine göre uzman erbaş olmaya engel bir hastalık veya arıza bulunmaması aranır." },
+          { q: "8. Güvenlik soruşturması neden yapılır?", a: "Askerî kadrolara katılacak personelin adli ve güvenlik yönünden uygunluğunu teyit etmek amacıyla yapılır." },
+          { q: "9. Başvurular hangi sistem üzerinden yapılır?", a: "MSB Personel Temin sistemi (personeltemin.msb.gov.tr) üzerinden e-Devlet ile giriş yapılarak başvuru adımları tamamlanır." },
+          { q: "10. Askerlik yapmış olmak veya yapmamış olmak başvuruyu etkiler mi?", a: "Dönemsel temin kılavuzunda askerlik durumuna ilişkin özel bir koşul yer alıyorsa kılavuzdaki hüküm esas alınır." },
+          { q: "11. Mülakat ve spor tarihleri nereden duyurulur?", a: "Aday çağrı tarihleri, sınav merkezleri ve sonuçlar MSB Personel Temin duyuru ekranından ilan edilir." },
+          { q: "12. Sınava hazırlanırken en etkili yöntem nedir?", a: "Fiziki test hareketlerini düzenli çalışmak, kılavuz şartlarını eksiksiz okumak ve mülakatta sakin, net konuşma pratiği yapmaktır." }
+        ]
+      }
+    };
+
     let activeForceTab = "KARA";
+    let activeFaqCategory = "KPSS";
+
+    function selectFaqCategory(catKey) {
+      activeFaqCategory = FAQ_BY_CATEGORY[catKey] ? catKey : "KPSS";
+      document.querySelectorAll(".faq-cat-btn").forEach(btn => {
+        const isAct = btn.id === `faqCat-${activeFaqCategory}`;
+        btn.className = isAct
+          ? "faq-cat-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-emerald-600 text-white transition"
+          : "faq-cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+      });
+      renderFaqList();
+    }
+
+    function renderFaqList() {
+      const catObj = FAQ_BY_CATEGORY[activeFaqCategory] || FAQ_BY_CATEGORY.KPSS;
+      const heading = document.getElementById("faqCategoryHeading");
+      const box = document.getElementById("faqAccordionList");
+      if (heading) heading.textContent = `${catObj.label} (${catObj.items.length} Soru)`;
+      if (!box) return;
+      box.innerHTML = catObj.items.map((item, idx) => `
+        <details class="bg-slate-50 border border-slate-200 rounded-xl p-3.5" ${idx < 2 ? "open" : ""}>
+          <summary class="font-bold text-slate-900 cursor-pointer text-xs sm:text-sm">${item.q}</summary>
+          <p class="text-slate-600 mt-2 text-xs leading-relaxed">${item.a}</p>
+        </details>
+      `).join("");
+    }
 
     function openAuthModal() {
       const m = getChatMember();
@@ -1357,23 +1500,6 @@
       }
     ];
 
-    const FAQ_ITEMS = [
-      { q: "1. Üyelik yapmadan profilim ve klavye skorlarım saklanır mı?", a: "Evet. Öğrenim düzeyi, puan, çoklu il seçimi, belgeler, kayıtlı ilanlar, simülasyon geçmişi, oyun rekoru ve forum kayıtları tarayıcıdaki LocalStorage'da saklanır." },
-      { q: "2. Canlı sohbet odasına neden üye/rumuz girişi gerekiyor?", a: "Odadaki mesajların kim tarafından yazıldığı net görünsün ve sohbet düzeni korunsun diye canlı sohbet odasına mesaj göndermeden önce ad/rumuz ve üye bilgisiyle giriş yapılması gerekir." },
-      { q: "3. Canlı sohbette kaç mesajlık akış bulunuyor?", a: "Her odada 1000 mesajlık (5'er mesajlık parçalar halinde ilerleyen) soru-cevap akışı bulunur ve zaman içinde yeni parçalar eklenerek sayfa uzun süre canlı görünür." },
-      { q: "4. 2026 Üniversite Tercih Robotu nasıl çalışır?", a: "Üst satırdaki 2026 Üni. Robotu butonuna tıklayınca puan türü, puan ve şehir/bölüm aramasına göre 2026 dönemi referans puan ve kontenjan bilgilerini gösterir." },
-      { q: "5. Harp Okulları kartlarına tıklayınca ne açılır?", a: "Kartlara tıklayınca o okul/sınıfın görev tanımı, 2026 referans puan/kontenjan bilgileri, gereken şartlar ve mülakat/seçim aşamaları ayrıntılı pencerede açılır." },
-      { q: "6. Jandarma alımlarında KPSS şartı nasıl uygulanır?", a: "İlgili dönemin temin kılavuzuna göre KPSS puan şartı aranabilir; eğitim düzeyine ve kadroya göre genellikle 60–70 taban puan bandında koşullarla çağrı yapılır." },
-      { q: "7. Forumdaki sorulara başka adaylar nasıl cevap verebilir?", a: "Her sorunun altında yer alan 'Cevap Yaz' kutusuna adını ve cevabını yazıp 'Cevapla' butonuna basarak doğrudan o sorunun altına yanıt ekleyebilirsin." },
-      { q: "8. Kâtiplik sınav simülasyonu kaç dakika sürer?", a: "Sınav simülasyonu 3 dakika (180 saniye) süreli olarak çalışır; anlık net kelime, doğruluk oranı ve hata sayısı ekranda gösterilir." },
-      { q: "9. Hem F klavye hem Q klavye çalışabiliyor muyum?", a: "Evet. Sınav simülasyonunda ve klavye derslerinde Türkçe F Klavye veya Türkçe Q Klavye seçimi yaparak çalışabilirsin." },
-      { q: "10. Kullanıcılar skorlarını nasıl karşılaştırabilir?", a: "Skor & Düello sekmesinden kendi skorunu tabloya ekleyebilir veya 'Benim Skor Kodumu Üret' butonuyla arkadaşınla skor karşılaştırması yapabilirsin." },
-      { q: "11. Tercih robotunda öğrenim düzeyi seçimi nasıl çalışır?", a: "Lisans seçildiğinde Lisans, Önlisans ve Ortaöğretim düzeyindeki ilanlar; Önlisans seçildiğinde Önlisans ve Ortaöğretim ilanları birlikte listelenir." },
-      { q: "12. KPSS puan alanını boş bırakabilir miyim?", a: "Evet. Puan alanı isteğe bağlıdır; boş bırakırsan puan barajı filtresi uygulanmadan öğrenim, bölüm, il ve belge kriterlerine göre ilanlar gösterilir." },
-      { q: "13. İlanlara doğrudan bu siteden mi başvuruluyor?", a: "Hayır; ilan kartlarındaki 'Resmî Site' bağlantısı seni doğrudan ilgili resmî kurum veya ilan portalına yönlendirir." },
-      { q: "14. Yeni ilan açıldığında nasıl haberdar olabilirim?", a: "Sayfadaki Telegram Bot bağlantısı üzerinden @kamu_ilan_kpss_bot kanalına geçebilir veya ilgilendiğin ilanları 'Kaydet' butonuyla favorilerine alabilirsin." }
-    ];
-
     const CHAT_ROOMS = [
       { id: "lisans", name: "Lisans odası", desc: "4 yıllık mezunlar • P3 tercih ve kadro sohbeti", badge: "Lisans" },
       { id: "onlisans", name: "Önlisans odası", desc: "2 yıllık mezunlar • P93, kâtiplik ve sağlık kadroları", badge: "Önlisans" },
@@ -1473,7 +1599,7 @@
     const EDU_RANK = { "Ortaöğretim": 1, "Önlisans": 2, "Lisans": 3 };
     const NEAR_SCORE_MARGIN = 3;
     const TOTAL_HERO_PAGES = 30;
-    const HERO_AUTO_INTERVAL_MS = 4000;
+    const HERO_AUTO_INTERVAL_MS = 2500;
     const INITIAL_VISIBLE_JOBS = 10;
     const LOAD_MORE_STEP = 10;
 
@@ -1562,9 +1688,10 @@
 
       let slideData;
       if (currentSlideIdx < HERO_FEATURED_SLIDES.length) {
+        const baseTitle = HERO_FEATURED_SLIDES[currentSlideIdx].badge.split("•")[0].trim();
         slideData = {
           ...HERO_FEATURED_SLIDES[currentSlideIdx],
-          badge: `${HERO_FEATURED_SLIDES[currentSlideIdx].badge.split("•")[0].trim()} • Sayfa ${currentSlideIdx + 1} / ${TOTAL_HERO_PAGES} (4 sn otomatik)`
+          badge: `${baseTitle} • Sayfa ${currentSlideIdx + 1} / ${TOTAL_HERO_PAGES}`
         };
       } else {
         const pool = getAllCombinedPool();
@@ -1573,7 +1700,7 @@
           institution: (item.source || item.institution || "KAMU İLANI").toUpperCase(),
           headline: item.title.toUpperCase(),
           sub: `${item.education} • ${item.city || "Türkiye Geneli"} • ${item.summary}`,
-          badge: `İlan Vitrini • Sayfa ${currentSlideIdx + 1} / ${TOTAL_HERO_PAGES} (4 sn otomatik)`,
+          badge: `İlan Vitrini • Sayfa ${currentSlideIdx + 1} / ${TOTAL_HERO_PAGES}`,
           url: item.officialUrl,
           theme: "from-slate-950 via-cyan-950 to-slate-900"
         };
@@ -2555,17 +2682,6 @@
       renderForum();
     }
 
-    function renderFaqList() {
-      const box = document.getElementById("faqAccordionList");
-      if (!box) return;
-      box.innerHTML = FAQ_ITEMS.map((item, idx) => `
-        <details class="bg-slate-50 border border-slate-200 rounded-xl p-3.5" ${idx < 2 ? "open" : ""}>
-          <summary class="font-bold text-slate-900 cursor-pointer text-xs sm:text-sm">${item.q}</summary>
-          <p class="text-slate-600 mt-2 text-xs leading-relaxed">${item.a}</p>
-        </details>
-      `).join("");
-    }
-
     function resetFilters() {
       showSavedOnly = false; activeStatusFilter = "ALL"; selectedCities = []; customDocs = [];
       visibleLimit = INITIAL_VISIBLE_JOBS;
@@ -2647,7 +2763,7 @@
       renderChatRooms();
       setInterval(renderChatRooms, 60000);
       renderForum();
-      renderFaqList();
+      selectFaqCategory("KPSS");
       try {
         const res = await fetch("./ilanlar.json", { cache: "no-store" });
         if (res.ok) {
