@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kamu Atamaları, KPSS Robotu & Kâtiplik Antrenmanı</title>
+  <title>Kamu Atamaları, KPSS & Üni Robotu, MSÜ ve Kâtiplik Antrenmanı</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body id="top" class="bg-slate-100 text-slate-800 font-sans antialiased">
@@ -11,22 +11,25 @@
   <!-- ÜST MENÜ -->
   <header class="bg-slate-950 text-white sticky top-0 z-40 shadow-md border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
-      <div class="flex items-center gap-4 min-w-0">
+      <div class="flex items-center gap-3.5 min-w-0">
         <a href="#top" onclick="goHome(event)" class="flex items-center gap-2 shrink-0 group">
           <span class="bg-emerald-500 text-slate-950 font-extrabold px-2.5 py-1 rounded-md text-sm group-hover:bg-emerald-400 transition">KAMU</span>
           <span class="font-bold text-base sm:text-lg tracking-tight">İlan & KPSS Rehberi</span>
         </a>
-        <nav class="hidden lg:flex items-center gap-3.5 text-xs font-semibold text-slate-300">
+        <nav class="hidden lg:flex items-center gap-3 text-xs font-semibold text-slate-300">
           <button type="button" onclick="toggleKatiplikPanel(true)" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-lg font-extrabold transition cursor-pointer">⌨️ KÂTİPLİK & ANTRENMAN</button>
           <a href="#ilanlarSection" class="hover:text-emerald-300 transition">İLANLAR</a>
           <a href="#robotSection" class="hover:text-emerald-300 transition">TERCİH ROBOTU</a>
-          <a href="#mesleklerSartlarBolumu" class="hover:text-amber-300 transition">MESLEKLER & ŞARTLAR</a>
-          <a href="#sohbetForumSssBolumu" class="hover:text-sky-300 transition">SOHBET, FORUM & SSS</a>
+          <button type="button" onclick="openUniRobotModal()" class="text-sky-300 hover:text-sky-200 font-extrabold transition cursor-pointer">🎓 ÜNİ. ROBOTU</button>
+          <a href="#msuBolumu" class="hover:text-amber-300 transition">MSÜ & ASKERÎ</a>
+          <a href="#mesleklerSartlarBolumu" class="hover:text-amber-300 transition">MESLEKLER</a>
+          <a href="#sohbetForumSssBolumu" class="hover:text-sky-300 transition">SOHBET & FORUM</a>
         </nav>
       </div>
 
       <div class="flex items-center gap-2 shrink-0">
-        <button type="button" onclick="toggleKatiplikPanel(true)" class="lg:hidden bg-indigo-600 text-white font-extrabold text-xs px-2.5 py-1.5 rounded-lg cursor-pointer">⌨️ Kâtiplik & Antrenman</button>
+        <button type="button" onclick="openUniRobotModal()" class="lg:hidden bg-sky-600 text-white font-extrabold text-xs px-2.5 py-1.5 rounded-lg cursor-pointer">🎓 Üni. Robotu</button>
+        <button type="button" onclick="toggleKatiplikPanel(true)" class="lg:hidden bg-indigo-600 text-white font-extrabold text-xs px-2.5 py-1.5 rounded-lg cursor-pointer">⌨️ Kâtiplik</button>
         <button type="button" onclick="toggleSavedOnly()" class="bg-amber-400/15 hover:bg-amber-400/25 text-amber-200 font-bold text-xs px-3 py-1.5 rounded-lg border border-amber-300/30 transition">
           ★ Kayıtlı (<span id="savedCountHeader">0</span>)
         </button>
@@ -230,7 +233,7 @@
           </div>
         </div>
 
-        <!-- 4) OYUN (METİN YAZARAK ANTRENMAN OYUNLARI) -->
+        <!-- 4) OYUN -->
         <div id="kPanel-games" class="k-panel hidden mt-5 space-y-5">
           <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
             <div class="flex flex-wrap gap-2">
@@ -292,7 +295,7 @@
           </div>
         </div>
 
-        <!-- 5) KULLANICI SKOR TABLOSU & DÜELLO -->
+        <!-- 5) SKOR & DÜELLO -->
         <div id="kPanel-race" class="k-panel hidden mt-5 space-y-5">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
             <div class="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
@@ -523,6 +526,39 @@
     </div>
   </section>
 
+  <!-- MSÜ & ASKERÎ ÜNİVERSİTELER DETAYLI REHBERİ -->
+  <section id="msuBolumu" class="max-w-7xl mx-auto px-4 mt-8">
+    <div class="bg-white rounded-2xl shadow-sm border border-amber-200 p-6">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Millî Savunma Üniversitesi (MSÜ) • Harp Okulları & Astsubay MYO</span>
+          <h2 class="text-xl font-extrabold text-slate-900 mt-0.5">Askerî Üniversiteler: Hava, Kara, Deniz, Bando & Şartlar</h2>
+          <p class="text-xs text-slate-500 mt-0.5">Önceki dönem referans taban puan/kontenjan aralıkları, sınıf/okul bilgilendirmeleri ve gereken temel şartlar.</p>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <button type="button" onclick="filterMsu('ALL')" id="msuBtn-ALL" class="msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white">Tümü</button>
+          <button type="button" onclick="filterMsu('HARP')" id="msuBtn-HARP" class="msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-900">Harp Okulları</button>
+          <button type="button" onclick="filterMsu('MYO')" id="msuBtn-MYO" class="msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Astsubay MYO & Bando</button>
+        </div>
+      </div>
+
+      <div id="msuCardsGrid" class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs"></div>
+
+      <div class="mt-5 bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs space-y-2">
+        <div class="font-extrabold text-slate-900 text-sm">MSÜ & Askerî Üniversitelerde Gereken Temel Şartlar (Özet)</div>
+        <p class="text-slate-700 leading-relaxed">
+          <b>1. Sınav & Tercih:</b> ÖSYM/MSÜ sınavına girip ilgili puan türünde (Sayısal, Eşit Ağırlık, Sözel veya Genel) taban/başarı sıralaması şartını sağlamak ve tercih döneminde tercih yapmak gerekir.
+        </p>
+        <p class="text-slate-700 leading-relaxed">
+          <b>2. Yaş, Eğitim & Adli Şartlar:</b> Lise son sınıf veya mezun olmak, belirlenen yaş sınırını aşmamak, Türk vatandaşı olmak ve güvenlik soruşturması/arşiv araştırmasından olumlu sonuç almak aranır.
+        </p>
+        <p class="text-slate-700 leading-relaxed">
+          <b>3. Sağlık, Boy-Kilo & Seçim Aşamaları:</b> TSK Sağlık Yeteneği Yönetmeliğine uygun tam teşekküllü hastane raporu, cinsiyete göre boy-kilo/BKİ sınırları, fiziki yeterlilik testi (mekik, şınav, koşu), psikolojik değerlendirme ve mülakat aşamalarından geçmek gerekir. Resmî kılavuz için: <a href="https://personeltemin.msb.gov.tr/" target="_blank" rel="noopener" class="text-emerald-700 font-bold underline">personeltemin.msb.gov.tr</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- MESLEKLER & ŞARTLAR -->
   <section id="mesleklerSartlarBolumu" class="max-w-7xl mx-auto px-4 mt-8">
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
@@ -561,11 +597,9 @@
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
       <div class="px-6 py-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-slate-50">
         <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Canlı Sohbet Odaları (Üye / Rumuz Girişli • 5 Mesaj / Parça • 5,5 Saatte 1 Yeni Parça)</span>
-          <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">Aday Sohbet Ekranı</h2>
+          <h2 class="text-lg font-extrabold text-slate-900">Aday Sohbet Ekranı</h2>
         </div>
         <div class="flex items-center gap-2 flex-wrap">
-          <span id="chatScheduleMetaBadge" class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-900"></span>
           <span id="chatMemberStatusBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900">
             Sohbet için üye/rumuz girişi gerekli
           </span>
@@ -611,7 +645,7 @@
       </div>
     </div>
 
-    <!-- FORUM (SORU BIRAKMA + BAŞKA ADAYLARIN CEVAPLAMASI) -->
+    <!-- FORUM -->
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
         <div>
@@ -628,8 +662,8 @@
           <select id="forumTopic" class="border border-slate-300 rounded-lg px-2.5 py-2 text-xs sm:text-sm bg-white">
             <option value="Kâtiplik">Kâtiplik</option>
             <option value="KPSS Tercih">KPSS Tercih</option>
-            <option value="Boy / Mülakat">Boy / Mülakat</option>
-            <option value="Sağlık & Teknik">Sağlık & Teknik</option>
+            <option value="Üniversite Tercih">Üniversite Tercih</option>
+            <option value="MSÜ & Boy/Mülakat">MSÜ & Boy/Mülakat</option>
           </select>
           <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-2 rounded-lg text-xs sm:text-sm transition">+ Yeni Soru Bırak</button>
         </div>
@@ -639,11 +673,11 @@
       <div id="forumList" class="mt-4 space-y-3 max-h-[580px] overflow-y-auto pr-1"></div>
     </div>
 
-    <!-- SSS (14 SIKÇA SORULAN SORU) -->
+    <!-- SSS -->
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
       <div class="pb-3 border-b border-slate-100">
         <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">SSS • Sıkça Sorulan Sorular (14 Soru)</span>
-        <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">KPSS, Kâtiplik, Boy/Kilo, Mülakat & Başvuru Rehberi</h2>
+        <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">KPSS, Üniversite Tercihi, MSÜ, Kâtiplik & Başvuru Rehberi</h2>
       </div>
       <div id="faqAccordionList" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs sm:text-sm"></div>
     </div>
@@ -656,6 +690,7 @@
       </div>
       <div class="flex flex-wrap items-center justify-center gap-4">
         <button type="button" onclick="goHome(event)" class="text-emerald-400 hover:text-emerald-300 font-semibold">Ana Sayfa</button>
+        <button type="button" onclick="openUniRobotModal()" class="text-sky-400 hover:text-sky-300 font-semibold">Üni. Robotu</button>
         <button type="button" onclick="openLegalModal('kvkk')" class="text-slate-300 hover:text-white underline">Gizlilik & Yerel Saklama</button>
         <button type="button" onclick="openLegalModal('sorumluluk')" class="text-slate-300 hover:text-white underline">Sorumluluk Reddi</button>
       </div>
@@ -663,7 +698,7 @@
   </footer>
 
   <div id="detailModal" class="hidden fixed inset-0 bg-slate-950/70 z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
       <button type="button" onclick="closeDetailModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold">&times;</button>
       <div id="detailContent"></div>
     </div>
@@ -677,8 +712,76 @@
 
     const HERO_FEATURED_SLIDES = [
       { institution: "ADALET BAKANLIĞI & CTE", headline: "KÂTİPLİK & ANTRENMAN MODÜLÜ", sub: "3 Dakikalık Sınav Simülasyonu, F/Q Klavye Dersleri, Kelime Antrenmanı ve Oyunlar", badge: "Kâtiplik & Antrenman • Sayfa 1 / 30", url: "#katiplikMerkeziBolumu", theme: "from-slate-950 via-indigo-950 to-slate-900" },
-      { institution: "ADLİ TIP KURUMU BAŞKANLIĞI", headline: "181 PERSONEL ALACAK", sub: "Büro Personeli, Laborant, Destek Personeli • Resmî Başvuru Ekranı", badge: "Öne Çıkan Alım • Sayfa 2 / 30", url: "https://kamuilan.sbb.gov.tr/", theme: "from-slate-950 via-teal-950 to-slate-900" },
+      { institution: "YKS & MSÜ TERCİH REHBERİ", headline: "ÜNİVERSİTE TERCİH ROBOTU & MSÜ", sub: "Puan/Kontenjan Referansları, Hava-Kara-Deniz-Bando Detayları ve Şartlar", badge: "Üni. Robotu & MSÜ • Sayfa 2 / 30", url: "#msuBolumu", theme: "from-slate-950 via-sky-950 to-slate-900" },
       { institution: "İÇİŞLERİ BAKANLIĞI", headline: "60 KAYMAKAM ADAYI ALACAK", sub: "Lisans Mezunları İçin Merkezî / Kurumsal Alım Duyurusu", badge: "Öne Çıkan Alım • Sayfa 3 / 30", url: "https://kariyerkapisi.gov.tr/isealim", theme: "from-slate-950 via-emerald-950 to-slate-900" }
+    ];
+
+    const UNI_PROGRAMS = [
+      { uni: "Hacettepe Üniversitesi", dept: "Bilgisayar Mühendisliği (İngilizce)", city: "Ankara", scoreType: "SAY", refMinScore: 538, refQuota: 85 },
+      { uni: "İTÜ (İstanbul Teknik Üniv.)", dept: "Elektrik-Elektronik Mühendisliği", city: "İstanbul", scoreType: "SAY", refMinScore: 535, refQuota: 110 },
+      { uni: "Ankara Üniversitesi", dept: "Hukuk Fakültesi", city: "Ankara", scoreType: "EA", refMinScore: 445, refQuota: 210 },
+      { uni: "Ege Üniversitesi", dept: "Hemşirelik Fakültesi", city: "İzmir", scoreType: "SAY", refMinScore: 418, refQuota: 130 },
+      { uni: "Çukurova Üniversitesi", dept: "İşletme (İngilizce)", city: "Adana", scoreType: "EA", refMinScore: 342, refQuota: 75 },
+      { uni: "Gazi Üniversitesi", dept: "Türk Dili ve Edebiyatı", city: "Ankara", scoreType: "SÖZ", refMinScore: 376, refQuota: 70 },
+      { uni: "Dokuz Eylül Üniversitesi", dept: "İktisat", city: "İzmir", scoreType: "EA", refMinScore: 358, refQuota: 95 },
+      { uni: "Selçuk Üniversitesi", dept: "Veteriner Fakültesi", city: "Konya", scoreType: "SAY", refMinScore: 392, refQuota: 90 }
+    ];
+
+    const MSU_UNITS = [
+      {
+        id: "msu-hho",
+        group: "HARP",
+        title: "Hava Harp Okulu (HHO)",
+        refScore: "SAY ~375–425+ (Önceki dönem referans)",
+        refQuota: "Kontenjan: Dönemsel kılavuzda ~180–280",
+        info: "Hava kuvvetleri uçuş ve teknik/destek subay yetiştirir; uçuş/sağlık kriterleri diğer sınıflara göre daha hassastır.",
+        reqs: "SAY puan türü, göz/sağlık ve psikomotor/fiziki testler, yaş ve güvenlik soruşturması."
+      },
+      {
+        id: "msu-kho",
+        group: "HARP",
+        title: "Kara Harp Okulu (KHO)",
+        refScore: "SAY / EA ~335–395+ (Önceki dönem referans)",
+        refQuota: "Kontenjan: Dönemsel kılavuzda ~600–950",
+        info: "Kara kuvvetlerinin piyade, tank, topçu, istihkam, muhabere ve idari subay kadrolarına temel oluşturur.",
+        reqs: "SAY veya EA puanı, boy-kilo/sağlık raporu, fiziki yeterlilik, sözlü mülakat ve yaş şartı."
+      },
+      {
+        id: "msu-dho",
+        group: "HARP",
+        title: "Deniz Harp Okulu (DHO)",
+        refScore: "SAY ~355–405+ (Önceki dönem referans)",
+        refQuota: "Kontenjan: Dönemsel kılavuzda ~180–270",
+        info: "Deniz kuvvetleri gemi/denizaltı ve deniz subayı yetiştirir; denizcilik sağlık şartları aranır.",
+        reqs: "SAY puanı, tam teşekküllü deniz/sağlık uygunluğu, spor ve mülakat aşamaları."
+      },
+      {
+        id: "msu-bando",
+        group: "MYO",
+        title: "Bando Astsubay Meslek Yüksekokulu",
+        refScore: "TYT + Müzik/Bando Mülakatı (Önceki dönem referans)",
+        refQuota: "Kontenjan: Dönemsel kılavuzda ~40–90",
+        info: "TSK bandolarında görev yapacak bando astsubaylarını yetiştirir; enstrüman ve kulak/müzik yeteneği ölçülür.",
+        reqs: "MSÜ TYT puanı, müzik/bando uygulama sınavı, sağlık raporu, boy-kilo ve güvenlik soruşturması."
+      },
+      {
+        id: "msu-kmyo",
+        group: "MYO",
+        title: "Kara Astsubay MYO",
+        refScore: "TYT ~295–350+ (Önceki dönem referans)",
+        refQuota: "Kontenjan: Dönemsel kılavuzda ~550–850",
+        info: "Kara kuvvetleri önlisans düzeyinde astsubay yetiştirir; saha ve birlik görevlerine hazırlar.",
+        reqs: "TYT puanı, fiziki yeterlilik testi, mülakat, sağlık raporu ve yaş/adli şartlar."
+      },
+      {
+        id: "msu-hmyo-dmyo",
+        group: "MYO",
+        title: "Hava & Deniz Astsubay MYO",
+        refScore: "TYT ~310–365+ (Önceki dönem referans)",
+        refQuota: "Kontenjan: Dönemsel kılavuzda ~200–420",
+        info: "Hava ve deniz kuvvetlerinin teknik, bakım, ikmal ve harekât astsubaylarını yetiştirir.",
+        reqs: "TYT puanı, ilgili kuvvet sağlık/fiziki şartları, mülakat ve güvenlik soruşturması."
+      }
     ];
 
     const SIM_TEXTS = [
@@ -762,46 +865,10 @@
       {
         id: "q-3",
         author: "Hazal Koç",
-        topic: "Boy / Mülakat",
-        text: "İnfaz ve koruma memurluğu ile zabıt kâtipliği arasında boy ve kilo şartı bakımından fark var mı?",
+        topic: "MSÜ & Boy/Mülakat",
+        text: "MSÜ'de Hava, Kara, Deniz ve Bando arasında seçim yaparken sağlık ve mülakat şartlarında nelere dikkat etmeli?",
         replies: [
-          { author: "Emre Kaya", text: "İKM alımlarında boy ve kilo sınırları aranır; zabıt kâtipliğinde ise boy/kilo barajı yerine klavye sınavı ve sözlü mülakat vardır." }
-        ]
-      },
-      {
-        id: "q-4",
-        author: "Deniz Korkmaz",
-        topic: "KPSS Tercih",
-        text: "Lisans P3 puanı 81 olan biri için büyükşehirlerde büro personeli mi yoksa taşra kadroları mı daha gerçekçi olur?",
-        replies: [
-          { author: "Tarık Özkan", text: "Büyükşehirlerde kontenjan fazla ama başvuran da çok; taşra ve belge isteyen kadrolarda sıralama avantajı daha belirgin olabiliyor." }
-        ]
-      },
-      {
-        id: "q-5",
-        author: "Büşra Yıldız",
-        topic: "Sağlık & Teknik",
-        text: "Sağlık teknikeri ve laborant kadrolarında vardiya/nöbet düzeni nasıl işliyor, tercih yaparken nelere dikkat etmeli?",
-        replies: [
-          { author: "Mert Demir", text: "Hastane ve laboratuvar birimlerinde gece/hafta sonu nöbeti çıkabiliyor; ulaşım ve lojman imkanlarını mutlaka incelemek lazım." }
-        ]
-      },
-      {
-        id: "q-6",
-        author: "Kaan Tekin",
-        topic: "Kâtiplik",
-        text: "Q klavyede 85 net civarındayım, F klavyeye geçmek zaman kaybettirir mi yoksa uzun vadede avantaj sağlar mı?",
-        replies: [
-          { author: "Selin Yılmaz", text: "Sınava az süre kaldıysa mevcut klavyende hatasızlığı artır; vaktin varsa F klavye temel sıra dersleriyle kademeli geçiş yapabilirsin." }
-        ]
-      },
-      {
-        id: "q-7",
-        author: "Zeynep Arslan",
-        topic: "Boy / Mülakat",
-        text: "Sözlü mülakat aşamasında adaylardan en çok hangi konularda hazırlıklı olmaları bekleniyor?",
-        replies: [
-          { author: "Burak Şahin", text: "Kurumun görev alanı, genel kültür ve adayların kendini kısa, net ve tutarlı ifade etmesi mülakatta öne çıkıyor." }
+          { author: "Emre Kaya", text: "Her sınıfın sağlık yönetmeliği ve fiziki/mülakat şartları var; özellikle uçuş ve denizcilikte göz/sağlık kriterleri çok kritik." }
         ]
       }
     ];
@@ -809,16 +876,16 @@
     const FAQ_ITEMS = [
       { q: "1. Üyelik yapmadan profilim ve klavye skorlarım saklanır mı?", a: "Evet. Öğrenim düzeyi, puan, çoklu il seçimi, belgeler, kayıtlı ilanlar, simülasyon geçmişi, oyun rekoru ve forum kayıtları tarayıcıdaki LocalStorage'da saklanır." },
       { q: "2. Canlı sohbet odasına neden üye/rumuz girişi gerekiyor?", a: "Odadaki mesajların kim tarafından yazıldığı net görünsün ve sohbet düzeni korunsun diye canlı sohbet odasına mesaj göndermeden önce ad/rumuz ve üye bilgisiyle giriş yapılması gerekir." },
-      { q: "3. Canlı sohbette mesajlar nasıl akıyor?", a: "Her odada gerçek aday isimleriyle kurgulanmış 320 mesajlık soru-cevap akışı bulunur; mesajlar 5'er mesajlık parçalar halinde ilerler ve her 5,5 saatte bir eski mesajlar silinmeden yeni parça eklenir." },
-      { q: "4. Forumdaki sorulara başka adaylar nasıl cevap verebilir?", a: "Her sorunun altında yer alan 'Cevap Yaz' kutusuna adını ve cevabını yazıp 'Cevapla' butonuna basarak doğrudan o sorunun altına yanıt ekleyebilirsin." },
-      { q: "5. Kâtiplik sınav simülasyonu kaç dakika sürer?", a: "Sınav simülasyonu 3 dakika (180 saniye) süreli olarak çalışır; anlık net kelime, doğruluk oranı ve hata sayısı ekranda gösterilir." },
-      { q: "6. Hem F klavye hem Q klavye çalışabiliyor muyum?", a: "Evet. Sınav simülasyonunda ve klavye derslerinde Türkçe F Klavye veya Türkçe Q Klavye seçimi yaparak çalışabilirsin." },
-      { q: "7. Kullanıcılar skorlarını nasıl karşılaştırabilir?", a: "Skor & Düello sekmesinden kendi skorunu tabloya ekleyebilir veya 'Benim Skor Kodumu Üret' butonuyla arkadaşınla skor karşılaştırması yapabilirsin." },
-      { q: "8. Tercih robotunda öğrenim düzeyi seçimi nasıl çalışır?", a: "Lisans seçildiğinde Lisans, Önlisans ve Ortaöğretim düzeyindeki ilanlar; Önlisans seçildiğinde Önlisans ve Ortaöğretim ilanları birlikte listelenir." },
-      { q: "9. KPSS puan alanını boş bırakabilir miyim?", a: "Evet. Puan alanı isteğe bağlıdır; boş bırakırsan puan barajı filtresi uygulanmadan öğrenim, bölüm, il ve belge kriterlerine göre ilanlar gösterilir." },
-      { q: "10. 'Sınırda' etiketi ne anlama gelir?", a: "Girdiğin KPSS puanının ilan taban puanına çok yakın (yaklaşık 3 puan içinde) olduğunu göstermek için bilgilendirme amaçlı kullanılır." },
-      { q: "11. Hangi kadrolarda boy ve kilo şartı aranır?", a: "İnfaz ve koruma memurluğu, polis/POMEM/PMYO ve askeri (MSB/Jandarma) kadrolarında boy/kilo ve fiziki/mülakat şartları bulunur; düz memuriyetlerde genelde yoktur." },
-      { q: "12. Özel belgelerimi (ör. SRC, ÖGG, klavye sertifikası) nasıl ekleyebilirim?", a: "Tercih Robotu bölümündeki hazır belge kutularını işaretleyebilir veya 'Farklı belgeni ekle' alanından kendi belgeni ekleyebilirsin." },
+      { q: "3. Canlı sohbette kaç mesajlık akış bulunuyor?", a: "Her odada 1000 mesajlık (5'er mesajlık parçalar halinde ilerleyen) soru-cevap akışı bulunur ve zaman içinde yeni parçalar eklenerek sayfa uzun süre canlı görünür." },
+      { q: "4. Üniversite Tercih Robotu nasıl çalışır?", a: "Üst satırdaki Üni. Robotu butonuna tıklayınca puan türü, puan/sıralama ve şehir/bölüm aramasına göre önceki dönem referans puan ve kontenjan bilgilerini gösterir." },
+      { q: "5. Tercih dönemi veya sonuçları açıklandığında dış siteden otomatik veri çekilebilir mi?", a: "Tarayıcı güvenlik kuralları (CORS) ve resmî portalların yapısı nedeniyle dış sitelerden doğrudan canlı veri çekmek her zaman mümkün değildir; dönem başında güncel kılavuz/sonuç verileri güncellenir ve resmî bağlantılara yönlendirilir." },
+      { q: "6. MSÜ'de hangi alanlar hakkında bilgilendirme var?", a: "Hava Harp Okulu, Kara Harp Okulu, Deniz Harp Okulu, Bando Astsubay MYO ile Kara/Hava/Deniz Astsubay MYO için önceki dönem referans puan/kontenjan ve temel şartlar özetlenir." },
+      { q: "7. Forumdaki sorulara başka adaylar nasıl cevap verebilir?", a: "Her sorunun altında yer alan 'Cevap Yaz' kutusuna adını ve cevabını yazıp 'Cevapla' butonuna basarak doğrudan o sorunun altına yanıt ekleyebilirsin." },
+      { q: "8. Kâtiplik sınav simülasyonu kaç dakika sürer?", a: "Sınav simülasyonu 3 dakika (180 saniye) süreli olarak çalışır; anlık net kelime, doğruluk oranı ve hata sayısı ekranda gösterilir." },
+      { q: "9. Hem F klavye hem Q klavye çalışabiliyor muyum?", a: "Evet. Sınav simülasyonunda ve klavye derslerinde Türkçe F Klavye veya Türkçe Q Klavye seçimi yaparak çalışabilirsin." },
+      { q: "10. Kullanıcılar skorlarını nasıl karşılaştırabilir?", a: "Skor & Düello sekmesinden kendi skorunu tabloya ekleyebilir veya 'Benim Skor Kodumu Üret' butonuyla arkadaşınla skor karşılaştırması yapabilirsin." },
+      { q: "11. Tercih robotunda öğrenim düzeyi seçimi nasıl çalışır?", a: "Lisans seçildiğinde Lisans, Önlisans ve Ortaöğretim düzeyindeki ilanlar; Önlisans seçildiğinde Önlisans ve Ortaöğretim ilanları birlikte listelenir." },
+      { q: "12. KPSS puan alanını boş bırakabilir miyim?", a: "Evet. Puan alanı isteğe bağlıdır; boş bırakırsan puan barajı filtresi uygulanmadan öğrenim, bölüm, il ve belge kriterlerine göre ilanlar gösterilir." },
       { q: "13. İlanlara doğrudan bu siteden mi başvuruluyor?", a: "Hayır; ilan kartlarındaki 'Resmî Site' bağlantısı seni doğrudan ilgili resmî kurum veya ilan portalına yönlendirir." },
       { q: "14. Yeni ilan açıldığında nasıl haberdar olabilirim?", a: "Sayfadaki Telegram Bot bağlantısı üzerinden @kamu_ilan_kpss_bot kanalına geçebilir veya ilgilendiğin ilanları 'Kaydet' butonuyla favorilerine alabilirsin." }
     ];
@@ -827,7 +894,7 @@
       { id: "lisans", name: "Lisans odası", desc: "4 yıllık mezunlar • P3 tercih ve kadro sohbeti", badge: "Lisans" },
       { id: "onlisans", name: "Önlisans odası", desc: "2 yıllık mezunlar • P93, kâtiplik ve sağlık kadroları", badge: "Önlisans" },
       { id: "ortaogretim", name: "Ortaöğretim odası", desc: "Lise mezunları • P94, şoför, ÖGG ve hizmetli", badge: "Lise" },
-      { id: "tercih", name: "Tercih dönemi odası", desc: "Tercih listeleri, il seçimi ve puan yorumları", badge: "Tercih" }
+      { id: "tercih", name: "Tercih & MSÜ odası", desc: "KPSS, YKS/üniversite ve MSÜ tercih sohbeti", badge: "Tercih" }
     ];
 
     const CHAT_NAMES = [
@@ -859,19 +926,19 @@
         ["İŞKUR üzerinden açılan sürekli işçi ilanlarını nasıl takip ediyorsunuz?", "Hem İŞKUR portalını hem de buradaki filtreleri düzenli kontrol ederek başvuru tarihlerini kaçırmamaya çalışıyoruz."]
       ],
       tercih: [
+        ["Üniversite tercihlerinde önceki senelerin taban puan ve kontenjanlarına bakmak nasıl fikir?", "Kesinlikle fikir verir ama kontenjan değişimi ve o yılki sınav zorluğu oynama yapabileceği için aralığı geniş tutmak lazım."],
+        ["MSÜ'de Hava, Kara ve Deniz harp okulları arasında temel fark ne?", "Kuvvet komutanlıklarına subay yetiştirirler; sağlık, fiziki test ve mülakat şartları sınıfına göre değişir."],
+        ["Bando Astsubay MYO için müzik bilgisi şart mı?", "Evet, TYT puanının yanında müzik/bando uygulama sınavı ve mülakat aşamaları bulunuyor."],
         ["Tercih listesinde ilk sıralara yüksek puanlı yerleri mi yazmalı?", "Evet, yüksekten düşüğe doğru kendi puanına ve sıralamana göre gerçekçi bir huni kurmak en doğru yaklaşım."],
-        ["İstemediğimiz bir yeri sırf açıkta kalmamak için yazmak doğru mu?", "Gidebileceğin ve çalışabileceğin illeri yazmak daha sağlıklı; yerleşip gitmemek sonraki süreçlerde dezavantaj yaratabilir."],
-        ["Puanım sınırda görünen kadroları listeye eklemeli miyim?", "Kontenjan artışları veya vazgeçmeler ihtimaline karşı birkaç sınırda kadroyu alt sıralarda denemek mantıklı olabilir."],
-        ["Tercih kılavuzundaki özel şartlar kutucuğu ne işe yarıyor?", "Cinsiyet, belge, yaş veya kurum içi şart gibi kritik detayları gösterir; mutlaka tek tek okumak lazım."],
         ["Tercih süresi bittikten sonra değişiklik yapılabiliyor mu?", "Hayır, sistem kapandıktan sonra tercih değişikliği yapılmıyor; onaylamadan önce tüm kodları iki kez kontrol etmelisin."]
       ]
     };
 
     const CHAT_CHUNK_SIZE = 5;
-    const CHAT_TOTAL_PER_ROOM = 320;
+    const CHAT_TOTAL_PER_ROOM = 1000;
     const CHAT_INTERVAL_MS = 5.5 * 60 * 60 * 1000;
 
-    function buildRoomPool320(roomId) {
+    function buildRoomPool1000(roomId) {
       const pairs = CHAT_DIALOGUES[roomId] || CHAT_DIALOGUES.lisans;
       const pool = [];
       for (let i = 0; i < CHAT_TOTAL_PER_ROOM; i++) {
@@ -896,25 +963,23 @@
     function getChatTimelineState() {
       const now = Date.now();
       let state = null;
-      try { state = JSON.parse(localStorage.getItem("kpss_chat_timeline_v1")); } catch (e) {}
+      try { state = JSON.parse(localStorage.getItem("kpss_chat_timeline_v2")); } catch (e) {}
       if (!state || typeof state.anchorTime !== "number") {
-        state = { anchorTime: now - (4 * CHAT_INTERVAL_MS), manualBonusChunks: 0 };
-        localStorage.setItem("kpss_chat_timeline_v1", JSON.stringify(state));
+        state = { anchorTime: now - (8 * CHAT_INTERVAL_MS), manualBonusChunks: 0 };
+        localStorage.setItem("kpss_chat_timeline_v2", JSON.stringify(state));
       }
       const elapsedChunks = Math.floor((now - state.anchorTime) / CHAT_INTERVAL_MS);
       const totalChunksUnlocked = Math.min(
         CHAT_TOTAL_PER_ROOM / CHAT_CHUNK_SIZE,
-        Math.max(5, 5 + elapsedChunks + (state.manualBonusChunks || 0))
+        Math.max(10, 10 + elapsedChunks + (state.manualBonusChunks || 0))
       );
-      const msIntoCurrentInterval = (now - state.anchorTime) % CHAT_INTERVAL_MS;
-      const nextChunkInMs = CHAT_INTERVAL_MS - msIntoCurrentInterval;
-      return { state, totalChunksUnlocked, nextChunkInMs };
+      return { state, totalChunksUnlocked };
     }
 
     function advanceChatChunkManually() {
       const { state } = getChatTimelineState();
       state.manualBonusChunks = (state.manualBonusChunks || 0) + 1;
-      localStorage.setItem("kpss_chat_timeline_v1", JSON.stringify(state));
+      localStorage.setItem("kpss_chat_timeline_v2", JSON.stringify(state));
       renderChatRooms();
     }
 
@@ -932,15 +997,15 @@
         title: "Tarayıcı Yerel Saklama (LocalStorage) Bilgilendirmesi",
         paragraphs: [
           "Üyelik/rumuz bilgin, seçtiğin düzey, puan, iller, belgeler, kayıtlı ilanlar, klavye kayıtları, skorlar, sohbet mesajları ve forum soru-cevapları tarayıcındaki LocalStorage alanında saklanır.",
-          "Başvurular için doğrudan resmî kurum veya ilan kaynağına yönlendirme yapılır."
+          "Başvurular ve tercih verileri için resmî kurum veya ilan kaynağına yönlendirme yapılır."
         ]
       },
       sorumluluk: {
         badge: "Bilgilendirme & Sorumluluk Reddi",
-        title: "İlan Kaynakları ve Sorumluluk Reddi",
+        title: "İlan, Üniversite & MSÜ Kaynakları ve Sorumluluk Reddi",
         paragraphs: [
           "Platform resmî devlet kurumu değildir; kamuya açık ilan özetleri, klavye simülasyonu ve referans rehberleri sunar.",
-          "Son başvuru tarihi, taban puan ve şartlar için ilgili resmî duyuru esas alınmalıdır."
+          "Son başvuru tarihi, taban puan, kontenjan ve şartlar için ilgili resmî kılavuz ve duyuru esas alınmalıdır."
         ]
       }
     };
@@ -971,6 +1036,7 @@
     let lastFilteredEntries = [];
     let activeChatRoomId = "lisans";
     let activeProfFilter = "ALL";
+    let activeMsuFilter = "ALL";
 
     let simTimerId = null;
     let simRemainingSec = 180;
@@ -993,6 +1059,131 @@
     let hataScore = 0;
     let hataCount = 0;
     let hataCurrentItem = HATA_GAME_ITEMS[0];
+
+    function openUniRobotModal() {
+      document.getElementById("detailContent").innerHTML = `
+        <span class="bg-sky-100 text-sky-900 text-xs font-extrabold px-2.5 py-0.5 rounded">Üniversite Tercih Robotu</span>
+        <h3 class="text-xl font-extrabold text-slate-900 mt-2">Puan & Kontenjan Referans Robotu</h3>
+        <p class="text-xs text-slate-500 mt-1">Puan türünü, puanını ve il/bölüm kelimesini girerek önceki dönem referans taban puan ve kontenjanları incele.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-4">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-600 mb-1">Puan Türü</label>
+            <select id="uniTypeFilter" onchange="renderUniRobotResults()" class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-xs font-bold bg-white">
+              <option value="ALL">Tüm Puan Türleri</option>
+              <option value="SAY">SAY (Sayısal)</option>
+              <option value="EA">EA (Eşit Ağırlık)</option>
+              <option value="SÖZ">SÖZ (Sözel)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-600 mb-1">Puanın (Opsiyonel)</label>
+            <input id="uniScoreFilter" oninput="renderUniRobotResults()" type="number" step="0.01" placeholder="Örn: 410" class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-xs" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-600 mb-1">Üniversite / Bölüm / İl</label>
+            <input id="uniQueryFilter" oninput="renderUniRobotResults()" type="text" placeholder="Örn: Ankara, Hukuk..." class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-xs" />
+          </div>
+        </div>
+
+        <div id="uniRobotResults" class="mt-4 space-y-2 text-xs"></div>
+
+        <div class="mt-4 pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-600">
+          <span>* Tarayıcı üzerinden dış sitelerden canlı veri çekimi kısıtlı olduğu için referans veriler + resmî bağlantılar sunulur.</span>
+          <a href="https://yokatlas.yok.gov.tr/" target="_blank" rel="noopener" class="bg-sky-600 hover:bg-sky-700 text-white font-bold px-3 py-1.5 rounded-lg">YÖK Atlas ↗</a>
+        </div>
+      `;
+      document.getElementById("detailModal").classList.remove("hidden");
+      renderUniRobotResults();
+    }
+
+    function renderUniRobotResults() {
+      const box = document.getElementById("uniRobotResults");
+      if (!box) return;
+      const t = document.getElementById("uniTypeFilter")?.value || "ALL";
+      const sRaw = document.getElementById("uniScoreFilter")?.value;
+      const scoreVal = sRaw !== "" && sRaw !== undefined ? Number(sRaw) : null;
+      const q = normalizeText(document.getElementById("uniQueryFilter")?.value || "");
+
+      const rows = UNI_PROGRAMS.filter(p => {
+        if (t !== "ALL" && p.scoreType !== t) return false;
+        if (scoreVal !== null && !Number.isNaN(scoreVal) && scoreVal + 25 < p.refMinScore) return false;
+        if (q) {
+          const hay = normalizeText(`${p.uni} ${p.dept} ${p.city} ${p.scoreType}`);
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      if (rows.length === 0) {
+        box.innerHTML = `<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center text-slate-500">Bu filtreye uyan referans program bulunamadı.</div>`;
+        return;
+      }
+
+      box.innerHTML = rows.map(r => {
+        let statusBadge = `<span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-bold">${r.scoreType}</span>`;
+        if (scoreVal !== null && !Number.isNaN(scoreVal)) {
+          statusBadge = scoreVal >= r.refMinScore
+            ? `<span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-extrabold">✓ Puanın Uygun</span>`
+            : `<span class="bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-extrabold">Fark: ${(r.refMinScore - scoreVal).toFixed(1)}</span>`;
+        }
+        return `
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                ${statusBadge}
+                <span class="font-extrabold text-slate-900">${r.uni}</span>
+                <span class="text-slate-500">• ${r.city}</span>
+              </div>
+              <div class="text-slate-700 font-medium mt-0.5">${r.dept}</div>
+            </div>
+            <div class="sm:text-right shrink-0">
+              <div class="font-extrabold text-emerald-700">Ref. Taban: ~${r.refMinScore}</div>
+              <div class="text-slate-500">Ref. Kontenjan: ~${r.refQuota}</div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function filterMsu(mode) {
+      activeMsuFilter = mode;
+      document.querySelectorAll(".msu-filter-btn").forEach(b => {
+        const isAct = b.id === `msuBtn-${mode}`;
+        if (mode === "HARP" && b.id === "msuBtn-HARP") {
+          b.className = isAct
+            ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-amber-500 text-slate-950"
+            : "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-900";
+        } else {
+          b.className = isAct
+            ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-900 text-white"
+            : "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700";
+        }
+      });
+      renderMsuCards();
+    }
+
+    function renderMsuCards() {
+      const box = document.getElementById("msuCardsGrid");
+      if (!box) return;
+      const list = activeMsuFilter === "ALL" ? MSU_UNITS : MSU_UNITS.filter(x => x.group === activeMsuFilter);
+      box.innerHTML = list.map(u => `
+        <div class="border border-slate-200 bg-slate-50/60 rounded-xl p-4 flex flex-col justify-between space-y-2.5">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="bg-slate-900 text-white text-[10px] font-extrabold px-2 py-0.5 rounded">${u.group}</span>
+              <span class="text-[11px] font-bold text-emerald-700">${u.refScore}</span>
+            </div>
+            <h3 class="font-extrabold text-sm text-slate-900 mt-1.5">${u.title}</h3>
+            <p class="text-[11px] font-semibold text-sky-800 mt-0.5">${u.refQuota}</p>
+            <p class="text-slate-700 mt-1.5 leading-relaxed">${u.info}</p>
+          </div>
+          <div class="pt-2 border-t border-slate-200 text-[11px] text-slate-600">
+            <b>Gerekenler:</b> ${u.reqs}
+          </div>
+        </div>
+      `).join("");
+    }
 
     function toggleKatiplikPanel(forceOpen = null) {
       katiplikOpen = typeof forceOpen === "boolean" ? forceOpen : !katiplikOpen;
@@ -1860,14 +2051,14 @@
 
     function getUserCustomRoomMessages() {
       try {
-        const d = JSON.parse(localStorage.getItem("kpss_chat_user_msgs_v1"));
+        const d = JSON.parse(localStorage.getItem("kpss_chat_user_msgs_v2"));
         if (d && typeof d === "object") return d;
       } catch (e) {}
       return { lisans: [], onlisans: [], ortaogretim: [], tercih: [] };
     }
 
     function getCombinedRoomMessages(roomId, totalChunksUnlocked) {
-      const pool = buildRoomPool320(roomId);
+      const pool = buildRoomPool1000(roomId);
       const visibleSeedCount = Math.min(CHAT_TOTAL_PER_ROOM, totalChunksUnlocked * CHAT_CHUNK_SIZE);
       const visibleSeed = pool.slice(0, visibleSeedCount);
       const customStore = getUserCustomRoomMessages();
@@ -1876,13 +2067,7 @@
     }
 
     function renderChatRooms() {
-      const { totalChunksUnlocked, nextChunkInMs } = getChatTimelineState();
-      const nextHours = Math.max(0.1, (nextChunkInMs / (1000 * 60 * 60))).toFixed(1);
-      const metaBadge = document.getElementById("chatScheduleMetaBadge");
-      if (metaBadge) {
-        metaBadge.textContent = `Açık Parça: ${totalChunksUnlocked} / 64 (5'er mesaj) • Sonraki parça: ~${nextHours} sa`;
-      }
-
+      const { totalChunksUnlocked } = getChatTimelineState();
       const roomsEl = document.getElementById("chatRoomsList");
       if (!roomsEl) return;
 
@@ -1893,7 +2078,7 @@
           ? "w-full text-left px-3.5 py-2.5 rounded-xl bg-slate-900 text-white border border-slate-800 transition"
           : "w-full text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-200/70 text-slate-800 transition";
         const lastMsg = msgs[msgs.length - 1];
-        const subText = lastMsg ? `${msgs.length}/320 mesaj • ${lastMsg.author}: ${lastMsg.text.slice(0, 24)}...` : "Henüz mesaj yok";
+        const subText = lastMsg ? `${msgs.length}/1000 mesaj • ${lastMsg.author}: ${lastMsg.text.slice(0, 24)}...` : "Henüz mesaj yok";
         return `
           <button type="button" onclick="selectChatRoom('${room.id}')" class="${cls}">
             <div class="flex items-center justify-between gap-2">
@@ -1907,7 +2092,7 @@
 
       const currentRoom = CHAT_ROOMS.find(r => r.id === activeChatRoomId) || CHAT_ROOMS[0];
       document.getElementById("activeChatRoomTitle").textContent = currentRoom.name;
-      document.getElementById("activeChatRoomDesc").textContent = `${currentRoom.desc} • ${totalChunksUnlocked * 5} hazır mesaj akışta`;
+      document.getElementById("activeChatRoomDesc").textContent = `${currentRoom.desc} • ${totalChunksUnlocked * 5} mesaj akışta`;
 
       const roomMsgs = getCombinedRoomMessages(currentRoom.id, totalChunksUnlocked);
       const msgBox = document.getElementById("chatMessagesBox");
@@ -1949,7 +2134,7 @@
       const store = getUserCustomRoomMessages();
       if (!Array.isArray(store[activeChatRoomId])) store[activeChatRoomId] = [];
       store[activeChatRoomId].push({ author: member.name, text, time: "Şimdi (Üye)" });
-      localStorage.setItem("kpss_chat_user_msgs_v1", JSON.stringify(store));
+      localStorage.setItem("kpss_chat_user_msgs_v2", JSON.stringify(store));
       textInput.value = "";
       renderChatRooms();
       const box = document.getElementById("chatMessagesBox");
@@ -1958,7 +2143,7 @@
 
     function getForumPosts() {
       try {
-        const posts = JSON.parse(localStorage.getItem("kpss_forum_posts_v3"));
+        const posts = JSON.parse(localStorage.getItem("kpss_forum_posts_v4"));
         if (Array.isArray(posts) && posts.length > 0) return posts;
       } catch (e) {}
       return DEFAULT_FORUM_POSTS;
@@ -2005,7 +2190,7 @@
       if (!author || !text) return;
       const posts = getForumPosts();
       posts.unshift({ id: `q-${Date.now()}`, author, topic, text, replies: [] });
-      localStorage.setItem("kpss_forum_posts_v3", JSON.stringify(posts.slice(0, 50)));
+      localStorage.setItem("kpss_forum_posts_v4", JSON.stringify(posts.slice(0, 50)));
       document.getElementById("forumMessage").value = "";
       renderForum();
     }
@@ -2020,7 +2205,7 @@
       if (!target) return;
       if (!Array.isArray(target.replies)) target.replies = [];
       target.replies.push({ author: rAuthor, text: rText });
-      localStorage.setItem("kpss_forum_posts_v3", JSON.stringify(posts));
+      localStorage.setItem("kpss_forum_posts_v4", JSON.stringify(posts));
       renderForum();
     }
 
@@ -2109,6 +2294,7 @@
       selectLesson(0);
       resetWordDrill();
       updateBestGameScore(0);
+      renderMsuCards();
       renderProfessionsTable();
       updateChatMemberUI();
       renderChatRooms();
