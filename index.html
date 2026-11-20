@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kamu Atamaları, KPSS Robotu & İlan Rehberi</title>
+  <title>Kamu Atamaları, KPSS Robotu & Kâtiplik Klavye Yarışması</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body id="top" class="bg-slate-100 text-slate-800 font-sans antialiased">
@@ -16,17 +16,17 @@
           <span class="bg-emerald-500 text-slate-950 font-extrabold px-2.5 py-1 rounded-md text-sm group-hover:bg-emerald-400 transition">KAMU</span>
           <span class="font-bold text-base sm:text-lg tracking-tight">İlan & KPSS Rehberi</span>
         </a>
-        <nav class="hidden xl:flex items-center gap-3.5 text-xs font-semibold text-slate-300">
+        <nav class="hidden lg:flex items-center gap-3.5 text-xs font-semibold text-slate-300">
+          <a href="#katiplikMerkeziBolumu" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-lg font-extrabold transition">⌨️ KÂTİPLİK & YARIŞMA</a>
           <a href="#ilanlarSection" class="hover:text-emerald-300 transition">İLANLAR</a>
           <a href="#robotSection" class="hover:text-emerald-300 transition">TERCİH ROBOTU</a>
-          <a href="#katiplikAkademikBolumu" class="hover:text-emerald-300 transition">KÂTİPLİK & AKADEMİK</a>
           <a href="#mesleklerSartlarBolumu" class="hover:text-amber-300 transition">MESLEKLER & ŞARTLAR</a>
-          <a href="#tabanPuanAnalizBolumu" class="hover:text-emerald-300 transition">TABAN PUAN & ANALİZ</a>
-          <a href="#sohbetForumSssBolumu" class="hover:text-sky-300 transition">SOHBET, FORUM & SSS</a>
+          <a href="#sohbetForumSssBolumu" class="hover:text-sky-300 transition">SOHBET & FORUM</a>
         </nav>
       </div>
 
       <div class="flex items-center gap-2 shrink-0">
+        <a href="#katiplikMerkeziBolumu" class="lg:hidden bg-indigo-600 text-white font-extrabold text-xs px-2.5 py-1.5 rounded-lg">⌨️ Kâtiplik</a>
         <button type="button" onclick="toggleSavedOnly()" class="bg-amber-400/15 hover:bg-amber-400/25 text-amber-200 font-bold text-xs px-3 py-1.5 rounded-lg border border-amber-300/30 transition">
           ★ Kayıtlı (<span id="savedCountHeader">0</span>)
         </button>
@@ -42,25 +42,309 @@
     <div id="ad-slot-top" class="w-full bg-white border border-slate-200 rounded-xl py-2.5 px-4 text-center text-xs text-slate-500"></div>
   </div>
 
+  <!-- KÂTİPLİK KLAVYE, F KLAVYE ANTRENMANI, SINAV SİMÜLASYONU, KELİME, OYUN & KULLANICI YARIŞI -->
+  <section id="katiplikMerkeziBolumu" class="max-w-7xl mx-auto px-4 mt-4">
+    <div class="bg-white rounded-2xl shadow-sm border-2 border-indigo-500/40 p-5 sm:p-6">
+      <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+        <div>
+          <span class="inline-block bg-indigo-100 text-indigo-800 text-[11px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full">Kâtiplik Klavye & Yarışma Alanı</span>
+          <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">Kâtiplik Klavye: F/Q Sınav Simülasyonu, Dersler, Kelime, Oyun & Yarış</h1>
+          <p class="text-xs text-slate-500 mt-0.5">F klavye ve Q klavye desteği • 3 dakika sınav simülasyonu • Kullanıcı skor tablosu ve arkadaşla düello kodu</p>
+        </div>
+
+        <!-- 5 ANA SEKME -->
+        <div class="flex flex-wrap gap-1.5">
+          <button type="button" id="kTab-sim" onclick="switchKatiplikTab('sim')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white transition">
+            ⏱️ Sınav Simülasyonu
+          </button>
+          <button type="button" id="kTab-lessons" onclick="switchKatiplikTab('lessons')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+            ⌨️ F/Q Klavye Dersleri
+          </button>
+          <button type="button" id="kTab-words" onclick="switchKatiplikTab('words')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+            ⚡ Kelime Antrenmanı
+          </button>
+          <button type="button" id="kTab-games" onclick="switchKatiplikTab('games')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+            🎮 Oyun (Metin Yazarak)
+          </button>
+          <button type="button" id="kTab-race" onclick="switchKatiplikTab('race')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-amber-100 text-amber-950 hover:bg-amber-200 transition">
+            🏆 Yarış & Düello
+          </button>
+        </div>
+      </div>
+
+      <!-- 1) SINAV SİMÜLASYONU -->
+      <div id="kPanel-sim" class="k-panel mt-5 space-y-5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+          <div class="lg:col-span-8 bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="bg-indigo-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-lg">3:00 Sınav</span>
+                <select id="simLayoutSelect" onchange="initSimText()" class="border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-bold bg-white">
+                  <option value="F">Türkçe F Klavye (Öncelikli)</option>
+                  <option value="Q">Türkçe Q Klavye</option>
+                </select>
+                <select id="simTextSelect" onchange="initSimText()" class="border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-semibold bg-white">
+                  <option value="0">Metin 1: Ceza Muhakemesi & Duruşma Tutanağı</option>
+                  <option value="1">Metin 2: Tebligat, Dava Dilekçesi & Süreler</option>
+                  <option value="2">Metin 3: İcra, İstinaf & Yazı İşleri Kalemi</option>
+                </select>
+              </div>
+              <div class="flex items-center gap-2">
+                <span id="simTimerDisplay" class="font-mono font-extrabold text-sm bg-slate-900 text-emerald-300 px-3 py-1.5 rounded-lg">03:00</span>
+                <button type="button" onclick="startSim()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-1.5 rounded-lg transition">Sınavı Başlat</button>
+                <button type="button" onclick="finishSim()" class="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs px-3 py-1.5 rounded-lg transition">Bitir & Kaydet</button>
+              </div>
+            </div>
+
+            <div id="simTargetText" class="mt-4 bg-white border border-slate-200 rounded-xl p-4 text-sm leading-relaxed text-slate-800 select-none max-h-40 overflow-y-auto"></div>
+
+            <textarea
+              id="simInputArea"
+              oninput="onSimInput()"
+              rows="4"
+              placeholder="Sınavı Başlat'a bas ve metni buraya yaz..."
+              class="mt-3 w-full border border-slate-300 rounded-xl p-3 text-sm bg-white focus:outline-none focus:border-indigo-600"
+            ></textarea>
+
+            <!-- SKORU YARIŞ LİSTESİNE GÖNDERME -->
+            <div class="mt-3 pt-3 border-t border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+              <div class="flex items-center gap-2 flex-1">
+                <input id="raceNickInput" type="text" maxlength="24" placeholder="Yarışta görünecek rumuzun (Örn: KatipAdayi)" class="flex-1 border border-slate-300 rounded-lg px-3 py-2 text-xs bg-white" />
+                <button type="button" onclick="publishCurrentSimToRace()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-lg transition shrink-0">
+                  🏆 Yarışa Katıl
+                </button>
+              </div>
+              <button type="button" onclick="switchKatiplikTab('race')" class="text-xs font-bold text-indigo-700 hover:underline shrink-0">
+                Skor Tablosuna Git →
+              </button>
+            </div>
+          </div>
+
+          <!-- CANLI METRİKLER & SON DENEMELER -->
+          <div class="lg:col-span-4 space-y-4">
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-slate-900 text-white rounded-xl p-3.5">
+                <div class="text-2xl font-extrabold text-emerald-400" id="simNetDisplay">0</div>
+                <div class="text-[11px] text-slate-300 mt-0.5">Net Kelime (Hedef 90+)</div>
+              </div>
+              <div class="bg-slate-900 text-white rounded-xl p-3.5">
+                <div class="text-2xl font-extrabold text-sky-400" id="simAccDisplay">%100</div>
+                <div class="text-[11px] text-slate-300 mt-0.5">Doğruluk Oranı</div>
+              </div>
+              <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
+                <div class="text-xl font-extrabold text-slate-900" id="simKeystrokesDisplay">0</div>
+                <div class="text-[11px] text-slate-500 mt-0.5">Yazılan Karakter</div>
+              </div>
+              <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
+                <div class="text-xl font-extrabold text-rose-600" id="simErrorsDisplay">0</div>
+                <div class="text-[11px] text-slate-500 mt-0.5">Hata Sayısı</div>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-bold text-xs text-slate-900 uppercase">Son Sınav Simülasyonlarım</h3>
+                <button type="button" onclick="clearSimHistory()" class="text-[11px] text-slate-500 hover:text-rose-600 underline">Temizle</button>
+              </div>
+              <div id="simHistoryList" class="space-y-1.5 max-h-44 overflow-y-auto text-xs"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2) F / Q KLAVYE DERSLERİ -->
+      <div id="kPanel-lessons" class="k-panel hidden mt-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
+          <div class="flex flex-wrap gap-1.5" id="lessonButtonsBar"></div>
+          <div class="flex items-center gap-2">
+            <select id="lessonLayoutSelect" onchange="selectLesson(activeLessonIdx)" class="border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-bold bg-white">
+              <option value="F">Türkçe F Klavye</option>
+              <option value="Q">Türkçe Q Klavye</option>
+            </select>
+            <button type="button" onclick="selectLesson(activeLessonIdx)" class="bg-slate-900 text-white font-bold text-xs px-3 py-1.5 rounded-lg">Dersi Sıfırla</button>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 id="lessonTitle" class="font-extrabold text-base text-slate-900">Temel sıra: sol el</h3>
+              <p id="lessonDesc" class="text-xs text-slate-600 mt-0.5">Sol el dört parmağını temel konumda tutarak yaz.</p>
+            </div>
+            <div id="lessonStatsText" class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full">Doğruluk: %100</div>
+          </div>
+
+          <div id="lessonTargetBox" class="mt-4 bg-white border border-slate-200 rounded-xl p-4 font-mono text-base tracking-wide text-slate-800"></div>
+
+          <input
+            id="lessonInput"
+            oninput="onLessonInput()"
+            type="text"
+            placeholder="Yukarıdaki harf/kelime dizisini buraya yaz..."
+            class="mt-3 w-full border border-slate-300 rounded-xl px-4 py-2.5 font-mono text-sm bg-white focus:outline-none focus:border-indigo-600"
+          />
+
+          <div id="lessonVisualKeyboard" class="mt-4 space-y-1.5 select-none"></div>
+        </div>
+      </div>
+
+      <!-- 3) KELİME ANTRENMANI -->
+      <div id="kPanel-words" class="k-panel hidden mt-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
+          <div class="flex flex-wrap gap-1.5">
+            <button type="button" onclick="setWordDrillMode('hukuk')" id="wMode-hukuk" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white">Hukuk Terimleri</button>
+            <button type="button" onclick="setWordDrillMode('uzun')" id="wMode-uzun" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700">Uzun Kelimeler</button>
+            <button type="button" onclick="setWordDrillMode('rakam')" id="wMode-rakam" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700">Rakam & Sayı</button>
+            <button type="button" onclick="setWordDrillMode('genel')" id="wMode-genel" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700">Sık Kullanılan Kelimeler</button>
+          </div>
+          <div class="flex items-center gap-3 text-xs font-bold">
+            <span class="text-emerald-700">Doğru: <span id="wordCorrectCount">0</span></span>
+            <span class="text-rose-600">Hata: <span id="wordWrongCount">0</span></span>
+            <button type="button" onclick="resetWordDrill()" class="bg-slate-900 text-white px-3 py-1.5 rounded-lg">Yeni Set</button>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
+          <div class="text-xs text-slate-500 mb-2">Aktif kelimeyi yaz ve <b>Boşluk (Space)</b> tuşuna bas:</div>
+          <div id="wordQueueBox" class="bg-white border border-slate-200 rounded-xl p-4 flex flex-wrap gap-2 text-sm font-semibold"></div>
+          <input
+            id="wordDrillInput"
+            onkeydown="onWordDrillKeydown(event)"
+            type="text"
+            placeholder="Kelimeyi yazıp Boşluk'a bas..."
+            class="mt-3 w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm bg-white focus:outline-none focus:border-indigo-600"
+          />
+        </div>
+      </div>
+
+      <!-- 4) OYUN (METİN YAZARAK ANTRENMAN OYUNLARI) -->
+      <div id="kPanel-games" class="k-panel hidden mt-5 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
+          <div class="flex flex-wrap gap-2">
+            <button type="button" onclick="selectGameMode('dosya')" id="gTab-dosya" class="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950">📄 Dosya Yetiştir (Beyan Yazma)</button>
+            <button type="button" onclick="selectGameMode('hata')" id="gTab-hata" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800">🎯 Hata Avı (Doğrusunu Yaz)</button>
+          </div>
+          <div class="text-xs font-bold text-slate-700">
+            En Yüksek Oyun Puanı: <span id="gameBestScore" class="text-emerald-700 font-extrabold">0</span>
+          </div>
+        </div>
+
+        <div id="gameBox-dosya" class="bg-slate-950 text-white rounded-2xl p-5 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+            <div class="flex items-center gap-3 font-bold">
+              <span>Puan: <b id="dosyaScore" class="text-emerald-400">0</b></span>
+              <span>Seviye: <b id="dosyaLevel" class="text-sky-400">1</b></span>
+              <span>Seri: <b id="dosyaStreak" class="text-amber-300">x1</b></span>
+              <span>Hak: <b id="dosyaLives" class="text-rose-400">3</b></span>
+            </div>
+            <button type="button" onclick="startDosyaGame()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-4 py-1.5 rounded-lg transition">Oyunu Başlat</button>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center">
+            <div class="text-[11px] uppercase tracking-wider text-slate-400">Gelen Beyan / Duruşma Metni</div>
+            <div id="dosyaTargetPhrase" class="text-lg sm:text-xl font-extrabold text-amber-200 mt-2 min-h-[2rem]">Oyunu Başlat'a bas ve yazmaya başla!</div>
+            <div class="w-full bg-slate-800 h-2 rounded-full mt-4 overflow-hidden">
+              <div id="dosyaTimeBar" class="bg-emerald-400 h-full w-full transition-all duration-100"></div>
+            </div>
+          </div>
+
+          <input
+            id="dosyaInput"
+            oninput="onDosyaInput()"
+            type="text"
+            placeholder="Beyanı tam olarak yaz..."
+            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-emerald-400"
+          />
+        </div>
+
+        <div id="gameBox-hata" class="hidden bg-slate-950 text-white rounded-2xl p-5 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+            <div class="flex items-center gap-3 font-bold">
+              <span>Puan: <b id="hataScore" class="text-emerald-400">0</b></span>
+              <span>Doğru Av: <b id="hataCount" class="text-sky-400">0</b></span>
+            </div>
+            <button type="button" onclick="startHataGame()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold px-4 py-1.5 rounded-lg transition">Yeni Hata Avı Turu</button>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center">
+            <div class="text-xs text-slate-400">Hatalı yazılmış kelimeyi bul ve <b class="text-white">doğru yazımını</b> aşağıya yaz:</div>
+            <div id="hataWrongWord" class="text-2xl font-extrabold text-rose-400 mt-2">mahkme</div>
+            <div id="hataHint" class="text-xs text-slate-400 mt-1">İpucu: Harf veya hece hatasını düzelt</div>
+          </div>
+
+          <form onsubmit="submitHataAnswer(event)" class="flex gap-2">
+            <input id="hataAnswerInput" type="text" required placeholder="Kelimenin doğru halini yaz..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white" />
+            <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs px-4 py-2.5 rounded-xl">Kontrol Et</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- 5) KULLANICI YARIŞI & ARKADAŞLA DÜELLO -->
+      <div id="kPanel-race" class="k-panel hidden mt-5 space-y-5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+          <!-- LİDERLİK / YARIŞ TABLOSU -->
+          <div class="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
+            <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-200">
+              <div>
+                <h3 class="font-extrabold text-base text-slate-900">🏆 Kâtiplik Net Yarış Tablosu</h3>
+                <p class="text-xs text-slate-500">Kendi skorunu ekleyerek sıralamada yüksel veya arkadaşınla yarış.</p>
+              </div>
+              <button type="button" onclick="publishCurrentSimToRace()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs px-3 py-1.5 rounded-lg">
+                + Mevcut Netimi Ekle
+              </button>
+            </div>
+            <div id="raceLeaderboardList" class="mt-3 space-y-2 text-xs"></div>
+          </div>
+
+          <!-- ARKADAŞLA DÜELLO KODU -->
+          <div class="lg:col-span-5 bg-slate-950 text-white rounded-2xl p-4 sm:p-5 space-y-4">
+            <div>
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-300">Karşılıklı Düello Kodu</span>
+              <h3 class="font-extrabold text-base mt-0.5">Arkadaşına Meydan Oku</h3>
+              <p class="text-xs text-slate-300 mt-1">Kendi skor kodunu üretip arkadaşına gönder; rakibin kodunu girip kimin daha hızlı/hatasız yazdığını gör.</p>
+            </div>
+
+            <div class="space-y-2">
+              <button type="button" onclick="generateChallengeCode()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs py-2.5 rounded-xl transition">
+                Benim Skor Kodumu Üret
+              </button>
+              <input id="myChallengeCodeBox" type="text" readonly placeholder="Kod burada oluşacak..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-emerald-300" />
+            </div>
+
+            <div class="pt-3 border-t border-slate-800 space-y-2">
+              <label class="block text-xs font-bold text-slate-200">Rakibin Skor Kodunu Yapıştır:</label>
+              <div class="flex gap-2">
+                <input id="rivalCodeInput" type="text" placeholder="Örn: KATIP|96|%98|F" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-white" />
+                <button type="button" onclick="compareWithRival()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-xl transition">
+                  Karşılaştır
+                </button>
+              </div>
+              <div id="duelResultBox" class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs text-slate-300">
+                Henüz düello karşılaştırması yapılmadı.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- GÖRSEL ARKA PLANLI 30 SAYFALIK BÜYÜK VİTRİN -->
-  <section class="max-w-7xl mx-auto px-4 mt-4">
-    <div id="heroBannerBox" class="relative text-white rounded-2xl p-6 md:p-9 shadow-lg border border-slate-800 overflow-hidden bg-slate-950">
+  <section class="max-w-7xl mx-auto px-4 mt-6">
+    <div id="heroBannerBox" class="relative text-white rounded-2xl p-6 md:p-8 shadow-lg border border-slate-800 overflow-hidden bg-slate-950">
       <div id="heroBgVisual" class="pointer-events-none absolute inset-0 opacity-35"></div>
       <div class="relative z-10 flex items-center justify-between gap-2">
         <button type="button" onclick="prevSlide()" aria-label="Önceki Sayfa" class="flex items-center justify-center w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold text-lg shrink-0 transition">‹</button>
         <div id="heroSliderContent" class="max-w-4xl mx-auto text-center px-2"></div>
         <button type="button" onclick="nextSlide()" aria-label="Sonraki Sayfa" class="flex items-center justify-center w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold text-lg shrink-0 transition">›</button>
       </div>
-
-      <div id="heroSliderDots" class="relative z-10 flex items-center justify-center gap-1 mt-6 flex-wrap"></div>
+      <div id="heroSliderDots" class="relative z-10 flex items-center justify-center gap-1 mt-5 flex-wrap"></div>
     </div>
   </section>
 
-  <!-- ANA AKIŞ: SOL SÜTUN (ARAMA & STATÜ MENÜSÜ & TELEGRAM) + SAĞ SÜTUN (10 İLAN + DAHA FAZLA) -->
+  <!-- ANA AKIŞ: SOL SÜTUN + SAĞ SÜTUN (10 İLAN + DAHA FAZLA) -->
   <main id="ilanlarSection" class="max-w-7xl mx-auto px-4 mt-7">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-
-      <!-- SOL SÜTUN -->
       <aside class="lg:col-span-4 space-y-4">
         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
           <div class="flex gap-2">
@@ -86,11 +370,9 @@
             </div>
           </div>
 
-          <!-- STATÜ LİSTESİ -->
           <div id="statusMenuList" class="mt-4 pt-3 border-t border-slate-100 space-y-1"></div>
         </div>
 
-        <!-- TELEGRAM BOT YÖNLENDİRME KARTI -->
         <div class="bg-gradient-to-br from-slate-950 via-teal-950 to-sky-950 text-white rounded-2xl p-5 shadow-sm border border-sky-800/60">
           <div class="flex items-center gap-2">
             <span class="bg-sky-400 text-slate-950 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full">Telegram Bot</span>
@@ -106,7 +388,6 @@
         </div>
       </aside>
 
-      <!-- SAĞ SÜTUN: İLAN LİSTESİ (10 İLAN + DAHA FAZLA BUTONU) -->
       <div class="lg:col-span-8">
         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
@@ -118,13 +399,11 @@
           </div>
 
           <div id="timelineJobsContainer" class="mt-5 space-y-6"></div>
-
           <div id="loadMoreArea" class="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3"></div>
         </div>
       </div>
     </div>
 
-    <!-- ALT SADE REKLAM ALANI -->
     <div class="mt-7">
       <div id="ad-slot-bottom" class="w-full bg-white border border-slate-200 rounded-xl py-3.5 px-4 text-center text-xs text-slate-500"></div>
     </div>
@@ -161,12 +440,10 @@
             <option value="Lisans">Lisans (Lisans + Önlisans + Ortaöğretim)</option>
           </select>
         </div>
-
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">KPSS Puanın (İsteğe Bağlı)</label>
           <input id="profileScore" oninput="saveProfileFromUI(); resetVisibleLimitAndFilter(false);" type="number" step="0.01" min="0" max="100" placeholder="Boş bırakılabilir (Örn: 74)" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" />
         </div>
-
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Bölüm / Program Alanı</label>
           <select id="profileCat" onchange="saveProfileFromUI(); resetVisibleLimitAndFilter(false);" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-white">
@@ -177,19 +454,14 @@
             <option value="Büro">Büro / Memur / İİBF</option>
             <option value="Mühendis">Mühendis / Mimar / Teknik</option>
             <option value="Şoför">Şoför / Ulaştırma</option>
-            <option value="Güvenlik">Güvenlik / Koruma (ÖGG)</option>
-            <option value="Bilişim">Bilişim / Yazılım / Veri</option>
-            <option value="Destek">Destek / Hizmetli / Sosyal</option>
           </select>
         </div>
-
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Telegram Kullanıcı Adı (İsteğe Bağlı)</label>
           <input id="profileTelegram" oninput="saveProfileFromUI()" type="text" maxlength="40" placeholder="Örn: @kullaniciadi" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" />
         </div>
       </div>
 
-      <!-- ÇOKLU İL SEÇİMİ -->
       <div class="mt-4 pt-3 border-t border-slate-100">
         <div class="flex items-center justify-between gap-2 flex-wrap mb-2">
           <label class="text-xs font-semibold text-slate-600">Çoklu İl Seçimi (Seçilmezse Tüm İller Gösterilir):</label>
@@ -198,7 +470,6 @@
         <div id="cityChipsContainer" class="flex flex-wrap gap-1.5"></div>
       </div>
 
-      <!-- BELGELER & ÖZEL BELGE EKLEME -->
       <div class="mt-4 pt-3 border-t border-slate-100">
         <label class="block text-xs font-semibold text-slate-600 mb-2">Mevcut Belgelerin:</label>
         <div class="flex flex-wrap gap-2">
@@ -240,75 +511,13 @@
     </div>
   </section>
 
-  <!-- KÂTİPLİK SINAVI & AKADEMİK İLANLAR -->
-  <section id="katiplikAkademikBolumu" class="max-w-7xl mx-auto px-4 mt-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-        <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-100">
-          <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-indigo-700">Adalet & Uygulama Rehberi</span>
-            <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">Kâtiplik Sınavı (Klavye, Sözlü & Şartlar)</h2>
-          </div>
-          <a href="https://cte.adalet.gov.tr/" target="_blank" rel="noopener" class="text-xs font-bold text-indigo-700 hover:underline">Resmî Portal ↗</a>
-        </div>
-        <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
-          Zabıt kâtipliği alımlarında KPSS puan sıralamasını takiben 3 dakikada klavye uygulama sınavı ve sözlü mülakat aşamaları yapılır.
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-4 text-xs">
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
-            <div class="font-bold text-slate-900">1. Ön Başvuru</div>
-            <div class="text-slate-600 mt-1">İlgili KPSS puanı ve mezuniyet şartlarıyla başvuru alınır.</div>
-          </div>
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
-            <div class="font-bold text-slate-900">2. Klavye (3 Dakika)</div>
-            <div class="text-slate-600 mt-1">F veya Q klavyede yanlış vuruşlar düşüldükten sonra net vuruş ölçülür.</div>
-          </div>
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
-            <div class="font-bold text-slate-900">3. Sözlü Mülakat</div>
-            <div class="text-slate-600 mt-1">Mesleki bilgi, genel kültür ve ifade yeteneği değerlendirilir.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-        <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-100">
-          <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Üniversite & Enstitü Alımları</span>
-            <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">Akademik İlanlar (Öğretim Görevlisi & Arş. Gör.)</h2>
-          </div>
-          <button type="button" onclick="selectStatusFilter('AKADEMIK'); document.getElementById('ilanlarSection').scrollIntoView({behavior:'smooth'});" class="text-xs font-bold bg-emerald-50 text-emerald-800 px-3 py-1.5 rounded-lg hover:bg-emerald-100 transition">
-            Akademik İlanları Gör →
-          </button>
-        </div>
-        <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
-          Üniversitelerin araştırma görevlisi ve öğretim görevlisi kadrolarında ALES, yabancı dil (YDS/YÖKDİL) ve ilgili kadro şartları aranır.
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-4 text-xs">
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
-            <div class="font-bold text-slate-900">ALES & Yabancı Dil</div>
-            <div class="text-slate-600 mt-1">Kadro türüne göre ALES ve dil puanı ön değerlendirmede esas alınır.</div>
-          </div>
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
-            <div class="font-bold text-slate-900">Sınav / Jüri</div>
-            <div class="text-slate-600 mt-1">Ön değerlendirmeyi geçen adaylar giriş sınavına çağrılır.</div>
-          </div>
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
-            <div class="font-bold text-slate-900">Resmî Duyuru</div>
-            <div class="text-slate-600 mt-1">İlan.gov.tr ve üniversite sayfalarındaki takvim takip edilir.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TÜM MESLEKLER, ÖNCEKİ SENELER REFERANS PUANLARI & ŞARTLAR (BOY/KİLO/PUAN/MÜLAKAT) -->
+  <!-- MESLEKLER & ŞARTLAR -->
   <section id="mesleklerSartlarBolumu" class="max-w-7xl mx-auto px-4 mt-8">
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
         <div>
           <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Meslekler, Geçmiş Seneler Referans Puanları & Aranan Şartlar</span>
           <h2 class="text-xl font-extrabold text-slate-900 mt-0.5">Hangi Bölüme Neler Gerekli? (Boy, Kilo, Puan, Belge & Mülakat)</h2>
-          <p class="text-xs text-slate-500 mt-0.5">Önceki dönem genel referans aralıkları ve tipik şartlardır; her ilanda resmî kılavuzdaki şartlar geçerlidir.</p>
         </div>
         <div class="flex flex-wrap gap-1.5">
           <button type="button" onclick="filterProfessions('ALL')" id="profBtn-ALL" class="prof-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white">Tümü</button>
@@ -316,7 +525,6 @@
           <button type="button" onclick="filterProfessions('MERKEZI')" id="profBtn-MERKEZI" class="prof-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Puan Odaklı</button>
         </div>
       </div>
-
       <div class="overflow-x-auto mt-4">
         <table class="w-full text-left border-collapse text-xs">
           <thead>
@@ -334,136 +542,62 @@
     </div>
   </section>
 
-  <!-- KPSS TABAN PUANLARI & ANALİZLER -->
-  <section id="tabanPuanAnalizBolumu" class="max-w-7xl mx-auto px-4 mt-8">
-    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Referans Tablosu & Analizler</span>
-          <h2 class="text-xl font-extrabold text-slate-900 mt-0.5">KPSS Taban Puanları ve Dönemsel Yerleşme Analizleri</h2>
-        </div>
-        <span class="text-xs text-slate-500">Gösterge amaçlı referans aralıkları • Resmî kılavuz esas alınır</span>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs">
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
-          <div class="font-bold text-slate-900 text-sm">Analiz 1: Belge Avantajı</div>
-          <p class="text-slate-600 mt-1.5 leading-relaxed">SRC, ÖGG, klavye sertifikası veya özel diploma gerektiren kadrolarda aday sayısı daraldığı için taban puanlarda hareket alanı doğabilir.</p>
-        </div>
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
-          <div class="font-bold text-slate-900 text-sm">Analiz 2: Çoklu İl Stratejisi</div>
-          <p class="text-slate-600 mt-1.5 leading-relaxed">Birden fazla ili ve farklı kadro türünü birlikte değerlendirmek yerleşme ihtimalini artırır.</p>
-        </div>
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
-          <div class="font-bold text-slate-900 text-sm">Analiz 3: +3 Puan Sınır Takibi</div>
-          <p class="text-slate-600 mt-1.5 leading-relaxed">Taban puana 2–3 puan uzak kadrolarda kontenjan ve tercih dağılımına göre hareket alanı oluşabilir.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOHBET (CHAT) EKRANI + FORUM (SORU-CEVAP) + SSS -->
+  <!-- SOHBET & FORUM -->
   <section id="sohbetForumSssBolumu" class="max-w-7xl mx-auto px-4 mt-8 pb-14 space-y-6">
-    <!-- CANLI ODA SOHBET EKRANI -->
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
       <div class="px-6 py-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-slate-50">
         <div>
           <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Canlı Sohbet Odaları (Chat)</span>
           <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">Aday Sohbet Ekranı</h2>
         </div>
-        <span class="text-xs text-slate-500">Odalar anlık sohbet içindir • Mesajlar tarayıcıda saklanır</span>
+        <span class="text-xs text-slate-500">Mesajlar tarayıcıda saklanır</span>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[340px]">
-        <!-- SOL: SOHBET ODALARI -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[300px]">
         <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-slate-200 bg-slate-50/70 p-3 space-y-1.5" id="chatRoomsList"></div>
-
-        <!-- SAĞ: SEÇİLİ ODA CHAT EKRANI -->
         <div class="lg:col-span-8 flex flex-col justify-between p-4 sm:p-5 bg-slate-950 text-white">
           <div>
             <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-800">
               <div>
                 <h3 id="activeChatRoomTitle" class="font-extrabold text-base text-white">Lisans odası</h3>
-                <p id="activeChatRoomDesc" class="text-xs text-slate-400">Lisans mezunları ve P3 tercih/sınav sohbeti</p>
+                <p id="activeChatRoomDesc" class="text-xs text-slate-400">4 yıllık mezunlar • P3 tercih ve kadro sohbeti</p>
               </div>
               <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-2.5 py-0.5 rounded-full font-semibold">Sohbet Aktif</span>
             </div>
-
-            <div id="chatMessagesBox" class="mt-3 space-y-2.5 max-h-56 overflow-y-auto pr-1"></div>
+            <div id="chatMessagesBox" class="mt-3 space-y-2.5 max-h-48 overflow-y-auto pr-1"></div>
           </div>
-
           <form onsubmit="sendChatMessage(event)" class="mt-4 pt-3 border-t border-slate-800 flex flex-col sm:flex-row gap-2">
             <input id="chatNickInput" type="text" maxlength="24" placeholder="Rumuz (Örn: Aday)" class="sm:w-32 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-400" />
             <input id="chatTextInput" type="text" maxlength="220" required placeholder="Odaya mesaj yaz..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-400" />
-            <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs px-4 py-2 rounded-xl transition shrink-0">
-              Gönder
-            </button>
+            <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs px-4 py-2 rounded-xl transition shrink-0">Gönder</button>
           </form>
         </div>
       </div>
     </div>
 
-    <!-- FORUM (SORU-CEVAP) & SSS -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-        <span class="text-xs font-bold uppercase tracking-wider text-indigo-700">Forum • Soru-Cevap</span>
-        <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">Kalıcı Soru-Cevap Panosu</h2>
-        <p class="text-xs text-slate-500 mt-1">Sohbetten ayrı olarak sorularını ve yanıt notlarını buraya bırak.</p>
-
-        <form onsubmit="addForumPost(event)" class="mt-3 space-y-2.5">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <input id="forumAuthor" type="text" maxlength="30" placeholder="Rumuz (Örn: Aday)" class="border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm" />
-            <select id="forumTopic" class="border border-slate-300 rounded-lg px-2.5 py-2 text-xs sm:text-sm bg-white">
-              <option value="KPSS Tercih">KPSS Tercih</option>
-              <option value="Kâtiplik">Kâtiplik</option>
-              <option value="Akademik">Akademik</option>
-              <option value="Boy / Mülakat">Boy / Mülakat</option>
-            </select>
-            <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-3 py-2 rounded-lg text-xs sm:text-sm transition">
-              + Soru Bırak
-            </button>
-          </div>
-          <input id="forumMessage" type="text" maxlength="200" required placeholder="Sorunu veya notunu yaz..." class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm" />
-        </form>
-
-        <div id="forumList" class="mt-4 space-y-2 max-h-56 overflow-y-auto"></div>
-      </div>
-
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">SSS • Sık Sorulanlar</span>
-        <h2 class="text-lg font-extrabold text-slate-900 mt-0.5 mb-3">Sık Sorulan Sorular</h2>
-
-        <div class="space-y-2.5 text-xs sm:text-sm">
-          <details class="bg-slate-50 border border-slate-200 rounded-xl p-3.5" open>
-            <summary class="font-bold text-slate-900 cursor-pointer">Üyelik yapmadan profilim, kayıtlı ilanlar ve sohbetler saklanır mı?</summary>
-            <p class="text-slate-600 mt-2 text-xs leading-relaxed">
-              Evet, seçtiğin düzey, puan, iller, belgeler, kayıtlı ilanlar, sohbet mesajları ve forum soruları tarayıcındaki yerel depolamada (LocalStorage) tutulur.
-            </p>
-          </details>
-
-          <details class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
-            <summary class="font-bold text-slate-900 cursor-pointer">Başvuru ve resmî şartlar nereden kontrol edilir?</summary>
-            <p class="text-slate-600 mt-2 text-xs leading-relaxed">
-              İlan kartlarındaki "Resmî Site" bağlantısı doğrudan ilgili resmî kaynağa yönlendirir; kesin şartlar ve tarihler için resmî kılavuz esas alınır.
-            </p>
-          </details>
-
-          <details class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
-            <summary class="font-bold text-slate-900 cursor-pointer">Özel alım bildirimlerini nasıl alırım?</summary>
-            <p class="text-slate-600 mt-2 text-xs leading-relaxed">
-              Size özel istediğiniz alım açılınca bot size bilgi versin. <a href="https://t.me/kamu_ilan_kpss_bot" target="_blank" rel="noopener" class="text-sky-700 font-semibold underline">@kamu_ilan_kpss_bot</a> üzerinden botu açabilirsin.
-            </p>
-          </details>
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+      <span class="text-xs font-bold uppercase tracking-wider text-indigo-700">Forum • Soru-Cevap</span>
+      <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">Kalıcı Soru-Cevap Panosu</h2>
+      <form onsubmit="addForumPost(event)" class="mt-3 space-y-2.5">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <input id="forumAuthor" type="text" maxlength="30" placeholder="Rumuz (Örn: Aday)" class="border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm" />
+          <select id="forumTopic" class="border border-slate-300 rounded-lg px-2.5 py-2 text-xs sm:text-sm bg-white">
+            <option value="Kâtiplik">Kâtiplik</option>
+            <option value="KPSS Tercih">KPSS Tercih</option>
+            <option value="Boy / Mülakat">Boy / Mülakat</option>
+          </select>
+          <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-3 py-2 rounded-lg text-xs sm:text-sm transition">+ Soru Bırak</button>
         </div>
-      </div>
+        <input id="forumMessage" type="text" maxlength="200" required placeholder="Sorunu veya notunu yaz..." class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm" />
+      </form>
+      <div id="forumList" class="mt-4 space-y-2 max-h-48 overflow-y-auto"></div>
     </div>
   </section>
 
-  <!-- ALT BİLGİ -->
   <footer class="bg-slate-950 text-slate-300 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
       <div>
-        <span class="font-bold text-white">KAMU İlan & KPSS Rehberi</span> • <a href="https://t.me/kamu_ilan_kpss_bot" target="_blank" rel="noopener" class="text-sky-400 hover:text-sky-300 underline">@kamu_ilan_kpss_bot</a> • Size özel istediğiniz alım açılınca bot size bilgi versin.
+        <span class="font-bold text-white">KAMU İlan & KPSS Rehberi</span> • <a href="https://t.me/kamu_ilan_kpss_bot" target="_blank" rel="noopener" class="text-sky-400 hover:text-sky-300 underline">@kamu_ilan_kpss_bot</a>
       </div>
       <div class="flex flex-wrap items-center justify-center gap-4">
         <button type="button" onclick="goHome(event)" class="text-emerald-400 hover:text-emerald-300 font-semibold">Ana Sayfa</button>
@@ -473,7 +607,6 @@
     </div>
   </footer>
 
-  <!-- DETAY & YASAL BİLGİ MODALI -->
   <div id="detailModal" class="hidden fixed inset-0 bg-slate-950/70 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
       <button type="button" onclick="closeDetailModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold">&times;</button>
@@ -488,62 +621,65 @@
     };
 
     const HERO_FEATURED_SLIDES = [
-      {
-        institution: "ADLİ TIP KURUMU BAŞKANLIĞI",
-        headline: "181 PERSONEL ALACAK",
-        sub: "Büro Personeli, Laborant, Destek Personeli (Hizmetli) • Resmî Başvuru Ekranı",
-        badge: "Öne Çıkan Alım • Sayfa 1 / 30",
-        url: "https://kamuilan.sbb.gov.tr/",
-        theme: "from-slate-950 via-teal-950 to-slate-900"
-      },
-      {
-        institution: "İÇİŞLERİ BAKANLIĞI",
-        headline: "60 KAYMAKAM ADAYI ALACAK",
-        sub: "Lisans Mezunları İçin Merkezî / Kurumsal Alım Duyurusu",
-        badge: "Öne Çıkan Alım • Sayfa 2 / 30",
-        url: "https://kariyerkapisi.gov.tr/isealim",
-        theme: "from-slate-950 via-indigo-950 to-slate-900"
-      },
-      {
-        institution: "ADALET BAKANLIĞI & CTE",
-        headline: "ZABIT KÂTİBİ & ADALET PERSONELİ",
-        sub: "KPSS Puanı, 3 Dakika Klavye Uygulaması ve Sözlü Mülakat Rehberi",
-        badge: "Kâtiplik Vitrini • Sayfa 3 / 30",
-        url: "https://cte.adalet.gov.tr/",
-        theme: "from-slate-950 via-emerald-950 to-slate-900"
-      },
-      {
-        institution: "MSB & JANDARMA TEMİN",
-        headline: "ASKERİ ALIMLAR & DUYURULAR",
-        sub: "Resmî Personel Temin Başvuru, Boy/Kilo/Mülakat ve Kılavuz Ekranları",
-        badge: "Askeri Temin • Sayfa 4 / 30",
-        url: "https://personeltemin.msb.gov.tr/",
-        theme: "from-slate-950 via-amber-950 to-slate-900"
-      }
+      { institution: "ADALET BAKANLIĞI & CTE", headline: "ZABIT KÂTİBİ F / Q KLAVYE SİMÜLASYONU", sub: "3 Dakikalık Sınav Simülasyonu, F Klavye Dersleri, Yazarak Oyun ve Kullanıcı Yarışı", badge: "Kâtiplik Merkezi • Sayfa 1 / 30", url: "#katiplikMerkeziBolumu", theme: "from-slate-950 via-indigo-950 to-slate-900" },
+      { institution: "ADLİ TIP KURUMU BAŞKANLIĞI", headline: "181 PERSONEL ALACAK", sub: "Büro Personeli, Laborant, Destek Personeli • Resmî Başvuru Ekranı", badge: "Öne Çıkan Alım • Sayfa 2 / 30", url: "https://kamuilan.sbb.gov.tr/", theme: "from-slate-950 via-teal-950 to-slate-900" },
+      { institution: "İÇİŞLERİ BAKANLIĞI", headline: "60 KAYMAKAM ADAYI ALACAK", sub: "Lisans Mezunları İçin Merkezî / Kurumsal Alım Duyurusu", badge: "Öne Çıkan Alım • Sayfa 3 / 30", url: "https://kariyerkapisi.gov.tr/isealim", theme: "from-slate-950 via-emerald-950 to-slate-900" }
+    ];
+
+    const SIM_TEXTS = [
+      "Mahkeme kaleminde duruşma tutanaklarının düzenli tutulması, tebligat mazbatalarının kontrolü ve dosya kayıtlarının eksiksiz işlenmesi yargı hizmetlerinin sağlıklı yürütülmesi bakımından büyük önem taşır. Zabıt kâtipliği uygulama sınavında verilen metin süresinde dikkatle ve hatasız yazılmalıdır.",
+      "Dava dilekçelerinin esas defterine kaydedilmesi, duruşma gün ve saatlerinin taraflara bildirilmesi ile istinaf ve temyiz sürelerinin takip edilmesi adliye personelinin temel görevleri arasındadır. Hızlı ve hatasız klavye kullanımı mesleki verimliliği doğrudan artırır.",
+      "İcra müdürlükleri ve yazı işleri müdürlüklerinde evrakların tasnifi, elektronik ortamda kayıtların oluşturulması ve vatandaş bilgilendirmeleri mevzuat hükümlerine göre yapılır. Klavye çalışmasında önce doğruluk ardından hız hedefiyle düzenli pratik yapılmalıdır."
+    ];
+
+    const KEYBOARD_LESSONS = [
+      { title: "Temel sıra: sol el", desc: "Sol el dört parmağını temel sırada tutarak yaz.", sample: "fgod odgf ffgf gogo dddd ffff" },
+      { title: "Temel sıra: sağ el", desc: "Sağ el dört parmağını temel sırada tutarak yaz.", sample: "aekl lkea aaaa eeee kkkk llll" },
+      { title: "Temel sıra: orta tuşlar", desc: "Orta parmak ve işaret parmaklarıyla çalış.", sample: "fkla lfka gaei igae fela kgoi" },
+      { title: "Temel sıra kelimeler", desc: "Temel sıra harflerinden oluşan kısa kelimeler.", sample: "kale feda elak gala leke afak" },
+      { title: "Üst sıra: sol el", desc: "Üst sıraya uzanıp temel sıraya dön.", sample: "pğüi iüpğ pppp ğğğğ üüüü iiii" },
+      { title: "Üst sıra: sağ el", desc: "Sağ üst sıra tuşlarıyla pratik yap.", sample: "drnh hnrd dddd rrrr nnnn hhhh" },
+      { title: "Alt sıra: tüm eller", desc: "Alt sıra harfleriyle denge kur.", sample: "çzsb bszç çççç zzzz ssss bbbb" },
+      { title: "Tüm harfler & kelimeler", desc: "Karışık adliye ve günlük kelimeler.", sample: "mahkeme karar dosya duruşma tebligat kalem" }
+    ];
+
+    const WORD_BANKS = {
+      hukuk: ["mahkeme", "duruşma", "tebligat", "dilekçe", "istinaf", "temyiz", "hüküm", "vekalet", "müvekkil", "tutanak", "icra", "bilirkişi", "gerekçe", "esas", "karar"],
+      uzun: ["cumhuriyet", "değerlendirme", "bilgilendirme", "soruşturma", "yönetmelik", "sözleşmeli", "kâtipliği", "uygulama", "müdürlüğü", "başkanlığı"],
+      rakam: ["2026", "180", "90", "30", "15", "2025", "100", "45", "12", "75"],
+      genel: ["kamu", "personel", "memur", "kurum", "görev", "süreç", "başvuru", "belge", "kadro", "sınav", "tercih", "liste"]
+    };
+
+    const HATA_GAME_ITEMS = [
+      { wrong: "mahkme", right: "mahkeme", hint: "Harf eksik: 'e' harfini ekle" },
+      { wrong: "teblıgat", right: "tebligat", hint: "İnce/kalın 'ı' / 'i' kontrolü" },
+      { wrong: "dilekce", right: "dilekçe", hint: "Türkçe 'ç' karakteri" },
+      { wrong: "tutanakı", right: "tutanağı", hint: "Ünsüz yumuşaması: 'k' -> 'ğ'" },
+      { wrong: "istnaf", right: "istinaf", hint: "Harf eksik: 'i' harfi" },
+      { wrong: "müvekkıl", right: "müvekkil", hint: "Son harf 'i' olmalı" },
+      { wrong: "sözleşmeli", right: "sözleşmeli", hint: "Doğru yazımı teyit et" },
+      { wrong: "duruşmaa", right: "duruşma", hint: "Fazla 'a' harfini çıkar" }
+    ];
+
+    const DEFAULT_RACE_BOTS = [
+      { nick: "AdaletKatibi_F", net: 108, acc: "%98", layout: "F" },
+      { nick: "KalemHizi_94", net: 96, acc: "%96", layout: "F" },
+      { nick: "AdanaAday", net: 88, acc: "%95", layout: "Q" },
+      { nick: "Tutanak3Dk", net: 79, acc: "%93", layout: "F" }
     ];
 
     const PROFESSIONS_GUIDE = [
       { name: "Düz Memur / Büro Personeli", edu: "Lisans / Önlisans / Ortaöğretim", pastScore: "68 – 92 (düzeye göre)", reqs: "KPSS P3 / P93 / P94, bölüm şartı", examType: "MERKEZI", physical: "Boy/kilo barajı yok; mülakat genelde yok (kurumsal alım hariç)." },
       { name: "Zabıt Kâtibi / Mübaşir", edu: "Lisans / Önlisans / Ortaöğretim", pastScore: "70 – 85+", reqs: "KPSS, adalet/klavye şartı, 3 dk klavye hızı", examType: "MULAKAT", physical: "Boy/kilo şartı genelde yok; klavye uygulama + sözlü mülakat var." },
-      { name: "İnfaz ve Koruma Memuru (İKM)", edu: "Önlisans / Ortaöğretim", pastScore: "70 – 83+", reqs: "KPSS P93 / P94, ehliyet/kurum şartları", examType: "MULAKAT", physical: "Boy ve kilo şartı var (erkek/kadın alt/üst sınırlar); fiziki/sözlü mülakat var." },
-      { name: "Polis / POMEM / PMYO", edu: "Lisans / Önlisans / Ortaöğretim", pastScore: "ALES/KPSS barajına göre değişir", reqs: "İlgili okul/KPSS/yaş ve adli şartlar", examType: "MULAKAT", physical: "Boy (ör. 167/162 cm civarı) ve BKİ (kilo) şartı + parkur/mülakat var." },
-      { name: "Subay / Astsubay / Uzman Erbaş", edu: "Lisans / Önlisans / Ortaöğretim", pastScore: "KPSS / AYT / TABAN barajları", reqs: "Askeri temin kılavuzu ve sağlık şartları", examType: "MULAKAT", physical: "Boy-kilo tablosu + fiziki yeterlilik + sözlü mülakat + sağlık raporu var." },
-      { name: "Özel Güvenlik Görevlisi (ÖGG)", edu: "Ortaöğretim (Lise)", pastScore: "60 – 82+", reqs: "KPSS P94, Silahlı/Silahsız ÖGG kimliği", examType: "MULAKAT", physical: "Kuruma göre boy/görünüm/vardiya şartı ve mülakat uygulanabilir." },
-      { name: "Şoför / Ağır Vasıta Personeli", edu: "Ortaöğretim / Önlisans", pastScore: "62 – 84+", reqs: "KPSS P94 / P93, B/D ehliyet, SRC, psikoteknik", examType: "MERKEZI", physical: "Boy/kilo barajı yok; sürücü/sağlık ve uygulamalı sürüş şartı aranabilir." },
-      { name: "Hemşire / Sağlık Teknikeri", edu: "Lisans / Önlisans", pastScore: "68 – 88+", reqs: "KPSS P3 / P93, ilgili sağlık bölümü diploması", examType: "MERKEZI", physical: "Boy/kilo barajı yok; nöbet/vardiya ve sağlık uygunluğu aranır." },
-      { name: "Mühendis / Mimar / Tekniker", edu: "Lisans / Önlisans", pastScore: "72 – 89+", reqs: "KPSS P3 / P93, mühendislik/mimarlık/teknik bölüm", examType: "MERKEZI", physical: "Boy/kilo şartı yok; bazı teknik kadrolarda mülakat/uygulama olabilir." },
-      { name: "Öğretmen / Akademisyen", edu: "Lisans / Yüksek Lisans / Doktora", pastScore: "KPSS / AGS / ALES + YDS", reqs: "Eğitim/alan mezuniyeti, formasyon/ALES/dil", examType: "MULAKAT", physical: "Boy/kilo şartı yok; akademide jüri/sözlü, bazı alımlarda mülakat olabilir." },
-      { name: "Hizmetli / Destek / İşçi", edu: "Ortaöğretim / Önlisans", pastScore: "65 – 85+ (veya kura/İŞKUR)", reqs: "KPSS P94 / P93 veya İŞKUR/kura şartları", examType: "MERKEZI", physical: "Genelde boy/kilo barajı yok; temizlik/bakım/saha çalışma şartı var." }
+      { name: "İnfaz ve Koruma Memuru (İKM)", edu: "Önlisans / Ortaöğretim", pastScore: "70 – 83+", reqs: "KPSS P93 / P94, ehliyet/kurum şartları", examType: "MULAKAT", physical: "Boy ve kilo şartı var; fiziki/sözlü mülakat var." },
+      { name: "Şoför / Ağır Vasıta Personeli", edu: "Ortaöğretim / Önlisans", pastScore: "62 – 84+", reqs: "KPSS P94 / P93, B/D ehliyet, SRC, psikoteknik", examType: "MERKEZI", physical: "Boy/kilo barajı yok; sürücü/sağlık şartı aranır." }
     ];
 
     const CHAT_ROOMS = [
       { id: "lisans", name: "Lisans odası", desc: "4 yıllık mezunlar • P3 tercih ve kadro sohbeti", badge: "Lisans" },
       { id: "onlisans", name: "Önlisans odası", desc: "2 yıllık mezunlar • P93, kâtiplik ve sağlık kadroları", badge: "Önlisans" },
       { id: "ortaogretim", name: "Ortaöğretim odası", desc: "Lise mezunları • P94, şoför, ÖGG ve hizmetli", badge: "Lise" },
-      { id: "ekpss", name: "EKPSS odası", desc: "EKPSS başvuruları, tercih ve kadro sohbeti", badge: "EKPSS" },
-      { id: "tercih", name: "Tercih dönemi odası", desc: "Tercih listeleri, il seçimi ve puan yorumları", badge: "Tercih" },
-      { id: "calisanlar", name: "Sınava çalışanlar odası", desc: "Çalışma programı, deneme ve kaynak paylaşımı", badge: "Çalışma" },
-      { id: "atananlar", name: "Atananlar ve yeni memurlar odası", desc: "Evrak teslimi, güvenlik soruşturması ve göreve başlama", badge: "Atama" }
+      { id: "tercih", name: "Tercih dönemi odası", desc: "Tercih listeleri, il seçimi ve puan yorumları", badge: "Tercih" }
     ];
 
     const CITIES = ["Adana", "Ankara", "İstanbul", "İzmir", "Bursa", "Antalya", "Konya", "Gaziantep", "Kayseri", "Eskişehir", "Samsun", "Trabzon"];
@@ -558,7 +694,7 @@
         badge: "Gizlilik & Yerel Saklama",
         title: "Tarayıcı Yerel Saklama (LocalStorage) Bilgilendirmesi",
         paragraphs: [
-          "Üyelik gerektirmeden seçtiğin düzey, puan, iller, belgeler, kayıtlı ilanlar, sohbet odası mesajları ve forum soruları tarayıcındaki LocalStorage alanında saklanır.",
+          "Üyelik gerektirmeden seçtiğin düzey, puan, iller, belgeler, kayıtlı ilanlar, klavye kayıtları, yarış skorları, sohbet mesajları ve forum soruları tarayıcındaki LocalStorage alanında saklanır.",
           "Başvurular için doğrudan resmî kurum veya ilan kaynağına yönlendirme yapılır."
         ]
       },
@@ -566,53 +702,15 @@
         badge: "Bilgilendirme & Sorumluluk Reddi",
         title: "İlan Kaynakları ve Sorumluluk Reddi",
         paragraphs: [
-          "Platform resmî devlet kurumu değildir; kamuya açık ilan özetleri, tercih/filtreleme kolaylığı ve referans rehberleri sunar.",
+          "Platform resmî devlet kurumu değildir; kamuya açık ilan özetleri, klavye simülasyonu ve referans rehberleri sunar.",
           "Son başvuru tarihi, taban puan ve şartlar için ilgili resmî duyuru esas alınmalıdır."
         ]
       }
     };
 
     const ASKERI_OFFICIAL_CARDS = [
-      {
-        id: "askeri-msb-resmi",
-        source: "MSB Personel Temin",
-        group: "askeri",
-        statusType: "ASKERI",
-        category: "Askeri",
-        education: "Ortaöğretim",
-        city: "Türkiye Geneli",
-        dateLabel: "20 Kasım",
-        daySub: "BUGÜN",
-        minScore: 0,
-        requiredDocs: [],
-        title: "Milli Savunma Bakanlığı (MSB) Güncel Temin Başvuruları ve Duyurular",
-        institution: "T.C. Millî Savunma Bakanlığı Personel Temin",
-        deadline: "Resmî Portal",
-        summary: "Subay, astsubay, uzman çavuş/erbaş ve sözleşmeli personel/er temin başvuruları ile duyuru ekranı.",
-        details: "MSB Personel Temin sistemindeki güncel başvurular, kılavuzlar ve duyurular doğrudan resmî sitede yayımlanmaktadır.",
-        officialUrl: "https://personeltemin.msb.gov.tr/",
-        isOfficialPortalCard: true
-      },
-      {
-        id: "askeri-jandarma-resmi",
-        source: "Jandarma Personel Temin",
-        group: "askeri",
-        statusType: "ASKERI",
-        category: "Askeri",
-        education: "Ortaöğretim",
-        city: "Türkiye Geneli",
-        dateLabel: "19 Kasım",
-        daySub: "DÜN",
-        minScore: 0,
-        requiredDocs: [],
-        title: "Jandarma ve Sahil Güvenlik Akademisi / Temin Güncel Duyurular",
-        institution: "Jandarma Personel Temin Sistemi",
-        deadline: "Resmî Portal",
-        summary: "Jandarma ve Sahil Güvenlik alımları, başvuru duyuruları ve aday bilgilendirme ekranı.",
-        details: "Jandarma Personel Temin sayfasındaki güncel başvuru duyuruları doğrudan resmî portal üzerinden yürütülmektedir.",
-        officialUrl: "https://personeltemin.jandarma.gov.tr/",
-        isOfficialPortalCard: true
-      }
+      { id: "askeri-msb-resmi", source: "MSB Personel Temin", group: "askeri", statusType: "ASKERI", category: "Askeri", education: "Ortaöğretim", city: "Türkiye Geneli", dateLabel: "20 Kasım", daySub: "BUGÜN", minScore: 0, requiredDocs: [], title: "Milli Savunma Bakanlığı (MSB) Güncel Temin Başvuruları ve Duyurular", institution: "T.C. Millî Savunma Bakanlığı Personel Temin", deadline: "Resmî Portal", summary: "Subay, astsubay, uzman çavuş/erbaş ve sözleşmeli personel/er temin başvuruları.", details: "MSB Personel Temin sistemindeki güncel başvurular resmî sitede yayımlanmaktadır.", officialUrl: "https://personeltemin.msb.gov.tr/", isOfficialPortalCard: true },
+      { id: "askeri-jandarma-resmi", source: "Jandarma Personel Temin", group: "askeri", statusType: "ASKERI", category: "Askeri", education: "Ortaöğretim", city: "Türkiye Geneli", dateLabel: "19 Kasım", daySub: "DÜN", minScore: 0, requiredDocs: [], title: "Jandarma ve Sahil Güvenlik Akademisi / Temin Güncel Duyurular", institution: "Jandarma Personel Temin Sistemi", deadline: "Resmî Portal", summary: "Jandarma ve Sahil Güvenlik alımları, başvuru duyuruları ve aday bilgilendirme ekranı.", details: "Jandarma Personel Temin sayfasındaki güncel başvuru duyuruları resmî portal üzerinden yürütülmektedir.", officialUrl: "https://personeltemin.jandarma.gov.tr/", isOfficialPortalCard: true }
     ];
 
     const FALLBACK_ITEMS = [
@@ -620,8 +718,7 @@
       { id: "ilan-2", source: "Adalet / İlan.gov.tr", group: "genel", statusType: "SOZLESMELI", category: "Adalet", education: "Önlisans", city: "Adana", dateLabel: "20 Kasım", daySub: "BUGÜN", minScore: 70, requiredDocs: ["Bilgisayar"], title: "Adalet Bakanlığı Sözleşmeli Zabıt Kâtibi & Adliye Personeli Alımı", institution: "Adalet Bakanlığı", deadline: "Aktif", summary: "Klavye uygulama ve sözlü mülakat aşamalı zabıt kâtipliği ve adliye kadroları.", details: "KPSS şartı, 3 dakikalık klavye uygulama sınavı ve mülakat süreci uygulanır.", officialUrl: "https://cte.adalet.gov.tr/" },
       { id: "ilan-3", source: "İŞKUR Kamu", group: "genel", statusType: "ISCI", category: "Sağlık", education: "Ortaöğretim", city: "İzmir", dateLabel: "19 Kasım", daySub: "DÜN", minScore: 60, requiredDocs: [], title: "Kamu Kurumları Sürekli İşçi / Destek ve Bakım Alımı", institution: "İŞKUR Kamu İlanları", deadline: "Aktif", summary: "Kamu kurum ve tesislerinde sürekli işçi / destek personeli kadroları.", details: "İŞKUR ilan şartlarına göre resmî portal üzerinden başvurulur.", officialUrl: "https://www.iskur.gov.tr/ilanlar/kamu-memur-alim-ilanlari/" },
       { id: "ilan-4", source: "İlan.gov.tr Belediye", group: "genel", statusType: "BELEDIYE", category: "Mühendis", education: "Lisans", city: "Bursa", dateLabel: "19 Kasım", daySub: "DÜN", minScore: 72, requiredDocs: [], title: "Belediye Başkanlıkları Memur, Mühendis ve Zabıta Alımı", institution: "İlan.gov.tr Belediye İlanları", deadline: "Aktif", summary: "Belediyelerde teknik, mühendislik ve idari kadro ilanları.", details: "İlgili KPSS puanı ve belediye ilan şartlarıyla resmî duyurudan başvurulur.", officialUrl: "https://www.ilan.gov.tr/" },
-      { id: "ilan-5", source: "İlan.gov.tr Akademik", group: "genel", statusType: "AKADEMIK", category: "Akademik", education: "Lisans", city: "İstanbul", dateLabel: "17 Kasım", daySub: "SALI", minScore: 70, requiredDocs: ["YDS"], title: "Üniversiteler Araştırma Görevlisi ve Öğretim Görevlisi Alımı", institution: "Yükseköğretim Kurumları", deadline: "Aktif", summary: "Üniversitelerde öğretim görevlisi ve araştırma görevlisi kadroları.", details: "ALES, yabancı dil ve ilgili kadro şartlarına göre başvurulur.", officialUrl: "https://www.ilan.gov.tr/ilan/kategori/8/kamu-akademik-personel?ats=5&currentPage=0" },
-      { id: "ilan-6", source: "Kariyer Kapısı", group: "genel", statusType: "SOZLESMELI", category: "Şoför", education: "Ortaöğretim", city: "Konya", dateLabel: "16 Kasım", daySub: "PAZARTESİ", minScore: 62, requiredDocs: ["Ehliyet", "SRC"], title: "Kamu Kurumlarına Sözleşmeli Şoför & Ulaştırma Alımı", institution: "Kariyer Kapısı", deadline: "Aktif", summary: "Sürücü belgesi, SRC ve psikoteknik belgeli şoför kadroları.", details: "KPSS puanı ve geçerli sürücü/SRC belgeleriyle başvurulur.", officialUrl: "https://kariyerkapisi.gov.tr/isealim" }
+      { id: "ilan-5", source: "Kariyer Kapısı", group: "genel", statusType: "SOZLESMELI", category: "Şoför", education: "Ortaöğretim", city: "Konya", dateLabel: "16 Kasım", daySub: "PAZARTESİ", minScore: 62, requiredDocs: ["Ehliyet", "SRC"], title: "Kamu Kurumlarına Sözleşmeli Şoför & Ulaştırma Alımı", institution: "Kariyer Kapısı", deadline: "Aktif", summary: "Sürücü belgesi, SRC ve psikoteknik belgeli şoför kadroları.", details: "KPSS puanı ve geçerli sürücü/SRC belgeleriyle başvurulur.", officialUrl: "https://kariyerkapisi.gov.tr/isealim" }
     ];
 
     let ITEMS = [...FALLBACK_ITEMS];
@@ -636,15 +733,36 @@
     let activeChatRoomId = "lisans";
     let activeProfFilter = "ALL";
 
+    let simTimerId = null;
+    let simRemainingSec = 180;
+    let activeLessonIdx = 0;
+    let wordDrillMode = "hukuk";
+    let wordQueue = [];
+    let wordIdx = 0;
+    let wordCorrect = 0;
+    let wordWrong = 0;
+
+    let dosyaInterval = null;
+    let dosyaScore = 0;
+    let dosyaLevel = 1;
+    let dosyaStreak = 1;
+    let dosyaLives = 3;
+    let dosyaTimeLeft = 100;
+    let dosyaCurrentTarget = "";
+    let dosyaActive = false;
+
+    let hataScore = 0;
+    let hataCount = 0;
+    let hataCurrentItem = HATA_GAME_ITEMS[0];
+
     function getAllCombinedPool() {
       return [...ITEMS.filter(x => !isAskeriItem(x)), ...getAskeriList()];
     }
 
     function renderHeroBgArt(pageIdx) {
       const patterns = [
-        `<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="p1" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="18" fill="none" stroke="rgba(52,211,153,0.28)" stroke-width="1.5"/><circle cx="30" cy="30" r="6" fill="rgba(56,189,248,0.22)"/></pattern></defs><rect width="100%" height="100%" fill="url(#p1)"/></svg>`,
-        `<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="p2" width="70" height="70" patternUnits="userSpaceOnUse"><path d="M0 35 L35 0 L70 35 L35 70 Z" fill="none" stroke="rgba(251,191,36,0.22)" stroke-width="1.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#p2)"/></svg>`,
-        `<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="p3" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M0 25 H50 M25 0 V50" stroke="rgba(129,140,248,0.22)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#p3)"/></svg>`
+        `<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="p1" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="18" fill="none" stroke="rgba(52,211,153,0.28)" stroke-width="1.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#p1)"/></svg>`,
+        `<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="p2" width="70" height="70" patternUnits="userSpaceOnUse"><path d="M0 35 L35 0 L70 35 L35 70 Z" fill="none" stroke="rgba(251,191,36,0.22)" stroke-width="1.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#p2)"/></svg>`
       ];
       document.getElementById("heroBgVisual").innerHTML = patterns[pageIdx % patterns.length];
     }
@@ -669,16 +787,12 @@
         };
       }
 
-      box.className = `relative bg-gradient-to-r ${slideData.theme} text-white rounded-2xl p-6 md:p-9 shadow-lg border border-slate-800 overflow-hidden transition-colors`;
+      box.className = `relative bg-gradient-to-r ${slideData.theme} text-white rounded-2xl p-6 md:p-8 shadow-lg border border-slate-800 overflow-hidden transition-colors`;
       document.getElementById("heroSliderContent").innerHTML = `
-        <span class="inline-block bg-white/15 border border-white/20 text-emerald-200 text-xs font-bold px-3 py-1 rounded-full mb-3">${slideData.badge}</span>
+        <span class="inline-block bg-white/15 border border-white/20 text-emerald-200 text-xs font-bold px-3 py-1 rounded-full mb-2.5">${slideData.badge}</span>
         <div class="text-xs sm:text-sm font-bold tracking-wider uppercase text-slate-300">${slideData.institution}</div>
-        <h1 class="text-xl sm:text-3xl md:text-4xl font-extrabold mt-1.5 tracking-tight text-white">${slideData.headline}</h1>
-        <p class="text-xs sm:text-sm text-slate-200 mt-2 line-clamp-2">${slideData.sub}</p>
-        <div class="mt-4 flex items-center justify-center gap-3 flex-wrap">
-          <a href="${slideData.url}" target="_blank" rel="noopener" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs sm:text-sm px-4 py-2 rounded-xl transition">İncele / Resmî Kaynak ↗</a>
-          <a href="#robotSection" class="bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-xl transition">Tercih Robotu</a>
-        </div>
+        <h2 class="text-xl sm:text-3xl font-extrabold mt-1 tracking-tight text-white">${slideData.headline}</h2>
+        <p class="text-xs sm:text-sm text-slate-200 mt-1.5 line-clamp-2">${slideData.sub}</p>
       `;
 
       document.getElementById("heroSliderDots").innerHTML = Array.from({ length: TOTAL_HERO_PAGES }, (_, idx) => {
@@ -712,7 +826,7 @@
       if (item.statusType) return item.statusType;
       if (isAskeriItem(item)) return "ASKERI";
       const hay = normalizeText(`${item.title} ${item.category} ${item.source}`);
-      if (hay.includes("akademik") || hay.includes("ogretim") || hay.includes("arastirma gorevlisi")) return "AKADEMIK";
+      if (hay.includes("akademik") || hay.includes("ogretim")) return "AKADEMIK";
       if (hay.includes("belediye")) return "BELEDIYE";
       if (hay.includes("isci") || hay.includes("iskur")) return "ISCI";
       if (hay.includes("sozlesmeli") || hay.includes("katip")) return "SOZLESMELI";
@@ -727,7 +841,6 @@
         SOZLESMELI: allItems.filter(x => inferStatusType(x) === "SOZLESMELI").length,
         ISCI: allItems.filter(x => inferStatusType(x) === "ISCI").length,
         BELEDIYE: allItems.filter(x => inferStatusType(x) === "BELEDIYE").length,
-        AKADEMIK: allItems.filter(x => inferStatusType(x) === "AKADEMIK").length,
         ASKERI: allItems.filter(x => inferStatusType(x) === "ASKERI").length
       };
 
@@ -737,7 +850,6 @@
         { key: "SOZLESMELI", label: "SÖZLEŞMELİ PERSONEL", icon: "📄" },
         { key: "ISCI", label: "İŞÇİ", icon: "🛠️" },
         { key: "BELEDIYE", label: "Belediye İlanları", icon: "🏙️" },
-        { key: "AKADEMIK", label: "Akademik İlanlar", icon: "🎓" },
         { key: "ASKERI", label: "Askeri Alımlar", icon: "⚔️" }
       ];
 
@@ -768,15 +880,8 @@
       applyProfileMatch(showFeedback);
     }
 
-    function loadMoreJobs() {
-      visibleLimit += LOAD_MORE_STEP;
-      renderTimelineJobs(lastFilteredEntries);
-    }
-
-    function showAllFilteredJobs() {
-      visibleLimit = Math.max(lastFilteredEntries.length, INITIAL_VISIBLE_JOBS);
-      renderTimelineJobs(lastFilteredEntries);
-    }
+    function loadMoreJobs() { visibleLimit += LOAD_MORE_STEP; renderTimelineJobs(lastFilteredEntries); }
+    function showAllFilteredJobs() { visibleLimit = Math.max(lastFilteredEntries.length, INITIAL_VISIBLE_JOBS); renderTimelineJobs(lastFilteredEntries); }
 
     function setQuickKeyword(kw) {
       document.getElementById("searchKeywordInput").value = kw;
@@ -854,16 +959,12 @@
     function toggleCity(city) {
       if (selectedCities.includes(city)) selectedCities = selectedCities.filter(c => c !== city);
       else selectedCities.push(city);
-      renderCityChips();
-      saveProfileFromUI();
-      resetVisibleLimitAndFilter(false);
+      renderCityChips(); saveProfileFromUI(); resetVisibleLimitAndFilter(false);
     }
 
     function clearSelectedCities() {
       selectedCities = [];
-      renderCityChips();
-      saveProfileFromUI();
-      resetVisibleLimitAndFilter(false);
+      renderCityChips(); saveProfileFromUI(); resetVisibleLimitAndFilter(false);
     }
 
     function normalizeText(str) {
@@ -875,7 +976,7 @@
     }
 
     const PRESET_DOC_KEYWORDS = {
-      EHLİYET: ["ehliyet", "surucu", "b sinifi", "d sinifi"],
+      EHLİYET: ["ehliyet", "surucu"],
       SRC: ["src", "psikoteknik"],
       GÜVENLİK: ["ogg", "guvenlik"],
       BİLGİSAYAR: ["bilgisayar", "klavye", "hijyen", "sertifika"],
@@ -913,20 +1014,14 @@
       const input = document.getElementById("profileCustomDocInput");
       const raw = (input.value || "").trim();
       if (!raw) return;
-      if (!customDocs.some(d => normalizeText(d) === normalizeText(raw))) {
-        customDocs.push(raw);
-      }
+      if (!customDocs.some(d => normalizeText(d) === normalizeText(raw))) customDocs.push(raw);
       input.value = "";
-      renderCustomDocChips();
-      saveProfileFromUI();
-      resetVisibleLimitAndFilter(false);
+      renderCustomDocChips(); saveProfileFromUI(); resetVisibleLimitAndFilter(false);
     }
 
     function removeCustomDoc(idx) {
       customDocs.splice(idx, 1);
-      renderCustomDocChips();
-      saveProfileFromUI();
-      resetVisibleLimitAndFilter(false);
+      renderCustomDocChips(); saveProfileFromUI(); resetVisibleLimitAndFilter(false);
     }
 
     function getProfile() {
@@ -939,9 +1034,7 @@
       const cat = document.getElementById("profileCat").value;
       const telegram = document.getElementById("profileTelegram").value.trim();
       const presetDocs = Array.from(document.querySelectorAll(".profile-doc-check:checked")).map(cb => cb.value);
-      localStorage.setItem("kpss_profile", JSON.stringify({
-        edu, scoreVal, cat, telegram, presetDocs, customDocs, cities: selectedCities
-      }));
+      localStorage.setItem("kpss_profile", JSON.stringify({ edu, scoreVal, cat, telegram, presetDocs, customDocs, cities: selectedCities }));
       updateProfileSummaryBadge();
     }
 
@@ -987,31 +1080,13 @@
         }
 
         if (score !== null && item.minScore > 0) {
-          if (score >= item.minScore) {
-            matched.push({ item, matchType: "exact", diff: 0, matchedCustomDocs: matchedCustom });
-          } else if (item.minScore - score <= NEAR_SCORE_MARGIN) {
-            matched.push({ item, matchType: "near", diff: item.minScore - score, matchedCustomDocs: matchedCustom });
-          }
+          if (score >= item.minScore) matched.push({ item, matchType: "exact", diff: 0, matchedCustomDocs: matchedCustom });
+          else if (item.minScore - score <= NEAR_SCORE_MARGIN) matched.push({ item, matchType: "near", diff: item.minScore - score, matchedCustomDocs: matchedCustom });
         } else {
-          matched.push({
-            item,
-            matchType: (score !== null || matchedCustom.length > 0) ? "exact" : "normal",
-            diff: 0,
-            matchedCustomDocs: matchedCustom
-          });
+          matched.push({ item, matchType: (score !== null || matchedCustom.length > 0) ? "exact" : "normal", diff: 0, matchedCustomDocs: matchedCustom });
         }
       });
 
-      const titleMap = {
-        ALL: "KAMU PERSONEL İLANLARI",
-        MEMUR: "MEMUR İLANLARI",
-        SOZLESMELI: "SÖZLEŞMELİ PERSONEL İLANLARI",
-        ISCI: "İŞÇİ ALIM İLANLARI",
-        BELEDIYE: "BELEDİYE İLANLARI",
-        AKADEMIK: "AKADEMİK İLANLAR",
-        ASKERI: "ASKERİ ALIMLAR & DUYURULAR"
-      };
-      document.getElementById("listHeading").textContent = titleMap[activeStatusFilter] || "KAMU PERSONEL İLANLARI";
       renderTimelineJobs(matched);
       if (showFeedback) {
         document.getElementById("profileDocFeedback").textContent = `Filtre uygulandı: ${matched.length} ilan eşleşti.`;
@@ -1032,7 +1107,7 @@
         : `${totalCount} ilan`;
 
       if (slicedEntries.length === 0) {
-        container.innerHTML = `<div class="bg-slate-50 border border-slate-200 rounded-xl p-8 text-center"><p class="font-bold text-slate-700">Seçili kriterlere uyan ilan bulunamadı.</p><p class="text-xs text-slate-500 mt-1">Aramayı veya filtreleri sıfırlayabilirsin.</p></div>`;
+        container.innerHTML = `<div class="bg-slate-50 border border-slate-200 rounded-xl p-8 text-center"><p class="font-bold text-slate-700">Seçili kriterlere uyan ilan bulunamadı.</p></div>`;
         moreArea.innerHTML = "";
         return;
       }
@@ -1051,11 +1126,8 @@
           const isSaved = savedIds.includes(item.id);
           const statusTag = inferStatusType(item);
           let matchBadge = "";
-          if (matchType === "exact") {
-            matchBadge = `<span class="bg-emerald-600 text-white text-[11px] font-bold px-2 py-0.5 rounded">✓ Uygun</span>`;
-          } else if (matchType === "near") {
-            matchBadge = `<span class="bg-amber-500 text-slate-950 text-[11px] font-bold px-2 py-0.5 rounded">⚡ +${diff.toFixed(1)} Puan Sınırda</span>`;
-          }
+          if (matchType === "exact") matchBadge = `<span class="bg-emerald-600 text-white text-[11px] font-bold px-2 py-0.5 rounded">✓ Uygun</span>`;
+          else if (matchType === "near") matchBadge = `<span class="bg-amber-500 text-slate-950 text-[11px] font-bold px-2 py-0.5 rounded">⚡ +${diff.toFixed(1)} Puan Sınırda</span>`;
 
           return `
             <div class="border border-slate-200 hover:border-emerald-400 bg-white rounded-xl p-4 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -1091,9 +1163,7 @@
               ${daySub ? `<div class="text-[10px] font-bold tracking-wider text-emerald-700 uppercase mt-0.5">${daySub}</div>` : ""}
               <div class="hidden sm:block w-3 h-3 rounded-full border-2 border-emerald-600 bg-white mt-2"></div>
             </div>
-            <div class="sm:col-span-10 space-y-2.5 border-l-0 sm:border-l border-slate-200 sm:pl-4">
-              ${cardsHtml}
-            </div>
+            <div class="sm:col-span-10 space-y-2.5 border-l-0 sm:border-l border-slate-200 sm:pl-4">${cardsHtml}</div>
           </div>
         `;
       });
@@ -1103,25 +1173,393 @@
       if (totalCount > slicedEntries.length) {
         const remaining = totalCount - slicedEntries.length;
         moreArea.innerHTML = `
-          <span class="text-xs text-slate-500">Sayfa uzamasın diye ilk ${slicedEntries.length} ilan gösteriliyor (${remaining} ilan daha var).</span>
+          <span class="text-xs text-slate-500">İlk ${slicedEntries.length} ilan gösteriliyor (${remaining} ilan daha var).</span>
           <div class="flex items-center gap-2">
-            <button type="button" onclick="loadMoreJobs()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 py-2 rounded-xl transition">
-              Daha Fazla Göster (+10)
-            </button>
-            <button type="button" onclick="showAllFilteredJobs()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs px-3 py-2 rounded-xl transition">
-              Tümünü Aç (${totalCount})
-            </button>
+            <button type="button" onclick="loadMoreJobs()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 py-2 rounded-xl transition">Daha Fazla Göster (+10)</button>
+            <button type="button" onclick="showAllFilteredJobs()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs px-3 py-2 rounded-xl transition">Tümünü Aç (${totalCount})</button>
           </div>
         `;
       } else if (totalCount > INITIAL_VISIBLE_JOBS) {
         moreArea.innerHTML = `
           <span class="text-xs text-slate-500">Tüm ${totalCount} ilan listelendi.</span>
-          <button type="button" onclick="visibleLimit = INITIAL_VISIBLE_JOBS; renderTimelineJobs(lastFilteredEntries); document.getElementById('ilanlarSection').scrollIntoView({behavior:'smooth'});" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs px-3.5 py-2 rounded-xl transition">
-            İlk 10 İlana Dön
-          </button>
+          <button type="button" onclick="visibleLimit = INITIAL_VISIBLE_JOBS; renderTimelineJobs(lastFilteredEntries);" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs px-3.5 py-2 rounded-xl transition">İlk 10 İlana Dön</button>
         `;
       } else {
         moreArea.innerHTML = "";
+      }
+    }
+
+    // KÂTİPLİK SEKMELERİ, F/Q KLAVYE, SİMÜLASYON, OYUN & YARIŞ
+    function switchKatiplikTab(tabKey) {
+      document.querySelectorAll(".k-panel").forEach(p => p.classList.add("hidden"));
+      document.getElementById(`kPanel-${tabKey}`).classList.remove("hidden");
+
+      document.querySelectorAll(".k-tab-btn").forEach(b => {
+        const isAct = b.id === `kTab-${tabKey}`;
+        if (tabKey === "race" && b.id === "kTab-race") {
+          b.className = "k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950 transition";
+        } else {
+          b.className = isAct
+            ? "k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white transition"
+            : "k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+        }
+      });
+    }
+
+    function initSimText() {
+      const idx = Number(document.getElementById("simTextSelect").value || 0);
+      document.getElementById("simTargetText").textContent = SIM_TEXTS[idx] || SIM_TEXTS[0];
+    }
+
+    function updateSimTimerUI() {
+      const m = String(Math.floor(simRemainingSec / 60)).padStart(2, "0");
+      const s = String(simRemainingSec % 60).padStart(2, "0");
+      document.getElementById("simTimerDisplay").textContent = `${m}:${s}`;
+    }
+
+    function startSim() {
+      if (simTimerId) clearInterval(simTimerId);
+      simRemainingSec = 180;
+      initSimText();
+      const inp = document.getElementById("simInputArea");
+      inp.value = "";
+      inp.focus();
+      onSimInput();
+      updateSimTimerUI();
+
+      simTimerId = setInterval(() => {
+        simRemainingSec -= 1;
+        updateSimTimerUI();
+        if (simRemainingSec <= 0) finishSim();
+      }, 1000);
+    }
+
+    function onSimInput() {
+      const target = document.getElementById("simTargetText").textContent || "";
+      const typed = document.getElementById("simInputArea").value || "";
+
+      let correctChars = 0;
+      let errors = 0;
+      for (let i = 0; i < typed.length; i++) {
+        if (typed[i] === target[i]) correctChars += 1;
+        else errors += 1;
+      }
+
+      const acc = typed.length > 0 ? Math.max(0, Math.round((correctChars / typed.length) * 100)) : 100;
+      const grossWords = typed.trim() ? typed.trim().split(/\s+/).length : 0;
+      const netWords = Math.max(0, grossWords - errors);
+
+      document.getElementById("simNetDisplay").textContent = String(netWords);
+      document.getElementById("simAccDisplay").textContent = `%${acc}`;
+      document.getElementById("simKeystrokesDisplay").textContent = String(typed.length);
+      document.getElementById("simErrorsDisplay").textContent = String(errors);
+    }
+
+    function finishSim() {
+      if (simTimerId) { clearInterval(simTimerId); simTimerId = null; }
+      const net = Number(document.getElementById("simNetDisplay").textContent || 0);
+      const acc = document.getElementById("simAccDisplay").textContent || "%100";
+      const layout = document.getElementById("simLayoutSelect").value;
+      const list = getSimHistory();
+      list.unshift({ net, acc, layout, date: new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }) });
+      localStorage.setItem("kpss_sim_history", JSON.stringify(list.slice(0, 20)));
+      renderSimHistory();
+    }
+
+    function getSimHistory() {
+      try {
+        const arr = JSON.parse(localStorage.getItem("kpss_sim_history"));
+        return Array.isArray(arr) ? arr : [];
+      } catch (e) { return []; }
+    }
+
+    function renderSimHistory() {
+      const box = document.getElementById("simHistoryList");
+      if (!box) return;
+      const list = getSimHistory();
+      if (list.length === 0) {
+        box.innerHTML = `<div class="text-slate-400 text-xs py-3 text-center">Henüz kayıtlı simülasyon yok.</div>`;
+        return;
+      }
+      box.innerHTML = list.map((r, i) => `
+        <div class="flex items-center justify-between bg-white border border-slate-200 rounded-lg px-3 py-2">
+          <span class="font-bold text-slate-800">#${list.length - i} • ${r.layout}</span>
+          <span class="font-extrabold text-emerald-700">${r.net} Net</span>
+          <span class="text-slate-500">${r.acc} • ${r.date}</span>
+        </div>
+      `).join("");
+    }
+
+    function clearSimHistory() { localStorage.removeItem("kpss_sim_history"); renderSimHistory(); }
+
+    // YARIŞ LİDERLİK TABLOSU & DÜELLO
+    function getRaceEntries() {
+      try {
+        const custom = JSON.parse(localStorage.getItem("kpss_race_scores"));
+        const userArr = Array.isArray(custom) ? custom : [];
+        return [...userArr, ...DEFAULT_RACE_BOTS].sort((a, b) => Number(b.net) - Number(a.net));
+      } catch (e) {
+        return [...DEFAULT_RACE_BOTS];
+      }
+    }
+
+    function publishCurrentSimToRace() {
+      const nick = (document.getElementById("raceNickInput")?.value || "").trim() || "BenimSkorum";
+      const net = Number(document.getElementById("simNetDisplay").textContent || 0);
+      const acc = document.getElementById("simAccDisplay").textContent || "%100";
+      const layout = document.getElementById("simLayoutSelect").value;
+
+      let custom = [];
+      try { custom = JSON.parse(localStorage.getItem("kpss_race_scores")) || []; } catch (e) {}
+      custom.unshift({ nick, net, acc, layout });
+      localStorage.setItem("kpss_race_scores", JSON.stringify(custom.slice(0, 15)));
+      renderRaceLeaderboard();
+      switchKatiplikTab("race");
+    }
+
+    function renderRaceLeaderboard() {
+      const box = document.getElementById("raceLeaderboardList");
+      if (!box) return;
+      const list = getRaceEntries();
+      box.innerHTML = list.map((row, idx) => `
+        <div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-3.5 py-2.5">
+          <div class="flex items-center gap-2.5">
+            <span class="w-6 h-6 rounded-full ${idx === 0 ? "bg-amber-400 text-slate-950" : "bg-slate-200 text-slate-800"} font-extrabold flex items-center justify-center text-xs">${idx + 1}</span>
+            <span class="font-bold text-slate-900">${row.nick}</span>
+            <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-semibold">${row.layout} Klavye</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-slate-500">${row.acc}</span>
+            <span class="font-extrabold text-emerald-700 text-sm">${row.net} Net</span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function generateChallengeCode() {
+      const nick = ((document.getElementById("raceNickInput")?.value || "KATIP").trim() || "KATIP").toUpperCase().replace(/\|/g, "");
+      const net = Number(document.getElementById("simNetDisplay").textContent || 0);
+      const acc = (document.getElementById("simAccDisplay").textContent || "%100").replace(/\|/g, "");
+      const layout = document.getElementById("simLayoutSelect").value;
+      document.getElementById("myChallengeCodeBox").value = `${nick}|${net}|${acc}|${layout}`;
+    }
+
+    function compareWithRival() {
+      const raw = (document.getElementById("rivalCodeInput").value || "").trim();
+      const parts = raw.split("|");
+      const box = document.getElementById("duelResultBox");
+      if (parts.length < 2) {
+        box.innerHTML = `<span class="text-rose-400">Geçerli bir kod gir (Örn: KATIP|96|%98|F).</span>`;
+        return;
+      }
+      const rivalNick = parts[0] || "Rakip";
+      const rivalNet = Number(parts[1] || 0);
+      const rivalAcc = parts[2] || "-";
+      const rivalLayout = parts[3] || "-";
+      const myNet = Number(document.getElementById("simNetDisplay").textContent || 0);
+
+      const diff = myNet - rivalNet;
+      const verdict = diff > 0
+        ? `<span class="text-emerald-400 font-extrabold">Sen öndesin (+${diff} net)!</span>`
+        : (diff < 0
+          ? `<span class="text-amber-300 font-extrabold">${rivalNick} ${Math.abs(diff)} net önde — biraz daha hızlan!</span>`
+          : `<span class="text-sky-300 font-extrabold">Berabere! İkiniz de ${myNet} net yaptınız.</span>`);
+
+      box.innerHTML = `
+        <div class="font-bold text-white">${rivalNick} (${rivalLayout} Klavye): <span class="text-emerald-300">${rivalNet} Net</span> • ${rivalAcc}</div>
+        <div class="mt-1">Senin mevcut netin: <b>${myNet} Net</b> → ${verdict}</div>
+      `;
+    }
+
+    // DERSLER, KELİME, OYUN
+    function selectLesson(idx) {
+      activeLessonIdx = idx;
+      const l = KEYBOARD_LESSONS[idx] || KEYBOARD_LESSONS[0];
+      document.getElementById("lessonTitle").textContent = l.title;
+      document.getElementById("lessonDesc").textContent = l.desc;
+      document.getElementById("lessonTargetBox").textContent = l.sample;
+      document.getElementById("lessonInput").value = "";
+      document.getElementById("lessonStatsText").textContent = "Doğruluk: %100";
+
+      document.getElementById("lessonButtonsBar").innerHTML = KEYBOARD_LESSONS.map((item, i) => {
+        const act = i === idx;
+        const cls = act
+          ? "px-2.5 py-1 rounded-lg text-xs font-extrabold bg-slate-900 text-white"
+          : "px-2.5 py-1 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100";
+        return `<button type="button" onclick="selectLesson(${i})" class="${cls}">${i + 1}. ${item.title.split(":")[0]}</button>`;
+      }).join("");
+
+      renderVisualKeyboard();
+    }
+
+    function onLessonInput() {
+      const target = document.getElementById("lessonTargetBox").textContent || "";
+      const typed = document.getElementById("lessonInput").value || "";
+      let ok = 0;
+      for (let i = 0; i < typed.length; i++) {
+        if (typed[i] === target[i]) ok += 1;
+      }
+      const acc = typed.length > 0 ? Math.round((ok / typed.length) * 100) : 100;
+      const doneMsg = typed === target ? " • Tamamlandı!" : "";
+      document.getElementById("lessonStatsText").textContent = `Doğruluk: %${acc}${doneMsg}`;
+    }
+
+    function renderVisualKeyboard() {
+      const layout = document.getElementById("lessonLayoutSelect")?.value || "F";
+      const rows = layout === "F"
+        ? [
+            ["F", "G", "Ğ", "I", "O", "D", "R", "N", "H", "P", "Q", "W"],
+            ["U", "İ", "E", "A", "Ü", "T", "K", "M", "L", "Y", "Ş", "X"],
+            ["J", "Ö", "V", "C", "Ç", "Z", "S", "B", "Ö", "N"]
+          ]
+        : [
+            ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Ğ", "Ü"],
+            ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ş", "İ"],
+            ["Z", "X", "C", "V", "B", "N", "M", "Ö", "Ç"]
+          ];
+      document.getElementById("lessonVisualKeyboard").innerHTML = rows.map(r => `
+        <div class="flex justify-center gap-1 flex-wrap">
+          ${r.map(k => `<span class="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-md bg-white border border-slate-300 text-xs font-bold text-slate-700">${k}</span>`).join("")}
+        </div>
+      `).join("");
+    }
+
+    function setWordDrillMode(mode) {
+      wordDrillMode = mode;
+      document.querySelectorAll(".w-mode-btn").forEach(b => {
+        b.className = b.id === `wMode-${mode}`
+          ? "w-mode-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white"
+          : "w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700";
+      });
+      resetWordDrill();
+    }
+
+    function resetWordDrill() {
+      const bank = WORD_BANKS[wordDrillMode] || WORD_BANKS.hukuk;
+      wordQueue = [...bank].sort(() => Math.random() - 0.5).slice(0, 10);
+      wordIdx = 0;
+      renderWordQueue();
+      const inp = document.getElementById("wordDrillInput");
+      if (inp) inp.value = "";
+    }
+
+    function renderWordQueue() {
+      const box = document.getElementById("wordQueueBox");
+      if (!box) return;
+      box.innerHTML = wordQueue.map((w, i) => {
+        const cls = i === wordIdx
+          ? "bg-indigo-600 text-white px-3 py-1 rounded-lg"
+          : (i < wordIdx ? "bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-lg" : "bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg");
+        return `<span class="${cls}">${w}</span>`;
+      }).join("");
+    }
+
+    function onWordDrillKeydown(e) {
+      if (e.key === " ") {
+        e.preventDefault();
+        const inp = document.getElementById("wordDrillInput");
+        const val = (inp.value || "").trim();
+        if (!val) return;
+        const target = wordQueue[wordIdx] || "";
+        if (normalizeText(val) === normalizeText(target)) wordCorrect += 1;
+        else wordWrong += 1;
+        document.getElementById("wordCorrectCount").textContent = String(wordCorrect);
+        document.getElementById("wordWrongCount").textContent = String(wordWrong);
+        inp.value = "";
+        wordIdx += 1;
+        if (wordIdx >= wordQueue.length) resetWordDrill();
+        else renderWordQueue();
+      }
+    }
+
+    function selectGameMode(mode) {
+      document.getElementById("gameBox-dosya").classList.toggle("hidden", mode !== "dosya");
+      document.getElementById("gameBox-hata").classList.toggle("hidden", mode !== "hata");
+      document.getElementById("gTab-dosya").className = mode === "dosya"
+        ? "px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950"
+        : "px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800";
+      document.getElementById("gTab-hata").className = mode === "hata"
+        ? "px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950"
+        : "px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800";
+    }
+
+    function updateBestGameScore(val) {
+      const best = Math.max(Number(localStorage.getItem("kpss_game_best") || 0), val);
+      localStorage.setItem("kpss_game_best", String(best));
+      document.getElementById("gameBestScore").textContent = String(best);
+    }
+
+    const DOSYA_PHRASES = ["duruşma açıldı", "tebligat yapıldı", "esas no kaydı", "karar verildi", "dosya incelendi", "beyan alındı"];
+
+    function startDosyaGame() {
+      if (dosyaInterval) clearInterval(dosyaInterval);
+      dosyaScore = 0; dosyaLevel = 1; dosyaStreak = 1; dosyaLives = 3; dosyaActive = true;
+      nextDosyaPhrase(); syncDosyaUI();
+      const inp = document.getElementById("dosyaInput");
+      inp.value = ""; inp.focus();
+
+      dosyaInterval = setInterval(() => {
+        if (!dosyaActive) return;
+        dosyaTimeLeft -= 1.5;
+        document.getElementById("dosyaTimeBar").style.width = `${Math.max(0, dosyaTimeLeft)}%`;
+        if (dosyaTimeLeft <= 0) {
+          dosyaLives -= 1; dosyaStreak = 1;
+          if (dosyaLives <= 0) {
+            dosyaActive = false; clearInterval(dosyaInterval);
+            document.getElementById("dosyaTargetPhrase").textContent = `Oyun Bitti! Toplam Puan: ${dosyaScore}`;
+          } else {
+            nextDosyaPhrase();
+          }
+          syncDosyaUI();
+        }
+      }, 100);
+    }
+
+    function nextDosyaPhrase() {
+      dosyaCurrentTarget = DOSYA_PHRASES[Math.floor(Math.random() * DOSYA_PHRASES.length)];
+      dosyaTimeLeft = 100;
+      document.getElementById("dosyaTargetPhrase").textContent = dosyaCurrentTarget;
+      document.getElementById("dosyaTimeBar").style.width = "100%";
+    }
+
+    function onDosyaInput() {
+      if (!dosyaActive) return;
+      const inp = document.getElementById("dosyaInput");
+      if (inp.value.trim() === dosyaCurrentTarget) {
+        dosyaScore += 10 * dosyaStreak;
+        dosyaStreak += 1;
+        dosyaLevel = 1 + Math.floor(dosyaScore / 50);
+        updateBestGameScore(dosyaScore);
+        inp.value = ""; nextDosyaPhrase(); syncDosyaUI();
+      }
+    }
+
+    function syncDosyaUI() {
+      document.getElementById("dosyaScore").textContent = String(dosyaScore);
+      document.getElementById("dosyaLevel").textContent = String(dosyaLevel);
+      document.getElementById("dosyaStreak").textContent = `x${dosyaStreak}`;
+      document.getElementById("dosyaLives").textContent = String(dosyaLives);
+    }
+
+    function startHataGame() {
+      hataCurrentItem = HATA_GAME_ITEMS[Math.floor(Math.random() * HATA_GAME_ITEMS.length)];
+      document.getElementById("hataWrongWord").textContent = hataCurrentItem.wrong;
+      document.getElementById("hataHint").textContent = `İpucu: ${hataCurrentItem.hint}`;
+      const inp = document.getElementById("hataAnswerInput");
+      inp.value = ""; inp.focus();
+    }
+
+    function submitHataAnswer(e) {
+      e.preventDefault();
+      const ans = (document.getElementById("hataAnswerInput").value || "").trim();
+      if (normalizeText(ans) === normalizeText(hataCurrentItem.right)) {
+        hataScore += 15; hataCount += 1;
+        updateBestGameScore(hataScore);
+        document.getElementById("hataScore").textContent = String(hataScore);
+        document.getElementById("hataCount").textContent = String(hataCount);
+        startHataGame();
+      } else {
+        document.getElementById("hataHint").textContent = `Tekrar dene! Doğru yazım: ${hataCurrentItem.right}`;
       }
     }
 
@@ -1145,10 +1583,7 @@
     function renderProfessionsTable() {
       const tbody = document.getElementById("professionsTableBody");
       if (!tbody) return;
-      const rows = activeProfFilter === "ALL"
-        ? PROFESSIONS_GUIDE
-        : PROFESSIONS_GUIDE.filter(p => p.examType === activeProfFilter);
-
+      const rows = activeProfFilter === "ALL" ? PROFESSIONS_GUIDE : PROFESSIONS_GUIDE.filter(p => p.examType === activeProfFilter);
       tbody.innerHTML = rows.map(r => `
         <tr class="hover:bg-slate-50">
           <td class="py-2.5 px-3 font-bold text-slate-900">${r.name}</td>
@@ -1167,9 +1602,9 @@
       } catch (e) {}
       return {
         lisans: [{ author: "Aday_P3", text: "Lisans kadrolarında hem merkezî hem kurumsal ilanları birlikte takip ediyorum.", time: "Bugün" }],
-        onlisans: [{ author: "Aday_P93", text: "Ön lisans P93 ve kâtiplik ilanları için klavye çalışmasına erken başlamak iyi oluyor.", time: "Bugün" }],
+        onlisans: [{ author: "Aday_P93", text: "Ön lisans P93 ve kâtiplik ilanları için F klavye çalışmasına erken başlamak iyi oluyor.", time: "Bugün" }],
         ortaogretim: [{ author: "Aday_P94", text: "Lise düzeyinde ehliyet/SRC/ÖGG belgeleri olanlar şartları dikkatle okumalı.", time: "Bugün" }],
-        ekpss: [], tercih: [], calisanlar: [], atananlar: []
+        tercih: []
       };
     }
 
@@ -1217,10 +1652,7 @@
       }
     }
 
-    function selectChatRoom(roomId) {
-      activeChatRoomId = roomId;
-      renderChatRooms();
-    }
+    function selectChatRoom(roomId) { activeChatRoomId = roomId; renderChatRooms(); }
 
     function sendChatMessage(e) {
       e.preventDefault();
@@ -1243,7 +1675,7 @@
         if (Array.isArray(posts) && posts.length > 0) return posts;
       } catch (e) {}
       return [
-        { author: "Aday_01", topic: "Kâtiplik", text: "Klavyede 3 dakikada hatasız hız için günlük düzenli pratik önemli." },
+        { author: "Aday_01", topic: "Kâtiplik", text: "F klavyede 3 dakikada hatasız hız için düzenli pratik önemli." },
         { author: "KPSS_Aday", topic: "Boy / Mülakat", text: "İKM, polis ve askeri alımlarda boy/kilo ve mülakat şartlarını ilan kılavuzundan mutlaka kontrol etmeli." }
       ];
     }
@@ -1276,21 +1708,14 @@
     }
 
     function resetFilters() {
-      showSavedOnly = false;
-      activeStatusFilter = "ALL";
-      selectedCities = [];
-      customDocs = [];
+      showSavedOnly = false; activeStatusFilter = "ALL"; selectedCities = []; customDocs = [];
       visibleLimit = INITIAL_VISIBLE_JOBS;
       document.getElementById("searchKeywordInput").value = "";
       document.getElementById("profileEdu").value = "ALL";
       document.getElementById("profileScore").value = "";
       document.getElementById("profileCat").value = "ALL";
       document.querySelectorAll(".profile-doc-check").forEach(cb => { cb.checked = false; });
-      renderCityChips();
-      renderCustomDocChips();
-      renderStatusMenu();
-      saveProfileFromUI();
-      applyProfileMatch(false);
+      renderCityChips(); renderCustomDocChips(); renderStatusMenu(); saveProfileFromUI(); applyProfileMatch(false);
     }
 
     function goHome(e) {
@@ -1343,15 +1768,19 @@
       });
       if (Array.isArray(p.customDocs)) customDocs = [...p.customDocs];
       if (Array.isArray(p.cities)) selectedCities = [...p.cities];
-      renderCityChips();
-      renderCustomDocChips();
-      updateProfileSummaryBadge();
+      renderCityChips(); renderCustomDocChips(); updateProfileSummaryBadge();
     }
 
     async function initApp() {
       renderAdSlots();
       loadSavedIds();
       syncProfileToUI();
+      initSimText();
+      renderSimHistory();
+      renderRaceLeaderboard();
+      selectLesson(0);
+      resetWordDrill();
+      updateBestGameScore(0);
       renderProfessionsTable();
       renderChatRooms();
       renderForum();
