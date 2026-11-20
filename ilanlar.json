@@ -1241,5 +1241,53 @@
     "details": "Bu kayıt Memurlar.net Ilan kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
     "officialUrl": "https://ilan.memurlar.net/ilan/87031/bartin-universitesi-1-sozlesmeli-personel-alacak.html",
     "fetchedAt": "2026-11-19T22:23:58.619049+00:00"
+  },
+  {
+    "id": "memurlar-434359",
+    "source": "Memurlar.net Ilan",
+    "group": "genel",
+    "category": "Öğretmen",
+    "education": "Lisans",
+    "minScore": 0,
+    "requiredDocs": [],
+    "title": "Atatürk Üniversitesi Öğretim Üyesi Alım İlanı",
+    "institution": "Memurlar.net Ilan",
+    "deadline": "Güncel İlan",
+    "summary": "Memurlar.net Ilan üzerinden yakalanan güncel alım/ilan kaydı.",
+    "details": "Bu kayıt Memurlar.net Ilan kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
+    "officialUrl": "https://ilan.memurlar.net/ilan/87037/ataturk-universitesi-ogretim-uyesi-alim-ilani.html",
+    "fetchedAt": "2026-11-20T06:57:10.106270+00:00"
+  },
+  {
+    "id": "memurlar-864952",
+    "source": "Memurlar.net Ilan",
+    "group": "genel",
+    "category": "Öğretmen",
+    "education": "Lisans",
+    "minScore": 0,
+    "requiredDocs": [],
+    "title": "Bartın Üniversitesi Öğretim Üyesi ve Elemanı Alım İlanı",
+    "institution": "Memurlar.net Ilan",
+    "deadline": "Güncel İlan",
+    "summary": "Memurlar.net Ilan üzerinden yakalanan güncel alım/ilan kaydı.",
+    "details": "Bu kayıt Memurlar.net Ilan kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
+    "officialUrl": "https://ilan.memurlar.net/ilan/87038/bartin-universitesi-ogretim-uyesi-ve-elemani-alim-ilani.html",
+    "fetchedAt": "2026-11-20T06:57:10.106466+00:00"
+  },
+  {
+    "id": "isinolsa-10789",
+    "source": "Isinolsa Memur",
+    "group": "genel",
+    "category": "Büro",
+    "education": "Lisans",
+    "minScore": 0,
+    "requiredDocs": [],
+    "title": "Orman Muhafaza Memuru Olmak İçin Hangi Bölüm Okunur? İki İlanda 11 Program",
+    "institution": "Isinolsa Memur",
+    "deadline": "Güncel İlan",
+    "summary": "Isinolsa Memur üzerinden yakalanan güncel alım/ilan kaydı.",
+    "details": "Bu kayıt Isinolsa Memur kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
+    "officialUrl": "https://www.isinolsa.com/orman-muhafaza-memuru-olmak-icin-hangi-bolum-okunur-iki-ilanda-11-program/",
+    "fetchedAt": "2026-11-20T06:57:10.218823+00:00"
   }
 ]
