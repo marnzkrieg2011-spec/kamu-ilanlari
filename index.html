@@ -21,7 +21,7 @@
           <a href="#ilanlarSection" class="hover:text-emerald-300 transition">İLANLAR</a>
           <a href="#robotSection" class="hover:text-emerald-300 transition">TERCİH ROBOTU</a>
           <a href="#mesleklerSartlarBolumu" class="hover:text-amber-300 transition">MESLEKLER & ŞARTLAR</a>
-          <a href="#sohbetForumSssBolumu" class="hover:text-sky-300 transition">SOHBET & FORUM</a>
+          <a href="#sohbetForumSssBolumu" class="hover:text-sky-300 transition">SOHBET, FORUM & SSS</a>
         </nav>
       </div>
 
@@ -52,7 +52,6 @@
           <p class="text-xs text-slate-500 mt-0.5">F klavye ve Q klavye desteği • 3 dakika sınav simülasyonu • Kullanıcı skor tablosu ve arkadaşla düello kodu</p>
         </div>
 
-        <!-- 5 ANA SEKME -->
         <div class="flex flex-wrap gap-1.5">
           <button type="button" id="kTab-sim" onclick="switchKatiplikTab('sim')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white transition">
             ⏱️ Sınav Simülasyonu
@@ -106,10 +105,9 @@
               class="mt-3 w-full border border-slate-300 rounded-xl p-3 text-sm bg-white focus:outline-none focus:border-indigo-600"
             ></textarea>
 
-            <!-- SKORU YARIŞ LİSTESİNE GÖNDERME -->
             <div class="mt-3 pt-3 border-t border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
               <div class="flex items-center gap-2 flex-1">
-                <input id="raceNickInput" type="text" maxlength="24" placeholder="Yarışta görünecek rumuzun (Örn: KatipAdayi)" class="flex-1 border border-slate-300 rounded-lg px-3 py-2 text-xs bg-white" />
+                <input id="raceNickInput" type="text" maxlength="24" placeholder="Yarışta görünecek adın (Örn: Emre Kaya)" class="flex-1 border border-slate-300 rounded-lg px-3 py-2 text-xs bg-white" />
                 <button type="button" onclick="publishCurrentSimToRace()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-lg transition shrink-0">
                   🏆 Yarışa Katıl
                 </button>
@@ -120,7 +118,6 @@
             </div>
           </div>
 
-          <!-- CANLI METRİKLER & SON DENEMELER -->
           <div class="lg:col-span-4 space-y-4">
             <div class="grid grid-cols-2 gap-3">
               <div class="bg-slate-900 text-white rounded-xl p-3.5">
@@ -282,7 +279,6 @@
       <!-- 5) KULLANICI YARIŞI & ARKADAŞLA DÜELLO -->
       <div id="kPanel-race" class="k-panel hidden mt-5 space-y-5">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-          <!-- LİDERLİK / YARIŞ TABLOSU -->
           <div class="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
             <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-200">
               <div>
@@ -296,7 +292,6 @@
             <div id="raceLeaderboardList" class="mt-3 space-y-2 text-xs"></div>
           </div>
 
-          <!-- ARKADAŞLA DÜELLO KODU -->
           <div class="lg:col-span-5 bg-slate-950 text-white rounded-2xl p-4 sm:p-5 space-y-4">
             <div>
               <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-300">Karşılıklı Düello Kodu</span>
@@ -314,7 +309,7 @@
             <div class="pt-3 border-t border-slate-800 space-y-2">
               <label class="block text-xs font-bold text-slate-200">Rakibin Skor Kodunu Yapıştır:</label>
               <div class="flex gap-2">
-                <input id="rivalCodeInput" type="text" placeholder="Örn: KATIP|96|%98|F" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-white" />
+                <input id="rivalCodeInput" type="text" placeholder="Örn: ZEYNEP ARSLAN|96|%98|F" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-white" />
                 <button type="button" onclick="compareWithRival()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-xl transition">
                   Karşılaştır
                 </button>
@@ -342,7 +337,7 @@
     </div>
   </section>
 
-  <!-- ANA AKIŞ: SOL SÜTUN + SAĞ SÜTUN (10 İLAN + DAHA FAZLA) -->
+  <!-- ANA AKIŞ: SOL SÜTUN + SAĞ SÜTUN -->
   <main id="ilanlarSection" class="max-w-7xl mx-auto px-4 mt-7">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       <aside class="lg:col-span-4 space-y-4">
@@ -458,7 +453,7 @@
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Telegram Kullanıcı Adı (İsteğe Bağlı)</label>
-          <input id="profileTelegram" oninput="saveProfileFromUI()" type="text" maxlength="40" placeholder="Örn: @kullaniciadi" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" />
+          <input id="profileTelegram" oninput="saveProfileFromUI()" type="text" maxlength="40" placeholder="Örn: @emrekaya" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" />
         </div>
       </div>
 
@@ -511,13 +506,14 @@
     </div>
   </section>
 
-  <!-- MESLEKLER & ŞARTLAR -->
+  <!-- MESLEKLER & ŞARTLAR (GENİŞLETİLMİŞ KADRO LİSTESİ) -->
   <section id="mesleklerSartlarBolumu" class="max-w-7xl mx-auto px-4 mt-8">
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
         <div>
           <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Meslekler, Geçmiş Seneler Referans Puanları & Aranan Şartlar</span>
           <h2 class="text-xl font-extrabold text-slate-900 mt-0.5">Hangi Bölüme Neler Gerekli? (Boy, Kilo, Puan, Belge & Mülakat)</h2>
+          <p class="text-xs text-slate-500 mt-0.5">Tüm temel kamu kadroları için referans puan aralıkları, belge şartları ve boy/kilo/mülakat durumları.</p>
         </div>
         <div class="flex flex-wrap gap-1.5">
           <button type="button" onclick="filterProfessions('ALL')" id="profBtn-ALL" class="prof-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white">Tümü</button>
@@ -542,18 +538,34 @@
     </div>
   </section>
 
-  <!-- SOHBET & FORUM -->
+  <!-- CANLI SOHBET (ÜYELİK/RUMUZ GİRİŞLİ) + SORU-CEVAP FORUM (ADAY CEVAPLAMALI) + 14 SORULUK SSS -->
   <section id="sohbetForumSssBolumu" class="max-w-7xl mx-auto px-4 mt-8 pb-14 space-y-6">
+    <!-- CANLI SOHBET EKRANI -->
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
       <div class="px-6 py-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-slate-50">
         <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Canlı Sohbet Odaları (Chat)</span>
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Canlı Sohbet Odaları (Üye / Rumuz Girişli)</span>
           <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">Aday Sohbet Ekranı</h2>
         </div>
-        <span class="text-xs text-slate-500">Mesajlar tarayıcıda saklanır</span>
+        <div id="chatMemberStatusBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900">
+          Sohbet için üye/rumuz girişi gerekli
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[300px]">
+      <!-- ÜYELİK / RUMUZ GİRİŞ ŞERİDİ -->
+      <div class="px-6 py-3 bg-slate-900 text-white border-b border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div class="text-xs text-slate-300">
+          Canlı sohbete katılmak için <b class="text-emerald-300">Ad Soyad / Rumuz</b> ve <b class="text-emerald-300">Aday Üye Kodu / E-posta</b> ile giriş yap:
+        </div>
+        <form onsubmit="loginChatMember(event)" class="flex flex-wrap items-center gap-2">
+          <input id="memberNameInput" type="text" maxlength="30" required placeholder="Ad Soyad (Örn: Mert Demir)" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white" />
+          <input id="memberIdInput" type="text" maxlength="35" required placeholder="Üye No / E-posta" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white" />
+          <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs px-3.5 py-1.5 rounded-lg transition">Üye Girişi Yap</button>
+          <button type="button" onclick="logoutChatMember()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs px-2.5 py-1.5 rounded-lg">Çıkış</button>
+        </form>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[320px]">
         <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-slate-200 bg-slate-50/70 p-3 space-y-1.5" id="chatRoomsList"></div>
         <div class="lg:col-span-8 flex flex-col justify-between p-4 sm:p-5 bg-slate-950 text-white">
           <div>
@@ -562,35 +574,54 @@
                 <h3 id="activeChatRoomTitle" class="font-extrabold text-base text-white">Lisans odası</h3>
                 <p id="activeChatRoomDesc" class="text-xs text-slate-400">4 yıllık mezunlar • P3 tercih ve kadro sohbeti</p>
               </div>
-              <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-2.5 py-0.5 rounded-full font-semibold">Sohbet Aktif</span>
+              <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-2.5 py-0.5 rounded-full font-semibold">Üyeli Sohbet Odası</span>
             </div>
-            <div id="chatMessagesBox" class="mt-3 space-y-2.5 max-h-48 overflow-y-auto pr-1"></div>
+            <div id="chatMessagesBox" class="mt-3 space-y-2.5 max-h-52 overflow-y-auto pr-1"></div>
           </div>
+
           <form onsubmit="sendChatMessage(event)" class="mt-4 pt-3 border-t border-slate-800 flex flex-col sm:flex-row gap-2">
-            <input id="chatNickInput" type="text" maxlength="24" placeholder="Rumuz (Örn: Aday)" class="sm:w-32 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-400" />
-            <input id="chatTextInput" type="text" maxlength="220" required placeholder="Odaya mesaj yaz..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-400" />
+            <input id="chatTextInput" type="text" maxlength="220" required placeholder="Odaya mesaj yaz (önce üstten üye girişi yap)..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-400" />
             <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs px-4 py-2 rounded-xl transition shrink-0">Gönder</button>
           </form>
         </div>
       </div>
     </div>
 
+    <!-- FORUM (SORU BIRAKMA + BAŞKA ADAYLARIN CEVAPLAMASI) -->
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-      <span class="text-xs font-bold uppercase tracking-wider text-indigo-700">Forum • Soru-Cevap</span>
-      <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">Kalıcı Soru-Cevap Panosu</h2>
-      <form onsubmit="addForumPost(event)" class="mt-3 space-y-2.5">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-700">Forum • Soru-Cevap Panosu</span>
+          <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">Aday Soruları ve Cevapları</h2>
+          <p class="text-xs text-slate-500">Yeni soru bırakabilir veya diğer adayların sorularının altına kendi cevabını yazabilirsin.</p>
+        </div>
+        <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full">Topluluk Soru-Cevap</span>
+      </div>
+
+      <form onsubmit="addForumPost(event)" class="mt-4 space-y-2.5 bg-slate-50 border border-slate-200 rounded-xl p-4">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-          <input id="forumAuthor" type="text" maxlength="30" placeholder="Rumuz (Örn: Aday)" class="border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm" />
+          <input id="forumAuthor" type="text" maxlength="35" required placeholder="Adın Soyadın (Örn: Selin Yılmaz)" class="border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm bg-white" />
           <select id="forumTopic" class="border border-slate-300 rounded-lg px-2.5 py-2 text-xs sm:text-sm bg-white">
             <option value="Kâtiplik">Kâtiplik</option>
             <option value="KPSS Tercih">KPSS Tercih</option>
             <option value="Boy / Mülakat">Boy / Mülakat</option>
+            <option value="Sağlık & Teknik">Sağlık & Teknik</option>
           </select>
-          <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-3 py-2 rounded-lg text-xs sm:text-sm transition">+ Soru Bırak</button>
+          <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-2 rounded-lg text-xs sm:text-sm transition">+ Yeni Soru Bırak</button>
         </div>
-        <input id="forumMessage" type="text" maxlength="200" required placeholder="Sorunu veya notunu yaz..." class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm" />
+        <input id="forumMessage" type="text" maxlength="240" required placeholder="Adaylara sormak istediğin soruyu yaz..." class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm bg-white" />
       </form>
-      <div id="forumList" class="mt-4 space-y-2 max-h-48 overflow-y-auto"></div>
+
+      <div id="forumList" class="mt-4 space-y-3 max-h-[540px] overflow-y-auto pr-1"></div>
+    </div>
+
+    <!-- SSS (14 SIKÇA SORULAN SORU) -->
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+      <div class="pb-3 border-b border-slate-100">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">SSS • Sıkça Sorulan Sorular (14 Soru)</span>
+        <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">KPSS, Kâtiplik, Boy/Kilo, Mülakat & Başvuru Rehberi</h2>
+      </div>
+      <div id="faqAccordionList" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs sm:text-sm"></div>
     </div>
   </section>
 
@@ -662,17 +693,74 @@
     ];
 
     const DEFAULT_RACE_BOTS = [
-      { nick: "AdaletKatibi_F", net: 108, acc: "%98", layout: "F" },
-      { nick: "KalemHizi_94", net: 96, acc: "%96", layout: "F" },
-      { nick: "AdanaAday", net: 88, acc: "%95", layout: "Q" },
-      { nick: "Tutanak3Dk", net: 79, acc: "%93", layout: "F" }
+      { nick: "Zeynep Arslan", net: 108, acc: "%98", layout: "F" },
+      { nick: "Burak Şahin", net: 96, acc: "%96", layout: "F" },
+      { nick: "Elif Çelik", net: 88, acc: "%95", layout: "Q" },
+      { nick: "Kerem Aydın", net: 79, acc: "%93", layout: "F" }
     ];
 
     const PROFESSIONS_GUIDE = [
       { name: "Düz Memur / Büro Personeli", edu: "Lisans / Önlisans / Ortaöğretim", pastScore: "68 – 92 (düzeye göre)", reqs: "KPSS P3 / P93 / P94, bölüm şartı", examType: "MERKEZI", physical: "Boy/kilo barajı yok; mülakat genelde yok (kurumsal alım hariç)." },
       { name: "Zabıt Kâtibi / Mübaşir", edu: "Lisans / Önlisans / Ortaöğretim", pastScore: "70 – 85+", reqs: "KPSS, adalet/klavye şartı, 3 dk klavye hızı", examType: "MULAKAT", physical: "Boy/kilo şartı genelde yok; klavye uygulama + sözlü mülakat var." },
       { name: "İnfaz ve Koruma Memuru (İKM)", edu: "Önlisans / Ortaöğretim", pastScore: "70 – 83+", reqs: "KPSS P93 / P94, ehliyet/kurum şartları", examType: "MULAKAT", physical: "Boy ve kilo şartı var; fiziki/sözlü mülakat var." },
-      { name: "Şoför / Ağır Vasıta Personeli", edu: "Ortaöğretim / Önlisans", pastScore: "62 – 84+", reqs: "KPSS P94 / P93, B/D ehliyet, SRC, psikoteknik", examType: "MERKEZI", physical: "Boy/kilo barajı yok; sürücü/sağlık şartı aranır." }
+      { name: "Şoför / Ağır Vasıta Personeli", edu: "Ortaöğretim / Önlisans", pastScore: "62 – 84+", reqs: "KPSS P94 / P93, B/D ehliyet, SRC, psikoteknik", examType: "MERKEZI", physical: "Boy/kilo barajı yok; sürücü/sağlık şartı aranır." },
+      { name: "Hemşire / Ebe / Sağlık Teknikeri", edu: "Lisans / Önlisans", pastScore: "68 – 88+", reqs: "KPSS P3 / P93, ilgili sağlık bölümü diploması", examType: "MERKEZI", physical: "Boy/kilo barajı yok; nöbet/vardiya ve sağlık uygunluğu aranır." },
+      { name: "Mühendis / Mimar / Şehir Plancısı", edu: "Lisans", pastScore: "74 – 90+", reqs: "KPSS P3, ilgili mühendislik/mimarlık/planlama bölümü", examType: "MERKEZI", physical: "Boy/kilo şartı yok; bazı kurumsal alımlarda mülakat olabilir." },
+      { name: "Özel Güvenlik Görevlisi (ÖGG)", edu: "Ortaöğretim (Lise)", pastScore: "60 – 82+", reqs: "KPSS P94, Silahlı/Silahsız ÖGG kimliği", examType: "MULAKAT", physical: "Kuruma göre boy/vardiya şartı ve sözlü mülakat uygulanabilir." },
+      { name: "Polis / POMEM / PMYO", edu: "Lisans / Önlisans / Ortaöğretim", pastScore: "ALES/KPSS/TYT barajına göre", reqs: "İlgili sınav puanı, yaş ve adli şartlar", examType: "MULAKAT", physical: "Boy (erkek/kadın) ve BKİ (kilo) şartı + fiziki parkur + mülakat var." },
+      { name: "Subay / Astsubay / Uzman Erbaş", edu: "Lisans / Önlisans / Ortaöğretim", pastScore: "KPSS / AYT / Taban puan", reqs: "Askeri temin kılavuzu ve sağlık şartları", examType: "MULAKAT", physical: "Boy-kilo tablosu + fiziki yeterlilik + sözlü mülakat + sağlık raporu var." },
+      { name: "Öğretmen / Akademisyen", edu: "Lisans / Yüksek Lisans / Doktora", pastScore: "KPSS/AGS/ALES + YDS", reqs: "İlgili lisans/lisansüstü mezuniyet, formasyon/dil şartı", examType: "MULAKAT", physical: "Boy/kilo şartı yok; akademide jüri/sözlü değerlendirme olabilir." },
+      { name: "Teknisyen / Laborant / Bilişim", edu: "Önlisans / Ortaöğretim / Lisans", pastScore: "66 – 87+", reqs: "KPSS P94 / P93 / P3, teknik/bilişim bölümü veya sertifika", examType: "MERKEZI", physical: "Boy/kilo barajı yok; laboratuvar/saha çalışma koşulları aranır." },
+      { name: "Hizmetli / Destek / İŞKUR İşçi", edu: "Ortaöğretim / Önlisans", pastScore: "65 – 85+ (veya İŞKUR/kura)", reqs: "KPSS P94 / P93 veya İŞKUR/kura şartları", examType: "MERKEZI", physical: "Genelde boy/kilo barajı yok; temizlik/bakım/saha çalışma şartı var." },
+      { name: "İcra Kâtibi / Sosyal Çalışmacı", edu: "Önlisans / Lisans", pastScore: "70 – 86+", reqs: "KPSS P93 / P3, adalet/sosyal hizmet/ilgili bölüm", examType: "MULAKAT", physical: "Boy/kilo şartı genelde yok; uygulama/sözlü mülakat olabilir." }
+    ];
+
+    const DEFAULT_FORUM_POSTS = [
+      {
+        id: "q-1",
+        author: "Emre Kaya",
+        topic: "Kâtiplik",
+        text: "Zabıt kâtipliği uygulama sınavında F klavye ile çalışırken önce hatasızlığa mı odaklanmalıyım yoksa hızı mı zorlamalıyım?",
+        replies: [
+          { author: "Zeynep Arslan", text: "İlk 2 hafta hatasız yazmaya odaklan, yanlış kelime neti çok düşürüyor; hız 75-80 netten sonra kendiliğinden artıyor." },
+          { author: "Burak Şahin", text: "3 dakikalık metinde 90+ net için günde 2-3 tam simülasyon + hukuk terimleri çalışması çok faydalı oluyor." }
+        ]
+      },
+      {
+        id: "q-2",
+        author: "Elif Çelik",
+        topic: "KPSS Tercih",
+        text: "Önlisans P93 puanım 78, çoklu il seçerken hem merkezî kadroları hem sözleşmeli alımları birlikte değerlendirmek mantıklı mı?",
+        replies: [
+          { author: "Kerem Aydın", text: "Kesinlikle evet; belge şartı gerektiren kadrolarda taban puanlar bazen daha ulaşılabilir olabiliyor." }
+        ]
+      },
+      {
+        id: "q-3",
+        author: "Hazal Koç",
+        topic: "Boy / Mülakat",
+        text: "İnfaz ve koruma memurluğu ile zabıt kâtipliği arasında boy ve kilo şartı bakımından fark var mı?",
+        replies: [
+          { author: "Emre Kaya", text: "İKM alımlarında boy ve kilo sınırları aranır; zabıt kâtipliğinde ise boy/kilo barajı yerine klavye sınavı ve sözlü mülakat vardır." }
+        ]
+      }
+    ];
+
+    const FAQ_ITEMS = [
+      { q: "1. Üyelik yapmadan profilim ve klavye skorlarım saklanır mı?", a: "Evet. Öğrenim düzeyi, puan, çoklu il seçimi, belgeler, kayıtlı ilanlar, simülasyon geçmişi, oyun rekoru ve forum kayıtları tarayıcıdaki LocalStorage'da saklanır." },
+      { q: "2. Canlı sohbet odasına neden üye/rumuz girişi gerekiyor?", a: "Odadaki mesajların kim tarafından yazıldığı net görünsün ve sohbet düzeni korunsun diye canlı sohbet odasına mesaj göndermeden önce ad/rumuz ve üye bilgisiyle giriş yapılması gerekir." },
+      { q: "3. Forumdaki sorulara başka adaylar nasıl cevap verebilir?", a: "Her sorunun altında yer alan 'Cevap Yaz' kutusuna adını ve cevabını yazıp 'Cevapla' butonuna basarak doğrudan o sorunun altına yanıt ekleyebilirsin." },
+      { q: "4. Kâtiplik sınav simülasyonu kaç dakika sürer?", a: "Sınav simülasyonu 3 dakika (180 saniye) süreli olarak çalışır; anlık net kelime, doğruluk oranı ve hata sayısı ekranda gösterilir." },
+      { q: "5. Hem F klavye hem Q klavye çalışabiliyor muyum?", a: "Evet. Sınav simülasyonunda ve klavye derslerinde Türkçe F Klavye veya Türkçe Q Klavye seçimi yaparak çalışabilirsin." },
+      { q: "6. Kullanıcılar kendi aralarında nasıl yarışabilir?", a: "Yarış & Düello sekmesinden kendi skorunu liderlik tablosuna ekleyebilir veya 'Benim Skor Kodumu Üret' butonuyla arkadaşınla skor karşılaştırması yapabilirsin." },
+      { q: "7. Tercih robotunda öğrenim düzeyi seçimi nasıl çalışır?", a: "Lisans seçildiğinde Lisans, Önlisans ve Ortaöğretim düzeyindeki ilanlar; Önlisans seçildiğinde Önlisans ve Ortaöğretim ilanları birlikte listelenir." },
+      { q: "8. KPSS puan alanını boş bırakabilir miyim?", a: "Evet. Puan alanı isteğe bağlıdır; boş bırakırsan puan barajı filtresi uygulanmadan öğrenim, bölüm, il ve belge kriterlerine göre ilanlar gösterilir." },
+      { q: "9. 'Sınırda' etiketi ne anlama gelir?", a: "Girdiğin KPSS puanının ilan taban puanına çok yakın (yaklaşık 3 puan içinde) olduğunu göstermek için bilgilendirme amaçlı kullanılır." },
+      { q: "10. Hangi kadrolarda boy ve kilo şartı aranır?", a: "İnfaz ve koruma memurluğu, polis/POMEM/PMYO ve askeri (MSB/Jandarma) kadrolarında boy/kilo ve fiziki/mülakat şartları bulunur; düz memuriyetlerde genelde yoktur." },
+      { q: "11. Özel belgelerimi (ör. SRC, ÖGG, klavye sertifikası) nasıl ekleyebilirim?", a: "Tercih Robotu bölümündeki hazır belge kutularını işaretleyebilir veya 'Farklı belgeni ekle' alanından kendi belgeni ekleyebilirsin." },
+      { q: "12. İlanlara doğrudan bu siteden mi başvuruluyor?", a: "Hayır; ilan kartlarındaki 'Resmî Site' bağlantısı seni doğrudan ilgili resmî kurum veya ilan portalına yönlendirir." },
+      { q: "13. Önceki seneler taban puanları kesin midir?", a: "Hayır. Tablodaki puanlar geçmiş dönem genel referans aralıklarıdır; her alımda resmî kılavuz ve kontenjanlara göre değişebilir." },
+      { q: "14. Yeni ilan açıldığında nasıl haberdar olabilirim?", a: "Sayfadaki Telegram Bot bağlantısı üzerinden @kamu_ilan_kpss_bot kanalına geçebilir veya ilgilendiğin ilanları 'Kaydet' butonuyla favorilerine alabilirsin." }
     ];
 
     const CHAT_ROOMS = [
@@ -694,7 +782,7 @@
         badge: "Gizlilik & Yerel Saklama",
         title: "Tarayıcı Yerel Saklama (LocalStorage) Bilgilendirmesi",
         paragraphs: [
-          "Üyelik gerektirmeden seçtiğin düzey, puan, iller, belgeler, kayıtlı ilanlar, klavye kayıtları, yarış skorları, sohbet mesajları ve forum soruları tarayıcındaki LocalStorage alanında saklanır.",
+          "Üyelik/rumuz bilgin, seçtiğin düzey, puan, iller, belgeler, kayıtlı ilanlar, klavye kayıtları, yarış skorları, sohbet mesajları ve forum soru-cevapları tarayıcındaki LocalStorage alanında saklanır.",
           "Başvurular için doğrudan resmî kurum veya ilan kaynağına yönlendirme yapılır."
         ]
       },
@@ -868,24 +956,19 @@
     }
 
     function selectStatusFilter(key) {
-      showSavedOnly = false;
-      activeStatusFilter = key;
-      visibleLimit = INITIAL_VISIBLE_JOBS;
-      renderStatusMenu();
-      applyProfileMatch(false);
+      showSavedOnly = false; activeStatusFilter = key; visibleLimit = INITIAL_VISIBLE_JOBS;
+      renderStatusMenu(); applyProfileMatch(false);
     }
 
     function resetVisibleLimitAndFilter(showFeedback = false) {
-      visibleLimit = INITIAL_VISIBLE_JOBS;
-      applyProfileMatch(showFeedback);
+      visibleLimit = INITIAL_VISIBLE_JOBS; applyProfileMatch(showFeedback);
     }
 
     function loadMoreJobs() { visibleLimit += LOAD_MORE_STEP; renderTimelineJobs(lastFilteredEntries); }
     function showAllFilteredJobs() { visibleLimit = Math.max(lastFilteredEntries.length, INITIAL_VISIBLE_JOBS); renderTimelineJobs(lastFilteredEntries); }
 
     function setQuickKeyword(kw) {
-      document.getElementById("searchKeywordInput").value = kw;
-      resetVisibleLimitAndFilter(false);
+      document.getElementById("searchKeywordInput").value = kw; resetVisibleLimitAndFilter(false);
     }
 
     function loadSavedIds() {
@@ -911,8 +994,7 @@
     }
 
     function toggleSavedOnly() {
-      showSavedOnly = !showSavedOnly;
-      visibleLimit = INITIAL_VISIBLE_JOBS;
+      showSavedOnly = !showSavedOnly; visibleLimit = INITIAL_VISIBLE_JOBS;
       if (showSavedOnly) {
         renderSavedJobs();
         document.getElementById("ilanlarSection").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -931,8 +1013,7 @@
 
     function isEducationEligible(userEdu, itemEdu) {
       if (!userEdu || userEdu === "ALL") return true;
-      const uRank = EDU_RANK[userEdu];
-      const iRank = EDU_RANK[itemEdu];
+      const uRank = EDU_RANK[userEdu]; const iRank = EDU_RANK[itemEdu];
       if (!uRank || !iRank) return true;
       return iRank <= uRank;
     }
@@ -963,8 +1044,7 @@
     }
 
     function clearSelectedCities() {
-      selectedCities = [];
-      renderCityChips(); saveProfileFromUI(); resetVisibleLimitAndFilter(false);
+      selectedCities = []; renderCityChips(); saveProfileFromUI(); resetVisibleLimitAndFilter(false);
     }
 
     function normalizeText(str) {
@@ -1058,9 +1138,7 @@
       const kw = normalizeText(document.getElementById("searchKeywordInput").value);
 
       let basePool = getAllCombinedPool();
-      if (activeStatusFilter !== "ALL") {
-        basePool = basePool.filter(x => inferStatusType(x) === activeStatusFilter);
-      }
+      if (activeStatusFilter !== "ALL") basePool = basePool.filter(x => inferStatusType(x) === activeStatusFilter);
 
       const matched = [];
       basePool.forEach(item => {
@@ -1088,9 +1166,7 @@
       });
 
       renderTimelineJobs(matched);
-      if (showFeedback) {
-        document.getElementById("profileDocFeedback").textContent = `Filtre uygulandı: ${matched.length} ilan eşleşti.`;
-      }
+      if (showFeedback) document.getElementById("profileDocFeedback").textContent = `Filtre uygulandı: ${matched.length} ilan eşleşti.`;
     }
 
     function renderTimelineJobs(entries) {
@@ -1102,9 +1178,7 @@
       const totalCount = entries.length;
       const slicedEntries = entries.slice(0, visibleLimit);
 
-      countEl.textContent = totalCount > slicedEntries.length
-        ? `${slicedEntries.length} / ${totalCount} ilan gösteriliyor`
-        : `${totalCount} ilan`;
+      countEl.textContent = totalCount > slicedEntries.length ? `${slicedEntries.length} / ${totalCount} ilan gösteriliyor` : `${totalCount} ilan`;
 
       if (slicedEntries.length === 0) {
         container.innerHTML = `<div class="bg-slate-50 border border-slate-200 rounded-xl p-8 text-center"><p class="font-bold text-slate-700">Seçili kriterlere uyan ilan bulunamadı.</p></div>`;
@@ -1189,11 +1263,10 @@
       }
     }
 
-    // KÂTİPLİK SEKMELERİ, F/Q KLAVYE, SİMÜLASYON, OYUN & YARIŞ
+    // KÂTİPLİK SEKMELERİ, SİMÜLASYON, DERSLER, KELİME, OYUN & YARIŞ
     function switchKatiplikTab(tabKey) {
       document.querySelectorAll(".k-panel").forEach(p => p.classList.add("hidden"));
       document.getElementById(`kPanel-${tabKey}`).classList.remove("hidden");
-
       document.querySelectorAll(".k-tab-btn").forEach(b => {
         const isAct = b.id === `kTab-${tabKey}`;
         if (tabKey === "race" && b.id === "kTab-race") {
@@ -1219,17 +1292,12 @@
 
     function startSim() {
       if (simTimerId) clearInterval(simTimerId);
-      simRemainingSec = 180;
-      initSimText();
+      simRemainingSec = 180; initSimText();
       const inp = document.getElementById("simInputArea");
-      inp.value = "";
-      inp.focus();
-      onSimInput();
-      updateSimTimerUI();
-
+      inp.value = ""; inp.focus();
+      onSimInput(); updateSimTimerUI();
       simTimerId = setInterval(() => {
-        simRemainingSec -= 1;
-        updateSimTimerUI();
+        simRemainingSec -= 1; updateSimTimerUI();
         if (simRemainingSec <= 0) finishSim();
       }, 1000);
     }
@@ -1237,18 +1305,14 @@
     function onSimInput() {
       const target = document.getElementById("simTargetText").textContent || "";
       const typed = document.getElementById("simInputArea").value || "";
-
-      let correctChars = 0;
-      let errors = 0;
+      let correctChars = 0, errors = 0;
       for (let i = 0; i < typed.length; i++) {
         if (typed[i] === target[i]) correctChars += 1;
         else errors += 1;
       }
-
       const acc = typed.length > 0 ? Math.max(0, Math.round((correctChars / typed.length) * 100)) : 100;
       const grossWords = typed.trim() ? typed.trim().split(/\s+/).length : 0;
       const netWords = Math.max(0, grossWords - errors);
-
       document.getElementById("simNetDisplay").textContent = String(netWords);
       document.getElementById("simAccDisplay").textContent = `%${acc}`;
       document.getElementById("simKeystrokesDisplay").textContent = String(typed.length);
@@ -1267,10 +1331,7 @@
     }
 
     function getSimHistory() {
-      try {
-        const arr = JSON.parse(localStorage.getItem("kpss_sim_history"));
-        return Array.isArray(arr) ? arr : [];
-      } catch (e) { return []; }
+      try { const arr = JSON.parse(localStorage.getItem("kpss_sim_history")); return Array.isArray(arr) ? arr : []; } catch (e) { return []; }
     }
 
     function renderSimHistory() {
@@ -1292,29 +1353,25 @@
 
     function clearSimHistory() { localStorage.removeItem("kpss_sim_history"); renderSimHistory(); }
 
-    // YARIŞ LİDERLİK TABLOSU & DÜELLO
     function getRaceEntries() {
       try {
         const custom = JSON.parse(localStorage.getItem("kpss_race_scores"));
         const userArr = Array.isArray(custom) ? custom : [];
         return [...userArr, ...DEFAULT_RACE_BOTS].sort((a, b) => Number(b.net) - Number(a.net));
-      } catch (e) {
-        return [...DEFAULT_RACE_BOTS];
-      }
+      } catch (e) { return [...DEFAULT_RACE_BOTS]; }
     }
 
     function publishCurrentSimToRace() {
-      const nick = (document.getElementById("raceNickInput")?.value || "").trim() || "BenimSkorum";
+      const member = getChatMember();
+      const nick = (document.getElementById("raceNickInput")?.value || "").trim() || (member ? member.name : "Emre Kaya");
       const net = Number(document.getElementById("simNetDisplay").textContent || 0);
       const acc = document.getElementById("simAccDisplay").textContent || "%100";
       const layout = document.getElementById("simLayoutSelect").value;
-
       let custom = [];
       try { custom = JSON.parse(localStorage.getItem("kpss_race_scores")) || []; } catch (e) {}
       custom.unshift({ nick, net, acc, layout });
       localStorage.setItem("kpss_race_scores", JSON.stringify(custom.slice(0, 15)));
-      renderRaceLeaderboard();
-      switchKatiplikTab("race");
+      renderRaceLeaderboard(); switchKatiplikTab("race");
     }
 
     function renderRaceLeaderboard() {
@@ -1337,7 +1394,8 @@
     }
 
     function generateChallengeCode() {
-      const nick = ((document.getElementById("raceNickInput")?.value || "KATIP").trim() || "KATIP").toUpperCase().replace(/\|/g, "");
+      const member = getChatMember();
+      const nick = ((document.getElementById("raceNickInput")?.value || "").trim() || (member ? member.name : "EMRE KAYA")).toUpperCase().replace(/\|/g, "");
       const net = Number(document.getElementById("simNetDisplay").textContent || 0);
       const acc = (document.getElementById("simAccDisplay").textContent || "%100").replace(/\|/g, "");
       const layout = document.getElementById("simLayoutSelect").value;
@@ -1349,7 +1407,7 @@
       const parts = raw.split("|");
       const box = document.getElementById("duelResultBox");
       if (parts.length < 2) {
-        box.innerHTML = `<span class="text-rose-400">Geçerli bir kod gir (Örn: KATIP|96|%98|F).</span>`;
+        box.innerHTML = `<span class="text-rose-400">Geçerli bir kod gir (Örn: ZEYNEP ARSLAN|96|%98|F).</span>`;
         return;
       }
       const rivalNick = parts[0] || "Rakip";
@@ -1357,7 +1415,6 @@
       const rivalAcc = parts[2] || "-";
       const rivalLayout = parts[3] || "-";
       const myNet = Number(document.getElementById("simNetDisplay").textContent || 0);
-
       const diff = myNet - rivalNet;
       const verdict = diff > 0
         ? `<span class="text-emerald-400 font-extrabold">Sen öndesin (+${diff} net)!</span>`
@@ -1371,7 +1428,6 @@
       `;
     }
 
-    // DERSLER, KELİME, OYUN
     function selectLesson(idx) {
       activeLessonIdx = idx;
       const l = KEYBOARD_LESSONS[idx] || KEYBOARD_LESSONS[0];
@@ -1388,7 +1444,6 @@
           : "px-2.5 py-1 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100";
         return `<button type="button" onclick="selectLesson(${i})" class="${cls}">${i + 1}. ${item.title.split(":")[0]}</button>`;
       }).join("");
-
       renderVisualKeyboard();
     }
 
@@ -1437,8 +1492,7 @@
     function resetWordDrill() {
       const bank = WORD_BANKS[wordDrillMode] || WORD_BANKS.hukuk;
       wordQueue = [...bank].sort(() => Math.random() - 0.5).slice(0, 10);
-      wordIdx = 0;
-      renderWordQueue();
+      wordIdx = 0; renderWordQueue();
       const inp = document.getElementById("wordDrillInput");
       if (inp) inp.value = "";
     }
@@ -1465,8 +1519,7 @@
         else wordWrong += 1;
         document.getElementById("wordCorrectCount").textContent = String(wordCorrect);
         document.getElementById("wordWrongCount").textContent = String(wordWrong);
-        inp.value = "";
-        wordIdx += 1;
+        inp.value = ""; wordIdx += 1;
         if (wordIdx >= wordQueue.length) resetWordDrill();
         else renderWordQueue();
       }
@@ -1497,7 +1550,6 @@
       nextDosyaPhrase(); syncDosyaUI();
       const inp = document.getElementById("dosyaInput");
       inp.value = ""; inp.focus();
-
       dosyaInterval = setInterval(() => {
         if (!dosyaActive) return;
         dosyaTimeLeft -= 1.5;
@@ -1526,8 +1578,7 @@
       if (!dosyaActive) return;
       const inp = document.getElementById("dosyaInput");
       if (inp.value.trim() === dosyaCurrentTarget) {
-        dosyaScore += 10 * dosyaStreak;
-        dosyaStreak += 1;
+        dosyaScore += 10 * dosyaStreak; dosyaStreak += 1;
         dosyaLevel = 1 + Math.floor(dosyaScore / 50);
         updateBestGameScore(dosyaScore);
         inp.value = ""; nextDosyaPhrase(); syncDosyaUI();
@@ -1595,16 +1646,55 @@
       `).join("");
     }
 
+    // ÜYELİ CANLI SOHBET
+    function getChatMember() {
+      try { const m = JSON.parse(localStorage.getItem("kpss_chat_member")); return (m && m.name && m.memberId) ? m : null; } catch (e) { return null; }
+    }
+
+    function updateChatMemberUI() {
+      const m = getChatMember();
+      const badge = document.getElementById("chatMemberStatusBadge");
+      const nameInp = document.getElementById("memberNameInput");
+      const idInp = document.getElementById("memberIdInput");
+      if (m) {
+        if (badge) {
+          badge.className = "text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-900";
+          badge.textContent = `✓ Üye Girişi Aktif: ${m.name}`;
+        }
+        if (nameInp) nameInp.value = m.name;
+        if (idInp) idInp.value = m.memberId;
+      } else if (badge) {
+        badge.className = "text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900";
+        badge.textContent = "Sohbet için üye/rumuz girişi gerekli";
+      }
+    }
+
+    function loginChatMember(e) {
+      e.preventDefault();
+      const name = (document.getElementById("memberNameInput").value || "").trim();
+      const memberId = (document.getElementById("memberIdInput").value || "").trim();
+      if (!name || !memberId) return;
+      localStorage.setItem("kpss_chat_member", JSON.stringify({ name, memberId }));
+      updateChatMemberUI();
+    }
+
+    function logoutChatMember() {
+      localStorage.removeItem("kpss_chat_member");
+      document.getElementById("memberNameInput").value = "";
+      document.getElementById("memberIdInput").value = "";
+      updateChatMemberUI();
+    }
+
     function getChatStore() {
       try {
         const d = JSON.parse(localStorage.getItem("kpss_chat_rooms"));
         if (d && typeof d === "object") return d;
       } catch (e) {}
       return {
-        lisans: [{ author: "Aday_P3", text: "Lisans kadrolarında hem merkezî hem kurumsal ilanları birlikte takip ediyorum.", time: "Bugün" }],
-        onlisans: [{ author: "Aday_P93", text: "Ön lisans P93 ve kâtiplik ilanları için F klavye çalışmasına erken başlamak iyi oluyor.", time: "Bugün" }],
-        ortaogretim: [{ author: "Aday_P94", text: "Lise düzeyinde ehliyet/SRC/ÖGG belgeleri olanlar şartları dikkatle okumalı.", time: "Bugün" }],
-        tercih: []
+        lisans: [{ author: "Emre Kaya", text: "Lisans kadrolarında hem merkezî hem kurumsal ilanları birlikte takip ediyorum.", time: "Bugün" }],
+        onlisans: [{ author: "Zeynep Arslan", text: "Ön lisans P93 ve kâtiplik ilanları için F klavye çalışmasına erken başlamak iyi oluyor.", time: "Bugün" }],
+        ortaogretim: [{ author: "Burak Şahin", text: "Lise düzeyinde ehliyet/SRC/ÖGG belgeleri olanlar şartları dikkatle okumalı.", time: "Bugün" }],
+        tercih: [{ author: "Elif Çelik", text: "Tercih listesinde il sıralamasını ve taban puanları birlikte değerlendirmek önemli.", time: "Bugün" }]
       };
     }
 
@@ -1638,7 +1728,7 @@
       const roomMsgs = Array.isArray(store[currentRoom.id]) ? store[currentRoom.id] : [];
       const msgBox = document.getElementById("chatMessagesBox");
       if (roomMsgs.length === 0) {
-        msgBox.innerHTML = `<div class="text-center py-8 text-xs text-slate-400">Bu odada henüz mesaj yok. İlk mesajı sen yaz!</div>`;
+        msgBox.innerHTML = `<div class="text-center py-8 text-xs text-slate-400">Bu odada henüz mesaj yok. Üye girişi yapıp ilk mesajı sen yaz!</div>`;
       } else {
         msgBox.innerHTML = roomMsgs.map(m => `
           <div class="bg-slate-900 border border-slate-800 rounded-xl p-3">
@@ -1656,55 +1746,101 @@
 
     function sendChatMessage(e) {
       e.preventDefault();
-      const nickInput = document.getElementById("chatNickInput");
+      const member = getChatMember();
+      if (!member) {
+        alert("Canlı sohbete mesaj göndermek için önce üst kısımdan Ad Soyad ve Üye No / E-posta ile giriş yapmalısın.");
+        document.getElementById("memberNameInput")?.focus();
+        return;
+      }
       const textInput = document.getElementById("chatTextInput");
       const text = (textInput.value || "").trim();
       if (!text) return;
-      const author = (nickInput.value || "").trim() || "Aday";
       const store = getChatStore();
       if (!Array.isArray(store[activeChatRoomId])) store[activeChatRoomId] = [];
-      store[activeChatRoomId].push({ author, text, time: "Şimdi" });
+      store[activeChatRoomId].push({ author: member.name, text, time: "Şimdi" });
       localStorage.setItem("kpss_chat_rooms", JSON.stringify(store));
       textInput.value = "";
       renderChatRooms();
     }
 
+    // FORUM (SORU BIRAKMA + CEVAPLAMA)
     function getForumPosts() {
       try {
-        const posts = JSON.parse(localStorage.getItem("kpss_forum_posts"));
+        const posts = JSON.parse(localStorage.getItem("kpss_forum_posts_v2"));
         if (Array.isArray(posts) && posts.length > 0) return posts;
       } catch (e) {}
-      return [
-        { author: "Aday_01", topic: "Kâtiplik", text: "F klavyede 3 dakikada hatasız hız için düzenli pratik önemli." },
-        { author: "KPSS_Aday", topic: "Boy / Mülakat", text: "İKM, polis ve askeri alımlarda boy/kilo ve mülakat şartlarını ilan kılavuzundan mutlaka kontrol etmeli." }
-      ];
+      return DEFAULT_FORUM_POSTS;
     }
 
     function renderForum() {
       const box = document.getElementById("forumList");
       if (!box) return;
-      box.innerHTML = getForumPosts().map(p => `
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs">
-          <div class="flex items-center justify-between gap-2">
-            <span class="font-bold text-slate-900">${p.author}</span>
-            <span class="bg-indigo-100 text-indigo-800 font-semibold px-2 py-0.5 rounded">${p.topic}</span>
+      const posts = getForumPosts();
+      box.innerHTML = posts.map(p => {
+        const replies = Array.isArray(p.replies) ? p.replies : [];
+        const repliesHtml = replies.map(r => `
+          <div class="bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs">
+            <span class="font-bold text-emerald-700">${r.author}:</span>
+            <span class="text-slate-700 ml-1">${r.text}</span>
           </div>
-          <p class="text-slate-700 mt-1 leading-relaxed">${p.text}</p>
-        </div>
-      `).join("");
+        `).join("");
+
+        return `
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="font-extrabold text-slate-900 text-sm">${p.author}</span>
+              <span class="bg-indigo-100 text-indigo-800 font-bold px-2.5 py-0.5 rounded">${p.topic}</span>
+            </div>
+            <p class="text-slate-800 font-medium leading-relaxed">${p.text}</p>
+            <div class="space-y-1.5 pl-2 sm:pl-4 border-l-2 border-indigo-200">
+              ${repliesHtml}
+            </div>
+            <form onsubmit="addForumReply(event, '${p.id}')" class="flex flex-col sm:flex-row gap-2 pt-1">
+              <input id="replyAuthor-${p.id}" type="text" maxlength="30" required placeholder="Adın (Örn: Kerem Aydın)" class="sm:w-40 border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs bg-white" />
+              <input id="replyText-${p.id}" type="text" maxlength="200" required placeholder="Bu soruya cevabını yaz..." class="flex-1 border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs bg-white" />
+              <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-3 py-1.5 rounded-lg text-xs transition shrink-0">Cevapla</button>
+            </form>
+          </div>
+        `;
+      }).join("");
     }
 
     function addForumPost(e) {
       e.preventDefault();
-      const author = (document.getElementById("forumAuthor").value || "").trim() || "Aday";
+      const author = (document.getElementById("forumAuthor").value || "").trim();
       const topic = document.getElementById("forumTopic").value;
       const text = (document.getElementById("forumMessage").value || "").trim();
-      if (!text) return;
+      if (!author || !text) return;
       const posts = getForumPosts();
-      posts.unshift({ author, topic, text });
-      localStorage.setItem("kpss_forum_posts", JSON.stringify(posts.slice(0, 30)));
+      posts.unshift({ id: `q-${Date.now()}`, author, topic, text, replies: [] });
+      localStorage.setItem("kpss_forum_posts_v2", JSON.stringify(posts.slice(0, 40)));
       document.getElementById("forumMessage").value = "";
       renderForum();
+    }
+
+    function addForumReply(e, postId) {
+      e.preventDefault();
+      const rAuthor = (document.getElementById(`replyAuthor-${postId}`)?.value || "").trim();
+      const rText = (document.getElementById(`replyText-${postId}`)?.value || "").trim();
+      if (!rAuthor || !rText) return;
+      const posts = getForumPosts();
+      const target = posts.find(x => x.id === postId);
+      if (!target) return;
+      if (!Array.isArray(target.replies)) target.replies = [];
+      target.replies.push({ author: rAuthor, text: rText });
+      localStorage.setItem("kpss_forum_posts_v2", JSON.stringify(posts));
+      renderForum();
+    }
+
+    function renderFaqList() {
+      const box = document.getElementById("faqAccordionList");
+      if (!box) return;
+      box.innerHTML = FAQ_ITEMS.map((item, idx) => `
+        <details class="bg-slate-50 border border-slate-200 rounded-xl p-3.5" ${idx < 2 ? "open" : ""}>
+          <summary class="font-bold text-slate-900 cursor-pointer text-xs sm:text-sm">${item.q}</summary>
+          <p class="text-slate-600 mt-2 text-xs leading-relaxed">${item.a}</p>
+        </details>
+      `).join("");
     }
 
     function resetFilters() {
@@ -1782,8 +1918,10 @@
       resetWordDrill();
       updateBestGameScore(0);
       renderProfessionsTable();
+      updateChatMemberUI();
       renderChatRooms();
       renderForum();
+      renderFaqList();
       try {
         const res = await fetch("./ilanlar.json", { cache: "no-store" });
         if (res.ok) {
