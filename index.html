@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kamu Atamaları, KPSS Robotu & Kâtiplik Klavye Yarışması</title>
+  <title>Kamu Atamaları, KPSS Robotu & Kâtiplik Antrenmanı</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body id="top" class="bg-slate-100 text-slate-800 font-sans antialiased">
@@ -17,7 +17,7 @@
           <span class="font-bold text-base sm:text-lg tracking-tight">İlan & KPSS Rehberi</span>
         </a>
         <nav class="hidden lg:flex items-center gap-3.5 text-xs font-semibold text-slate-300">
-          <a href="#katiplikMerkeziBolumu" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-lg font-extrabold transition">⌨️ KÂTİPLİK & YARIŞMA</a>
+          <button type="button" onclick="toggleKatiplikPanel(true)" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-lg font-extrabold transition cursor-pointer">⌨️ KÂTİPLİK & ANTRENMAN</button>
           <a href="#ilanlarSection" class="hover:text-emerald-300 transition">İLANLAR</a>
           <a href="#robotSection" class="hover:text-emerald-300 transition">TERCİH ROBOTU</a>
           <a href="#mesleklerSartlarBolumu" class="hover:text-amber-300 transition">MESLEKLER & ŞARTLAR</a>
@@ -26,7 +26,7 @@
       </div>
 
       <div class="flex items-center gap-2 shrink-0">
-        <a href="#katiplikMerkeziBolumu" class="lg:hidden bg-indigo-600 text-white font-extrabold text-xs px-2.5 py-1.5 rounded-lg">⌨️ Kâtiplik</a>
+        <button type="button" onclick="toggleKatiplikPanel(true)" class="lg:hidden bg-indigo-600 text-white font-extrabold text-xs px-2.5 py-1.5 rounded-lg cursor-pointer">⌨️ Kâtiplik & Antrenman</button>
         <button type="button" onclick="toggleSavedOnly()" class="bg-amber-400/15 hover:bg-amber-400/25 text-amber-200 font-bold text-xs px-3 py-1.5 rounded-lg border border-amber-300/30 transition">
           ★ Kayıtlı (<span id="savedCountHeader">0</span>)
         </button>
@@ -42,280 +42,297 @@
     <div id="ad-slot-top" class="w-full bg-white border border-slate-200 rounded-xl py-2.5 px-4 text-center text-xs text-slate-500"></div>
   </div>
 
-  <!-- KÂTİPLİK KLAVYE, F KLAVYE ANTRENMANI, SINAV SİMÜLASYONU, KELİME, OYUN & KULLANICI YARIŞI -->
+  <!-- KÂTİPLİK & ANTRENMAN TETİKLEYİCİ ŞERİT + AÇILIR PANEL -->
   <section id="katiplikMerkeziBolumu" class="max-w-7xl mx-auto px-4 mt-4">
-    <div class="bg-white rounded-2xl shadow-sm border-2 border-indigo-500/40 p-5 sm:p-6">
-      <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+    <div class="bg-white rounded-2xl shadow-sm border border-indigo-200 p-4 sm:p-5">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <span class="inline-block bg-indigo-100 text-indigo-800 text-[11px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full">Kâtiplik Klavye & Yarışma Alanı</span>
-          <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">Kâtiplik Klavye: F/Q Sınav Simülasyonu, Dersler, Kelime, Oyun & Yarış</h1>
-          <p class="text-xs text-slate-500 mt-0.5">F klavye ve Q klavye desteği • 3 dakika sınav simülasyonu • Kullanıcı skor tablosu ve arkadaşla düello kodu</p>
+          <span class="inline-block bg-indigo-100 text-indigo-800 text-[11px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full">İsteğe Bağlı Modül</span>
+          <h1 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">Kâtiplik & Antrenman</h1>
+          <p class="text-xs text-slate-500">F/Q klavye dersleri, 3 dakikalık sınav simülasyonu, kelime çalışması ve oyunlar butona tıklanınca açılır.</p>
         </div>
-
-        <div class="flex flex-wrap gap-1.5">
-          <button type="button" id="kTab-sim" onclick="switchKatiplikTab('sim')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white transition">
-            ⏱️ Sınav Simülasyonu
-          </button>
-          <button type="button" id="kTab-lessons" onclick="switchKatiplikTab('lessons')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-            ⌨️ F/Q Klavye Dersleri
-          </button>
-          <button type="button" id="kTab-words" onclick="switchKatiplikTab('words')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-            ⚡ Kelime Antrenmanı
-          </button>
-          <button type="button" id="kTab-games" onclick="switchKatiplikTab('games')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-            🎮 Oyun (Metin Yazarak)
-          </button>
-          <button type="button" id="kTab-race" onclick="switchKatiplikTab('race')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-amber-100 text-amber-950 hover:bg-amber-200 transition">
-            🏆 Yarış & Düello
-          </button>
-        </div>
+        <button
+          type="button"
+          id="katiplikToggleBtn"
+          onclick="toggleKatiplikPanel()"
+          class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition shrink-0 cursor-pointer"
+        >
+          ⌨️ KÂTİPLİK & ANTRENMANI AÇ
+        </button>
       </div>
 
-      <!-- 1) SINAV SİMÜLASYONU -->
-      <div id="kPanel-sim" class="k-panel mt-5 space-y-5">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-          <div class="lg:col-span-8 bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200">
-              <div class="flex items-center gap-2 flex-wrap">
-                <span class="bg-indigo-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-lg">3:00 Sınav</span>
-                <select id="simLayoutSelect" onchange="initSimText()" class="border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-bold bg-white">
-                  <option value="F">Türkçe F Klavye (Öncelikli)</option>
-                  <option value="Q">Türkçe Q Klavye</option>
-                </select>
-                <select id="simTextSelect" onchange="initSimText()" class="border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-semibold bg-white">
-                  <option value="0">Metin 1: Ceza Muhakemesi & Duruşma Tutanağı</option>
-                  <option value="1">Metin 2: Tebligat, Dava Dilekçesi & Süreler</option>
-                  <option value="2">Metin 3: İcra, İstinaf & Yazı İşleri Kalemi</option>
-                </select>
-              </div>
-              <div class="flex items-center gap-2">
-                <span id="simTimerDisplay" class="font-mono font-extrabold text-sm bg-slate-900 text-emerald-300 px-3 py-1.5 rounded-lg">03:00</span>
-                <button type="button" onclick="startSim()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-1.5 rounded-lg transition">Sınavı Başlat</button>
-                <button type="button" onclick="finishSim()" class="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs px-3 py-1.5 rounded-lg transition">Bitir & Kaydet</button>
-              </div>
-            </div>
-
-            <div id="simTargetText" class="mt-4 bg-white border border-slate-200 rounded-xl p-4 text-sm leading-relaxed text-slate-800 select-none max-h-40 overflow-y-auto"></div>
-
-            <textarea
-              id="simInputArea"
-              oninput="onSimInput()"
-              rows="4"
-              placeholder="Sınavı Başlat'a bas ve metni buraya yaz..."
-              class="mt-3 w-full border border-slate-300 rounded-xl p-3 text-sm bg-white focus:outline-none focus:border-indigo-600"
-            ></textarea>
-
-            <div class="mt-3 pt-3 border-t border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-              <div class="flex items-center gap-2 flex-1">
-                <input id="raceNickInput" type="text" maxlength="24" placeholder="Yarışta görünecek adın (Örn: Emre Kaya)" class="flex-1 border border-slate-300 rounded-lg px-3 py-2 text-xs bg-white" />
-                <button type="button" onclick="publishCurrentSimToRace()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-lg transition shrink-0">
-                  🏆 Yarışa Katıl
-                </button>
-              </div>
-              <button type="button" onclick="switchKatiplikTab('race')" class="text-xs font-bold text-indigo-700 hover:underline shrink-0">
-                Skor Tablosuna Git →
-              </button>
-            </div>
+      <div id="katiplikDrawer" class="hidden mt-5 pt-5 border-t border-slate-200">
+        <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">Kâtiplik Antrenman Alanı: F/Q Sınav Simülasyonu, Dersler, Kelime & Oyun</h2>
+            <p class="text-xs text-slate-500 mt-0.5">F klavye ve Q klavye desteği • 3 dakika sınav simülasyonu • Kullanıcı skor tablosu ve arkadaşla düello kodu</p>
           </div>
 
-          <div class="lg:col-span-4 space-y-4">
-            <div class="grid grid-cols-2 gap-3">
-              <div class="bg-slate-900 text-white rounded-xl p-3.5">
-                <div class="text-2xl font-extrabold text-emerald-400" id="simNetDisplay">0</div>
-                <div class="text-[11px] text-slate-300 mt-0.5">Net Kelime (Hedef 90+)</div>
-              </div>
-              <div class="bg-slate-900 text-white rounded-xl p-3.5">
-                <div class="text-2xl font-extrabold text-sky-400" id="simAccDisplay">%100</div>
-                <div class="text-[11px] text-slate-300 mt-0.5">Doğruluk Oranı</div>
-              </div>
-              <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
-                <div class="text-xl font-extrabold text-slate-900" id="simKeystrokesDisplay">0</div>
-                <div class="text-[11px] text-slate-500 mt-0.5">Yazılan Karakter</div>
-              </div>
-              <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
-                <div class="text-xl font-extrabold text-rose-600" id="simErrorsDisplay">0</div>
-                <div class="text-[11px] text-slate-500 mt-0.5">Hata Sayısı</div>
-              </div>
-            </div>
-
-            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
-              <div class="flex items-center justify-between mb-2">
-                <h3 class="font-bold text-xs text-slate-900 uppercase">Son Sınav Simülasyonlarım</h3>
-                <button type="button" onclick="clearSimHistory()" class="text-[11px] text-slate-500 hover:text-rose-600 underline">Temizle</button>
-              </div>
-              <div id="simHistoryList" class="space-y-1.5 max-h-44 overflow-y-auto text-xs"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2) F / Q KLAVYE DERSLERİ -->
-      <div id="kPanel-lessons" class="k-panel hidden mt-5 space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
-          <div class="flex flex-wrap gap-1.5" id="lessonButtonsBar"></div>
-          <div class="flex items-center gap-2">
-            <select id="lessonLayoutSelect" onchange="selectLesson(activeLessonIdx)" class="border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-bold bg-white">
-              <option value="F">Türkçe F Klavye</option>
-              <option value="Q">Türkçe Q Klavye</option>
-            </select>
-            <button type="button" onclick="selectLesson(activeLessonIdx)" class="bg-slate-900 text-white font-bold text-xs px-3 py-1.5 rounded-lg">Dersi Sıfırla</button>
-          </div>
-        </div>
-
-        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <h3 id="lessonTitle" class="font-extrabold text-base text-slate-900">Temel sıra: sol el</h3>
-              <p id="lessonDesc" class="text-xs text-slate-600 mt-0.5">Sol el dört parmağını temel konumda tutarak yaz.</p>
-            </div>
-            <div id="lessonStatsText" class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full">Doğruluk: %100</div>
-          </div>
-
-          <div id="lessonTargetBox" class="mt-4 bg-white border border-slate-200 rounded-xl p-4 font-mono text-base tracking-wide text-slate-800"></div>
-
-          <input
-            id="lessonInput"
-            oninput="onLessonInput()"
-            type="text"
-            placeholder="Yukarıdaki harf/kelime dizisini buraya yaz..."
-            class="mt-3 w-full border border-slate-300 rounded-xl px-4 py-2.5 font-mono text-sm bg-white focus:outline-none focus:border-indigo-600"
-          />
-
-          <div id="lessonVisualKeyboard" class="mt-4 space-y-1.5 select-none"></div>
-        </div>
-      </div>
-
-      <!-- 3) KELİME ANTRENMANI -->
-      <div id="kPanel-words" class="k-panel hidden mt-5 space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
           <div class="flex flex-wrap gap-1.5">
-            <button type="button" onclick="setWordDrillMode('hukuk')" id="wMode-hukuk" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white">Hukuk Terimleri</button>
-            <button type="button" onclick="setWordDrillMode('uzun')" id="wMode-uzun" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700">Uzun Kelimeler</button>
-            <button type="button" onclick="setWordDrillMode('rakam')" id="wMode-rakam" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700">Rakam & Sayı</button>
-            <button type="button" onclick="setWordDrillMode('genel')" id="wMode-genel" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700">Sık Kullanılan Kelimeler</button>
-          </div>
-          <div class="flex items-center gap-3 text-xs font-bold">
-            <span class="text-emerald-700">Doğru: <span id="wordCorrectCount">0</span></span>
-            <span class="text-rose-600">Hata: <span id="wordWrongCount">0</span></span>
-            <button type="button" onclick="resetWordDrill()" class="bg-slate-900 text-white px-3 py-1.5 rounded-lg">Yeni Set</button>
-          </div>
-        </div>
-
-        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
-          <div class="text-xs text-slate-500 mb-2">Aktif kelimeyi yaz ve <b>Boşluk (Space)</b> tuşuna bas:</div>
-          <div id="wordQueueBox" class="bg-white border border-slate-200 rounded-xl p-4 flex flex-wrap gap-2 text-sm font-semibold"></div>
-          <input
-            id="wordDrillInput"
-            onkeydown="onWordDrillKeydown(event)"
-            type="text"
-            placeholder="Kelimeyi yazıp Boşluk'a bas..."
-            class="mt-3 w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm bg-white focus:outline-none focus:border-indigo-600"
-          />
-        </div>
-      </div>
-
-      <!-- 4) OYUN (METİN YAZARAK ANTRENMAN OYUNLARI) -->
-      <div id="kPanel-games" class="k-panel hidden mt-5 space-y-5">
-        <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
-          <div class="flex flex-wrap gap-2">
-            <button type="button" onclick="selectGameMode('dosya')" id="gTab-dosya" class="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950">📄 Dosya Yetiştir (Beyan Yazma)</button>
-            <button type="button" onclick="selectGameMode('hata')" id="gTab-hata" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800">🎯 Hata Avı (Doğrusunu Yaz)</button>
-          </div>
-          <div class="text-xs font-bold text-slate-700">
-            En Yüksek Oyun Puanı: <span id="gameBestScore" class="text-emerald-700 font-extrabold">0</span>
+            <button type="button" id="kTab-sim" onclick="switchKatiplikTab('sim')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white transition">
+              ⏱️ Sınav Simülasyonu
+            </button>
+            <button type="button" id="kTab-lessons" onclick="switchKatiplikTab('lessons')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+              ⌨️ F/Q Klavye Dersleri
+            </button>
+            <button type="button" id="kTab-words" onclick="switchKatiplikTab('words')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+              ⚡ Kelime Antrenmanı
+            </button>
+            <button type="button" id="kTab-games" onclick="switchKatiplikTab('games')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+              🎮 Oyun (Metin Yazarak)
+            </button>
+            <button type="button" id="kTab-race" onclick="switchKatiplikTab('race')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-amber-100 text-amber-950 hover:bg-amber-200 transition">
+              🏆 Skor & Düello
+            </button>
           </div>
         </div>
 
-        <div id="gameBox-dosya" class="bg-slate-950 text-white rounded-2xl p-5 space-y-4">
-          <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
-            <div class="flex items-center gap-3 font-bold">
-              <span>Puan: <b id="dosyaScore" class="text-emerald-400">0</b></span>
-              <span>Seviye: <b id="dosyaLevel" class="text-sky-400">1</b></span>
-              <span>Seri: <b id="dosyaStreak" class="text-amber-300">x1</b></span>
-              <span>Hak: <b id="dosyaLives" class="text-rose-400">3</b></span>
-            </div>
-            <button type="button" onclick="startDosyaGame()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-4 py-1.5 rounded-lg transition">Oyunu Başlat</button>
-          </div>
-
-          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center">
-            <div class="text-[11px] uppercase tracking-wider text-slate-400">Gelen Beyan / Duruşma Metni</div>
-            <div id="dosyaTargetPhrase" class="text-lg sm:text-xl font-extrabold text-amber-200 mt-2 min-h-[2rem]">Oyunu Başlat'a bas ve yazmaya başla!</div>
-            <div class="w-full bg-slate-800 h-2 rounded-full mt-4 overflow-hidden">
-              <div id="dosyaTimeBar" class="bg-emerald-400 h-full w-full transition-all duration-100"></div>
-            </div>
-          </div>
-
-          <input
-            id="dosyaInput"
-            oninput="onDosyaInput()"
-            type="text"
-            placeholder="Beyanı tam olarak yaz..."
-            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-emerald-400"
-          />
-        </div>
-
-        <div id="gameBox-hata" class="hidden bg-slate-950 text-white rounded-2xl p-5 space-y-4">
-          <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
-            <div class="flex items-center gap-3 font-bold">
-              <span>Puan: <b id="hataScore" class="text-emerald-400">0</b></span>
-              <span>Doğru Av: <b id="hataCount" class="text-sky-400">0</b></span>
-            </div>
-            <button type="button" onclick="startHataGame()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold px-4 py-1.5 rounded-lg transition">Yeni Hata Avı Turu</button>
-          </div>
-
-          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center">
-            <div class="text-xs text-slate-400">Hatalı yazılmış kelimeyi bul ve <b class="text-white">doğru yazımını</b> aşağıya yaz:</div>
-            <div id="hataWrongWord" class="text-2xl font-extrabold text-rose-400 mt-2">mahkme</div>
-            <div id="hataHint" class="text-xs text-slate-400 mt-1">İpucu: Harf veya hece hatasını düzelt</div>
-          </div>
-
-          <form onsubmit="submitHataAnswer(event)" class="flex gap-2">
-            <input id="hataAnswerInput" type="text" required placeholder="Kelimenin doğru halini yaz..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white" />
-            <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs px-4 py-2.5 rounded-xl">Kontrol Et</button>
-          </form>
-        </div>
-      </div>
-
-      <!-- 5) KULLANICI YARIŞI & ARKADAŞLA DÜELLO -->
-      <div id="kPanel-race" class="k-panel hidden mt-5 space-y-5">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-          <div class="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
-            <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-200">
-              <div>
-                <h3 class="font-extrabold text-base text-slate-900">🏆 Kâtiplik Net Yarış Tablosu</h3>
-                <p class="text-xs text-slate-500">Kendi skorunu ekleyerek sıralamada yüksel veya arkadaşınla yarış.</p>
+        <!-- 1) SINAV SİMÜLASYONU -->
+        <div id="kPanel-sim" class="k-panel mt-5 space-y-5">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+            <div class="lg:col-span-8 bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="bg-indigo-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-lg">3:00 Sınav</span>
+                  <select id="simLayoutSelect" onchange="initSimText()" class="border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-bold bg-white">
+                    <option value="F">Türkçe F Klavye (Öncelikli)</option>
+                    <option value="Q">Türkçe Q Klavye</option>
+                  </select>
+                  <select id="simTextSelect" onchange="initSimText()" class="border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-semibold bg-white">
+                    <option value="0">Metin 1: Ceza Muhakemesi & Duruşma Tutanağı</option>
+                    <option value="1">Metin 2: Tebligat, Dava Dilekçesi & Süreler</option>
+                    <option value="2">Metin 3: İcra, İstinaf & Yazı İşleri Kalemi</option>
+                  </select>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span id="simTimerDisplay" class="font-mono font-extrabold text-sm bg-slate-900 text-emerald-300 px-3 py-1.5 rounded-lg">03:00</span>
+                  <button type="button" onclick="startSim()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-1.5 rounded-lg transition">Sınavı Başlat</button>
+                  <button type="button" onclick="finishSim()" class="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs px-3 py-1.5 rounded-lg transition">Bitir & Kaydet</button>
+                </div>
               </div>
-              <button type="button" onclick="publishCurrentSimToRace()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs px-3 py-1.5 rounded-lg">
-                + Mevcut Netimi Ekle
-              </button>
-            </div>
-            <div id="raceLeaderboardList" class="mt-3 space-y-2 text-xs"></div>
-          </div>
 
-          <div class="lg:col-span-5 bg-slate-950 text-white rounded-2xl p-4 sm:p-5 space-y-4">
-            <div>
-              <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-300">Karşılıklı Düello Kodu</span>
-              <h3 class="font-extrabold text-base mt-0.5">Arkadaşına Meydan Oku</h3>
-              <p class="text-xs text-slate-300 mt-1">Kendi skor kodunu üretip arkadaşına gönder; rakibin kodunu girip kimin daha hızlı/hatasız yazdığını gör.</p>
-            </div>
+              <div id="simTargetText" class="mt-4 bg-white border border-slate-200 rounded-xl p-4 text-sm leading-relaxed text-slate-800 select-none max-h-40 overflow-y-auto"></div>
 
-            <div class="space-y-2">
-              <button type="button" onclick="generateChallengeCode()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs py-2.5 rounded-xl transition">
-                Benim Skor Kodumu Üret
-              </button>
-              <input id="myChallengeCodeBox" type="text" readonly placeholder="Kod burada oluşacak..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-emerald-300" />
-            </div>
+              <textarea
+                id="simInputArea"
+                oninput="onSimInput()"
+                rows="4"
+                placeholder="Sınavı Başlat'a bas ve metni buraya yaz..."
+                class="mt-3 w-full border border-slate-300 rounded-xl p-3 text-sm bg-white focus:outline-none focus:border-indigo-600"
+              ></textarea>
 
-            <div class="pt-3 border-t border-slate-800 space-y-2">
-              <label class="block text-xs font-bold text-slate-200">Rakibin Skor Kodunu Yapıştır:</label>
-              <div class="flex gap-2">
-                <input id="rivalCodeInput" type="text" placeholder="Örn: ZEYNEP ARSLAN|96|%98|F" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-white" />
-                <button type="button" onclick="compareWithRival()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-xl transition">
-                  Karşılaştır
+              <div class="mt-3 pt-3 border-t border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+                <div class="flex items-center gap-2 flex-1">
+                  <input id="raceNickInput" type="text" maxlength="24" placeholder="Skorda görünecek adın (Örn: Emre Kaya)" class="flex-1 border border-slate-300 rounded-lg px-3 py-2 text-xs bg-white" />
+                  <button type="button" onclick="publishCurrentSimToRace()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-lg transition shrink-0">
+                    🏆 Skora Ekle
+                  </button>
+                </div>
+                <button type="button" onclick="switchKatiplikTab('race')" class="text-xs font-bold text-indigo-700 hover:underline shrink-0">
+                  Skor Tablosuna Git →
                 </button>
               </div>
-              <div id="duelResultBox" class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs text-slate-300">
-                Henüz düello karşılaştırması yapılmadı.
+            </div>
+
+            <div class="lg:col-span-4 space-y-4">
+              <div class="grid grid-cols-2 gap-3">
+                <div class="bg-slate-900 text-white rounded-xl p-3.5">
+                  <div class="text-2xl font-extrabold text-emerald-400" id="simNetDisplay">0</div>
+                  <div class="text-[11px] text-slate-300 mt-0.5">Net Kelime (Hedef 90+)</div>
+                </div>
+                <div class="bg-slate-900 text-white rounded-xl p-3.5">
+                  <div class="text-2xl font-extrabold text-sky-400" id="simAccDisplay">%100</div>
+                  <div class="text-[11px] text-slate-300 mt-0.5">Doğruluk Oranı</div>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
+                  <div class="text-xl font-extrabold text-slate-900" id="simKeystrokesDisplay">0</div>
+                  <div class="text-[11px] text-slate-500 mt-0.5">Yazılan Karakter</div>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
+                  <div class="text-xl font-extrabold text-rose-600" id="simErrorsDisplay">0</div>
+                  <div class="text-[11px] text-slate-500 mt-0.5">Hata Sayısı</div>
+                </div>
+              </div>
+
+              <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="font-bold text-xs text-slate-900 uppercase">Son Sınav Simülasyonlarım</h3>
+                  <button type="button" onclick="clearSimHistory()" class="text-[11px] text-slate-500 hover:text-rose-600 underline">Temizle</button>
+                </div>
+                <div id="simHistoryList" class="space-y-1.5 max-h-44 overflow-y-auto text-xs"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2) F / Q KLAVYE DERSLERİ -->
+        <div id="kPanel-lessons" class="k-panel hidden mt-5 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
+            <div class="flex flex-wrap gap-1.5" id="lessonButtonsBar"></div>
+            <div class="flex items-center gap-2">
+              <select id="lessonLayoutSelect" onchange="selectLesson(activeLessonIdx)" class="border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-bold bg-white">
+                <option value="F">Türkçe F Klavye</option>
+                <option value="Q">Türkçe Q Klavye</option>
+              </select>
+              <button type="button" onclick="selectLesson(activeLessonIdx)" class="bg-slate-900 text-white font-bold text-xs px-3 py-1.5 rounded-lg">Dersi Sıfırla</button>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <h3 id="lessonTitle" class="font-extrabold text-base text-slate-900">Temel sıra: sol el</h3>
+                <p id="lessonDesc" class="text-xs text-slate-600 mt-0.5">Sol el dört parmağını temel konumda tutarak yaz.</p>
+              </div>
+              <div id="lessonStatsText" class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full">Doğruluk: %100</div>
+            </div>
+
+            <div id="lessonTargetBox" class="mt-4 bg-white border border-slate-200 rounded-xl p-4 font-mono text-base tracking-wide text-slate-800"></div>
+
+            <input
+              id="lessonInput"
+              oninput="onLessonInput()"
+              type="text"
+              placeholder="Yukarıdaki harf/kelime dizisini buraya yaz..."
+              class="mt-3 w-full border border-slate-300 rounded-xl px-4 py-2.5 font-mono text-sm bg-white focus:outline-none focus:border-indigo-600"
+            />
+
+            <div id="lessonVisualKeyboard" class="mt-4 space-y-1.5 select-none"></div>
+          </div>
+        </div>
+
+        <!-- 3) KELİME ANTRENMANI -->
+        <div id="kPanel-words" class="k-panel hidden mt-5 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
+            <div class="flex flex-wrap gap-1.5">
+              <button type="button" onclick="setWordDrillMode('hukuk')" id="wMode-hukuk" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white">Hukuk Terimleri</button>
+              <button type="button" onclick="setWordDrillMode('uzun')" id="wMode-uzun" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700">Uzun Kelimeler</button>
+              <button type="button" onclick="setWordDrillMode('rakam')" id="wMode-rakam" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700">Rakam & Sayı</button>
+              <button type="button" onclick="setWordDrillMode('genel')" id="wMode-genel" class="w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700">Sık Kullanılan Kelimeler</button>
+            </div>
+            <div class="flex items-center gap-3 text-xs font-bold">
+              <span class="text-emerald-700">Doğru: <span id="wordCorrectCount">0</span></span>
+              <span class="text-rose-600">Hata: <span id="wordWrongCount">0</span></span>
+              <button type="button" onclick="resetWordDrill()" class="bg-slate-900 text-white px-3 py-1.5 rounded-lg">Yeni Set</button>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
+            <div class="text-xs text-slate-500 mb-2">Aktif kelimeyi yaz ve <b>Boşluk (Space)</b> tuşuna bas:</div>
+            <div id="wordQueueBox" class="bg-white border border-slate-200 rounded-xl p-4 flex flex-wrap gap-2 text-sm font-semibold"></div>
+            <input
+              id="wordDrillInput"
+              onkeydown="onWordDrillKeydown(event)"
+              type="text"
+              placeholder="Kelimeyi yazıp Boşluk'a bas..."
+              class="mt-3 w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm bg-white focus:outline-none focus:border-indigo-600"
+            />
+          </div>
+        </div>
+
+        <!-- 4) OYUN (METİN YAZARAK ANTRENMAN OYUNLARI) -->
+        <div id="kPanel-games" class="k-panel hidden mt-5 space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
+            <div class="flex flex-wrap gap-2">
+              <button type="button" onclick="selectGameMode('dosya')" id="gTab-dosya" class="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950">📄 Dosya Yetiştir (Beyan Yazma)</button>
+              <button type="button" onclick="selectGameMode('hata')" id="gTab-hata" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800">🎯 Hata Avı (Doğrusunu Yaz)</button>
+            </div>
+            <div class="text-xs font-bold text-slate-700">
+              En Yüksek Oyun Puanı: <span id="gameBestScore" class="text-emerald-700 font-extrabold">0</span>
+            </div>
+          </div>
+
+          <div id="gameBox-dosya" class="bg-slate-950 text-white rounded-2xl p-5 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+              <div class="flex items-center gap-3 font-bold">
+                <span>Puan: <b id="dosyaScore" class="text-emerald-400">0</b></span>
+                <span>Seviye: <b id="dosyaLevel" class="text-sky-400">1</b></span>
+                <span>Seri: <b id="dosyaStreak" class="text-amber-300">x1</b></span>
+                <span>Hak: <b id="dosyaLives" class="text-rose-400">3</b></span>
+              </div>
+              <button type="button" onclick="startDosyaGame()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-4 py-1.5 rounded-lg transition">Oyunu Başlat</button>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center">
+              <div class="text-[11px] uppercase tracking-wider text-slate-400">Gelen Beyan / Duruşma Metni</div>
+              <div id="dosyaTargetPhrase" class="text-lg sm:text-xl font-extrabold text-amber-200 mt-2 min-h-[2rem]">Oyunu Başlat'a bas ve yazmaya başla!</div>
+              <div class="w-full bg-slate-800 h-2 rounded-full mt-4 overflow-hidden">
+                <div id="dosyaTimeBar" class="bg-emerald-400 h-full w-full transition-all duration-100"></div>
+              </div>
+            </div>
+
+            <input
+              id="dosyaInput"
+              oninput="onDosyaInput()"
+              type="text"
+              placeholder="Beyanı tam olarak yaz..."
+              class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-emerald-400"
+            />
+          </div>
+
+          <div id="gameBox-hata" class="hidden bg-slate-950 text-white rounded-2xl p-5 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+              <div class="flex items-center gap-3 font-bold">
+                <span>Puan: <b id="hataScore" class="text-emerald-400">0</b></span>
+                <span>Doğru Av: <b id="hataCount" class="text-sky-400">0</b></span>
+              </div>
+              <button type="button" onclick="startHataGame()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold px-4 py-1.5 rounded-lg transition">Yeni Hata Avı Turu</button>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center">
+              <div class="text-xs text-slate-400">Hatalı yazılmış kelimeyi bul ve <b class="text-white">doğru yazımını</b> aşağıya yaz:</div>
+              <div id="hataWrongWord" class="text-2xl font-extrabold text-rose-400 mt-2">mahkme</div>
+              <div id="hataHint" class="text-xs text-slate-400 mt-1">İpucu: Harf veya hece hatasını düzelt</div>
+            </div>
+
+            <form onsubmit="submitHataAnswer(event)" class="flex gap-2">
+              <input id="hataAnswerInput" type="text" required placeholder="Kelimenin doğru halini yaz..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white" />
+              <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs px-4 py-2.5 rounded-xl">Kontrol Et</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- 5) KULLANICI SKOR TABLOSU & DÜELLO -->
+        <div id="kPanel-race" class="k-panel hidden mt-5 space-y-5">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+            <div class="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
+              <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-200">
+                <div>
+                  <h3 class="font-extrabold text-base text-slate-900">🏆 Kâtiplik Net Skor Tablosu</h3>
+                  <p class="text-xs text-slate-500">Kendi skorunu ekleyerek sıralamada yüksel veya arkadaşınla karşılaştır.</p>
+                </div>
+                <button type="button" onclick="publishCurrentSimToRace()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs px-3 py-1.5 rounded-lg">
+                  + Mevcut Netimi Ekle
+                </button>
+              </div>
+              <div id="raceLeaderboardList" class="mt-3 space-y-2 text-xs"></div>
+            </div>
+
+            <div class="lg:col-span-5 bg-slate-950 text-white rounded-2xl p-4 sm:p-5 space-y-4">
+              <div>
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-300">Karşılıklı Düello Kodu</span>
+                <h3 class="font-extrabold text-base mt-0.5">Arkadaşına Meydan Oku</h3>
+                <p class="text-xs text-slate-300 mt-1">Kendi skor kodunu üretip arkadaşına gönder; rakibin kodunu girip kimin daha hızlı/hatasız yazdığını gör.</p>
+              </div>
+
+              <div class="space-y-2">
+                <button type="button" onclick="generateChallengeCode()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs py-2.5 rounded-xl transition">
+                  Benim Skor Kodumu Üret
+                </button>
+                <input id="myChallengeCodeBox" type="text" readonly placeholder="Kod burada oluşacak..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-emerald-300" />
+              </div>
+
+              <div class="pt-3 border-t border-slate-800 space-y-2">
+                <label class="block text-xs font-bold text-slate-200">Rakibin Skor Kodunu Yapıştır:</label>
+                <div class="flex gap-2">
+                  <input id="rivalCodeInput" type="text" placeholder="Örn: ZEYNEP ARSLAN|96|%98|F" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-white" />
+                  <button type="button" onclick="compareWithRival()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-xl transition">
+                    Karşılaştır
+                  </button>
+                </div>
+                <div id="duelResultBox" class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs text-slate-300">
+                  Henüz düello karşılaştırması yapılmadı.
+                </div>
               </div>
             </div>
           </div>
@@ -538,7 +555,7 @@
     </div>
   </section>
 
-  <!-- CANLI SOHBET (ÜYELİK/RUMUZ GİRİŞLİ, 320'ŞER MESAJ, 5 MESAJ = 1 PARÇA, 5,5 SAATTE BİR YENİ PARÇA) + FORUM + 14 SORULUK SSS -->
+  <!-- CANLI SOHBET + FORUM + 14 SORULUK SSS -->
   <section id="sohbetForumSssBolumu" class="max-w-7xl mx-auto px-4 mt-8 pb-14 space-y-6">
     <!-- CANLI SOHBET EKRANI -->
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
@@ -659,7 +676,7 @@
     };
 
     const HERO_FEATURED_SLIDES = [
-      { institution: "ADALET BAKANLIĞI & CTE", headline: "ZABIT KÂTİBİ F / Q KLAVYE SİMÜLASYONU", sub: "3 Dakikalık Sınav Simülasyonu, F Klavye Dersleri, Yazarak Oyun ve Kullanıcı Yarışı", badge: "Kâtiplik Merkezi • Sayfa 1 / 30", url: "#katiplikMerkeziBolumu", theme: "from-slate-950 via-indigo-950 to-slate-900" },
+      { institution: "ADALET BAKANLIĞI & CTE", headline: "KÂTİPLİK & ANTRENMAN MODÜLÜ", sub: "3 Dakikalık Sınav Simülasyonu, F/Q Klavye Dersleri, Kelime Antrenmanı ve Oyunlar", badge: "Kâtiplik & Antrenman • Sayfa 1 / 30", url: "#katiplikMerkeziBolumu", theme: "from-slate-950 via-indigo-950 to-slate-900" },
       { institution: "ADLİ TIP KURUMU BAŞKANLIĞI", headline: "181 PERSONEL ALACAK", sub: "Büro Personeli, Laborant, Destek Personeli • Resmî Başvuru Ekranı", badge: "Öne Çıkan Alım • Sayfa 2 / 30", url: "https://kamuilan.sbb.gov.tr/", theme: "from-slate-950 via-teal-950 to-slate-900" },
       { institution: "İÇİŞLERİ BAKANLIĞI", headline: "60 KAYMAKAM ADAYI ALACAK", sub: "Lisans Mezunları İçin Merkezî / Kurumsal Alım Duyurusu", badge: "Öne Çıkan Alım • Sayfa 3 / 30", url: "https://kariyerkapisi.gov.tr/isealim", theme: "from-slate-950 via-emerald-950 to-slate-900" }
     ];
@@ -671,8 +688,8 @@
     ];
 
     const KEYBOARD_LESSONS = [
-      { title: "Temel sıra: sol el", desc: "Sol el dört parmağını temel sırada tutarak yaz.", sample: "fgod odgf ffgf gogo dddd ffff" },
-      { title: "Temel sıra: sağ el", desc: "Sağ el dört parmağını temel sırada tutarak yaz.", sample: "aekl lkea aaaa eeee kkkk llll" },
+      { title: "Temel sıra: sol el", desc: "Sol el dört parmağını temel konumda tutarak yaz.", sample: "fgod odgf ffgf gogo dddd ffff" },
+      { title: "Temel sıra: sağ el", desc: "Sağ el dört parmağını temel konumda tutarak yaz.", sample: "aekl lkea aaaa eeee kkkk llll" },
       { title: "Temel sıra: orta tuşlar", desc: "Orta parmak ve işaret parmaklarıyla çalış.", sample: "fkla lfka gaei igae fela kgoi" },
       { title: "Temel sıra kelimeler", desc: "Temel sıra harflerinden oluşan kısa kelimeler.", sample: "kale feda elak gala leke afak" },
       { title: "Üst sıra: sol el", desc: "Üst sıraya uzanıp temel sıraya dön.", sample: "pğüi iüpğ pppp ğğğğ üüüü iiii" },
@@ -796,7 +813,7 @@
       { q: "4. Forumdaki sorulara başka adaylar nasıl cevap verebilir?", a: "Her sorunun altında yer alan 'Cevap Yaz' kutusuna adını ve cevabını yazıp 'Cevapla' butonuna basarak doğrudan o sorunun altına yanıt ekleyebilirsin." },
       { q: "5. Kâtiplik sınav simülasyonu kaç dakika sürer?", a: "Sınav simülasyonu 3 dakika (180 saniye) süreli olarak çalışır; anlık net kelime, doğruluk oranı ve hata sayısı ekranda gösterilir." },
       { q: "6. Hem F klavye hem Q klavye çalışabiliyor muyum?", a: "Evet. Sınav simülasyonunda ve klavye derslerinde Türkçe F Klavye veya Türkçe Q Klavye seçimi yaparak çalışabilirsin." },
-      { q: "7. Kullanıcılar kendi aralarında nasıl yarışabilir?", a: "Yarış & Düello sekmesinden kendi skorunu liderlik tablosuna ekleyebilir veya 'Benim Skor Kodumu Üret' butonuyla arkadaşınla skor karşılaştırması yapabilirsin." },
+      { q: "7. Kullanıcılar skorlarını nasıl karşılaştırabilir?", a: "Skor & Düello sekmesinden kendi skorunu tabloya ekleyebilir veya 'Benim Skor Kodumu Üret' butonuyla arkadaşınla skor karşılaştırması yapabilirsin." },
       { q: "8. Tercih robotunda öğrenim düzeyi seçimi nasıl çalışır?", a: "Lisans seçildiğinde Lisans, Önlisans ve Ortaöğretim düzeyindeki ilanlar; Önlisans seçildiğinde Önlisans ve Ortaöğretim ilanları birlikte listelenir." },
       { q: "9. KPSS puan alanını boş bırakabilir miyim?", a: "Evet. Puan alanı isteğe bağlıdır; boş bırakırsan puan barajı filtresi uygulanmadan öğrenim, bölüm, il ve belge kriterlerine göre ilanlar gösterilir." },
       { q: "10. 'Sınırda' etiketi ne anlama gelir?", a: "Girdiğin KPSS puanının ilan taban puanına çok yakın (yaklaşık 3 puan içinde) olduğunu göstermek için bilgilendirme amaçlı kullanılır." },
@@ -851,8 +868,8 @@
     };
 
     const CHAT_CHUNK_SIZE = 5;
-    const CHAT_TOTAL_PER_ROOM = 320; // 64 parça x 5 mesaj = 320 mesaj
-    const CHAT_INTERVAL_MS = 5.5 * 60 * 60 * 1000; // 5,5 saatte bir yeni 5 mesajlık parça
+    const CHAT_TOTAL_PER_ROOM = 320;
+    const CHAT_INTERVAL_MS = 5.5 * 60 * 60 * 1000;
 
     function buildRoomPool320(roomId) {
       const pairs = CHAT_DIALOGUES[roomId] || CHAT_DIALOGUES.lisans;
@@ -881,10 +898,7 @@
       let state = null;
       try { state = JSON.parse(localStorage.getItem("kpss_chat_timeline_v1")); } catch (e) {}
       if (!state || typeof state.anchorTime !== "number") {
-        state = {
-          anchorTime: now - (4 * CHAT_INTERVAL_MS), // İlk açılışta 5 parça (25 mesaj) hazır gelsin, sonra 5,5 saatte 1 parça eklensin
-          manualBonusChunks: 0
-        };
+        state = { anchorTime: now - (4 * CHAT_INTERVAL_MS), manualBonusChunks: 0 };
         localStorage.setItem("kpss_chat_timeline_v1", JSON.stringify(state));
       }
       const elapsedChunks = Math.floor((now - state.anchorTime) / CHAT_INTERVAL_MS);
@@ -908,7 +922,7 @@
     const EDU_RANK = { "Ortaöğretim": 1, "Önlisans": 2, "Lisans": 3 };
     const NEAR_SCORE_MARGIN = 3;
     const TOTAL_HERO_PAGES = 30;
-    const HERO_AUTO_INTERVAL_MS = 4000; // 1'den 30'a 4 saniyede bir otomatik geçiş
+    const HERO_AUTO_INTERVAL_MS = 4000;
     const INITIAL_VISIBLE_JOBS = 10;
     const LOAD_MORE_STEP = 10;
 
@@ -917,7 +931,7 @@
         badge: "Gizlilik & Yerel Saklama",
         title: "Tarayıcı Yerel Saklama (LocalStorage) Bilgilendirmesi",
         paragraphs: [
-          "Üyelik/rumuz bilgin, seçtiğin düzey, puan, iller, belgeler, kayıtlı ilanlar, klavye kayıtları, yarış skorları, sohbet mesajları ve forum soru-cevapları tarayıcındaki LocalStorage alanında saklanır.",
+          "Üyelik/rumuz bilgin, seçtiğin düzey, puan, iller, belgeler, kayıtlı ilanlar, klavye kayıtları, skorlar, sohbet mesajları ve forum soru-cevapları tarayıcındaki LocalStorage alanında saklanır.",
           "Başvurular için doğrudan resmî kurum veya ilan kaynağına yönlendirme yapılır."
         ]
       },
@@ -945,6 +959,7 @@
     ];
 
     let ITEMS = [...FALLBACK_ITEMS];
+    let katiplikOpen = false;
     let currentSlideIdx = 0;
     let heroAutoTimer = null;
     let activeStatusFilter = "ALL";
@@ -978,6 +993,19 @@
     let hataScore = 0;
     let hataCount = 0;
     let hataCurrentItem = HATA_GAME_ITEMS[0];
+
+    function toggleKatiplikPanel(forceOpen = null) {
+      katiplikOpen = typeof forceOpen === "boolean" ? forceOpen : !katiplikOpen;
+      const drawer = document.getElementById("katiplikDrawer");
+      const btn = document.getElementById("katiplikToggleBtn");
+      drawer.classList.toggle("hidden", !katiplikOpen);
+      if (btn) {
+        btn.textContent = katiplikOpen ? "✕ KÂTİPLİK & ANTRENMANI KAPAT" : "⌨️ KÂTİPLİK & ANTRENMANI AÇ";
+      }
+      if (katiplikOpen) {
+        document.getElementById("katiplikMerkeziBolumu").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
 
     function getAllCombinedPool() {
       return [...ITEMS.filter(x => !isAskeriItem(x)), ...getAskeriList()];
@@ -1410,7 +1438,6 @@
       }
     }
 
-    // KÂTİPLİK SEKMELERİ, SİMÜLASYON, DERSLER, KELİME, OYUN & YARIŞ
     function switchKatiplikTab(tabKey) {
       document.querySelectorAll(".k-panel").forEach(p => p.classList.add("hidden"));
       document.getElementById(`kPanel-${tabKey}`).classList.remove("hidden");
@@ -1793,7 +1820,6 @@
       `).join("");
     }
 
-    // ÜYELİ CANLI SOHBET (320 MESAJ / ODA • 5 MESAJ = 1 PARÇA • 5,5 SAATTE 1 YENİ PARÇA)
     function getChatMember() {
       try { const m = JSON.parse(localStorage.getItem("kpss_chat_member")); return (m && m.name && m.memberId) ? m : null; } catch (e) { return null; }
     }
@@ -1930,7 +1956,6 @@
       if (box) box.scrollTop = box.scrollHeight;
     }
 
-    // FORUM (SORU BIRAKMA + CEVAPLAMA)
     function getForumPosts() {
       try {
         const posts = JSON.parse(localStorage.getItem("kpss_forum_posts_v3"));
