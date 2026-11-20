@@ -61,7 +61,7 @@
 <body id="top" class="bg-slate-100 text-slate-800 font-sans antialiased transition-colors duration-200">
 
   <!-- SADE ÜST BAR -->
-  <header class="bg-slate-950 text-white sticky top-0 z-40 shadow-md border-b border-slate-800">
+  <header class="bg-slate-950 text-white sticky top: 0; z-index: 40; shadow-md border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2.5 flex items-center justify-between gap-2">
       <div class="flex items-center gap-2.5 min-w-0">
         <button
@@ -131,6 +131,10 @@
         <div id="mobileDrawerAccountBox" class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs"></div>
 
         <nav class="space-y-1 text-xs font-bold">
+          <a href="#robotSection" onclick="toggleMobileDrawer(false)" class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-sky-300">
+            <span>🤖 Tercih Robotu</span>
+            <span>→</span>
+          </a>
           <a href="#ilanlarSection" onclick="toggleMobileDrawer(false)" class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-300">
             <span>📋 İlanlar & Son Eklenen İlan</span>
             <span>→</span>
@@ -139,10 +143,6 @@
             <span>★ Kayıtlı İlanlar (<span id="savedCountMenu">0</span>)</span>
             <span>→</span>
           </button>
-          <a href="#robotSection" onclick="toggleMobileDrawer(false)" class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-sky-300">
-            <span>🤖 Tercih Robotu</span>
-            <span>→</span>
-          </a>
           <button type="button" onclick="toggleMobileDrawer(false); openUniRobotModal();" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-sky-200 text-left cursor-pointer">
             <span>🎓 2026 Üni. Robotu</span>
             <span>→</span>
@@ -483,118 +483,8 @@
     </div>
   </section>
 
-  <!-- ANA AKIŞ: SOL SÜTUN + SAĞ SÜTUN -->
-  <main id="ilanlarSection" class="max-w-7xl mx-auto px-4 mt-7">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-      <aside class="lg:col-span-4 space-y-4">
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
-          <div class="flex gap-2">
-            <input
-              id="searchKeywordInput"
-              oninput="resetVisibleLimitAndFilter(false)"
-              type="text"
-              placeholder="Kurum veya unvan ara..."
-              class="flex-1 border border-slate-300 rounded-xl px-3 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-emerald-600"
-            />
-            <button type="button" onclick="resetVisibleLimitAndFilter(true)" class="bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl transition cursor-pointer">
-              ARA
-            </button>
-          </div>
-
-          <div class="mt-3">
-            <div class="text-[11px] font-semibold text-slate-400 mb-1.5">Sık arananlar:</div>
-            <div class="flex flex-wrap gap-1.5">
-              <button type="button" onclick="setQuickKeyword('memur')" class="px-2.5 py-1 rounded-full text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 font-medium transition">memur</button>
-              <button type="button" onclick="setQuickKeyword('mühendis')" class="px-2.5 py-1 rounded-full text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 font-medium transition">mühendis</button>
-              <button type="button" onclick="setQuickKeyword('kâtip')" class="px-2.5 py-1 rounded-full text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 font-medium transition">kâtip</button>
-              <button type="button" onclick="setQuickKeyword('büro')" class="px-2.5 py-1 rounded-full text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 font-medium transition">büro personeli</button>
-            </div>
-          </div>
-
-          <div id="statusMenuList" class="mt-4 pt-3 border-t border-slate-100 space-y-1"></div>
-
-          <div class="mt-4 pt-3 border-t border-slate-100">
-            <button
-              type="button"
-              onclick="showLatestAddedJob()"
-              class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-extrabold bg-emerald-950 hover:bg-emerald-900 text-emerald-300 border border-emerald-700/60 transition cursor-pointer"
-            >
-              <span>🆕 Son Eklenen İlan</span>
-              <span id="latestJobBadgeText" class="text-[11px] bg-emerald-400 text-slate-950 px-2 py-0.5 rounded-full">Güncel</span>
-            </button>
-            <div id="latestAddedJobPreview" class="mt-2.5 bg-slate-50 border border-emerald-200 rounded-xl p-3 text-xs"></div>
-          </div>
-
-          <div class="mt-4 pt-3 border-t border-slate-100 bg-slate-50 rounded-xl p-3 text-xs space-y-2">
-            <div class="flex items-center justify-between gap-2">
-              <span class="font-extrabold text-slate-900">🔄 Günlük Otomatik Kontrol</span>
-              <span id="dailySyncStatusBadge" class="text-[10px] font-extrabold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">Aktif</span>
-            </div>
-            <p id="dailySyncMetaText" class="text-[11px] text-slate-600 leading-relaxed">
-              Son kontrol zamanı yükleniyor...
-            </p>
-            <div class="flex items-center gap-2">
-              <button
-                type="button"
-                onclick="runDailySyncCheck(true)"
-                class="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold text-[11px] py-1.5 px-2.5 rounded-lg transition cursor-pointer"
-              >
-                Şimdi Güncelle & Denetle
-              </button>
-              <button
-                type="button"
-                onclick="openCronGuideModal()"
-                class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-bold text-[11px] py-1.5 px-2.5 rounded-lg transition cursor-pointer"
-              >
-                Cron / API
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-gradient-to-br from-slate-950 via-teal-950 to-sky-950 text-white rounded-2xl p-5 shadow-sm border border-sky-800/60">
-          <div class="flex items-center gap-2">
-            <span class="bg-sky-400 text-slate-950 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full">Telegram Bot</span>
-            <span class="text-xs font-bold text-sky-200">@kamu_ilan_kpss_bot</span>
-          </div>
-          <h3 class="text-base font-extrabold mt-2.5">Yeni İlanlar & Özel Bildirim</h3>
-          <p class="text-xs text-slate-200 mt-1 leading-relaxed">
-            Size özel istediğiniz alım açılınca bot size bilgi versin.
-          </p>
-          <a href="https://t.me/kamu_ilan_kpss_bot" target="_blank" rel="noopener noreferrer" class="mt-3.5 inline-flex items-center justify-center w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold text-xs py-2.5 rounded-xl transition">
-            Telegram Botuna Git (@kamu_ilan_kpss_bot) →
-          </a>
-        </div>
-      </aside>
-
-      <div class="lg:col-span-8">
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
-            <div>
-              <h2 id="listHeading" class="font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight">KAMU PERSONEL İLANLARI</h2>
-              <p id="matchInfoText" class="text-xs text-slate-500 mt-0.5">Süresi dolmuş ve doğrulanmamış ilanlar otomatik gizlenir • Aktif resmî ilan portalına yönlendirir.</p>
-            </div>
-            <div class="flex items-center gap-2 self-start sm:self-auto">
-              <button type="button" onclick="showLatestAddedJob()" class="text-xs font-bold text-emerald-800 bg-emerald-100 hover:bg-emerald-200 px-3 py-1 rounded-full transition cursor-pointer">
-                🆕 Son Eklenen İlan
-              </button>
-              <span id="resultCount" class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full"></span>
-            </div>
-          </div>
-
-          <div id="timelineJobsContainer" class="mt-5 space-y-6"></div>
-          <div id="loadMoreArea" class="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mt-7">
-      <div id="ad-slot-bottom" class="w-full bg-white border border-slate-200 rounded-xl py-3.5 px-4 text-center text-xs text-slate-500"></div>
-    </div>
-  </main>
-
-  <!-- TERCİH & FİLTRE ROBOTU -->
-  <section id="robotSection" class="max-w-7xl mx-auto px-4 mt-8">
+  <!-- TERCİH & FİLTRE ROBOTU (ÜSTTE) -->
+  <section id="robotSection" class="max-w-7xl mx-auto px-4 mt-7">
     <div class="bg-white rounded-2xl shadow-sm border border-emerald-200 p-5 sm:p-6">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
         <div>
@@ -605,7 +495,7 @@
           <p class="text-xs text-slate-500 mt-0.5">Öğrenim düzeyi (alt düzeyler dahil), isteğe bağlı KPSS puanı, çoklu il seçimi ve belgeler tarayıcıda saklanır.</p>
         </div>
         <div class="flex flex-wrap items-center gap-2">
-          <button type="button" onclick="resetVisibleLimitAndFilter(true)" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-lg text-xs sm:text-sm transition">
+          <button type="button" onclick="runRobotAndScrollToJobs()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-lg text-xs sm:text-sm transition cursor-pointer">
             ✓ Robotu Çalıştır
           </button>
           <button type="button" onclick="resetFilters()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-3.5 py-2 rounded-lg text-xs sm:text-sm transition">
@@ -694,6 +584,116 @@
       </div>
     </div>
   </section>
+
+  <!-- ANA AKIŞ: KAMU PERSONEL İLANLARI (ALTTA) -->
+  <main id="ilanlarSection" class="max-w-7xl mx-auto px-4 mt-7">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <aside class="lg:col-span-4 space-y-4">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
+          <div class="flex gap-2">
+            <input
+              id="searchKeywordInput"
+              oninput="resetVisibleLimitAndFilter(false)"
+              type="text"
+              placeholder="Kurum veya unvan ara..."
+              class="flex-1 border border-slate-300 rounded-xl px-3 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-emerald-600"
+            />
+            <button type="button" onclick="resetVisibleLimitAndFilter(true)" class="bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl transition cursor-pointer">
+              ARA
+            </button>
+          </div>
+
+          <div class="mt-3">
+            <div class="text-[11px] font-semibold text-slate-400 mb-1.5">Sık arananlar:</div>
+            <div class="flex flex-wrap gap-1.5">
+              <button type="button" onclick="setQuickKeyword('memur')" class="px-2.5 py-1 rounded-full text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 font-medium transition">memur</button>
+              <button type="button" onclick="setQuickKeyword('mühendis')" class="px-2.5 py-1 rounded-full text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 font-medium transition">mühendis</button>
+              <button type="button" onclick="setQuickKeyword('kâtip')" class="px-2.5 py-1 rounded-full text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 font-medium transition">kâtip</button>
+              <button type="button" onclick="setQuickKeyword('büro')" class="px-2.5 py-1 rounded-full text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 font-medium transition">büro personeli</button>
+            </div>
+          </div>
+
+          <div id="statusMenuList" class="mt-4 pt-3 border-t border-slate-100 space-y-1"></div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100">
+            <button
+              type="button"
+              onclick="showLatestAddedJob()"
+              class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-extrabold bg-emerald-950 hover:bg-emerald-900 text-emerald-300 border border-emerald-700/60 transition cursor-pointer"
+            >
+              <span>🆕 Son Eklenen İlan</span>
+              <span id="latestJobBadgeText" class="text-[11px] bg-emerald-400 text-slate-950 px-2 py-0.5 rounded-full">Güncel</span>
+            </button>
+            <div id="latestAddedJobPreview" class="mt-2.5 bg-slate-50 border border-emerald-200 rounded-xl p-3 text-xs"></div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 bg-slate-50 rounded-xl p-3 text-xs space-y-2">
+            <div class="flex items-center justify-between gap-2">
+              <span class="font-extrabold text-slate-900">🔄 Günlük Otomatik Kontrol</span>
+              <span id="dailySyncStatusBadge" class="text-[10px] font-extrabold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">Aktif</span>
+            </div>
+            <p id="dailySyncMetaText" class="text-[11px] text-slate-600 leading-relaxed">
+              Son kontrol zamanı yükleniyor...
+            </p>
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                onclick="runDailySyncCheck(true)"
+                class="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold text-[11px] py-1.5 px-2.5 rounded-lg transition cursor-pointer"
+              >
+                Şimdi Güncelle & Denetle
+              </button>
+              <button
+                type="button"
+                onclick="openCronGuideModal()"
+                class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-bold text-[11px] py-1.5 px-2.5 rounded-lg transition cursor-pointer"
+              >
+                Cron / API
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-slate-950 via-teal-950 to-sky-950 text-white rounded-2xl p-5 shadow-sm border border-sky-800/60">
+          <div class="flex items-center gap-2">
+            <span class="bg-sky-400 text-slate-950 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full">Telegram Bot</span>
+            <span class="text-xs font-bold text-sky-200">@kamu_ilan_kpss_bot</span>
+          </div>
+          <h3 class="text-base font-extrabold mt-2.5">Yeni İlanlar & Özel Bildirim</h3>
+          <p class="text-xs text-slate-200 mt-1 leading-relaxed">
+            Size özel istediğiniz alım açılınca bot size bilgi versin.
+          </p>
+          <a href="https://t.me/kamu_ilan_kpss_bot" target="_blank" rel="noopener noreferrer" class="mt-3.5 inline-flex items-center justify-center w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold text-xs py-2.5 rounded-xl transition">
+            Telegram Botuna Git (@kamu_ilan_kpss_bot) →
+          </a>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8">
+        <div id="kamuPersonelIlanlariBaslikAlani" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
+            <div>
+              <h2 id="listHeading" class="font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight">KAMU PERSONEL İLANLARI</h2>
+              <p id="matchInfoText" class="text-xs text-slate-500 mt-0.5">Süresi dolmuş ve doğrulanmamış ilanlar otomatik gizlenir • Aktif resmî ilan portalına yönlendirir.</p>
+            </div>
+            <div class="flex items-center gap-2 self-start sm:self-auto">
+              <button type="button" onclick="showLatestAddedJob()" class="text-xs font-bold text-emerald-800 bg-emerald-100 hover:bg-emerald-200 px-3 py-1 rounded-full transition cursor-pointer">
+                🆕 Son Eklenen İlan
+              </button>
+              <span id="resultCount" class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full"></span>
+            </div>
+          </div>
+
+          <div id="timelineJobsContainer" class="mt-5 space-y-6"></div>
+          <div id="loadMoreArea" class="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-7">
+      <div id="ad-slot-bottom" class="w-full bg-white border border-slate-200 rounded-xl py-3.5 px-4 text-center text-xs text-slate-500"></div>
+    </div>
+  </main>
 
   <!-- HARP OKULLARI & ASTSUBAY MYO BÖLÜMÜ -->
   <section id="msuBolumu" class="max-w-7xl mx-auto px-4 mt-8">
@@ -869,7 +869,6 @@
               <div>
                 <div class="flex items-center gap-2 flex-wrap">
                   <h3 id="activeChatRoomTitle" class="font-extrabold text-base text-white">Lisans odası</h3>
-                  
                 </div>
                 <p id="activeChatRoomDesc" class="text-xs text-slate-400 mt-0.5">4 yıllık mezunlar • P3 tercih ve kadro sohbeti</p>
               </div>
@@ -1848,7 +1847,7 @@
     function renderForumList() {
       const box = document.getElementById("forumList");
       if (!box) return;
-      const dayIdx = getDailyCycleDayIndex(100); // 100 gün × 10 soru = 1.000 soru
+      const dayIdx = getDailyCycleDayIndex(100);
       const start = dayIdx * 10;
       const dailyArchive10 = FORUM_1000_BANK.slice(start, start + 10);
       const extraRepliesMap = getArchiveForumRepliesMap();
@@ -2007,7 +2006,7 @@
 
     function renderFaqList() {
       const catObj = FAQ_500_BY_CATEGORY[activeFaqCategory] || FAQ_500_BY_CATEGORY.KPSS;
-      const dayIdx = getDailyCycleDayIndex(50); // 50 gün × 10 soru = 500 soru
+      const dayIdx = getDailyCycleDayIndex(50);
       const start = dayIdx * 10;
       const daily10 = catObj.items.slice(start, start + 10);
 
@@ -2512,6 +2511,18 @@
 
     function selectStatusFilter(key) { showSavedOnly = false; activeStatusFilter = key; visibleLimit = INITIAL_VISIBLE_JOBS; document.getElementById("listHeading").textContent = "KAMU PERSONEL İLANLARI"; renderStatusMenu(); applyProfileMatch(false); }
     function resetVisibleLimitAndFilter(showFeedback = false) { visibleLimit = INITIAL_VISIBLE_JOBS; applyProfileMatch(showFeedback); }
+
+    function runRobotAndScrollToJobs() {
+      saveProfileFromUI();
+      resetVisibleLimitAndFilter(true);
+      const targetEl = document.getElementById("kamuPersonelIlanlariBaslikAlani") || document.getElementById("ilanlarSection");
+      if (targetEl) {
+        const headerOffset = 76;
+        const rectTop = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: Math.max(0, rectTop), behavior: "smooth" });
+      }
+    }
+
     function loadMoreJobs() { visibleLimit += LOAD_MORE_STEP; renderTimelineJobs(lastFilteredEntries); }
     function showAllFilteredJobs() { visibleLimit = Math.max(lastFilteredEntries.length, INITIAL_VISIBLE_JOBS); renderTimelineJobs(lastFilteredEntries); }
     function setQuickKeyword(kw) { document.getElementById("searchKeywordInput").value = kw; resetVisibleLimitAndFilter(false); }
@@ -2783,390 +2794,530 @@
     function getActiveSession() { try { const s = JSON.parse(localStorage.getItem("kpss_active_session_v1")); if (s && s.email) return s; } catch (e) {} return null; }
     function setActiveSession(account) {
       if (!account) localStorage.removeItem("kpss_active_session_v1");
-      else localStorage.setItem("kpss_active_session_v1", JSON.stringify({ email: account.email, fullName: account.fullName, edu: account.edu || "ALL", score: account.score || "", telegram: account.telegram || "", loggedAt: new Date().toISOString() }));
-      renderHeaderAuthArea(); renderMobileDrawerAccount(); updateChatMemberUI();
+      else localStorage.setItem("kpss_active_session_v1", JSON.stringify({ email: account.email, fullName: account.fullName, role: account.role || "Aday", city: account.city || "", phone: account.phone || "", kpssScore: account.kpssScore || "", eduLevel: account.eduLevel || "Lisans", bio: account.bio || "" }));
+      renderHeaderAuth(); updateChatMemberUI(); renderMobileDrawerAccount();
     }
 
-    function renderHeaderAuthArea() {
+    function renderHeaderAuth() {
       const area = document.getElementById("headerAuthArea");
       if (!area) return;
-      const session = getActiveSession();
-      area.innerHTML = session
-        ? `<button type="button" onclick="openProfileModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg transition cursor-pointer">👤 ${escapeHtml(session.fullName.split(" ")[0])}</button><button type="button" onclick="logoutAccount()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-[11px] sm:text-xs px-2 py-1.5 rounded-lg border border-slate-700 transition cursor-pointer">Çıkış</button>`
+      const s = getActiveSession();
+      area.innerHTML = s
+        ? `<button type="button" onclick="openProfileModal()" class="bg-slate-800 hover:bg-slate-700 text-emerald-300 font-extrabold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg border border-slate-700 transition cursor-pointer">👤 ${escapeHtml(s.fullName.split(" ")[0])}</button><button type="button" onclick="logoutAccount()" class="bg-slate-900 hover:bg-rose-950 text-slate-300 hover:text-rose-300 font-semibold text-[11px] sm:text-xs px-2 py-1.5 rounded-lg border border-slate-800 transition cursor-pointer">Çıkış</button>`
         : `<button type="button" onclick="openAuthModal('login')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg transition cursor-pointer">Giriş Yap</button><button type="button" onclick="openAuthModal('register')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg transition cursor-pointer">Üye Ol</button>`;
     }
 
-    function logoutAccount() { setActiveSession(null); }
     function openProfileOrAuth() { if (getActiveSession()) openProfileModal(); else openAuthModal("login"); }
-
-    function openAuthModal(mode = "login") {
-      const isRegister = mode === "register";
+    function openAuthModal(tab = "login") {
+      const isLogin = tab === "login";
       document.getElementById("detailContent").innerHTML = `
-        <div class="flex items-center gap-2 mb-3">
-          <button type="button" onclick="openAuthModal('login')" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold cursor-pointer ${!isRegister ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-700"}">Giriş Yap</button>
-          <button type="button" onclick="openAuthModal('register')" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold cursor-pointer ${isRegister ? "bg-emerald-600 text-white" : "bg-slate-100 text-slate-700"}">Üye Ol</button>
+        <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-200 pr-6">
+          <div><span class="bg-indigo-100 text-indigo-800 text-xs font-extrabold px-2.5 py-0.5 rounded">Üyelik & Hesap</span><h3 class="text-xl font-extrabold text-slate-900 mt-1">${isLogin ? "Hesabına Giriş Yap" : "Yeni Aday Hesabı Oluştur"}</h3></div>
+          <div class="flex gap-1"><button type="button" onclick="openAuthModal('login')" class="px-3 py-1.5 rounded-lg text-xs font-extrabold cursor-pointer ${isLogin ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-700"}">Giriş Yap</button><button type="button" onclick="openAuthModal('register')" class="px-3 py-1.5 rounded-lg text-xs font-extrabold cursor-pointer ${!isLogin ? "bg-emerald-600 text-white" : "bg-slate-100 text-slate-700"}">Üye Ol</button></div>
         </div>
-        <h3 class="text-xl font-extrabold text-slate-900">${isRegister ? "Yeni Aday Hesabı Oluştur" : "Aday Hesabına Giriş Yap"}</h3>
-        <p class="text-xs text-slate-500 mt-1">Hesabın, profilin ve canlı sohbet yazma yetkin tarayıcıda güvenli şekilde saklanır.</p>
-        <form onsubmit="${isRegister ? "handleRegisterSubmit(event)" : "handleLoginSubmit(event)"}" class="mt-4 space-y-3 text-xs sm:text-sm">
-          ${isRegister ? `<div><label class="block text-xs font-bold text-slate-700 mb-1">Ad Soyad</label><input id="authFullName" type="text" maxlength="50" required placeholder="Örn: Emre Kaya" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5" /></div>` : ""}
-          <div><label class="block text-xs font-bold text-slate-700 mb-1">E-posta Adresi</label><input id="authEmail" type="email" maxlength="80" required placeholder="ornek@mail.com" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5" /></div>
-          <div><label class="block text-xs font-bold text-slate-700 mb-1">Şifre</label><input id="authPassword" type="password" minlength="4" maxlength="60" required placeholder="En az 4 karakter" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5" /></div>
-          <div id="authFeedbackMsg" class="text-xs font-bold text-rose-600 hidden"></div>
-          <button type="submit" class="w-full ${isRegister ? "bg-emerald-600 hover:bg-emerald-700" : "bg-indigo-600 hover:bg-indigo-700"} text-white font-extrabold py-2.5 rounded-xl transition cursor-pointer">${isRegister ? "Üye Ol ve Giriş Yap" : "Giriş Yap"}</button>
-        </form>
+        ${isLogin ? `<form onsubmit="handleLoginSubmit(event)" class="mt-4 space-y-3 text-xs sm:text-sm"><div><label class="block font-bold text-slate-700 mb-1">E-posta Adresi</label><input id="loginEmailInput" type="email" required placeholder="ornek@mail.com" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" /></div><div><label class="block font-bold text-slate-700 mb-1">Şifre</label><input id="loginPasswordInput" type="password" required placeholder="Şifren" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" /></div><div id="authErrorBox" class="text-rose-600 font-bold text-xs hidden"></div><button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold py-2.5 rounded-xl cursor-pointer">Giriş Yap</button></form>`
+          : `<form onsubmit="handleRegisterSubmit(event)" class="mt-4 space-y-3 text-xs sm:text-sm"><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="block font-bold text-slate-700 mb-1">Ad Soyad</label><input id="regNameInput" type="text" required maxlength="50" placeholder="Örn: Emre Kaya" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" /></div><div><label class="block font-bold text-slate-700 mb-1">E-posta Adresi</label><input id="regEmailInput" type="email" required placeholder="ornek@mail.com" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" /></div></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="block font-bold text-slate-700 mb-1">Şifre (En az 4 karakter)</label><input id="regPasswordInput" type="password" required minlength="4" placeholder="••••••••" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" /></div><div><label class="block font-bold text-slate-700 mb-1">Öğrenim Düzeyi</label><select id="regEduInput" class="w-full border border-slate-300 rounded-xl px-3 py-2.5 bg-white"><option value="Lisans">Lisans</option><option value="Önlisans">Önlisans</option><option value="Ortaöğretim">Ortaöğretim</option></select></div></div><div id="authErrorBox" class="text-rose-600 font-bold text-xs hidden"></div><button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-2.5 rounded-xl cursor-pointer">Üyeliği Tamamla ve Giriş Yap</button></form>`}
       `;
       document.getElementById("detailModal").classList.remove("hidden");
-    }
-
-    function showAuthFeedback(msg) { const el = document.getElementById("authFeedbackMsg"); if (el) { el.textContent = msg; el.classList.remove("hidden"); } }
-
-    function handleRegisterSubmit(e) {
-      e.preventDefault();
-      const fullName = sanitizePublicText((document.getElementById("authFullName")?.value || "").trim());
-      const email = (document.getElementById("authEmail")?.value || "").trim().toLowerCase();
-      const password = document.getElementById("authPassword")?.value || "";
-      if (!fullName || !email || password.length < 4) { showAuthFeedback("Lütfen ad soyad, geçerli e-posta ve en az 4 karakter şifre girin."); return; }
-      const map = getAccountsMap();
-      if (map[email]) { showAuthFeedback("Bu e-posta adresiyle zaten kayıtlı bir hesap var. Giriş Yap sekmesini kullanın."); return; }
-      const newAcc = { fullName, email, password, edu: document.getElementById("profileEdu")?.value || "ALL", score: document.getElementById("profileScore")?.value || "", telegram: document.getElementById("profileTelegram")?.value || "" };
-      map[email] = newAcc; saveAccountsMap(map); setActiveSession(newAcc); closeDetailModal();
     }
 
     function handleLoginSubmit(e) {
       e.preventDefault();
-      const email = (document.getElementById("authEmail")?.value || "").trim().toLowerCase();
-      const password = document.getElementById("authPassword")?.value || "";
-      const map = getAccountsMap();
-      const acc = map[email];
-      if (!acc || acc.password !== password) { showAuthFeedback("E-posta veya şifre hatalı. Kayıtlı değilsen Üye Ol sekmesinden hesap açabilirsin."); return; }
+      const email = (document.getElementById("loginEmailInput").value || "").trim().toLowerCase();
+      const pass = document.getElementById("loginPasswordInput").value || "";
+      const errBox = document.getElementById("authErrorBox");
+      const accounts = getAccountsMap();
+      const acc = accounts[email];
+      if (!acc || acc.password !== pass) { errBox.textContent = "E-posta veya şifre hatalı."; errBox.classList.remove("hidden"); return; }
       setActiveSession(acc); closeDetailModal();
     }
 
+    function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const fullName = sanitizePublicText((document.getElementById("regNameInput").value || "").trim());
+      const email = (document.getElementById("regEmailInput").value || "").trim().toLowerCase();
+      const password = document.getElementById("regPasswordInput").value || "";
+      const eduLevel = document.getElementById("regEduInput").value || "Lisans";
+      const errBox = document.getElementById("authErrorBox");
+      if (!fullName || !email || password.length < 4) { errBox.textContent = "Lütfen tüm alanları geçerli şekilde doldur."; errBox.classList.remove("hidden"); return; }
+      const accounts = getAccountsMap();
+      const newAcc = { fullName, email, password, role: "Aday", city: "", phone: "", kpssScore: "", eduLevel, bio: "" };
+      accounts[email] = newAcc; saveAccountsMap(accounts); setActiveSession(newAcc); closeDetailModal();
+    }
+
+    function logoutAccount() { setActiveSession(null); closeDetailModal(); }
+
     function openProfileModal() {
-      const session = getActiveSession();
-      if (!session) { openAuthModal("login"); return; }
-      const map = getAccountsMap();
-      const acc = map[session.email] || session;
+      const s = getActiveSession();
+      if (!s) { openAuthModal("login"); return; }
+      const acc = getAccountsMap()[s.email] || s;
       document.getElementById("detailContent").innerHTML = `
-        <span class="bg-indigo-100 text-indigo-900 text-xs font-extrabold px-2.5 py-0.5 rounded">Aday Profili</span>
-        <h3 class="text-xl font-extrabold text-slate-900 mt-1.5">${escapeHtml(acc.fullName)}</h3>
-        <p class="text-xs text-slate-500">${escapeHtml(acc.email)}</p>
-        <form onsubmit="saveProfileModalSubmit(event)" class="mt-4 space-y-3 text-xs sm:text-sm">
-          <div><label class="block text-xs font-bold text-slate-700 mb-1">Ad Soyad</label><input id="profModalName" type="text" maxlength="50" required value="${escapeHtml(acc.fullName)}" class="w-full border border-slate-300 rounded-xl px-3.5 py-2" /></div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div><label class="block text-xs font-bold text-slate-700 mb-1">Öğrenim Düzeyi</label><select id="profModalEdu" class="w-full border border-slate-300 rounded-xl px-3 py-2 bg-white"><option value="ALL" ${acc.edu === "ALL" ? "selected" : ""}>Tüm Düzeyler</option><option value="Ortaöğretim" ${acc.edu === "Ortaöğretim" ? "selected" : ""}>Ortaöğretim</option><option value="Önlisans" ${acc.edu === "Önlisans" ? "selected" : ""}>Önlisans</option><option value="Lisans" ${acc.edu === "Lisans" ? "selected" : ""}>Lisans</option></select></div>
-            <div><label class="block text-xs font-bold text-slate-700 mb-1">KPSS Puanı</label><input id="profModalScore" type="number" step="0.01" min="0" max="100" value="${escapeHtml(acc.score || "")}" class="w-full border border-slate-300 rounded-xl px-3 py-2" /></div>
-          </div>
-          <div><label class="block text-xs font-bold text-slate-700 mb-1">Telegram Kullanıcı Adı</label><input id="profModalTelegram" type="text" maxlength="40" value="${escapeHtml(acc.telegram || "")}" class="w-full border border-slate-300 rounded-xl px-3 py-2" /></div>
-          <div class="flex gap-2 pt-2"><button type="submit" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-2.5 rounded-xl cursor-pointer">Profili Kaydet</button><button type="button" onclick="logoutAccount(); closeDetailModal();" class="bg-slate-200 hover:bg-slate-300 text-slate-900 font-bold px-4 py-2.5 rounded-xl cursor-pointer">Çıkış Yap</button></div>
-        </form>
+        <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-200 pr-6"><div><span class="bg-emerald-100 text-emerald-900 text-xs font-extrabold px-2.5 py-0.5 rounded">Aday Profili</span><h3 class="text-xl font-extrabold text-slate-900 mt-1">${escapeHtml(acc.fullName)}</h3><p class="text-xs text-slate-500">${escapeHtml(acc.email)}</p></div><button type="button" onclick="logoutAccount()" class="bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs px-3 py-1.5 rounded-lg border border-rose-200 cursor-pointer">Çıkış Yap</button></div>
+        <form onsubmit="saveProfileModalData(event)" class="mt-4 space-y-3 text-xs sm:text-sm"><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="block font-bold text-slate-700 mb-1">Ad Soyad</label><input id="profFullNameInput" type="text" required value="${escapeHtml(acc.fullName)}" class="w-full border border-slate-300 rounded-xl px-3 py-2" /></div><div><label class="block font-bold text-slate-700 mb-1">Hedef / Mevcut İl</label><input id="profCityInput" type="text" value="${escapeHtml(acc.city || "")}" placeholder="Örn: Ankara" class="w-full border border-slate-300 rounded-xl px-3 py-2" /></div></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="block font-bold text-slate-700 mb-1">KPSS Puanı</label><input id="profScoreInput" type="text" value="${escapeHtml(acc.kpssScore || "")}" placeholder="Örn: 82.4" class="w-full border border-slate-300 rounded-xl px-3 py-2" /></div><div><label class="block font-bold text-slate-700 mb-1">Öğrenim Düzeyi</label><select id="profEduInput" class="w-full border border-slate-300 rounded-xl px-3 py-2 bg-white"><option value="Lisans" ${acc.eduLevel === "Lisans" ? "selected" : ""}>Lisans</option><option value="Önlisans" ${acc.eduLevel === "Önlisans" ? "selected" : ""}>Önlisans</option><option value="Ortaöğretim" ${acc.eduLevel === "Ortaöğretim" ? "selected" : ""}>Ortaöğretim</option></select></div></div><div><label class="block font-bold text-slate-700 mb-1">Kısa Not / Hedef Kadro</label><textarea id="profBioInput" rows="2" placeholder="Hedeflediğin kurum veya kadrolar..." class="w-full border border-slate-300 rounded-xl px-3 py-2">${escapeHtml(acc.bio || "")}</textarea></div><div id="profSaveFeedback" class="text-emerald-700 font-bold text-xs hidden">✓ Profil bilgileri kaydedildi.</div><button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold py-2.5 rounded-xl cursor-pointer">Profil Bilgilerini Kaydet</button></form>
       `;
       document.getElementById("detailModal").classList.remove("hidden");
     }
 
-    function saveProfileModalSubmit(e) {
+    function saveProfileModalData(e) {
       e.preventDefault();
-      const session = getActiveSession();
-      if (!session) return;
-      const fullName = sanitizePublicText((document.getElementById("profModalName")?.value || "").trim()) || session.fullName;
-      const edu = document.getElementById("profModalEdu")?.value || "ALL";
-      const score = document.getElementById("profModalScore")?.value || "";
-      const telegram = sanitizePublicText((document.getElementById("profModalTelegram")?.value || "").trim());
-      const map = getAccountsMap();
-      const updatedAcc = { ...(map[session.email] || session), fullName, email: session.email, edu, score, telegram };
-      map[session.email] = updatedAcc; saveAccountsMap(map); setActiveSession(updatedAcc);
-      if (document.getElementById("profileEdu")) document.getElementById("profileEdu").value = edu;
-      if (document.getElementById("profileScore")) document.getElementById("profileScore").value = score;
-      if (document.getElementById("profileTelegram")) document.getElementById("profileTelegram").value = telegram;
-      saveProfileFromUI(); applyProfileMatch(false); closeDetailModal();
+      const s = getActiveSession();
+      if (!s) return;
+      const accounts = getAccountsMap();
+      const existing = accounts[s.email] || { email: s.email, password: "" };
+      const updated = { ...existing, fullName: sanitizePublicText((document.getElementById("profFullNameInput").value || "").trim()) || existing.fullName, city: sanitizePublicText((document.getElementById("profCityInput").value || "").trim()), kpssScore: sanitizePublicText((document.getElementById("profScoreInput").value || "").trim()), eduLevel: document.getElementById("profEduInput").value, bio: sanitizePublicText((document.getElementById("profBioInput").value || "").trim()) };
+      accounts[s.email] = updated; saveAccountsMap(accounts); setActiveSession(updated);
+      const fb = document.getElementById("profSaveFeedback");
+      if (fb) fb.classList.remove("hidden");
     }
 
-    function toggleKatiplikPanel(forceState = null) {
+    function toggleSectionCollapse(bodyId, btnId) {
+      const body = document.getElementById(bodyId);
+      const btn = document.getElementById(btnId);
+      if (!body) return;
+      const willShow = body.classList.contains("hidden");
+      body.classList.toggle("hidden", !willShow);
+      if (btn) btn.textContent = willShow ? "▼ Gizle" : "▶ Göster";
+    }
+
+    function toggleKatiplikPanel(forceOpen = null) {
       const drawer = document.getElementById("katiplikDrawer");
       const btn = document.getElementById("katiplikToggleBtn");
-      if (!drawer || !btn) return;
-      katiplikOpen = typeof forceState === "boolean" ? forceState : drawer.classList.contains("hidden");
+      if (!drawer) return;
+      katiplikOpen = typeof forceOpen === "boolean" ? forceOpen : !katiplikOpen;
       drawer.classList.toggle("hidden", !katiplikOpen);
-      btn.textContent = katiplikOpen ? "✕ KÂTİPLİK & ANTRENMANI KAPAT" : "⌨️ KÂTİPLİK & ANTRENMANI AÇ";
-      if (katiplikOpen) { initSimText(); selectLesson(activeLessonIdx); resetWordDrill(); renderRaceLeaderboard(); }
+      if (btn) btn.textContent = katiplikOpen ? "✕ KÂTİPLİK & ANTRENMANI KAPAT" : "⌨️ KÂTİPLİK & ANTRENMANI AÇ";
+      if (katiplikOpen) {
+        initSimText(); renderSimHistory(); renderLessonButtons(); selectLesson(activeLessonIdx); resetWordDrill(); renderRaceLeaderboard();
+        document.getElementById("katiplikMerkeziBolumu").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
 
-    function switchKatiplikTab(tabKey) {
-      document.querySelectorAll(".k-tab-btn").forEach(b => { b.className = b.id === "kTab-race" ? "k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-amber-100 text-amber-950 hover:bg-amber-200 transition" : "k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition"; });
-      const activeBtn = document.getElementById(`kTab-${tabKey}`);
-      if (activeBtn) activeBtn.className = "k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white transition";
+    function switchKatiplikTab(tab) {
+      if (!katiplikOpen) toggleKatiplikPanel(true);
+      document.querySelectorAll(".k-tab-btn").forEach(b => {
+        const isRace = b.id === "kTab-race";
+        b.className = b.id === `kTab-${tab}` ? "k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white transition" : (isRace ? "k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-amber-100 text-amber-950 hover:bg-amber-200 transition" : "k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition");
+      });
       document.querySelectorAll(".k-panel").forEach(p => p.classList.add("hidden"));
-      const panel = document.getElementById(`kPanel-${tabKey}`);
-      if (panel) panel.classList.remove("hidden");
-      if (tabKey === "lessons") selectLesson(activeLessonIdx);
-      if (tabKey === "words") resetWordDrill();
-      if (tabKey === "race") renderRaceLeaderboard();
+      document.getElementById(`kPanel-${tab}`).classList.remove("hidden");
+      if (tab === "lessons") selectLesson(activeLessonIdx);
+      if (tab === "words") resetWordDrill();
+      if (tab === "race") renderRaceLeaderboard();
     }
 
     const SIM_TEXTS = [
-      "Cumhuriyet Başsavcılığı tarafından yürütülen soruşturma kapsamında müşteki ve tanık ifadeleri usulüne uygun olarak zapta geçirilmiş, duruşma tutanağı katip tarafından eksiksiz düzenlenerek elektronik imza ile onaylanmıştır.",
-      "Tebligat Kanunu hükümleri uyarınca taraflara yapılan duruşma davetiyeleri ve gerekçeli karar özetleri yasal süreler içinde tebliğ edilmiş, itiraz ve istinaf başvurularına ilişkin kayıtlar UYAP sistemine işlenmiştir.",
-      "İcra müdürlüğü dosyasında borçluya ödeme emri gönderilmiş, yasal sürenin dolmasıyla birlikte haciz ve satış işlemlerine ilişkin yazı işleri kalemi evrakları kontrol edilerek ilgili mahkemeye sunulmuştur."
+      "Cumhuriyet başsavcılığı yazı işleri müdürlüğü kaleminde düzenlenen duruşma zaptında sanık müdafii ve katılan vekilinin beyanları eksiksiz zapta geçirilmiş, tebligat mazbataları dosya muhteviyatına eklenerek müteakip celse için gün tayin edilmiştir.",
+      "Mahkeme kalemince verilen süre kesin olup yasal süresi içinde istinaf dilekçesi sunulmadığı takdirde hükmün kesinleşeceği taraf vekillerine ihtar edilmiş, elektronik tebligat adreslerinin güncelliği UYAP üzerinden kontrol edilmiştir.",
+      "İcra müdürlüğü dosyasından gönderilen ödeme emrine karşı yasal itiraz süresi içerisinde itiraz dilekçesi ibraz edilmiş, icra mahkemesi hakimi tarafından tensip zaptı düzenlenerek duruşma günü tensiben belirlenmiştir."
     ];
 
     function initSimText() {
-      const idx = Number(document.getElementById("simTextSelect")?.value || 0);
-      const text = SIM_TEXTS[idx] || SIM_TEXTS[0];
-      document.getElementById("simTargetText").textContent = text;
+      const idx = Number(document.getElementById("simTextSelect").value || 0);
+      const txt = SIM_TEXTS[idx] || SIM_TEXTS[0];
+      const box = document.getElementById("simTargetText");
+      if (!box) return;
+      box.innerHTML = txt.split("").map((ch, i) => `<span id="sim-ch-${i}" class="rounded px-0.5 ${i === 0 ? "bg-indigo-100 text-indigo-900 font-bold underline" : ""}">${escapeHtml(ch)}</span>`).join("");
       const inp = document.getElementById("simInputArea");
-      if (inp) { inp.value = ""; inp.disabled = false; }
-      simRemainingSec = 180; updateSimTimerText();
-      document.getElementById("simNetDisplay").textContent = "0"; document.getElementById("simAccDisplay").textContent = "%100";
-      document.getElementById("simKeystrokesDisplay").textContent = "0"; document.getElementById("simErrorsDisplay").textContent = "0";
-      renderSimHistory();
+      if (inp) inp.value = "";
+      updateSimLiveStats();
     }
-    function updateSimTimerText() { const m = String(Math.floor(simRemainingSec / 60)).padStart(2, "0"); const s = String(simRemainingSec % 60).padStart(2, "0"); const el = document.getElementById("simTimerDisplay"); if (el) el.textContent = `${m}:${s}`; }
+
     function startSim() {
       if (simTimerId) clearInterval(simTimerId);
-      const inp = document.getElementById("simInputArea"); inp.disabled = false; inp.focus();
-      simTimerId = setInterval(() => { simRemainingSec--; updateSimTimerText(); if (simRemainingSec <= 0) finishSim(); }, 1000);
+      simRemainingSec = 180;
+      initSimText();
+      const inp = document.getElementById("simInputArea");
+      inp.disabled = false; inp.focus();
+      updateSimTimerDisplay();
+      simTimerId = setInterval(() => {
+        simRemainingSec--; updateSimTimerDisplay();
+        if (simRemainingSec <= 0) { clearInterval(simTimerId); simTimerId = null; finishSim(); }
+      }, 1000);
     }
-    function onSimInput() {
-      const target = document.getElementById("simTargetText").textContent || "";
-      const typed = document.getElementById("simInputArea").value || "";
+
+    function updateSimTimerDisplay() {
+      const m = String(Math.floor(simRemainingSec / 60)).padStart(2, "0");
+      const s = String(simRemainingSec % 60).padStart(2, "0");
+      const el = document.getElementById("simTimerDisplay");
+      if (el) el.textContent = `${m}:${s}`;
+    }
+
+    function onSimInput() { updateSimLiveStats(); }
+
+    function updateSimLiveStats() {
+      const idx = Number(document.getElementById("simTextSelect")?.value || 0);
+      const target = SIM_TEXTS[idx] || SIM_TEXTS[0];
+      const typed = document.getElementById("simInputArea")?.value || "";
       let errors = 0;
-      for (let i = 0; i < typed.length; i++) { if (typed[i] !== target[i]) errors++; }
+      for (let i = 0; i < target.length; i++) {
+        const span = document.getElementById(`sim-ch-${i}`);
+        if (!span) continue;
+        if (i < typed.length) {
+          if (typed[i] === target[i]) span.className = "rounded px-0.5 text-emerald-700 bg-emerald-50";
+          else { span.className = "rounded px-0.5 text-rose-700 bg-rose-100 font-bold"; errors++; }
+        } else span.className = i === typed.length ? "rounded px-0.5 bg-indigo-100 text-indigo-900 font-bold underline" : "rounded px-0.5 text-slate-800";
+      }
+      if (typed.length > target.length) errors += typed.length - target.length;
       const elapsedSec = Math.max(1, 180 - simRemainingSec);
-      const correctChars = Math.max(0, typed.length - errors);
-      const grossWords = correctChars / 5;
-      const netWords = Math.max(0, Math.round((grossWords / elapsedSec) * 60));
+      const grossWords = typed.trim() ? typed.trim().split(/\s+/).length : 0;
+      const netWords = Math.max(0, Math.round((grossWords - errors * 0.5) * (180 / elapsedSec)));
       const acc = typed.length > 0 ? Math.max(0, Math.round(((typed.length - errors) / typed.length) * 100)) : 100;
       document.getElementById("simNetDisplay").textContent = String(netWords);
       document.getElementById("simAccDisplay").textContent = `%${acc}`;
       document.getElementById("simKeystrokesDisplay").textContent = String(typed.length);
       document.getElementById("simErrorsDisplay").textContent = String(errors);
+      return { netWords, acc, errors };
     }
+
     function finishSim() {
       if (simTimerId) { clearInterval(simTimerId); simTimerId = null; }
-      onSimInput();
-      const net = Number(document.getElementById("simNetDisplay").textContent || 0);
-      const acc = document.getElementById("simAccDisplay").textContent || "%100";
-      const layout = document.getElementById("simLayoutSelect")?.value || "F";
-      const hist = getSimHistory();
-      hist.unshift({ net, acc, layout, date: new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }) });
-      localStorage.setItem("kpss_sim_history_v1", JSON.stringify(hist.slice(0, 12)));
+      const stats = updateSimLiveStats();
+      const layout = document.getElementById("simLayoutSelect").value;
+      const record = { net: stats.netWords, acc: stats.acc, errors: stats.errors, layout, date: new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }) };
+      const hist = getSimHistory(); hist.unshift(record);
+      localStorage.setItem("kpss_katip_sim_history", JSON.stringify(hist.slice(0, 12)));
       renderSimHistory();
     }
-    function getSimHistory() { try { const a = JSON.parse(localStorage.getItem("kpss_sim_history_v1")); return Array.isArray(a) ? a : []; } catch (e) { return []; } }
-    function clearSimHistory() { localStorage.removeItem("kpss_sim_history_v1"); renderSimHistory(); }
+
+    function getSimHistory() { try { const a = JSON.parse(localStorage.getItem("kpss_katip_sim_history")); return Array.isArray(a) ? a : []; } catch (e) { return []; } }
+    function clearSimHistory() { localStorage.removeItem("kpss_katip_sim_history"); renderSimHistory(); }
+
     function renderSimHistory() {
-      const box = document.getElementById("simHistoryList"); if (!box) return;
+      const box = document.getElementById("simHistoryList");
+      if (!box) return;
       const hist = getSimHistory();
-      box.innerHTML = hist.length === 0 ? `<div class="text-slate-400">Henüz kayıtlı sınav denemesi yok.</div>` : hist.map(h => `<div class="flex items-center justify-between bg-white border border-slate-200 rounded-lg px-2.5 py-1.5"><span><b>${escapeHtml(h.net)} Net</b> (${escapeHtml(h.acc)}) • ${escapeHtml(h.layout)} Klavye</span><span class="text-slate-400">${escapeHtml(h.date)}</span></div>`).join("");
+      if (hist.length === 0) { box.innerHTML = `<div class="text-slate-400">Henüz kayıtlı simülasyon yok.</div>`; return; }
+      box.innerHTML = hist.map(h => `<div class="flex items-center justify-between bg-white border border-slate-200 rounded-lg px-2.5 py-1.5"><span><b>${escapeHtml(h.net)} Net</b> • %${escapeHtml(h.acc)} • ${escapeHtml(h.layout)}</span><span class="text-slate-400">${escapeHtml(h.date)}</span></div>`).join("");
     }
 
+    const F_KEYBOARD_ROWS = [["f", "g", "ğ", "ı", "o", "d", "r", "n", "h", "p", "q", "w", "x"], ["u", "i", "e", "a", "ü", "t", "k", "m", "l", "y", "ş"], ["j", "ö", "v", "c", "ç", "z", "s", "b", ".," ]];
+    const Q_KEYBOARD_ROWS = [["q", "w", "e", "r", "t", "y", "u", "ı", "o", "p", "ğ", "ü"], ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ş", "i"], ["z", "x", "c", "v", "b", "n", "m", "ö", "ç"]];
     const KEYBOARD_LESSONS = [
-      { title: "Ders 1: Temel Sıra Harfleri", desc: "Parmaklarını orta sıraya yerleştir ve tekrarlanan dizileri hatasız yaz.", F: "k l m n a e i t k l m n a e i t", Q: "a s d f j k l ş a s d f j k l ş" },
-      { title: "Ders 2: Üst Sıra & Hece Geçişleri", desc: "Üst sıradaki harflere uzanıp tekrar temel sıraya dön.", F: "u ı o d r s y u ı o d r s y", Q: "q w e r t y u ı o p e r t y u ı" },
-      { title: "Ders 3: Alt Sıra & Hukuk Heceleri", desc: "Alt sıradaki tuşları kullanarak sık geçen heceleri çalış.", F: "c v b z ç ş g h c v b z ç ş g h", Q: "z x c v b n m ö ç z x c v b n m" }
+      { title: "Ders 1: Temel Sıra (Sol & Sağ El)", desc: "Parmaklarını ana sıraya yerleştirip harf dizilerini hatasız yaz.", sampleF: "a e u i k m l y a e u i k m l y", sampleQ: "a s d f j k l ş a s d f j k l ş" },
+      { title: "Ders 2: Üst Sıra Geçişleri", desc: "Üst sıradaki harflerle orta sırayı birleştir.", sampleF: "f g r n t k m l f g r n t k m l", sampleQ: "q w e r u ı o p q w e r u ı o p" },
+      { title: "Ders 3: Alt Sıra & Noktalama", desc: "Alt sıra harfleriyle hız ve denge çalışması.", sampleF: "v c ç z s b v c ç z s b", sampleQ: "z x c v b n m ö ç z x c v b n m" },
+      { title: "Ders 4: Mahkeme & Kalem Kelimeleri", desc: "Sık geçen adliye kelimelerini akıcı yaz.", sampleF: "mahkeme karar dosya duruşma kalem tebligat", sampleQ: "mahkeme karar dosya duruşma kalem tebligat" }
     ];
 
+    function renderLessonButtons() {
+      const bar = document.getElementById("lessonButtonsBar");
+      if (!bar) return;
+      bar.innerHTML = KEYBOARD_LESSONS.map((l, idx) => `<button type="button" onclick="selectLesson(${idx})" class="px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer ${idx === activeLessonIdx ? "bg-slate-900 text-white" : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"}">${idx + 1}. Ders</button>`).join("");
+    }
+
     function selectLesson(idx) {
-      activeLessonIdx = idx;
-      const layout = document.getElementById("lessonLayoutSelect")?.value || "F";
+      activeLessonIdx = idx; renderLessonButtons();
       const l = KEYBOARD_LESSONS[idx] || KEYBOARD_LESSONS[0];
-      document.getElementById("lessonButtonsBar").innerHTML = KEYBOARD_LESSONS.map((item, i) => `<button type="button" onclick="selectLesson(${i})" class="px-2.5 py-1.5 rounded-lg text-xs font-bold ${i === idx ? "bg-indigo-600 text-white" : "bg-white border border-slate-200 text-slate-700"}">${escapeHtml(item.title.split(":")[0])}</button>`).join("");
+      const layout = document.getElementById("lessonLayoutSelect")?.value || "F";
+      const sample = layout === "F" ? l.sampleF : l.sampleQ;
       document.getElementById("lessonTitle").textContent = `${l.title} (${layout} Klavye)`;
       document.getElementById("lessonDesc").textContent = l.desc;
-      document.getElementById("lessonTargetBox").textContent = l[layout] || l.F;
-      const inp = document.getElementById("lessonInput"); if (inp) inp.value = "";
+      document.getElementById("lessonTargetBox").textContent = sample;
+      const inp = document.getElementById("lessonInput");
+      inp.value = ""; inp.dataset.target = sample;
       document.getElementById("lessonStatsText").textContent = "Doğruluk: %100";
-      renderVisualKeyboard(layout, (l[layout] || l.F)[0] || "");
+      renderVisualKeyboard(layout, sample[0] || "");
     }
+
     function onLessonInput() {
-      const target = document.getElementById("lessonTargetBox").textContent || "";
-      const typed = document.getElementById("lessonInput").value || "";
+      const inp = document.getElementById("lessonInput");
+      const target = inp.dataset.target || "";
+      const typed = inp.value || "";
+      let ok = 0;
+      for (let i = 0; i < typed.length; i++) if (typed[i] === target[i]) ok++;
+      const acc = typed.length > 0 ? Math.round((ok / typed.length) * 100) : 100;
+      document.getElementById("lessonStatsText").textContent = `Doğruluk: %${acc} (${typed.length}/${target.length})`;
       const layout = document.getElementById("lessonLayoutSelect")?.value || "F";
-      let bad = 0; for (let i = 0; i < typed.length; i++) { if (typed[i] !== target[i]) bad++; }
-      const acc = typed.length > 0 ? Math.max(0, Math.round(((typed.length - bad) / typed.length) * 100)) : 100;
-      document.getElementById("lessonStatsText").textContent = `Doğruluk: %${acc} • ${typed.length}/${target.length}`;
       renderVisualKeyboard(layout, target[typed.length] || "");
     }
+
     function renderVisualKeyboard(layout, activeChar) {
-      const rows = layout === "F" ? [["f", "g", "ğ", "ı", "o", "d", "r", "n", "h", "p", "q", "w"], ["u", "i", "e", "a", "ü", "t", "k", "m", "y", "ş", "x"], ["j", "ö", "v", "c", "ç", "z", "s", "b", "l", "i"]] : [["q", "w", "e", "r", "t", "y", "u", "ı", "o", "p", "ğ", "ü"], ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ş", "i"], ["z", "x", "c", "v", "b", "n", "m", "ö", "ç"]];
-      const normTarget = normalizeText(activeChar);
-      document.getElementById("lessonVisualKeyboard").innerHTML = rows.map(r => `<div class="flex justify-center gap-1 flex-wrap">${r.map(ch => { const isHi = normTarget && normalizeText(ch) === normTarget; return `<span class="w-8 h-8 inline-flex items-center justify-center rounded-lg border text-xs font-extrabold uppercase ${isHi ? "bg-emerald-500 text-slate-950 border-emerald-600 scale-105" : "bg-white text-slate-700 border-slate-200"}">${escapeHtml(ch)}</span>`; }).join("")}</div>`).join("");
+      const box = document.getElementById("lessonVisualKeyboard");
+      if (!box) return;
+      const rows = layout === "F" ? F_KEYBOARD_ROWS : Q_KEYBOARD_ROWS;
+      const normAct = normalizeText(activeChar);
+      box.innerHTML = rows.map(row => `<div class="flex justify-center gap-1.5 flex-wrap">${row.map(k => { const isHit = normAct && normalizeText(k).includes(normAct); return `<span class="min-w-[32px] h-9 px-2 rounded-lg border text-xs font-extrabold flex items-center justify-center ${isHit ? "bg-emerald-500 text-slate-950 border-emerald-600 scale-105 shadow" : "bg-white text-slate-800 border-slate-300"}">${escapeHtml(k.toUpperCase())}</span>`; }).join("")}</div>`).join("");
     }
 
     const WORD_BANKS = {
-      hukuk: ["mahkeme", "duruşma", "tebligat", "dilekçe", "istinaf", "temyiz", "bilirkişi", "tutanak", "müdafi", "hüküm", "icra", "haciz", "vekalet", "gerekçeli", "savcılık", "uyap"],
-      uzun: ["cumhurbaşkanlığı", "değerlendirme", "soruşturma", "yönetmelik", "kamuoyu", "bilgilendirme", "koordinasyon", "sözleşmeli", "başvuru", "yerleştirme", "uygulama", "kayıtlılık"],
-      rakam: ["2026", "14.05.2026", "90", "3001", "4001", "74.50", "167", "400m", "2025/1", "15.11.2026", "100", "24"],
-      genel: ["kurum", "kadro", "belge", "sınav", "başarı", "süreç", "onay", "hizmet", "görev", "şart", "ilan", "aday", "sonuç", "tercih", "kayıt", "duyuru"]
+      hukuk: ["mahkeme", "duruşma", "tebligat", "dilekçe", "istinaf", "temyiz", "müdafaa", "bilirkişi", "tensip", "gerekçeli", "haciz", "vekalet", "mübaşir", "zabıt", "şahit", "karar"],
+      uzun: ["cumhuriyet", "başsavcılığı", "değerlendirme", "soruşturma", "yükümlülük", "bilgilendirme", "gerçekleştirilmesi", "düzenlenmiştir", "kamuoyuna", "başvurular"],
+      rakam: ["2026/145", "15/06/2026", "30 gün", "90 kelime", "70.50 puan", "12.400 TL", "24 saat", "3 dakika", "100 puan", "48 saniye"],
+      genel: ["kamu", "personel", "alımı", "başvuru", "kadro", "kurum", "sınav", "sonuç", "belge", "şart", "ilan", "görev", "süreç", "merkez", "hizmet", "bölüm"]
     };
 
-    function setWordDrillMode(mode) { wordDrillMode = mode; document.querySelectorAll(".w-mode-btn").forEach(b => { b.className = b.id === `wMode-${mode}` ? "w-mode-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white" : "w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700"; }); resetWordDrill(); }
-    function resetWordDrill() { const pool = WORD_BANKS[wordDrillMode] || WORD_BANKS.hukuk; wordQueue = Array.from({ length: 12 }, (_, i) => pool[(i + Math.floor(Math.random() * pool.length)) % pool.length]); wordIdx = 0; wordCorrect = 0; wordWrong = 0; document.getElementById("wordCorrectCount").textContent = "0"; document.getElementById("wordWrongCount").textContent = "0"; const inp = document.getElementById("wordDrillInput"); if (inp) inp.value = ""; renderWordQueue(); }
-    function renderWordQueue() { const box = document.getElementById("wordQueueBox"); if (!box) return; box.innerHTML = wordQueue.map((w, i) => `<span class="px-2.5 py-1 rounded-lg text-xs ${i === wordIdx ? "bg-indigo-600 text-white font-extrabold" : (i < wordIdx ? "bg-emerald-100 text-emerald-800" : "bg-slate-100 text-slate-700")}">${escapeHtml(w)}</span>`).join(""); }
+    function setWordDrillMode(mode) {
+      wordDrillMode = mode;
+      document.querySelectorAll(".w-mode-btn").forEach(b => { b.className = b.id === `wMode-${mode}` ? "w-mode-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white" : "w-mode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-700"; });
+      resetWordDrill();
+    }
+
+    function resetWordDrill() {
+      const bank = WORD_BANKS[wordDrillMode] || WORD_BANKS.hukuk;
+      wordQueue = Array.from({ length: 12 }, (_, i) => bank[(i + Math.floor(Math.random() * bank.length)) % bank.length]);
+      wordIdx = 0; wordCorrect = 0; wordWrong = 0;
+      document.getElementById("wordCorrectCount").textContent = "0";
+      document.getElementById("wordWrongCount").textContent = "0";
+      const inp = document.getElementById("wordDrillInput");
+      if (inp) inp.value = "";
+      renderWordQueue();
+    }
+
+    function renderWordQueue() {
+      const box = document.getElementById("wordQueueBox");
+      if (!box) return;
+      box.innerHTML = wordQueue.map((w, i) => `<span class="px-3 py-1.5 rounded-lg border ${i === wordIdx ? "bg-indigo-600 text-white border-indigo-600 font-extrabold" : (i < wordIdx ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-slate-50 text-slate-700 border-slate-200")}">${escapeHtml(w)}</span>`).join("");
+    }
+
     function onWordDrillKeydown(e) {
-      if (e.key !== " ") return; e.preventDefault();
-      const inp = document.getElementById("wordDrillInput"); const typed = (inp.value || "").trim(); const target = wordQueue[wordIdx] || "";
-      if (!typed) return;
-      if (typed === target) { wordCorrect++; document.getElementById("wordCorrectCount").textContent = String(wordCorrect); }
-      else { wordWrong++; document.getElementById("wordWrongCount").textContent = String(wordWrong); }
+      if (e.key !== " ") return;
+      e.preventDefault();
+      const inp = document.getElementById("wordDrillInput");
+      const val = (inp.value || "").trim();
+      if (!val) return;
+      const target = wordQueue[wordIdx] || "";
+      if (val === target) wordCorrect++; else wordWrong++;
+      document.getElementById("wordCorrectCount").textContent = String(wordCorrect);
+      document.getElementById("wordWrongCount").textContent = String(wordWrong);
       inp.value = ""; wordIdx++;
       if (wordIdx >= wordQueue.length) resetWordDrill(); else renderWordQueue();
     }
 
-    const DOSYA_PHRASES = ["sanık müdafii hazır bulundu", "duruşma gelecek celseye bırakıldı", "tebligat parçası dosyasına eklendi", "bilirkişi raporu taraflara tebliğ edildi", "istinaf kanun yolu süresi açıklandı", "tanık yemini yaptırılarak dinlendi"];
-    function selectGameMode(mode) { document.getElementById("gameBox-dosya").classList.toggle("hidden", mode !== "dosya"); document.getElementById("gameBox-hata").classList.toggle("hidden", mode !== "hata"); document.getElementById("gTab-dosya").className = mode === "dosya" ? "px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950" : "px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800"; document.getElementById("gTab-hata").className = mode === "hata" ? "px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950" : "px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800"; updateGameBestUI(); }
-    function getGameBest() { return Number(localStorage.getItem("kpss_game_best_v1") || 0); }
-    function setGameBest(val) { const cur = getGameBest(); if (val > cur) localStorage.setItem("kpss_game_best_v1", String(val)); updateGameBestUI(); }
-    function updateGameBestUI() { const el = document.getElementById("gameBestScore"); if (el) el.textContent = String(getGameBest()); }
-    function startDosyaGame() { if (dosyaInterval) clearInterval(dosyaInterval); dosyaScore = 0; dosyaLevel = 1; dosyaStreak = 1; dosyaLives = 3; dosyaActive = true; document.getElementById("dosyaScore").textContent = "0"; document.getElementById("dosyaLevel").textContent = "1"; document.getElementById("dosyaStreak").textContent = "x1"; document.getElementById("dosyaLives").textContent = "3"; nextDosyaPhrase(); const inp = document.getElementById("dosyaInput"); inp.value = ""; inp.focus(); dosyaInterval = setInterval(() => { if (!dosyaActive) return; dosyaTimeLeft -= Math.max(1.2, 2.2 + (dosyaLevel - 1) * 0.35); document.getElementById("dosyaTimeBar").style.width = `${Math.max(0, dosyaTimeLeft)}%`; if (dosyaTimeLeft <= 0) { dosyaLives--; dosyaStreak = 1; document.getElementById("dosyaLives").textContent = String(dosyaLives); document.getElementById("dosyaStreak").textContent = "x1"; if (dosyaLives <= 0) { dosyaActive = false; clearInterval(dosyaInterval); document.getElementById("dosyaTargetPhrase").textContent = `Oyun Bitti! Puanın: ${dosyaScore}`; setGameBest(dosyaScore); } else nextDosyaPhrase(); } }, 100); }
-    function nextDosyaPhrase() { dosyaCurrentTarget = DOSYA_PHRASES[Math.floor(Math.random() * DOSYA_PHRASES.length)]; dosyaTimeLeft = 100; document.getElementById("dosyaTargetPhrase").textContent = dosyaCurrentTarget; document.getElementById("dosyaInput").value = ""; }
-    function onDosyaInput() { if (!dosyaActive) return; const typed = document.getElementById("dosyaInput").value || ""; if (typed === dosyaCurrentTarget) { dosyaScore += 15 * dosyaStreak; dosyaStreak = Math.min(5, dosyaStreak + 1); dosyaLevel = 1 + Math.floor(dosyaScore / 75); document.getElementById("dosyaScore").textContent = String(dosyaScore); document.getElementById("dosyaStreak").textContent = `x${dosyaStreak}`; document.getElementById("dosyaLevel").textContent = String(dosyaLevel); setGameBest(dosyaScore); nextDosyaPhrase(); } }
+    const DOSYA_PHRASES = ["sanık müdafii beyanını sundu", "tebligat mazbatası dosyada", "duruşma gelecek celseye bırakıldı", "istinaf kanun yolu açıktır", "bilirkişi raporu taraflara tebliğ edildi", "ödeme emrine süresi içinde itiraz edildi"];
 
-    const HATA_WORDS = [{ wrong: "mahkme", right: "mahkeme", hint: "Eksik sesli harf var" }, { wrong: "teblıgat", right: "tebligat", hint: "'ı' yerine 'i' yazılmalı" }, { wrong: "dilekce", right: "dilekçe", hint: "'c' yerine 'ç' yazılmalı" }, { wrong: "istinaf", right: "istinaf", hint: "Yazımı doğru, aynısını yaz" }, { wrong: "tutanak", right: "tutanak", hint: "Yazımı doğru, aynısını yaz" }];
-    function startHataGame() { hataCurrentItem = HATA_WORDS[Math.floor(Math.random() * HATA_WORDS.length)]; document.getElementById("hataWrongWord").textContent = hataCurrentItem.wrong; document.getElementById("hataHint").textContent = `İpucu: ${hataCurrentItem.hint}`; document.getElementById("hataAnswerInput").value = ""; document.getElementById("hataAnswerInput").focus(); }
-    function submitHataAnswer(e) { e.preventDefault(); const ans = (document.getElementById("hataAnswerInput").value || "").trim(); if (ans === hataCurrentItem.right) { hataScore += 20; hataCount++; document.getElementById("hataScore").textContent = String(hataScore); document.getElementById("hataCount").textContent = String(hataCount); setGameBest(hataScore); startHataGame(); } else { document.getElementById("hataHint").textContent = `Doğru yazımı: "${hataCurrentItem.right}" — tekrar dene!`; } }
+    function selectGameMode(mode) {
+      document.getElementById("gTab-dosya").className = mode === "dosya" ? "px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950" : "px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800";
+      document.getElementById("gTab-hata").className = mode === "hata" ? "px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950" : "px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800";
+      document.getElementById("gameBox-dosya").classList.toggle("hidden", mode !== "dosya");
+      document.getElementById("gameBox-hata").classList.toggle("hidden", mode !== "hata");
+      if (mode === "hata") startHataGame();
+    }
 
-    function getRaceScores() { try { const a = JSON.parse(localStorage.getItem("kpss_race_scores_v1")); if (Array.isArray(a) && a.length > 0) return a; } catch (e) {} return [{ nick: "Emre Kaya", net: 98, acc: "%99", layout: "F" }, { nick: "Zeynep Arslan", net: 92, acc: "%97", layout: "F" }, { nick: "Burak Şahin", net: 86, acc: "%96", layout: "Q" }]; }
+    function updateGameBestScore(candidate) {
+      const prev = Number(localStorage.getItem("kpss_katip_game_best") || 0);
+      const best = Math.max(prev, candidate);
+      localStorage.setItem("kpss_katip_game_best", String(best));
+      const el = document.getElementById("gameBestScore");
+      if (el) el.textContent = String(best);
+    }
+
+    function startDosyaGame() {
+      if (dosyaInterval) clearInterval(dosyaInterval);
+      dosyaScore = 0; dosyaLevel = 1; dosyaStreak = 1; dosyaLives = 3; dosyaActive = true;
+      nextDosyaPhrase();
+      const inp = document.getElementById("dosyaInput");
+      inp.value = ""; inp.focus();
+      dosyaInterval = setInterval(() => {
+        if (!dosyaActive) return;
+        dosyaTimeLeft -= 1.5 + dosyaLevel * 0.25;
+        document.getElementById("dosyaTimeBar").style.width = `${Math.max(0, dosyaTimeLeft)}%`;
+        if (dosyaTimeLeft <= 0) {
+          dosyaLives--; dosyaStreak = 1;
+          if (dosyaLives <= 0) { dosyaActive = false; clearInterval(dosyaInterval); document.getElementById("dosyaTargetPhrase").textContent = `Oyun Bitti! Toplam Puan: ${dosyaScore}`; }
+          else nextDosyaPhrase();
+          updateDosyaHud();
+        }
+      }, 100);
+    }
+
+    function nextDosyaPhrase() {
+      dosyaCurrentTarget = DOSYA_PHRASES[Math.floor(Math.random() * DOSYA_PHRASES.length)];
+      dosyaTimeLeft = 100;
+      document.getElementById("dosyaTargetPhrase").textContent = dosyaCurrentTarget;
+      const inp = document.getElementById("dosyaInput");
+      if (inp) inp.value = "";
+      updateDosyaHud();
+    }
+
+    function updateDosyaHud() {
+      document.getElementById("dosyaScore").textContent = String(dosyaScore);
+      document.getElementById("dosyaLevel").textContent = String(dosyaLevel);
+      document.getElementById("dosyaStreak").textContent = `x${dosyaStreak}`;
+      document.getElementById("dosyaLives").textContent = String(dosyaLives);
+    }
+
+    function onDosyaInput() {
+      if (!dosyaActive) return;
+      const inp = document.getElementById("dosyaInput");
+      if (inp.value === dosyaCurrentTarget) {
+        dosyaScore += 10 * dosyaStreak; dosyaStreak++;
+        dosyaLevel = 1 + Math.floor(dosyaScore / 60);
+        updateGameBestScore(dosyaScore); nextDosyaPhrase();
+      }
+    }
+
+    const HATA_WORDS = [
+      { wrong: "mahkme", right: "mahkeme", hint: "Eksik 'e' harfi" },
+      { wrong: "teblgat", right: "tebligat", hint: "Eksik 'i' harfi" },
+      { wrong: "duruşma", right: "duruşma", hint: "Doğru yazım (aynen yaz)" },
+      { wrong: "dilekce", right: "dilekçe", hint: "'c' yerine 'ç'" },
+      { wrong: "bilirkişi", right: "bilirkişi", hint: "Doğru yazım (aynen yaz)" },
+      { wrong: "istinaf", right: "istinaf", hint: "Doğru yazım (aynen yaz)" }
+    ];
+
+    function startHataGame() { hataCurrentItem = HATA_WORDS[Math.floor(Math.random() * HATA_WORDS.length)]; document.getElementById("hataWrongWord").textContent = hataCurrentItem.wrong; document.getElementById("hataHint").textContent = `İpucu: ${hataCurrentItem.hint}`; document.getElementById("hataAnswerInput").value = ""; }
+
+    function submitHataAnswer(e) {
+      e.preventDefault();
+      const ans = (document.getElementById("hataAnswerInput").value || "").trim();
+      if (ans === hataCurrentItem.right) { hataScore += 15; hataCount++; updateGameBestScore(hataScore); }
+      document.getElementById("hataScore").textContent = String(hataScore);
+      document.getElementById("hataCount").textContent = String(hataCount);
+      startHataGame();
+    }
+
+    const DEFAULT_RACE_SCORES = [
+      { nick: "Zeynep Arslan", net: 96, acc: 98, layout: "F" },
+      { nick: "Emre Kaya", net: 91, acc: 96, layout: "F" },
+      { nick: "Burak Şahin", net: 86, acc: 95, layout: "Q" }
+    ];
+
+    function getRaceScores() { try { const a = JSON.parse(localStorage.getItem("kpss_katip_race_scores")); if (Array.isArray(a) && a.length > 0) return a; } catch (e) {} return [...DEFAULT_RACE_SCORES]; }
+
     function publishCurrentSimToRace() {
       const nickInput = document.getElementById("raceNickInput")?.value.trim();
-      const session = getActiveSession();
-      const nick = sanitizePublicText(nickInput || session?.fullName || "Aday Skor");
-      const net = Math.max(10, Number(document.getElementById("simNetDisplay")?.textContent || 85));
-      const acc = document.getElementById("simAccDisplay")?.textContent || "%98";
+      const s = getActiveSession();
+      const nick = sanitizePublicText(nickInput || (s ? s.fullName : "") || "Aday");
+      const hist = getSimHistory();
+      const latestNet = hist.length > 0 ? hist[0].net : (Number(document.getElementById("simNetDisplay")?.textContent) || 80);
+      const latestAcc = hist.length > 0 ? hist[0].acc : 96;
       const layout = document.getElementById("simLayoutSelect")?.value || "F";
       const list = getRaceScores();
-      list.push({ nick, net, acc, layout });
+      list.push({ nick, net: latestNet, acc: latestAcc, layout });
       list.sort((a, b) => b.net - a.net);
-      localStorage.setItem("kpss_race_scores_v1", JSON.stringify(list.slice(0, 15)));
+      localStorage.setItem("kpss_katip_race_scores", JSON.stringify(list.slice(0, 15)));
       renderRaceLeaderboard(); switchKatiplikTab("race");
     }
+
     function renderRaceLeaderboard() {
-      const box = document.getElementById("raceLeaderboardList"); if (!box) return;
+      const box = document.getElementById("raceLeaderboardList");
+      if (!box) return;
       const list = getRaceScores().sort((a, b) => b.net - a.net);
-      box.innerHTML = list.map((row, idx) => `<div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-3.5 py-2.5"><div class="flex items-center gap-2.5"><span class="w-6 h-6 rounded-full bg-slate-900 text-white font-extrabold flex items-center justify-center text-[11px]">${idx + 1}</span><div><div class="font-extrabold text-slate-900">${escapeHtml(row.nick)}</div><div class="text-[11px] text-slate-500">${escapeHtml(row.layout)} Klavye • Doğruluk ${escapeHtml(row.acc)}</div></div></div><div class="text-sm font-extrabold text-emerald-700">${escapeHtml(row.net)} Net</div></div>`).join("");
+      box.innerHTML = list.map((r, i) => `<div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-3.5 py-2.5"><div class="flex items-center gap-2.5"><span class="w-6 h-6 rounded-full flex items-center justify-center font-extrabold text-xs ${i === 0 ? "bg-amber-400 text-slate-950" : "bg-slate-100 text-slate-700"}">${i + 1}</span><div><div class="font-extrabold text-slate-900">${escapeHtml(r.nick)}</div><div class="text-[11px] text-slate-500">${escapeHtml(r.layout)} Klavye • Doğruluk %${escapeHtml(r.acc)}</div></div></div><div class="text-sm font-extrabold text-emerald-700">${escapeHtml(r.net)} Net</div></div>`).join("");
     }
+
     function generateChallengeCode() {
-      const nickInput = document.getElementById("raceNickInput")?.value.trim();
-      const session = getActiveSession();
-      const nick = sanitizePublicText(nickInput || session?.fullName || "Aday");
-      const net = Math.max(10, Number(document.getElementById("simNetDisplay")?.textContent || 90));
-      const acc = document.getElementById("simAccDisplay")?.textContent || "%98";
+      const s = getActiveSession();
+      const nick = sanitizePublicText(document.getElementById("raceNickInput")?.value.trim() || (s ? s.fullName : "") || "Aday").replace(/\|/g, "");
+      const hist = getSimHistory();
+      const net = hist.length > 0 ? hist[0].net : (Number(document.getElementById("simNetDisplay")?.textContent) || 85);
+      const acc = hist.length > 0 ? hist[0].acc : 97;
       const layout = document.getElementById("simLayoutSelect")?.value || "F";
-      const code = `${nick}|${net}|${acc}|${layout}`;
-      const box = document.getElementById("myChallengeCodeBox"); if (box) { box.value = code; box.select(); }
+      document.getElementById("myChallengeCodeBox").value = `${nick}|${net}|%${acc}|${layout}`;
     }
+
     function compareWithRival() {
       const raw = (document.getElementById("rivalCodeInput")?.value || "").trim();
       const parts = raw.split("|");
-      const resBox = document.getElementById("duelResultBox");
-      if (parts.length < 2 || Number.isNaN(Number(parts[1]))) { resBox.innerHTML = `<span class="text-rose-400 font-bold">Geçersiz kod formatı.</span> Örnek: <code>ZEYNEP ARSLAN|96|%98|F</code>`; return; }
-      const rivalNick = sanitizePublicText(parts[0] || "Rakip");
-      const rivalNet = Number(parts[1] || 0);
-      const myNet = Math.max(10, Number(document.getElementById("simNetDisplay")?.textContent || 85));
-      const verdict = myNet > rivalNet ? `🏆 Sen öndesin! (${myNet} Net vs ${rivalNet} Net)` : (myNet < rivalNet ? `⚡ ${escapeHtml(rivalNick)} önde! (${rivalNet} Net vs ${myNet} Net)` : `🤝 Berabere! İkiniz de ${myNet} Net yaptınız.`);
-      resBox.innerHTML = `<div class="font-extrabold text-amber-300">${verdict}</div><div class="text-[11px] text-slate-400 mt-1">Rakip: ${escapeHtml(rivalNick)} • ${escapeHtml(parts[2] || "%97")} • ${escapeHtml(parts[3] || "F")} Klavye</div>`;
+      const box = document.getElementById("duelResultBox");
+      if (parts.length < 2 || Number.isNaN(Number(parts[1]))) { box.textContent = "Geçerli bir düello kodu gir (Örn: ZEYNEP ARSLAN|96|%98|F)."; return; }
+      const rivalName = sanitizePublicText(parts[0] || "Rakip");
+      const rivalNet = Number(parts[1]);
+      const hist = getSimHistory();
+      const myNet = hist.length > 0 ? hist[0].net : (Number(document.getElementById("simNetDisplay")?.textContent) || 80);
+      box.innerHTML = myNet > rivalNet ? `<b class="text-emerald-400">Sen öndesin!</b> Senin netin: <b>${myNet}</b> — ${escapeHtml(rivalName)} neti: <b>${rivalNet}</b>.` : (myNet < rivalNet ? `<b class="text-amber-300">${escapeHtml(rivalName)} önde!</b> Rakip neti: <b>${rivalNet}</b> — Senin netin: <b>${myNet}</b>.` : `<b class="text-sky-300">Berabere!</b> İkiniz de <b>${myNet}</b> net yaptınız.`);
     }
 
     function openUniRobotModal() {
-      document.getElementById("detailContent").innerHTML = `<span class="bg-sky-100 text-sky-900 text-xs font-extrabold px-2.5 py-0.5 rounded">2026 YKS Tercih Rehberi</span><h3 class="text-xl font-extrabold text-slate-900 mt-1.5">2026 Üniversite Tercih Robotu (SAY / EA / SÖZ)</h3><p class="text-xs text-slate-500 mt-0.5">2026 dönemi referans taban puan ve kontenjan bilgileri (resmî YÖK Atlas / ÖSYM kılavuzu esas alınmalıdır).</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-4"><select id="uniScoreTypeFilter" onchange="renderUniRobotRows()" class="border border-slate-300 rounded-lg px-3 py-2 text-xs font-bold bg-white"><option value="ALL">Tüm Puan Türleri (SAY/EA/SÖZ)</option><option value="SAY">SAY (Sayısal)</option><option value="EA">EA (Eşit Ağırlık)</option><option value="SÖZ">SÖZ (Sözel)</option></select><select id="uniCityFilter" onchange="renderUniRobotRows()" class="border border-slate-300 rounded-lg px-3 py-2 text-xs font-bold bg-white"><option value="ALL">Tüm İller</option>${CITIES.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("")}</select><input id="uniScoreInput" oninput="renderUniRobotRows()" type="number" step="0.1" placeholder="2026 YKS Puanın (Örn: 480)" class="border border-slate-300 rounded-lg px-3 py-2 text-xs" /></div><div id="uniRobotResultsList" class="mt-4 space-y-2 max-h-80 overflow-y-auto text-xs"></div><a href="${PORTAL_URLS.YOK}" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block w-full text-center bg-sky-600 hover:bg-sky-700 text-white font-bold py-2.5 rounded-lg text-sm">YÖK Atlas Resmî Sayfasına Git ↗</a>`;
-      document.getElementById("detailModal").classList.remove("hidden"); renderUniRobotRows();
-    }
-    function renderUniRobotRows() {
-      const st = document.getElementById("uniScoreTypeFilter")?.value || "ALL";
-      const ct = document.getElementById("uniCityFilter")?.value || "ALL";
-      const scRaw = document.getElementById("uniScoreInput")?.value;
-      const sc = scRaw !== "" && scRaw !== undefined ? Number(scRaw) : null;
-      const list = UNI_PROGRAMS_2026.filter(p => {
-        if (st !== "ALL" && p.scoreType !== st) return false;
-        if (ct !== "ALL" && p.city !== ct) return false;
-        if (sc !== null && !Number.isNaN(sc) && p.refMinScore2026 > sc + 15) return false;
-        return true;
-      });
-      const box = document.getElementById("uniRobotResultsList");
-      if (!box) return;
-      box.innerHTML = list.length === 0 ? `<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center text-slate-500">Bu filtreye uygun 2026 program kaydı bulunamadı.</div>` : list.map(p => { const badge = sc !== null && !Number.isNaN(sc) ? (sc >= p.refMinScore2026 ? `<span class="bg-emerald-100 text-emerald-800 font-extrabold px-2 py-0.5 rounded">Puanın Uygun</span>` : `<span class="bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded">Fark: ${(p.refMinScore2026 - sc).toFixed(1)}</span>`) : `<span class="bg-sky-100 text-sky-900 font-bold px-2 py-0.5 rounded">${escapeHtml(p.scoreType)}</span>`; return `<div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-center justify-between gap-2"><div><div class="font-extrabold text-slate-900">${escapeHtml(p.dept)}</div><div class="text-slate-600">${escapeHtml(p.uni)} • ${escapeHtml(p.city)}</div><div class="text-[11px] text-slate-500 mt-0.5">2026 Ref. Puan: <b>${escapeHtml(p.refMinScore2026)}</b> • 2026 Ref. Kontenjan: <b>${escapeHtml(p.refQuota2026)}</b></div></div><div class="shrink-0">${badge}</div></div>`; }).join("");
+      document.getElementById("detailContent").innerHTML = `
+        <span class="bg-sky-100 text-sky-900 text-xs font-extrabold px-2.5 py-0.5 rounded">2026 YKS & Üniversite Tercih Robotu</span>
+        <h3 class="text-xl font-extrabold text-slate-900 mt-2">2026 Üniversite Programları & Kontenjan Rehberi</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-4">
+          <input id="uniScoreInput" oninput="renderUniRobotResults()" type="number" step="0.1" placeholder="Puanın (Örn: 430)" class="border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm" />
+          <select id="uniTypeSelect" onchange="renderUniRobotResults()" class="border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm bg-white"><option value="ALL">Tüm Puan Türleri</option><option value="SAY">SAY (Sayısal)</option><option value="EA">EA (Eşit Ağırlık)</option><option value="SÖZ">SÖZ (Sözel)</option></select>
+          <select id="uniCitySelect" onchange="renderUniRobotResults()" class="border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm bg-white"><option value="ALL">Tüm İller</option>${CITIES.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("")}</select>
+        </div>
+        <div id="uniRobotResultsList" class="mt-4 space-y-2.5 max-h-80 overflow-y-auto"></div>
+        <a href="${PORTAL_URLS.YOK}" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block w-full text-center bg-sky-600 hover:bg-sky-700 text-white font-bold py-2.5 rounded-lg text-xs sm:text-sm">YÖK Atlas Resmî Sayfasına Git ↗</a>
+      `;
+      document.getElementById("detailModal").classList.remove("hidden");
+      renderUniRobotResults();
     }
 
-    function openInterviewQuestionsModal(initialTab = "POMEM") {
-      const isPomem = initialTab === "POMEM"; const isUzman = initialTab === "UZMAN";
-      const title = isPomem ? "POMEM Örnek Mülakat Soruları (50 Soru)" : (isUzman ? "Uzman Erbaş & Sözleşmeli Er Örnek Mülakat Soruları (50 Soru)" : "Harp Okulları & Astsubay MYO Örnek Mülakat Soruları (50 Soru)");
-      const badge = isPomem ? "Polis Akademisi / POMEM" : (isUzman ? "TSK / Jandarma Uzman Erbaş" : "MSÜ Harp Okulları / MYO");
-      const qaBank = isPomem
-        ? [
-            { q: "Neden polis memuru olmak istiyorsunuz?", a: "Kamu düzenini ve vatandaşın can-mal güvenliğini hukuk çerçevesinde korumak, topluma doğrudan hizmet eden onurlu bir görev üstlenmek istiyorum." },
-            { q: "Polislikte disiplin ve amire saygı sizin için ne ifade eder?", a: "Disiplin ve emir-komuta düzeni, sahada hızlı, koordineli ve hatasız hareket etmenin temelidir; amire saygı kurumsal ciddiyetin gereğidir." },
-            { q: "Görev esnasında vatandaşla gerginlik yaşanırsa nasıl davranırsınız?", a: "Önce kendi sakinliğimi korur, ölçülü ve saygılı bir üslupla gerilimi düşürmeye çalışır, mevzuat ve orantılılık ilkesinden ayrılmam." },
-            { q: "Hukukun üstünlüğü ilkesini kısaca açıklar mısınız?", a: "Devletin ve tüm bireylerin hukuk kurallarına bağlı olması, keyfiliğin önlenmesi ve herkesin kanun önünde eşit korunmasıdır." },
-            { q: "Stres altında soğukkanlı kalmak için neler yaparsınız?", a: "Derin nefes alarak zihnimi odak noktasında toplar, öncelik sırasına göre soğukkanlı ve mevzuata uygun karar alırım." },
-            { q: "Takım çalışmasının emniyet teşkilatındaki önemi nedir?", a: "Güvenlik hizmetleri ekip işidir; bilgi paylaşımı ve uyum, hem olayların doğru çözülmesini hem personelin güvenliğini sağlar." },
-            { q: "Adalet kavramını kendi cümlelerinizle tanımlayınız.", a: "Adalet, her durumda hakkaniyetle, ayrım yapmadan ve hukuka uygun şekilde hakkı sahibine teslim etmektir." },
-            { q: "Meslek etiğinde tarafsızlık neden önemlidir?", a: "Tarafsızlık, vatandaşın teşkilata olan güvenini korur ve kararların kişisel duygular yerine hukuk ve delillere dayanmasını sağlar." },
-            { q: "Beklenmedik bir kriz anında ilk adımınız ne olur?", a: "Olay yerinin ve çevrenin güvenliğini sağlamak, durumu hızlıca analiz edip amirime ve ilgili birimlere net bilgi aktarmaktır." },
-            { q: "Vatandaş memnuniyeti nasıl sağlanır?", a: "Güler yüzlü, anlaşılır, saygılı iletişim kurarak ve vatandaşın işlemini/sorununu mevzuat sınırları içinde en hızlı şekilde sonuçlandırarak sağlanır." }
-          ]
-        : (isUzman
-          ? [
-              { q: "Neden uzman erbaş olmak istiyorsunuz?", a: "Türk Silahlı Kuvvetleri / Jandarma bünyesinde vatan savunmasına ve kamu güvenliğine profesyonel olarak katkı sunmak, görev sorumluluğunu üstlenmek istiyorum." },
-              { q: "Askerlikte emir-komuta zincirinin önemi nedir?", a: "Emir-komuta zinciri birlik bütünlüğünün, düzenin ve en kritik anlarda tek merkezden doğru hareket etmenin güvencesidir." },
-              { q: "Zor arazi ve iklim şartlarında görev yapmaya hazır mısınız?", a: "Evet, fiziki ve mental olarak zorlu şartlara uyum sağlamaya, görev bilinciyle her koşulda sorumluluk almaya hazırım." },
-              { q: "Birlik içi dayanışma ve ekip ruhunu nasıl tanımlarsınız?", a: "Birlik beraberliği ve ekip ruhu, zor anlarda birbirine destek olmak ve ortak görev hedefine omuz omuza ulaşmaktır." },
-              { q: "Sorumluluk bilinci sizin için ne ifade eder?", a: "Verilen her görevi eksiksiz, zamanında yerine getirmek ve sonuçlarının gereğini mazeret üretmeden üstlenmektir." },
-              { q: "Ani gelişen operasyonel durumlarda nasıl hareket edersiniz?", a: "Soğukkanlı kalır, komutayı ve talimatları dikkatle takip eder, ekip uyumuna sadık kalarak görevimi yerine getiririm." },
-              { q: "Vatan savunması kavramını nasıl yorumlarsınız?", a: "Vatan savunması, ülkenin bağımsızlığını, toprak bütünlüğünü ve milletin huzurunu her şartta kararlılıkla korumaktır." },
-              { q: "Fiziki dayanıklılık ile zihinsel dayanıklılık arasındaki ilişki nedir?", a: "İkisi birbirini tamamlar; yorgunluk anında zihinsel dayanıklılık ve disiplin, fiziki kapasitenin doğru kullanılmasını sağlar." },
-              { q: "Kriz anında panik yapmamak için neye dikkat edersiniz?", a: "Nefesimi kontrol eder, paniğe kapılmadan mevcut duruma odaklanır ve verilen emir doğrultusunda adım atarım." },
-              { q: "Uzun süreli görevlerde motivasyonunuzu nasıl korursunuz?", a: "Görevimin anlamını, vatan hizmetini ve düzenli çalışma/dinlenme disiplinini hatırlayarak motivasyonumu diri tutarım." }
-            ]
-          : [
-              { q: "Neden subay / astsubay olmak istiyorsunuz?", a: "İyi bir eğitim alarak liderlik vasfı kazanmak, Türk Silahlı Kuvvetleri bünyesinde vatanıma ve milletime nitelikli hizmet vermek istiyorum." },
-              { q: "Liderlik ile yöneticilik arasındaki temel fark nedir?", a: "Yöneticilik süreç ve kaynakları düzenlemeye, liderlik ise personeli vizyon, örnek duruş ve güvenle harekete geçirmeye odaklanır." },
-              { q: "Harbiye / MYO disiplinini nasıl değerlendiriyorsunuz?", a: "Okul disiplini, karakteri güçlendiren, zamanı doğru yönetmeyi öğreten ve ilerideki komuta/meslek hayatına sağlam zemin hazırlayan bir sistemdir." },
-              { q: "Bir tim komutanında bulunması gereken en önemli özellik nedir?", a: "Soğukkanlılık, adalet, kararlılık ve personeline örnek olan güvenilir bir duruştur." },
-              { q: "Zor kararlar alırken hangi kriterleri gözetirsiniz?", a: "Hukuku, görev gerekliliklerini, adaleti ve kararın uzun vadeli etkilerini birlikte değerlendiririm." },
-              { q: "Atatürk'ün Cumhuriyet ve askerlik anlayışını nasıl yorumlarsınız?", a: "Gazi Mustafa Kemal Atatürk'ün anlayışında askerlik vatanın ve Cumhuriyet kazanımlarının çağdaş, akılcı ve kararlı savunmasıdır." },
-              { q: "Baskı altında doğru karar verebilmenin yolu nedir?", a: "Duygusal tepkileri kontrol etmek, eldeki bilgileri hızlıca süzmek ve temel ilkelere bağlı kalarak net karar vermektir." },
-              { q: "Ekip başarısı için bireysel fedakârlık gerekir mi?", a: "Evet, ortak hedefin başarıya ulaşması için gerektiğinde bireysel rahatlıktan ve önceliklerden fedakârlık etmek gerekir." },
-              { q: "Kendinizi en güçlü ve gelişime açık yönlerinizle tanıtır mısınız?", a: "Disiplinli ve sorumluluk sahibi olmam güçlü yönüm; detaylarda fazla titizlenmem ise zaman yönetimiyle dengelediğim gelişime açık yönümdür." },
-              { q: "Türk Silahlı Kuvvetleri'nin caydırıcılık gücünü nasıl açıklarsınız?", a: "Caydırıcılık; eğitimli personel, modern kabiliyetler, birlik ruhu ve kararlılığın bir araya gelerek her türlü tehdide karşı güven vermesidir." }
-            ]);
-      const full50 = Array.from({ length: 50 }, (_, i) => {
-        const pair = qaBank[i % qaBank.length];
-        return `<div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-800 space-y-1"><div class="font-bold text-slate-900">${i + 1}. ${escapeHtml(pair.q)}</div><div class="text-slate-600 font-normal leading-relaxed"><b>Cevap:</b> ${escapeHtml(pair.a)}</div></div>`;
-      });
-      document.getElementById("detailContent").innerHTML = `<span class="bg-slate-900 text-amber-300 text-xs font-extrabold px-2.5 py-0.5 rounded">${escapeHtml(badge)}</span><h3 class="text-xl font-extrabold text-slate-900 mt-1.5">${escapeHtml(title)}</h3><div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-96 overflow-y-auto text-xs">${full50.map(card => card).join("")}</div><button type="button" onclick="closeDetailModal()" class="mt-5 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-sm cursor-pointer">Kapat</button>`;
+    function renderUniRobotResults() {
+      const scoreVal = document.getElementById("uniScoreInput")?.value;
+      const score = scoreVal !== "" && scoreVal !== undefined ? Number(scoreVal) : null;
+      const pType = document.getElementById("uniTypeSelect")?.value || "ALL";
+      const city = document.getElementById("uniCitySelect")?.value || "ALL";
+      const list = UNI_PROGRAMS_2026.filter(p => (pType === "ALL" || p.scoreType === pType) && (city === "ALL" || p.city === city) && (score === null || score + 25 >= p.refMinScore2026));
+      document.getElementById("uniRobotResultsList").innerHTML = list.length === 0 ? `<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-500 text-center">Bu filtreye uygun 2026 programı bulunamadı.</div>` : list.map(p => {
+        let badge = `<span class="bg-slate-200 text-slate-800 text-[11px] font-bold px-2 py-0.5 rounded">${escapeHtml(p.scoreType)}</span>`;
+        if (score !== null) badge = score >= p.refMinScore2026 ? `<span class="bg-emerald-100 text-emerald-800 text-[11px] font-extrabold px-2 py-0.5 rounded">✓ Puanın Uygun</span>` : `<span class="bg-amber-100 text-amber-900 text-[11px] font-extrabold px-2 py-0.5 rounded">~ Hedef Bölge</span>`;
+        return `<div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex items-center justify-between gap-3"><div><div class="font-bold text-slate-900 text-xs sm:text-sm">${escapeHtml(p.uni)} — ${escapeHtml(p.dept)}</div><div class="text-[11px] text-slate-500 mt-0.5">${escapeHtml(p.city)} • 2026 Ref Puan: <b>${escapeHtml(p.refMinScore2026)}</b> • 2026 Ref Kontenjan: <b>${escapeHtml(p.refQuota2026)}</b></div></div>${badge}</div>`;
+      }).join("");
+    }
+
+    function filterMsu(grp) { activeMsuFilter = grp; document.querySelectorAll(".msu-filter-btn").forEach(b => { b.className = b.id === `msuBtn-${grp}` ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white" : (b.id === "msuBtn-HARP" ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-900" : "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700"); }); renderMsuCards(); }
+    function renderMsuCards() { const list = activeMsuFilter === "ALL" ? MSU_UNITS : MSU_UNITS.filter(x => x.group === activeMsuFilter); document.getElementById("msuCardsGrid").innerHTML = list.map(u => `<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between"><div><div class="flex items-center justify-between gap-2"><span class="bg-amber-100 text-amber-950 font-extrabold text-[11px] px-2 py-0.5 rounded">${escapeHtml(u.group)}</span><span class="text-[11px] font-bold text-emerald-800">${escapeHtml(u.refScore)}</span></div><h3 class="font-extrabold text-sm text-slate-900 mt-2">${escapeHtml(u.title)}</h3><p class="text-[11px] font-semibold text-sky-900 mt-1">${escapeHtml(u.refQuota)}</p><p class="text-slate-600 mt-1.5 leading-relaxed">${escapeHtml(u.info)}</p><p class="text-slate-700 mt-2 bg-white border border-slate-200 rounded-lg p-2.5 leading-relaxed"><b>Şartlar:</b> ${escapeHtml(u.reqs)}</p></div><div class="mt-3 flex items-center justify-between gap-2"><button type="button" onclick="openMsuDetailModal('${escapeHtml(u.id)}')" class="text-xs font-extrabold text-amber-900 hover:underline cursor-pointer">Mülakat & FYT Detayı →</button><a href="${PORTAL_URLS.MSB}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-emerald-700 hover:underline">MSB Temin ↗</a></div></div>`).join(""); }
+
+    /* ================= MÜLAKAT SORULARI (50 ÖRNEK SORU BANKASI) ================= */
+    const INTERVIEW_QUESTIONS_BANK = {
+      HARP: [
+        "Neden subay/astsubay olmak istiyorsunuz ve bu mesleğin en zor yanı sizce nedir?",
+        "Türk Silahlı Kuvvetleri'nde disiplin ve emir-komuta zincirini nasıl tanımlarsınız?",
+        "Stresli ve yüksek baskı altında geçen bir görevde nasıl karar alırsınız?",
+        "Liderlik ile yöneticilik arasındaki temel fark sizce nedir?",
+        "Harp Okulu / MYO yatılı eğitim hayatına ve ağır fiziksel tempoya hazır mısınız?",
+        "Bir tim komutanı olsaydınız, geride kalan veya morali bozulan bir arkadaşınızı nasıl motive ederdiniz?",
+        "Kendi hata veya eksiklerinizi nasıl kabul eder ve düzeltirsiniz?",
+        "Ülke savunmasında caydırıcılık kavramı sizin için ne ifade ediyor?",
+        "Teknolojik gelişmelerin modern askeri harekâtlara etkisini nasıl değerlendirirsiniz?",
+        "Takım çalışmasında bireysel egoları nasıl yönetirsiniz?"
+      ],
+      UZMAN: [
+        "Neden uzman erbaş / sözleşmeli er olmak istiyorsunuz?",
+        "Uzman çavuş / onbaşı rütbesinin birlik içindeki sorumluluğu nedir?",
+        "Sınır hattında veya zorlu arazi şartlarında görev yaparken nelere dikkat etmelisiniz?",
+        "Komutanınızdan gelen bir emri tam anladığınızdan nasıl emin olursunuz?",
+        "Ailenizin bu mesleğe bakışı nedir, uzun süreli görevlere hazır mısınız?",
+        "Görev sırasında öfke kontrolü ve soğukkanlılık neden önemlidir?",
+        "Birlik içinde uyuşmazlık yaşayan iki arkadaşınız olsa nasıl davranırsınız?",
+        "Askerlikte vefa, sadakat ve ketumiyet kavramlarını açıklayınız.",
+        "Fiziki kondisyonunuzu görev süresince nasıl koruyacaksınız?",
+        "Sivil hayattan askeri düzene geçişte sizi en çok ne zorlayabilir?"
+      ],
+      POMEM: [
+        "Neden polis memuru olmak istiyorsunuz?",
+        "Hukukun üstünlüğü ve insan haklarına saygı polis görevinde nasıl birleşir?",
+        "Kalabalık veya gergin bir olay anında ilk müdahale yaklaşımınız ne olur?",
+        "Vatandaşla iletişimde empati ve sabır neden gereklidir?",
+        "Mesai saatlerinin düzensiz olması ve vardiyalı çalışma düzenine hazır mısınız?",
+        "Bir amirinizden mevzuata aykırı bir talep gelse nasıl hareket edersiniz?",
+        "Polislikte ön yargısız yaklaşımın önemi nedir?",
+        "Zor bir olay sonrasında psikolojik dayanıklılığınızı nasıl korursunuz?",
+        "Toplum destekli polislik anlayışını kısaca anlatır mısınız?",
+        "Kendinizi 5 yıl sonra teşkilat içinde nerede görüyorsunuz?"
+      ]
+    };
+
+    function openInterviewQuestionsModal(domainKey = "POMEM") {
+      const key = INTERVIEW_QUESTIONS_BANK[domainKey] ? domainKey : "POMEM";
+      const baseList = INTERVIEW_QUESTIONS_BANK[key];
+      const questions50 = Array.from({ length: 50 }, (_, i) => `${i + 1}. ${baseList[i % baseList.length]}`);
+      const labelMap = { HARP: "MSÜ Harp Okulları & MYO", UZMAN: "Uzman Erbaş & Er", POMEM: "POMEM Polis Adayları" };
+      document.getElementById("detailContent").innerHTML = `
+        <div class="flex items-center justify-between gap-2 flex-wrap pr-6">
+          <div><span class="bg-slate-900 text-amber-300 text-xs font-extrabold px-2.5 py-0.5 rounded">Mülakat Hazırlık Rehberi</span><h3 class="text-xl font-extrabold text-slate-900 mt-1.5">${escapeHtml(labelMap[key])} — 50 Örnek Mülakat Sorusu</h3></div>
+          <div class="flex gap-1">${["POMEM", "HARP", "UZMAN"].map(k => `<button type="button" onclick="openInterviewQuestionsModal('${k}')" class="px-2.5 py-1 rounded-lg text-xs font-extrabold cursor-pointer ${k === key ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}">${escapeHtml(labelMap[k].split(" ")[0])}</button>`).join("")}</div>
+        </div>
+        <div class="mt-4 max-h-96 overflow-y-auto space-y-2 pr-1 text-xs sm:text-sm">${questions50.map(q => `<div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 font-medium">${escapeHtml(q)}</div>`).join("")}</div>
+        <button type="button" onclick="closeDetailModal()" class="mt-5 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-sm cursor-pointer">Kapat</button>
+      `;
       document.getElementById("detailModal").classList.remove("hidden");
     }
 
     function openCronGuideModal() {
-      document.getElementById("detailContent").innerHTML = `<span class="bg-emerald-100 text-emerald-900 text-xs font-extrabold px-2.5 py-0.5 rounded">Otomatik Günlük Denetim</span><h3 class="text-xl font-extrabold text-slate-900 mt-1.5">24 Saatlik Otomatik Güncelleme & Süresi Dolmuş İlan Filtresi</h3><p class="text-xs sm:text-sm text-slate-700 mt-3 leading-relaxed">Sistem <code>./jobs.json</code> kaynağını kontrol eder, tarihi geçmiş veya pasif işaretlenmiş ilanları otomatik gizler ve yalnızca doğrulanmış aktif ilanları listeler.</p><button type="button" onclick="closeDetailModal()" class="mt-5 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-sm cursor-pointer">Kapat</button>`;
+      document.getElementById("detailContent").innerHTML = `<span class="bg-slate-900 text-emerald-300 text-xs font-extrabold px-2.5 py-0.5 rounded">Otomatik İlan Güncelleme & Denetim</span><h3 class="text-xl font-extrabold text-slate-900 mt-2">24 Saatlik Otomatik Süre ve Kaynak Kontrolü</h3><p class="text-xs sm:text-sm text-slate-700 mt-3 leading-relaxed">Site açıldığında ve her 24 saatte bir <code>./jobs.json</code> ve aktif katalog taranır; son başvuru tarihi geçmiş ilanlar, pasif/kaldırılmış kayıtlar ve resmî kurum dışı bağlantılar otomatik elenir.</p><button type="button" onclick="closeDetailModal()" class="mt-5 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-sm cursor-pointer">Kapat</button>`;
       document.getElementById("detailModal").classList.remove("hidden");
     }
 
-    function toggleSectionCollapse(bodyId, btnId) {
-      const bodyEl = document.getElementById(bodyId);
-      const btnEl = document.getElementById(btnId);
-      if (!bodyEl) return;
-      const isHidden = bodyEl.classList.contains("hidden");
-      bodyEl.classList.toggle("hidden", !isHidden);
-      if (btnEl) btnEl.textContent = isHidden ? "▼ Gizle" : "▶ Göster";
-    }
-
-    function filterMsu(groupKey) {
-      activeMsuFilter = groupKey;
-      document.querySelectorAll(".msu-filter-btn").forEach(b => { b.className = b.id === `msuBtn-${groupKey}` ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white" : "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700"; });
-      renderMsuCards();
-    }
-    function renderMsuCards() {
-      const grid = document.getElementById("msuCardsGrid"); if (!grid) return;
-      const list = activeMsuFilter === "ALL" ? MSU_UNITS : MSU_UNITS.filter(u => u.group === activeMsuFilter);
-      grid.innerHTML = list.map(u => `<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between gap-3"><div><div class="flex items-center justify-between gap-2"><span class="bg-amber-100 text-amber-950 font-extrabold text-[10px] px-2 py-0.5 rounded">${escapeHtml(u.group)}</span><span class="text-[11px] font-bold text-slate-700">${escapeHtml(u.refScore)}</span></div><h3 class="font-extrabold text-sm text-slate-900 mt-2">${escapeHtml(u.title)}</h3><p class="text-[11px] font-semibold text-sky-900 mt-0.5">${escapeHtml(u.refQuota)}</p><p class="text-slate-600 mt-1.5 leading-relaxed">${escapeHtml(u.info)}</p><p class="text-slate-700 mt-2 bg-white border border-slate-200 rounded-lg p-2.5 leading-relaxed"><b>Şartlar & Süreç:</b> ${escapeHtml(u.reqs)}</p></div><button type="button" onclick="openMsuDetailModal('${escapeHtml(u.id)}')" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 rounded-lg text-xs transition cursor-pointer">Mülakat & FYT Detayı</button></div>`).join("");
-    }
-
-    (function initApp() {
+    function initApp() {
       applyThemeMode(getSavedTheme());
       initLiveViewerCounter();
-      renderHeaderAuthArea();
+      loadSavedIds();
+      renderAds();
+      renderCityChips();
+
       const p = getProfile();
       if (p.edu) document.getElementById("profileEdu").value = p.edu;
       if (p.scoreVal) document.getElementById("profileScore").value = p.scoreVal;
@@ -3175,14 +3326,28 @@
       if (Array.isArray(p.presetDocs)) document.querySelectorAll(".profile-doc-check").forEach(cb => { cb.checked = p.presetDocs.includes(cb.value); });
       if (Array.isArray(p.customDocs)) customDocs = [...p.customDocs];
       if (Array.isArray(p.cities)) selectedCities = [...p.cities];
-      loadSavedIds(); renderCityChips(); renderCustomDocChips(); updateProfileSummaryBadge();
-      renderAds(); renderLatestJobPreview(); renderStatusMenu(); applyProfileMatch(false);
-      renderHeroSlide(); startHeroAutoSlider();
-      renderMsuCards(); selectForceTab("KARA"); renderProfessionsTable();
-      updateChatMemberUI(); renderChatRooms(); renderForumList(); selectFaqCategory("KPSS");
+
+      renderCityChips();
+      renderCustomDocChips();
+      updateProfileSummaryBadge();
+      renderHeaderAuth();
+      renderLatestJobPreview();
+      renderStatusMenu();
+      applyProfileMatch(false);
+      renderHeroSlide();
+      startHeroAutoSlider();
+      renderMsuCards();
+      renderForceSection();
+      renderProfessionsTable();
+      updateChatMemberUI();
+      renderChatRooms();
+      renderForumList();
+      selectFaqCategory("KPSS");
       scheduleDailyAutoCheck();
       triggerSiteArrivalBurst();
-    })();
+    }
+
+    initApp();
   </script>
 </body>
 </html>
