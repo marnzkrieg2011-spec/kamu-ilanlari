@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kamu Atamaları, KPSS & Üni Robotu, MSÜ ve Kâtiplik Antrenmanı</title>
+  <title>Kamu Atamaları, KPSS & 2026 Üni Robotu, MSÜ, Uzman Erbaş & Kâtiplik</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body id="top" class="bg-slate-100 text-slate-800 font-sans antialiased">
@@ -20,9 +20,9 @@
           <button type="button" onclick="toggleKatiplikPanel(true)" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-lg font-extrabold transition cursor-pointer">⌨️ KÂTİPLİK & ANTRENMAN</button>
           <a href="#ilanlarSection" class="hover:text-emerald-300 transition">İLANLAR</a>
           <a href="#robotSection" class="hover:text-emerald-300 transition">TERCİH ROBOTU</a>
-          <button type="button" onclick="openUniRobotModal()" class="text-sky-300 hover:text-sky-200 font-extrabold transition cursor-pointer">🎓 ÜNİ. ROBOTU</button>
-          <a href="#msuBolumu" class="hover:text-amber-300 transition">MSÜ & ASKERÎ</a>
-          <a href="#mesleklerSartlarBolumu" class="hover:text-amber-300 transition">MESLEKLER</a>
+          <button type="button" onclick="openUniRobotModal()" class="text-sky-300 hover:text-sky-200 font-extrabold transition cursor-pointer">🎓 2026 ÜNİ. ROBOTU</button>
+          <a href="#msuBolumu" class="hover:text-amber-300 transition">MSÜ & HARP</a>
+          <a href="#uzmanErBolumu" class="hover:text-amber-300 transition">UZMAN & ER</a>
           <a href="#sohbetForumSssBolumu" class="hover:text-sky-300 transition">SOHBET & FORUM</a>
         </nav>
       </div>
@@ -72,21 +72,11 @@
           </div>
 
           <div class="flex flex-wrap gap-1.5">
-            <button type="button" id="kTab-sim" onclick="switchKatiplikTab('sim')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white transition">
-              ⏱️ Sınav Simülasyonu
-            </button>
-            <button type="button" id="kTab-lessons" onclick="switchKatiplikTab('lessons')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-              ⌨️ F/Q Klavye Dersleri
-            </button>
-            <button type="button" id="kTab-words" onclick="switchKatiplikTab('words')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-              ⚡ Kelime Antrenmanı
-            </button>
-            <button type="button" id="kTab-games" onclick="switchKatiplikTab('games')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-              🎮 Oyun (Metin Yazarak)
-            </button>
-            <button type="button" id="kTab-race" onclick="switchKatiplikTab('race')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-amber-100 text-amber-950 hover:bg-amber-200 transition">
-              🏆 Skor & Düello
-            </button>
+            <button type="button" id="kTab-sim" onclick="switchKatiplikTab('sim')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white transition">⏱️ Sınav Simülasyonu</button>
+            <button type="button" id="kTab-lessons" onclick="switchKatiplikTab('lessons')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">⌨️ F/Q Klavye Dersleri</button>
+            <button type="button" id="kTab-words" onclick="switchKatiplikTab('words')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">⚡ Kelime Antrenmanı</button>
+            <button type="button" id="kTab-games" onclick="switchKatiplikTab('games')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">🎮 Oyun (Metin Yazarak)</button>
+            <button type="button" id="kTab-race" onclick="switchKatiplikTab('race')" class="k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-amber-100 text-amber-950 hover:bg-amber-200 transition">🏆 Skor & Düello</button>
           </div>
         </div>
 
@@ -526,15 +516,34 @@
     </div>
   </section>
 
-  <!-- MSÜ & ASKERÎ ÜNİVERSİTELER DETAYLI REHBERİ -->
+  <!-- MSÜ & HARP OKULLARI BÖLÜMÜ (TIKLANABİLİR KARTLAR + MÜLAKAT KUTUSU + DARALTMA OKU) -->
   <section id="msuBolumu" class="max-w-7xl mx-auto px-4 mt-8">
     <div class="bg-white rounded-2xl shadow-sm border border-amber-200 p-6">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
         <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Millî Savunma Üniversitesi (MSÜ) • Harp Okulları & Astsubay MYO</span>
-          <h2 class="text-xl font-extrabold text-slate-900 mt-0.5">Askerî Üniversiteler: Hava, Kara, Deniz, Bando & Şartlar</h2>
-          <p class="text-xs text-slate-500 mt-0.5">Önceki dönem referans taban puan/kontenjan aralıkları, sınıf/okul bilgilendirmeleri ve gereken temel şartlar.</p>
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Millî Savunma Üniversitesi (MSÜ) • 2026 Dönemi Referans & Şartlar</span>
+          <div class="flex items-center gap-2.5 flex-wrap mt-0.5">
+            <h2 class="text-xl font-extrabold text-slate-900">Harp Okulları & Askerî Üniversiteler</h2>
+            <button
+              type="button"
+              onclick="openInterviewModal('HARP')"
+              class="bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 font-extrabold text-xs px-3 py-1 rounded-lg transition cursor-pointer"
+            >
+              🎤 Mülakat Bilgileri
+            </button>
+            <button
+              type="button"
+              id="msuCollapseBtn"
+              onclick="toggleSectionCollapse('msuBodyWrap', 'msuCollapseBtn')"
+              class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-2.5 py-1 rounded-lg transition cursor-pointer"
+              title="Bölümü Aç / Kısalt"
+            >
+              ▼ Kısalt
+            </button>
+          </div>
+          <p class="text-xs text-slate-500 mt-0.5">Kartlara tıklayarak okul/sınıf detaylarını ve mülakat şartlarını en ince ayrıntısına kadar inceleyebilirsin.</p>
         </div>
+
         <div class="flex flex-wrap gap-1.5">
           <button type="button" onclick="filterMsu('ALL')" id="msuBtn-ALL" class="msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white">Tümü</button>
           <button type="button" onclick="filterMsu('HARP')" id="msuBtn-HARP" class="msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-900">Harp Okulları</button>
@@ -542,19 +551,67 @@
         </div>
       </div>
 
-      <div id="msuCardsGrid" class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs"></div>
+      <div id="msuBodyWrap" class="mt-4">
+        <div id="msuCardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs"></div>
 
-      <div class="mt-5 bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs space-y-2">
-        <div class="font-extrabold text-slate-900 text-sm">MSÜ & Askerî Üniversitelerde Gereken Temel Şartlar (Özet)</div>
-        <p class="text-slate-700 leading-relaxed">
-          <b>1. Sınav & Tercih:</b> ÖSYM/MSÜ sınavına girip ilgili puan türünde (Sayısal, Eşit Ağırlık, Sözel veya Genel) taban/başarı sıralaması şartını sağlamak ve tercih döneminde tercih yapmak gerekir.
-        </p>
-        <p class="text-slate-700 leading-relaxed">
-          <b>2. Yaş, Eğitim & Adli Şartlar:</b> Lise son sınıf veya mezun olmak, belirlenen yaş sınırını aşmamak, Türk vatandaşı olmak ve güvenlik soruşturması/arşiv araştırmasından olumlu sonuç almak aranır.
-        </p>
-        <p class="text-slate-700 leading-relaxed">
-          <b>3. Sağlık, Boy-Kilo & Seçim Aşamaları:</b> TSK Sağlık Yeteneği Yönetmeliğine uygun tam teşekküllü hastane raporu, cinsiyete göre boy-kilo/BKİ sınırları, fiziki yeterlilik testi (mekik, şınav, koşu), psikolojik değerlendirme ve mülakat aşamalarından geçmek gerekir. Resmî kılavuz için: <a href="https://personeltemin.msb.gov.tr/" target="_blank" rel="noopener" class="text-emerald-700 font-bold underline">personeltemin.msb.gov.tr</a>.
-        </p>
+        <div class="mt-5 bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs space-y-2">
+          <div class="font-extrabold text-slate-900 text-sm">MSÜ & Askerî Üniversitelerde Gereken Temel Şartlar (Özet)</div>
+          <p class="text-slate-700 leading-relaxed">
+            <b>1. Sınav & Tercih:</b> MSÜ ve YKS sınavlarına girip ilgili puan türünde (SAY, EA, SÖZ veya TYT) taban puan / başarı sıralaması ve tercih şartlarını sağlamak gerekir.
+          </p>
+          <p class="text-slate-700 leading-relaxed">
+            <b>2. Yaş, Eğitim & Adli Şartlar:</b> Lise son sınıf veya mezun olmak, kılavuzda belirtilen yaş sınırını geçmemek, Türk vatandaşı olmak ve güvenlik soruşturması/arşiv araştırmasından olumlu sonuç almak gerekir.
+          </p>
+          <p class="text-slate-700 leading-relaxed">
+            <b>3. Sağlık, Boy-Kilo & Seçim Aşamaları:</b> TSK Sağlık Yeteneği Yönetmeliğine uygun tam teşekküllü hastane raporu, boy-kilo sınırları, fiziki yeterlilik testi (mekik, şınav, koşu), psikolojik değerlendirme ve mülakat aşamalarından geçmek gerekir. Resmî kılavuz: <a href="https://personeltemin.msb.gov.tr/" target="_blank" rel="noopener" class="text-emerald-700 font-bold underline">personeltemin.msb.gov.tr</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UZMAN ERBAŞ & ER BÖLÜMÜ (KARA, HAVA, DENİZ, JANDARMA + MÜLAKAT KUTUSU + DARALTMA OKU) -->
+  <section id="uzmanErBolumu" class="max-w-7xl mx-auto px-4 mt-8">
+    <div class="bg-white rounded-2xl shadow-sm border border-emerald-200 p-6">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Sözleşmeli / Muvazzaf Temin • Kara, Hava, Deniz & Jandarma</span>
+          <div class="flex items-center gap-2.5 flex-wrap mt-0.5">
+            <h2 class="text-xl font-extrabold text-slate-900">Uzman Erbaş & Er Bilgilendirme</h2>
+            <button
+              type="button"
+              onclick="openInterviewModal('KARA')"
+              class="bg-emerald-100 hover:bg-emerald-200 text-emerald-950 border border-emerald-300 font-extrabold text-xs px-3 py-1 rounded-lg transition cursor-pointer"
+            >
+              🎤 Mülakat Bilgileri
+            </button>
+            <button
+              type="button"
+              id="uzmanCollapseBtn"
+              onclick="toggleSectionCollapse('uzmanBodyWrap', 'uzmanCollapseBtn')"
+              class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-2.5 py-1 rounded-lg transition cursor-pointer"
+              title="Bölümü Aç / Kısalt"
+            >
+              ▼ Kısalt
+            </button>
+          </div>
+          <p class="text-xs text-slate-500 mt-0.5">
+            <b>Not:</b> Er / Sözleşmeli Er alımı yalnızca <b>Kara, Hava ve Deniz</b> kuvvetlerinde bulunur; <b>Jandarma'da er alımı yoktur</b>.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5">
+          <button type="button" onclick="selectForceTab('KARA')" id="forceBtn-KARA" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-900 text-white">Kara</button>
+          <button type="button" onclick="selectForceTab('HAVA')" id="forceBtn-HAVA" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Hava</button>
+          <button type="button" onclick="selectForceTab('DENIZ')" id="forceBtn-DENIZ" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Deniz</button>
+          <button type="button" onclick="selectForceTab('JANDARMA')" id="forceBtn-JANDARMA" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-950">Jandarma (Er Yok)</button>
+        </div>
+      </div>
+
+      <div id="uzmanBodyWrap" class="mt-4 space-y-4">
+        <div id="forceDetailCard" class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-xs"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-xs" id="forceQuickCards"></div>
       </div>
     </div>
   </section>
@@ -677,7 +734,7 @@
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
       <div class="pb-3 border-b border-slate-100">
         <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">SSS • Sıkça Sorulan Sorular (14 Soru)</span>
-        <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">KPSS, Üniversite Tercihi, MSÜ, Kâtiplik & Başvuru Rehberi</h2>
+        <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">KPSS, 2026 Üniversite Tercihi, MSÜ, Uzman/Er & Kâtiplik Rehberi</h2>
       </div>
       <div id="faqAccordionList" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs sm:text-sm"></div>
     </div>
@@ -690,7 +747,7 @@
       </div>
       <div class="flex flex-wrap items-center justify-center gap-4">
         <button type="button" onclick="goHome(event)" class="text-emerald-400 hover:text-emerald-300 font-semibold">Ana Sayfa</button>
-        <button type="button" onclick="openUniRobotModal()" class="text-sky-400 hover:text-sky-300 font-semibold">Üni. Robotu</button>
+        <button type="button" onclick="openUniRobotModal()" class="text-sky-400 hover:text-sky-300 font-semibold">2026 Üni. Robotu</button>
         <button type="button" onclick="openLegalModal('kvkk')" class="text-slate-300 hover:text-white underline">Gizlilik & Yerel Saklama</button>
         <button type="button" onclick="openLegalModal('sorumluluk')" class="text-slate-300 hover:text-white underline">Sorumluluk Reddi</button>
       </div>
@@ -712,19 +769,24 @@
 
     const HERO_FEATURED_SLIDES = [
       { institution: "ADALET BAKANLIĞI & CTE", headline: "KÂTİPLİK & ANTRENMAN MODÜLÜ", sub: "3 Dakikalık Sınav Simülasyonu, F/Q Klavye Dersleri, Kelime Antrenmanı ve Oyunlar", badge: "Kâtiplik & Antrenman • Sayfa 1 / 30", url: "#katiplikMerkeziBolumu", theme: "from-slate-950 via-indigo-950 to-slate-900" },
-      { institution: "YKS & MSÜ TERCİH REHBERİ", headline: "ÜNİVERSİTE TERCİH ROBOTU & MSÜ", sub: "Puan/Kontenjan Referansları, Hava-Kara-Deniz-Bando Detayları ve Şartlar", badge: "Üni. Robotu & MSÜ • Sayfa 2 / 30", url: "#msuBolumu", theme: "from-slate-950 via-sky-950 to-slate-900" },
+      { institution: "2026 YKS & MSÜ REHBERİ", headline: "2026 ÜNİVERSİTE ROBOTU, HARP & UZMAN/ER", sub: "2026 Referans Puan/Kontenjan, Tıklanabilir Harp Kartları, Kara-Hava-Deniz-Jandarma Detayları", badge: "2026 Üni. & Askerî • Sayfa 2 / 30", url: "#msuBolumu", theme: "from-slate-950 via-sky-950 to-slate-900" },
       { institution: "İÇİŞLERİ BAKANLIĞI", headline: "60 KAYMAKAM ADAYI ALACAK", sub: "Lisans Mezunları İçin Merkezî / Kurumsal Alım Duyurusu", badge: "Öne Çıkan Alım • Sayfa 3 / 30", url: "https://kariyerkapisi.gov.tr/isealim", theme: "from-slate-950 via-emerald-950 to-slate-900" }
     ];
 
-    const UNI_PROGRAMS = [
-      { uni: "Hacettepe Üniversitesi", dept: "Bilgisayar Mühendisliği (İngilizce)", city: "Ankara", scoreType: "SAY", refMinScore: 538, refQuota: 85 },
-      { uni: "İTÜ (İstanbul Teknik Üniv.)", dept: "Elektrik-Elektronik Mühendisliği", city: "İstanbul", scoreType: "SAY", refMinScore: 535, refQuota: 110 },
-      { uni: "Ankara Üniversitesi", dept: "Hukuk Fakültesi", city: "Ankara", scoreType: "EA", refMinScore: 445, refQuota: 210 },
-      { uni: "Ege Üniversitesi", dept: "Hemşirelik Fakültesi", city: "İzmir", scoreType: "SAY", refMinScore: 418, refQuota: 130 },
-      { uni: "Çukurova Üniversitesi", dept: "İşletme (İngilizce)", city: "Adana", scoreType: "EA", refMinScore: 342, refQuota: 75 },
-      { uni: "Gazi Üniversitesi", dept: "Türk Dili ve Edebiyatı", city: "Ankara", scoreType: "SÖZ", refMinScore: 376, refQuota: 70 },
-      { uni: "Dokuz Eylül Üniversitesi", dept: "İktisat", city: "İzmir", scoreType: "EA", refMinScore: 358, refQuota: 95 },
-      { uni: "Selçuk Üniversitesi", dept: "Veteriner Fakültesi", city: "Konya", scoreType: "SAY", refMinScore: 392, refQuota: 90 }
+    /* En son yerleştirme dönemi: 2026-YKS (Ağustos 2026) örnek/referans program listesi + YÖK Atlas bağlantısı */
+    const UNI_PROGRAMS_2026 = [
+      { uni: "Hacettepe Üniversitesi", dept: "Bilgisayar Mühendisliği (İngilizce)", city: "Ankara", scoreType: "SAY", refMinScore2026: 539.4, refQuota2026: 85 },
+      { uni: "İTÜ (İstanbul Teknik Üniv.)", dept: "Elektrik-Elektronik Mühendisliği", city: "İstanbul", scoreType: "SAY", refMinScore2026: 536.2, refQuota2026: 110 },
+      { uni: "Ankara Üniversitesi", dept: "Tıp Fakültesi", city: "Ankara", scoreType: "SAY", refMinScore2026: 521.8, refQuota2026: 230 },
+      { uni: "Ege Üniversitesi", dept: "Tıp Fakültesi", city: "İzmir", scoreType: "SAY", refMinScore2026: 516.5, refQuota2026: 215 },
+      { uni: "Çukurova Üniversitesi", dept: "Tıp Fakültesi", city: "Adana", scoreType: "SAY", refMinScore2026: 498.0, refQuota2026: 210 },
+      { uni: "Ankara Üniversitesi", dept: "Hukuk Fakültesi", city: "Ankara", scoreType: "EA", refMinScore2026: 446.5, refQuota2026: 210 },
+      { uni: "Dokuz Eylül Üniversitesi", dept: "Hukuk Fakültesi", city: "İzmir", scoreType: "EA", refMinScore2026: 431.2, refQuota2026: 195 },
+      { uni: "Çukurova Üniversitesi", dept: "İşletme (İngilizce)", city: "Adana", scoreType: "EA", refMinScore2026: 344.8, refQuota2026: 75 },
+      { uni: "Gazi Üniversitesi", dept: "Türk Dili ve Edebiyatı", city: "Ankara", scoreType: "SÖZ", refMinScore2026: 378.1, refQuota2026: 70 },
+      { uni: "Marmara Üniversitesi", dept: "Tarih", city: "İstanbul", scoreType: "SÖZ", refMinScore2026: 365.4, refQuota2026: 65 },
+      { uni: "Ege Üniversitesi", dept: "Hemşirelik Fakültesi", city: "İzmir", scoreType: "SAY", refMinScore2026: 419.0, refQuota2026: 130 },
+      { uni: "Selçuk Üniversitesi", dept: "Veteriner Fakültesi", city: "Konya", scoreType: "SAY", refMinScore2026: 394.5, refQuota2026: 90 }
     ];
 
     const MSU_UNITS = [
@@ -732,57 +794,381 @@
         id: "msu-hho",
         group: "HARP",
         title: "Hava Harp Okulu (HHO)",
-        refScore: "SAY ~375–425+ (Önceki dönem referans)",
+        refScore: "2026 Dönemi Ref: SAY ~375–425+",
         refQuota: "Kontenjan: Dönemsel kılavuzda ~180–280",
-        info: "Hava kuvvetleri uçuş ve teknik/destek subay yetiştirir; uçuş/sağlık kriterleri diğer sınıflara göre daha hassastır.",
-        reqs: "SAY puan türü, göz/sağlık ve psikomotor/fiziki testler, yaş ve güvenlik soruşturması."
+        info: "Hava kuvvetleri uçuş ve teknik/destek subay yetiştirir; uçuş ve sağlık kriterleri en hassas sınıftır.",
+        reqs: "SAY puanı, uçuş/sağlık muayenesi, psikomotor/fiziki testler, yaş ve güvenlik soruşturması.",
+        interviewDetail: "Hava Harp Okulu mülakat sürecinde; boy-kilo/ön sağlık kontrolü, Fiziki Yeterlilik Testi (mekik, şınav, koşu), psikomotor/psikolojik testler ve komisyon sözlü mülakatı yapılır; uçuşa elverişlilik için tam teşekküllü hastane sağlık kurulu raporu ve güvenlik soruşturması aranır."
       },
       {
         id: "msu-kho",
         group: "HARP",
         title: "Kara Harp Okulu (KHO)",
-        refScore: "SAY / EA ~335–395+ (Önceki dönem referans)",
+        refScore: "2026 Dönemi Ref: SAY / EA ~335–395+",
         refQuota: "Kontenjan: Dönemsel kılavuzda ~600–950",
         info: "Kara kuvvetlerinin piyade, tank, topçu, istihkam, muhabere ve idari subay kadrolarına temel oluşturur.",
-        reqs: "SAY veya EA puanı, boy-kilo/sağlık raporu, fiziki yeterlilik, sözlü mülakat ve yaş şartı."
+        reqs: "SAY veya EA puanı, sağlık raporu, boy-kilo, fiziki yeterlilik, mülakat ve yaş şartı.",
+        interviewDetail: "Kara Harp Okulu seçim aşamalarında; evrak ve boy-kilo ölçümü, Fiziki Yeterlilik Testi, psikolojik değerlendirme ve sözlü mülakat komisyonu yer alır. Adayın özgüveni, ifade gücü, genel kültür/muhakeme yeteneği ve TSK sağlık şartlarına uygunluğu değerlendirilir."
       },
       {
         id: "msu-dho",
         group: "HARP",
         title: "Deniz Harp Okulu (DHO)",
-        refScore: "SAY ~355–405+ (Önceki dönem referans)",
+        refScore: "2026 Dönemi Ref: SAY ~355–405+",
         refQuota: "Kontenjan: Dönemsel kılavuzda ~180–270",
         info: "Deniz kuvvetleri gemi/denizaltı ve deniz subayı yetiştirir; denizcilik sağlık şartları aranır.",
-        reqs: "SAY puanı, tam teşekküllü deniz/sağlık uygunluğu, spor ve mülakat aşamaları."
+        reqs: "SAY puanı, tam teşekküllü deniz/sağlık uygunluğu, spor ve mülakat aşamaları.",
+        interviewDetail: "Deniz Harp Okulu mülakat ve seçim aşamalarında; ön sağlık/boy-kilo kontrolü, Fiziki Yeterlilik Testi, psikolojik test ve mülakat heyeti değerlendirmesi uygulanır. Denizcilik ve sınıf görevlerine uygun sağlık raporu ile güvenlik soruşturması zorunludur."
       },
       {
         id: "msu-bando",
         group: "MYO",
         title: "Bando Astsubay Meslek Yüksekokulu",
-        refScore: "TYT + Müzik/Bando Mülakatı (Önceki dönem referans)",
+        refScore: "2026 Dönemi Ref: TYT + Müzik Mülakatı",
         refQuota: "Kontenjan: Dönemsel kılavuzda ~40–90",
-        info: "TSK bandolarında görev yapacak bando astsubaylarını yetiştirir; enstrüman ve kulak/müzik yeteneği ölçülür.",
-        reqs: "MSÜ TYT puanı, müzik/bando uygulama sınavı, sağlık raporu, boy-kilo ve güvenlik soruşturması."
+        info: "TSK bandolarında görev yapacak bando astsubaylarını yetiştirir; enstrüman ve müzik kulağı ölçülür.",
+        reqs: "MSÜ TYT puanı, müzik/bando uygulama sınavı, sağlık raporu, boy-kilo ve güvenlik soruşturması.",
+        interviewDetail: "Bando Astsubay MYO'da adaylar TYT puanının ardından müzik/enstrüman uygulama sınavı, işitme/ritim testi, fiziki yeterlilik testi ve mülakat aşamalarına tabi tutulur; sağlık raporu ve güvenlik soruşturması tamamlanır."
       },
       {
         id: "msu-kmyo",
         group: "MYO",
         title: "Kara Astsubay MYO",
-        refScore: "TYT ~295–350+ (Önceki dönem referans)",
+        refScore: "2026 Dönemi Ref: TYT ~295–350+",
         refQuota: "Kontenjan: Dönemsel kılavuzda ~550–850",
         info: "Kara kuvvetleri önlisans düzeyinde astsubay yetiştirir; saha ve birlik görevlerine hazırlar.",
-        reqs: "TYT puanı, fiziki yeterlilik testi, mülakat, sağlık raporu ve yaş/adli şartlar."
+        reqs: "TYT puanı, fiziki yeterlilik testi, mülakat, sağlık raporu ve yaş/adli şartlar.",
+        interviewDetail: "Kara Astsubay MYO seçim aşamasında boy-kilo kontrolü, fiziki yeterlilik testi, psikolojik değerlendirme ve sözlü mülakat yapılır; sağlık yeteneği ve güvenlik soruşturması şarttır."
       },
       {
         id: "msu-hmyo-dmyo",
         group: "MYO",
         title: "Hava & Deniz Astsubay MYO",
-        refScore: "TYT ~310–365+ (Önceki dönem referans)",
+        refScore: "2026 Dönemi Ref: TYT ~310–365+",
         refQuota: "Kontenjan: Dönemsel kılavuzda ~200–420",
         info: "Hava ve deniz kuvvetlerinin teknik, bakım, ikmal ve harekât astsubaylarını yetiştirir.",
-        reqs: "TYT puanı, ilgili kuvvet sağlık/fiziki şartları, mülakat ve güvenlik soruşturması."
+        reqs: "TYT puanı, ilgili kuvvet sağlık/fiziki şartları, mülakat ve güvenlik soruşturması.",
+        interviewDetail: "Hava ve Deniz Astsubay MYO için fiziki yeterlilik testi, mülakat komisyonu ve kuvvet sağlık yönetmeliğine uygun hastane raporu ile güvenlik soruşturması aşamaları uygulanır."
       }
     ];
+
+    const UZMAN_ER_FORCES = {
+      KARA: {
+        label: "Kara Kuvvetleri",
+        erAvailable: true,
+        erSummary: "Sözleşmeli Er / Er alımı bulunur. En az ilköğretim mezunu, yaş sınırına uygun, askerlik yapmış/yapıyor veya kılavuz şartlarını taşıyan adaylar başvurabilir.",
+        uzmanSummary: "Uzman Onbaşı için en az ilköğretim/ortaokul, Uzman Çavuş için en az lise/dengi okul mezunu olmak, yaş şartını sağlamak, boy-kilo, fiziki yeterlilik ve mülakatı geçmek gerekir.",
+        interviewText: "Kara Uzman Erbaş & Er mülakatında; ayakkabısız boy-kilo kontrolü, tek hekim spor raporuyla girilen Fiziki Yeterlilik Testi (mekik, şınav, koşu) ve komisyon sözlü mülakatı (100 üzerinden en az 70 puan) yapılır; ardından tam teşekküllü hastane sağlık raporu ve güvenlik soruşturması istenir."
+      },
+      HAVA: {
+        label: "Hava Kuvvetleri",
+        erAvailable: true,
+        erSummary: "Sözleşmeli Er / Er alımı bulunur. Eğitim, yaş, adli/güvenlik ve sağlık uygunluğu aranır.",
+        uzmanSummary: "Uzman Onbaşı / Uzman Çavuş için eğitim, yaş ve nitelik şartlarını sağlamak; hava kuvvetleri sağlık/fiziki ve mülakat aşamalarından başarılı olmak gerekir.",
+        interviewText: "Hava kuvvetleri seçim aşamasında boy-kilo ölçümü, Fiziki Yeterlilik Testi ve sözlü mülakat yapılır; sınıf ve görev niteliğine göre sağlık kurulu raporu ve güvenlik soruşturması değerlendirilir."
+      },
+      DENIZ: {
+        label: "Deniz Kuvvetleri",
+        erAvailable: true,
+        erSummary: "Sözleşmeli Er / Er alımı bulunur. Kılavuzdaki yaş, eğitim ve sağlık şartları aranır.",
+        uzmanSummary: "Uzman Onbaşı / Uzman Çavuş için eğitim, yaş ve boy-kilo şartlarını sağlamak; fiziki yeterlilik, mülakat ve denizcilik/sağlık uygunluğunu geçmek gerekir.",
+        interviewText: "Deniz kuvvetleri seçim aşamasında boy-kilo kontrolü, Fiziki Yeterlilik Testi ve sözlü mülakat (70+ baraj) uygulanır; gemi/deniz görevine uygun sağlık raporu ve güvenlik soruşturması ile süreç tamamlanır."
+      },
+      JANDARMA: {
+        label: "Jandarma",
+        erAvailable: false,
+        erSummary: "Jandarma'da er alımı yoktur. İlgili dönem kılavuzlarına göre uzman erbaş / sözleşmeli / akademi teminleri takip edilir.",
+        uzmanSummary: "Jandarma Uzman Erbaş alımlarında en az lise/dengi (veya kılavuzdaki eğitim şartı), yaş sınırı, boy-kilo, fiziki yeterlilik, mülakat ve sağlık/güvenlik şartları aranır.",
+        interviewText: "Jandarma mülakat ve seçim sürecinde boy-kilo kontrolü, fiziki yeterlilik testi, komisyon mülakatı, tam teşekküllü hastane sağlık kurulu raporu ve güvenlik soruşturması/arşiv araştırması aşamaları uygulanır."
+      }
+    };
+
+    let activeForceTab = "KARA";
+
+    function toggleSectionCollapse(wrapId, btnId) {
+      const wrap = document.getElementById(wrapId);
+      const btn = document.getElementById(btnId);
+      if (!wrap) return;
+      const nowHidden = !wrap.classList.contains("hidden");
+      wrap.classList.toggle("hidden", nowHidden);
+      if (btn) btn.textContent = nowHidden ? "▶ Göster" : "▼ Kısalt";
+    }
+
+    function selectForceTab(forceKey) {
+      activeForceTab = forceKey;
+      document.querySelectorAll(".force-tab-btn").forEach(b => {
+        const isAct = b.id === `forceBtn-${forceKey}`;
+        if (forceKey === "JANDARMA" && b.id === "forceBtn-JANDARMA") {
+          b.className = isAct
+            ? "force-tab-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-amber-500 text-slate-950"
+            : "force-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-950";
+        } else {
+          b.className = isAct
+            ? "force-tab-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-900 text-white"
+            : "force-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700";
+        }
+      });
+      renderForceSection();
+    }
+
+    function renderForceSection() {
+      const f = UZMAN_ER_FORCES[activeForceTab] || UZMAN_ER_FORCES.KARA;
+      const detailBox = document.getElementById("forceDetailCard");
+      if (detailBox) {
+        detailBox.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200">
+            <h3 class="font-extrabold text-base text-slate-900">${f.label} — Uzman Erbaş & Er Detayları</h3>
+            <span class="${f.erAvailable ? "bg-emerald-100 text-emerald-900" : "bg-rose-100 text-rose-900"} font-extrabold px-2.5 py-0.5 rounded">
+              ${f.erAvailable ? "Er Alımı Mevcut" : "Jandarma'da Er Alımı Yok"}
+            </span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+            <div class="bg-white border border-slate-200 rounded-xl p-3.5">
+              <div class="font-extrabold text-slate-900">Er / Sözleşmeli Er Şartları</div>
+              <p class="text-slate-700 mt-1 leading-relaxed">${f.erSummary}</p>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-3.5">
+              <div class="font-extrabold text-slate-900">Uzman Erbaş Şartları</div>
+              <p class="text-slate-700 mt-1 leading-relaxed">${f.uzmanSummary}</p>
+            </div>
+          </div>
+          <div class="mt-3 bg-amber-50/70 border border-amber-200 rounded-xl p-3.5">
+            <div class="font-extrabold text-amber-950">${f.label} Mülakat & Seçim Özeti</div>
+            <p class="text-slate-800 mt-1 leading-relaxed">${f.interviewText}</p>
+          </div>
+        `;
+      }
+
+      const quickBox = document.getElementById("forceQuickCards");
+      if (quickBox) {
+        const keys = ["KARA", "HAVA", "DENIZ", "JANDARMA"];
+        quickBox.innerHTML = keys.map(k => {
+          const item = UZMAN_ER_FORCES[k];
+          const isSel = k === activeForceTab;
+          return `
+            <div onclick="selectForceTab('${k}')" class="cursor-pointer rounded-xl p-3.5 border transition ${isSel ? "bg-slate-900 text-white border-slate-900" : "bg-slate-50 text-slate-800 border-slate-200 hover:border-emerald-400"}">
+              <div class="flex items-center justify-between gap-2">
+                <span class="font-extrabold">${item.label}</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded ${item.erAvailable ? "bg-emerald-500 text-slate-950" : "bg-amber-400 text-slate-950"}">
+                  ${item.erAvailable ? "Er Var" : "Er Yok"}
+                </span>
+              </div>
+              <p class="text-[11px] ${isSel ? "text-slate-300" : "text-slate-600"} mt-1 line-clamp-2">${item.uzmanSummary}</p>
+            </div>
+          `;
+        }).join("");
+      }
+    }
+
+    function openInterviewModal(initialForce = "KARA") {
+      const validKey = UZMAN_ER_FORCES[initialForce] ? initialForce : "KARA";
+      document.getElementById("detailContent").innerHTML = `
+        <span class="bg-amber-100 text-amber-950 text-xs font-extrabold px-2.5 py-0.5 rounded">Mülakat & Seçim Rehberi</span>
+        <h3 class="text-xl font-extrabold text-slate-900 mt-2">Kara, Hava, Deniz & Jandarma Mülakatları</h3>
+        <p class="text-xs text-slate-500 mt-1">Kuvvete tıkla; o kuvvetin mülakat, fiziki test, sağlık ve başvuru ayrıntılarını gör.</p>
+
+        <div class="flex flex-wrap gap-1.5 mt-4">
+          <button type="button" onclick="renderInterviewModalBody('KARA')" id="mForce-KARA" class="px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-900 text-white">Kara</button>
+          <button type="button" onclick="renderInterviewModalBody('HAVA')" id="mForce-HAVA" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-800">Hava</button>
+          <button type="button" onclick="renderInterviewModalBody('DENIZ')" id="mForce-DENIZ" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-800">Deniz</button>
+          <button type="button" onclick="renderInterviewModalBody('JANDARMA')" id="mForce-JANDARMA" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-950">Jandarma (Er Yok)</button>
+        </div>
+
+        <div id="interviewModalBody" class="mt-4 space-y-3 text-xs"></div>
+      `;
+      document.getElementById("detailModal").classList.remove("hidden");
+      renderInterviewModalBody(validKey);
+    }
+
+    function renderInterviewModalBody(key) {
+      ["KARA", "HAVA", "DENIZ", "JANDARMA"].forEach(k => {
+        const btn = document.getElementById(`mForce-${k}`);
+        if (!btn) return;
+        if (k === "JANDARMA") {
+          btn.className = k === key
+            ? "px-3 py-1.5 rounded-lg text-xs font-extrabold bg-amber-500 text-slate-950"
+            : "px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-950";
+        } else {
+          btn.className = k === key
+            ? "px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-900 text-white"
+            : "px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-800";
+        }
+      });
+      const f = UZMAN_ER_FORCES[key] || UZMAN_ER_FORCES.KARA;
+      const box = document.getElementById("interviewModalBody");
+      if (!box) return;
+      box.innerHTML = `
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2.5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-extrabold text-sm text-slate-900">${f.label} Mülakat Detayı</span>
+            <span class="font-extrabold px-2.5 py-0.5 rounded ${f.erAvailable ? "bg-emerald-100 text-emerald-900" : "bg-rose-100 text-rose-900"}">
+              ${f.erAvailable ? "Er Alımı Var" : "Jandarma'da Er Yok"}
+            </span>
+          </div>
+          <p class="text-slate-700 leading-relaxed">${f.interviewText}</p>
+          <div class="pt-2 border-t border-slate-200 text-slate-700"><b>Uzman Erbaş İçin Gerekenler:</b> ${f.uzmanSummary}</div>
+          <div class="text-slate-700"><b>Er İçin Gerekenler:</b> ${f.erSummary}</div>
+        </div>
+      `;
+    }
+
+    function openMsuDetailModal(id) {
+      const u = MSU_UNITS.find(x => x.id === id);
+      if (!u) return;
+      document.getElementById("detailContent").innerHTML = `
+        <span class="bg-amber-100 text-amber-950 text-xs font-extrabold px-2.5 py-0.5 rounded">${u.group} • MSÜ Detay</span>
+        <h3 class="text-xl font-extrabold text-slate-900 mt-2">${u.title}</h3>
+        <div class="flex flex-wrap gap-2 mt-2 text-xs font-bold">
+          <span class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded">${u.refScore}</span>
+          <span class="bg-sky-50 text-sky-900 px-2.5 py-1 rounded">${u.refQuota}</span>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mt-3 text-xs sm:text-sm text-slate-700 leading-relaxed space-y-2.5">
+          <div><b class="text-slate-900">Okul / Sınıf Bilgisi:</b> ${u.info}</div>
+          <div><b class="text-slate-900">Gereken Şartlar:</b> ${u.reqs}</div>
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-3">
+            <b class="text-amber-950">Mülakat & Seçim Aşamaları (Detay):</b>
+            <p class="text-slate-800 mt-1 text-xs leading-relaxed">${u.interviewDetail}</p>
+          </div>
+        </div>
+        <a href="https://personeltemin.msb.gov.tr/" target="_blank" rel="noopener" class="mt-4 inline-block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-sm">MSB Personel Temin Kılavuzu ↗</a>
+      `;
+      document.getElementById("detailModal").classList.remove("hidden");
+    }
+
+    function openUniRobotModal() {
+      document.getElementById("detailContent").innerHTML = `
+        <span class="bg-sky-100 text-sky-900 text-xs font-extrabold px-2.5 py-0.5 rounded">2026-YKS Üniversite Tercih Robotu</span>
+        <h3 class="text-xl font-extrabold text-slate-900 mt-2">En Son Dönem (2026-YKS) Referans Puan & Kontenjan Robotu</h3>
+        <p class="text-xs text-slate-500 mt-1">Puan türünü, puanını ve üniversite/bölüm/şehir bilgisini girerek 2026 dönemi referans taban puan ve kontenjanları incele.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-4">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-600 mb-1">Puan Türü</label>
+            <select id="uniTypeFilter" onchange="renderUniRobotResults()" class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-xs font-bold bg-white">
+              <option value="ALL">Tüm Puan Türleri</option>
+              <option value="SAY">SAY (Sayısal)</option>
+              <option value="EA">EA (Eşit Ağırlık)</option>
+              <option value="SÖZ">SÖZ (Sözel)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-600 mb-1">Puanın (Opsiyonel)</label>
+            <input id="uniScoreFilter" oninput="renderUniRobotResults()" type="number" step="0.1" placeholder="Örn: 430" class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-xs" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-600 mb-1">Üniversite / Bölüm / İl</label>
+            <input id="uniQueryFilter" oninput="renderUniRobotResults()" type="text" placeholder="Örn: Adana, Tıp, Hukuk..." class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-xs" />
+          </div>
+        </div>
+
+        <div id="uniRobotResults" class="mt-4 space-y-2 text-xs"></div>
+
+        <div class="mt-4 pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-600">
+          <span>* Türkiye'deki binlerce bölümün tam listesi için YÖK Atlas / ÖSYM kılavuzları üzerinden kontrol edilmelidir.</span>
+          <a href="https://yokatlas.yok.gov.tr/" target="_blank" rel="noopener" class="bg-sky-600 hover:bg-sky-700 text-white font-bold px-3 py-1.5 rounded-lg">YÖK Atlas ↗</a>
+        </div>
+      `;
+      document.getElementById("detailModal").classList.remove("hidden");
+      renderUniRobotResults();
+    }
+
+    function renderUniRobotResults() {
+      const box = document.getElementById("uniRobotResults");
+      if (!box) return;
+      const t = document.getElementById("uniTypeFilter")?.value || "ALL";
+      const sRaw = document.getElementById("uniScoreFilter")?.value;
+      const scoreVal = sRaw !== "" && sRaw !== undefined ? Number(sRaw) : null;
+      const q = normalizeText(document.getElementById("uniQueryFilter")?.value || "");
+
+      const rows = UNI_PROGRAMS_2026.filter(p => {
+        if (t !== "ALL" && p.scoreType !== t) return false;
+        if (scoreVal !== null && !Number.isNaN(scoreVal) && scoreVal + 30 < p.refMinScore2026) return false;
+        if (q) {
+          const hay = normalizeText(`${p.uni} ${p.dept} ${p.city} ${p.scoreType}`);
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      if (rows.length === 0) {
+        box.innerHTML = `<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center text-slate-500">Bu filtreye uyan program bulunamadı.</div>`;
+        return;
+      }
+
+      box.innerHTML = rows.map(r => {
+        let statusBadge = `<span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-bold">${r.scoreType}</span>`;
+        if (scoreVal !== null && !Number.isNaN(scoreVal)) {
+          statusBadge = scoreVal >= r.refMinScore2026
+            ? `<span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-extrabold">✓ Puanın Uygun</span>`
+            : `<span class="bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-extrabold">Fark: ${(r.refMinScore2026 - scoreVal).toFixed(1)}</span>`;
+        }
+        return `
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                ${statusBadge}
+                <span class="font-extrabold text-slate-900">${r.uni}</span>
+                <span class="text-slate-500">• ${r.city}</span>
+              </div>
+              <div class="text-slate-700 font-medium mt-0.5">${r.dept}</div>
+            </div>
+            <div class="sm:text-right shrink-0">
+              <div class="font-extrabold text-emerald-700">2026 Ref. Puan: ~${r.refMinScore2026}</div>
+              <div class="text-slate-500">2026 Ref. Kontenjan: ~${r.refQuota2026}</div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function filterMsu(mode) {
+      activeMsuFilter = mode;
+      document.querySelectorAll(".msu-filter-btn").forEach(b => {
+        const isAct = b.id === `msuBtn-${mode}`;
+        if (mode === "HARP" && b.id === "msuBtn-HARP") {
+          b.className = isAct
+            ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-amber-500 text-slate-950"
+            : "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-900";
+        } else {
+          b.className = isAct
+            ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-900 text-white"
+            : "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700";
+        }
+      });
+      renderMsuCards();
+    }
+
+    function renderMsuCards() {
+      const box = document.getElementById("msuCardsGrid");
+      if (!box) return;
+      const list = activeMsuFilter === "ALL" ? MSU_UNITS : MSU_UNITS.filter(x => x.group === activeMsuFilter);
+      box.innerHTML = list.map(u => `
+        <div onclick="openMsuDetailModal('${u.id}')" class="cursor-pointer border border-slate-200 hover:border-amber-400 bg-slate-50/70 hover:bg-amber-50/30 rounded-xl p-4 flex flex-col justify-between space-y-2.5 transition">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="bg-slate-900 text-white text-[10px] font-extrabold px-2 py-0.5 rounded">${u.group}</span>
+              <span class="text-[11px] font-bold text-emerald-700">${u.refScore}</span>
+            </div>
+            <h3 class="font-extrabold text-sm text-slate-900 mt-1.5">${u.title}</h3>
+            <p class="text-[11px] font-semibold text-sky-800 mt-0.5">${u.refQuota}</p>
+            <p class="text-slate-700 mt-1.5 leading-relaxed">${u.info}</p>
+          </div>
+          <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-600">
+            <span class="line-clamp-1"><b>Gerekenler:</b> ${u.reqs}</span>
+            <span class="font-extrabold text-amber-800 shrink-0 ml-2">Detay & Mülakat →</span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function toggleKatiplikPanel(forceOpen = null) {
+      katiplikOpen = typeof forceOpen === "boolean" ? forceOpen : !katiplikOpen;
+      const drawer = document.getElementById("katiplikDrawer");
+      const btn = document.getElementById("katiplikToggleBtn");
+      drawer.classList.toggle("hidden", !katiplikOpen);
+      if (btn) btn.textContent = katiplikOpen ? "✕ KÂTİPLİK & ANTRENMANI KAPAT" : "⌨️ KÂTİPLİK & ANTRENMANI AÇ";
+      if (katiplikOpen) document.getElementById("katiplikMerkeziBolumu").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
 
     const SIM_TEXTS = [
       "Mahkeme kaleminde duruşma tutanaklarının düzenli tutulması, tebligat mazbatalarının kontrolü ve dosya kayıtlarının eksiksiz işlenmesi yargı hizmetlerinin sağlıklı yürütülmesi bakımından büyük önem taşır. Zabıt kâtipliği uygulama sınavında verilen metin süresinde dikkatle ve hatasız yazılmalıdır.",
@@ -877,9 +1263,9 @@
       { q: "1. Üyelik yapmadan profilim ve klavye skorlarım saklanır mı?", a: "Evet. Öğrenim düzeyi, puan, çoklu il seçimi, belgeler, kayıtlı ilanlar, simülasyon geçmişi, oyun rekoru ve forum kayıtları tarayıcıdaki LocalStorage'da saklanır." },
       { q: "2. Canlı sohbet odasına neden üye/rumuz girişi gerekiyor?", a: "Odadaki mesajların kim tarafından yazıldığı net görünsün ve sohbet düzeni korunsun diye canlı sohbet odasına mesaj göndermeden önce ad/rumuz ve üye bilgisiyle giriş yapılması gerekir." },
       { q: "3. Canlı sohbette kaç mesajlık akış bulunuyor?", a: "Her odada 1000 mesajlık (5'er mesajlık parçalar halinde ilerleyen) soru-cevap akışı bulunur ve zaman içinde yeni parçalar eklenerek sayfa uzun süre canlı görünür." },
-      { q: "4. Üniversite Tercih Robotu nasıl çalışır?", a: "Üst satırdaki Üni. Robotu butonuna tıklayınca puan türü, puan/sıralama ve şehir/bölüm aramasına göre önceki dönem referans puan ve kontenjan bilgilerini gösterir." },
-      { q: "5. Tercih dönemi veya sonuçları açıklandığında dış siteden otomatik veri çekilebilir mi?", a: "Tarayıcı güvenlik kuralları (CORS) ve resmî portalların yapısı nedeniyle dış sitelerden doğrudan canlı veri çekmek her zaman mümkün değildir; dönem başında güncel kılavuz/sonuç verileri güncellenir ve resmî bağlantılara yönlendirilir." },
-      { q: "6. MSÜ'de hangi alanlar hakkında bilgilendirme var?", a: "Hava Harp Okulu, Kara Harp Okulu, Deniz Harp Okulu, Bando Astsubay MYO ile Kara/Hava/Deniz Astsubay MYO için önceki dönem referans puan/kontenjan ve temel şartlar özetlenir." },
+      { q: "4. 2026 Üniversite Tercih Robotu nasıl çalışır?", a: "Üst satırdaki 2026 Üni. Robotu butonuna tıklayınca puan türü, puan ve şehir/bölüm aramasına göre 2026 dönemi referans puan ve kontenjan bilgilerini gösterir." },
+      { q: "5. Harp Okulları kartlarına tıklayınca ne açılır?", a: "Kartlara tıklayınca o okul/sınıfın görev tanımı, 2026 referans puan/kontenjan bilgileri, gereken şartlar ve mülakat/seçim aşamaları ayrıntılı pencerede açılır." },
+      { q: "6. Jandarma'da er alımı var mı?", a: "Hayır. Er alımı yalnızca Kara, Hava ve Deniz kuvvetlerinde bulunur; Jandarma'da er alımı yoktur." },
       { q: "7. Forumdaki sorulara başka adaylar nasıl cevap verebilir?", a: "Her sorunun altında yer alan 'Cevap Yaz' kutusuna adını ve cevabını yazıp 'Cevapla' butonuna basarak doğrudan o sorunun altına yanıt ekleyebilirsin." },
       { q: "8. Kâtiplik sınav simülasyonu kaç dakika sürer?", a: "Sınav simülasyonu 3 dakika (180 saniye) süreli olarak çalışır; anlık net kelime, doğruluk oranı ve hata sayısı ekranda gösterilir." },
       { q: "9. Hem F klavye hem Q klavye çalışabiliyor muyum?", a: "Evet. Sınav simülasyonunda ve klavye derslerinde Türkçe F Klavye veya Türkçe Q Klavye seçimi yaparak çalışabilirsin." },
@@ -894,7 +1280,7 @@
       { id: "lisans", name: "Lisans odası", desc: "4 yıllık mezunlar • P3 tercih ve kadro sohbeti", badge: "Lisans" },
       { id: "onlisans", name: "Önlisans odası", desc: "2 yıllık mezunlar • P93, kâtiplik ve sağlık kadroları", badge: "Önlisans" },
       { id: "ortaogretim", name: "Ortaöğretim odası", desc: "Lise mezunları • P94, şoför, ÖGG ve hizmetli", badge: "Lise" },
-      { id: "tercih", name: "Tercih & MSÜ odası", desc: "KPSS, YKS/üniversite ve MSÜ tercih sohbeti", badge: "Tercih" }
+      { id: "tercih", name: "Tercih & MSÜ odası", desc: "KPSS, 2026 üniversite ve MSÜ tercih sohbeti", badge: "Tercih" }
     ];
 
     const CHAT_NAMES = [
@@ -926,9 +1312,9 @@
         ["İŞKUR üzerinden açılan sürekli işçi ilanlarını nasıl takip ediyorsunuz?", "Hem İŞKUR portalını hem de buradaki filtreleri düzenli kontrol ederek başvuru tarihlerini kaçırmamaya çalışıyoruz."]
       ],
       tercih: [
-        ["Üniversite tercihlerinde önceki senelerin taban puan ve kontenjanlarına bakmak nasıl fikir?", "Kesinlikle fikir verir ama kontenjan değişimi ve o yılki sınav zorluğu oynama yapabileceği için aralığı geniş tutmak lazım."],
+        ["2026 üniversite tercihlerinde önceki senelerin taban puan ve kontenjanlarına bakmak nasıl fikir?", "Kesinlikle fikir verir ama kontenjan değişimi ve o yılki sınav zorluğu oynama yapabileceği için aralığı geniş tutmak lazım."],
         ["MSÜ'de Hava, Kara ve Deniz harp okulları arasında temel fark ne?", "Kuvvet komutanlıklarına subay yetiştirirler; sağlık, fiziki test ve mülakat şartları sınıfına göre değişir."],
-        ["Bando Astsubay MYO için müzik bilgisi şart mı?", "Evet, TYT puanının yanında müzik/bando uygulama sınavı ve mülakat aşamaları bulunuyor."],
+        ["Jandarma'da er alımı var mı?", "Hayır, er alımı Kara, Hava ve Deniz kuvvetlerinde var; Jandarma'da er alımı bulunmuyor."],
         ["Tercih listesinde ilk sıralara yüksek puanlı yerleri mi yazmalı?", "Evet, yüksekten düşüğe doğru kendi puanına ve sıralamana göre gerçekçi bir huni kurmak en doğru yaklaşım."],
         ["Tercih süresi bittikten sonra değişiklik yapılabiliyor mu?", "Hayır, sistem kapandıktan sonra tercih değişikliği yapılmıyor; onaylamadan önce tüm kodları iki kez kontrol etmelisin."]
       ]
@@ -949,13 +1335,7 @@
         const author = isQuestion ? asker : answerer;
         const text = isQuestion ? pair[0] : pair[1];
         const chunkNo = Math.floor(i / CHAT_CHUNK_SIZE) + 1;
-        pool.push({
-          id: `${roomId}-auto-${i}`,
-          author,
-          text,
-          chunkNo,
-          time: `Parça #${chunkNo}`
-        });
+        pool.push({ id: `${roomId}-auto-${i}`, author, text, chunkNo, time: `Parça #${chunkNo}` });
       }
       return pool;
     }
@@ -1002,16 +1382,16 @@
       },
       sorumluluk: {
         badge: "Bilgilendirme & Sorumluluk Reddi",
-        title: "İlan, Üniversite & MSÜ Kaynakları ve Sorumluluk Reddi",
+        title: "İlan, 2026 Üniversite & Askerî Kaynakları ve Sorumluluk Reddi",
         paragraphs: [
           "Platform resmî devlet kurumu değildir; kamuya açık ilan özetleri, klavye simülasyonu ve referans rehberleri sunar.",
-          "Son başvuru tarihi, taban puan, kontenjan ve şartlar için ilgili resmî kılavuz ve duyuru esas alınmalıdır."
+          "Son başvuru tarihi, taban puan, kontenjan ve mülakat/sağlık şartları için ilgili resmî kılavuz ve duyuru esas alınmalıdır."
         ]
       }
     };
 
     const ASKERI_OFFICIAL_CARDS = [
-      { id: "askeri-msb-resmi", source: "MSB Personel Temin", group: "askeri", statusType: "ASKERI", category: "Askeri", education: "Ortaöğretim", city: "Türkiye Geneli", dateLabel: "20 Kasım", daySub: "BUGÜN", minScore: 0, requiredDocs: [], title: "Milli Savunma Bakanlığı (MSB) Güncel Temin Başvuruları ve Duyurular", institution: "T.C. Millî Savunma Bakanlığı Personel Temin", deadline: "Resmî Portal", summary: "Subay, astsubay, uzman çavuş/erbaş ve sözleşmeli personel/er temin başvuruları.", details: "MSB Personel Temin sistemindeki güncel başvurular resmî sitede yayımlanmaktadır.", officialUrl: "https://personeltemin.msb.gov.tr/", isOfficialPortalCard: true },
+      { id: "askeri-msb-resmi", source: "MSB Personel Temin", group: "askeri", statusType: "ASKERI", category: "Askeri", education: "Ortaöğretim", city: "Türkiye Geneli", dateLabel: "20 Kasım", daySub: "BUGÜN", minScore: 0, requiredDocs: [], title: "Milli Savunma Bakanlığı (MSB) Güncel Temin Başvuruları ve Duyurular", institution: "T.C. Millî Savunma Bakanlığı Personel Temin", deadline: "Resmî Portal", summary: "Subay, astsubay, uzman erbaş ve sözleşmeli er temin başvuruları.", details: "MSB Personel Temin sistemindeki güncel başvurular resmî sitede yayımlanmaktadır.", officialUrl: "https://personeltemin.msb.gov.tr/", isOfficialPortalCard: true },
       { id: "askeri-jandarma-resmi", source: "Jandarma Personel Temin", group: "askeri", statusType: "ASKERI", category: "Askeri", education: "Ortaöğretim", city: "Türkiye Geneli", dateLabel: "19 Kasım", daySub: "DÜN", minScore: 0, requiredDocs: [], title: "Jandarma ve Sahil Güvenlik Akademisi / Temin Güncel Duyurular", institution: "Jandarma Personel Temin Sistemi", deadline: "Resmî Portal", summary: "Jandarma ve Sahil Güvenlik alımları, başvuru duyuruları ve aday bilgilendirme ekranı.", details: "Jandarma Personel Temin sayfasındaki güncel başvuru duyuruları resmî portal üzerinden yürütülmektedir.", officialUrl: "https://personeltemin.jandarma.gov.tr/", isOfficialPortalCard: true }
     ];
 
@@ -1060,147 +1440,7 @@
     let hataCount = 0;
     let hataCurrentItem = HATA_GAME_ITEMS[0];
 
-    function openUniRobotModal() {
-      document.getElementById("detailContent").innerHTML = `
-        <span class="bg-sky-100 text-sky-900 text-xs font-extrabold px-2.5 py-0.5 rounded">Üniversite Tercih Robotu</span>
-        <h3 class="text-xl font-extrabold text-slate-900 mt-2">Puan & Kontenjan Referans Robotu</h3>
-        <p class="text-xs text-slate-500 mt-1">Puan türünü, puanını ve il/bölüm kelimesini girerek önceki dönem referans taban puan ve kontenjanları incele.</p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-4">
-          <div>
-            <label class="block text-[11px] font-bold text-slate-600 mb-1">Puan Türü</label>
-            <select id="uniTypeFilter" onchange="renderUniRobotResults()" class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-xs font-bold bg-white">
-              <option value="ALL">Tüm Puan Türleri</option>
-              <option value="SAY">SAY (Sayısal)</option>
-              <option value="EA">EA (Eşit Ağırlık)</option>
-              <option value="SÖZ">SÖZ (Sözel)</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-[11px] font-bold text-slate-600 mb-1">Puanın (Opsiyonel)</label>
-            <input id="uniScoreFilter" oninput="renderUniRobotResults()" type="number" step="0.01" placeholder="Örn: 410" class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-xs" />
-          </div>
-          <div>
-            <label class="block text-[11px] font-bold text-slate-600 mb-1">Üniversite / Bölüm / İl</label>
-            <input id="uniQueryFilter" oninput="renderUniRobotResults()" type="text" placeholder="Örn: Ankara, Hukuk..." class="w-full border border-slate-300 rounded-lg px-2.5 py-2 text-xs" />
-          </div>
-        </div>
-
-        <div id="uniRobotResults" class="mt-4 space-y-2 text-xs"></div>
-
-        <div class="mt-4 pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-600">
-          <span>* Tarayıcı üzerinden dış sitelerden canlı veri çekimi kısıtlı olduğu için referans veriler + resmî bağlantılar sunulur.</span>
-          <a href="https://yokatlas.yok.gov.tr/" target="_blank" rel="noopener" class="bg-sky-600 hover:bg-sky-700 text-white font-bold px-3 py-1.5 rounded-lg">YÖK Atlas ↗</a>
-        </div>
-      `;
-      document.getElementById("detailModal").classList.remove("hidden");
-      renderUniRobotResults();
-    }
-
-    function renderUniRobotResults() {
-      const box = document.getElementById("uniRobotResults");
-      if (!box) return;
-      const t = document.getElementById("uniTypeFilter")?.value || "ALL";
-      const sRaw = document.getElementById("uniScoreFilter")?.value;
-      const scoreVal = sRaw !== "" && sRaw !== undefined ? Number(sRaw) : null;
-      const q = normalizeText(document.getElementById("uniQueryFilter")?.value || "");
-
-      const rows = UNI_PROGRAMS.filter(p => {
-        if (t !== "ALL" && p.scoreType !== t) return false;
-        if (scoreVal !== null && !Number.isNaN(scoreVal) && scoreVal + 25 < p.refMinScore) return false;
-        if (q) {
-          const hay = normalizeText(`${p.uni} ${p.dept} ${p.city} ${p.scoreType}`);
-          if (!hay.includes(q)) return false;
-        }
-        return true;
-      });
-
-      if (rows.length === 0) {
-        box.innerHTML = `<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center text-slate-500">Bu filtreye uyan referans program bulunamadı.</div>`;
-        return;
-      }
-
-      box.innerHTML = rows.map(r => {
-        let statusBadge = `<span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-bold">${r.scoreType}</span>`;
-        if (scoreVal !== null && !Number.isNaN(scoreVal)) {
-          statusBadge = scoreVal >= r.refMinScore
-            ? `<span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-extrabold">✓ Puanın Uygun</span>`
-            : `<span class="bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-extrabold">Fark: ${(r.refMinScore - scoreVal).toFixed(1)}</span>`;
-        }
-        return `
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <div class="flex items-center gap-2 flex-wrap">
-                ${statusBadge}
-                <span class="font-extrabold text-slate-900">${r.uni}</span>
-                <span class="text-slate-500">• ${r.city}</span>
-              </div>
-              <div class="text-slate-700 font-medium mt-0.5">${r.dept}</div>
-            </div>
-            <div class="sm:text-right shrink-0">
-              <div class="font-extrabold text-emerald-700">Ref. Taban: ~${r.refMinScore}</div>
-              <div class="text-slate-500">Ref. Kontenjan: ~${r.refQuota}</div>
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function filterMsu(mode) {
-      activeMsuFilter = mode;
-      document.querySelectorAll(".msu-filter-btn").forEach(b => {
-        const isAct = b.id === `msuBtn-${mode}`;
-        if (mode === "HARP" && b.id === "msuBtn-HARP") {
-          b.className = isAct
-            ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-amber-500 text-slate-950"
-            : "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-900";
-        } else {
-          b.className = isAct
-            ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-900 text-white"
-            : "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700";
-        }
-      });
-      renderMsuCards();
-    }
-
-    function renderMsuCards() {
-      const box = document.getElementById("msuCardsGrid");
-      if (!box) return;
-      const list = activeMsuFilter === "ALL" ? MSU_UNITS : MSU_UNITS.filter(x => x.group === activeMsuFilter);
-      box.innerHTML = list.map(u => `
-        <div class="border border-slate-200 bg-slate-50/60 rounded-xl p-4 flex flex-col justify-between space-y-2.5">
-          <div>
-            <div class="flex items-center justify-between gap-2">
-              <span class="bg-slate-900 text-white text-[10px] font-extrabold px-2 py-0.5 rounded">${u.group}</span>
-              <span class="text-[11px] font-bold text-emerald-700">${u.refScore}</span>
-            </div>
-            <h3 class="font-extrabold text-sm text-slate-900 mt-1.5">${u.title}</h3>
-            <p class="text-[11px] font-semibold text-sky-800 mt-0.5">${u.refQuota}</p>
-            <p class="text-slate-700 mt-1.5 leading-relaxed">${u.info}</p>
-          </div>
-          <div class="pt-2 border-t border-slate-200 text-[11px] text-slate-600">
-            <b>Gerekenler:</b> ${u.reqs}
-          </div>
-        </div>
-      `).join("");
-    }
-
-    function toggleKatiplikPanel(forceOpen = null) {
-      katiplikOpen = typeof forceOpen === "boolean" ? forceOpen : !katiplikOpen;
-      const drawer = document.getElementById("katiplikDrawer");
-      const btn = document.getElementById("katiplikToggleBtn");
-      drawer.classList.toggle("hidden", !katiplikOpen);
-      if (btn) {
-        btn.textContent = katiplikOpen ? "✕ KÂTİPLİK & ANTRENMANI KAPAT" : "⌨️ KÂTİPLİK & ANTRENMANI AÇ";
-      }
-      if (katiplikOpen) {
-        document.getElementById("katiplikMerkeziBolumu").scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-
-    function getAllCombinedPool() {
-      return [...ITEMS.filter(x => !isAskeriItem(x)), ...getAskeriList()];
-    }
+    function getAllCombinedPool() { return [...ITEMS.filter(x => !isAskeriItem(x)), ...getAskeriList()]; }
 
     function renderHeroBgArt(pageIdx) {
       const patterns = [
@@ -2295,6 +2535,7 @@
       resetWordDrill();
       updateBestGameScore(0);
       renderMsuCards();
+      renderForceSection();
       renderProfessionsTable();
       updateChatMemberUI();
       renderChatRooms();
