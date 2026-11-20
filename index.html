@@ -324,7 +324,7 @@
     </div>
   </section>
 
-  <!-- GÖRSEL ARKA PLANLI 30 SAYFALIK BÜYÜK VİTRİN -->
+  <!-- GÖRSEL ARKA PLANLI 30 SAYFALIK OTOMATİK GEÇİŞLİ VİTRİN -->
   <section class="max-w-7xl mx-auto px-4 mt-6">
     <div id="heroBannerBox" class="relative text-white rounded-2xl p-6 md:p-8 shadow-lg border border-slate-800 overflow-hidden bg-slate-950">
       <div id="heroBgVisual" class="pointer-events-none absolute inset-0 opacity-35"></div>
@@ -506,7 +506,7 @@
     </div>
   </section>
 
-  <!-- MESLEKLER & ŞARTLAR (GENİŞLETİLMİŞ KADRO LİSTESİ) -->
+  <!-- MESLEKLER & ŞARTLAR -->
   <section id="mesleklerSartlarBolumu" class="max-w-7xl mx-auto px-4 mt-8">
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
@@ -538,24 +538,27 @@
     </div>
   </section>
 
-  <!-- CANLI SOHBET (ÜYELİK/RUMUZ GİRİŞLİ) + SORU-CEVAP FORUM (ADAY CEVAPLAMALI) + 14 SORULUK SSS -->
+  <!-- CANLI SOHBET (ÜYELİK/RUMUZ GİRİŞLİ, 320'ŞER MESAJ, 5 MESAJ = 1 PARÇA, 5,5 SAATTE BİR YENİ PARÇA) + FORUM + 14 SORULUK SSS -->
   <section id="sohbetForumSssBolumu" class="max-w-7xl mx-auto px-4 mt-8 pb-14 space-y-6">
     <!-- CANLI SOHBET EKRANI -->
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
       <div class="px-6 py-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-slate-50">
         <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Canlı Sohbet Odaları (Üye / Rumuz Girişli)</span>
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Canlı Sohbet Odaları (Üye / Rumuz Girişli • 5 Mesaj / Parça • 5,5 Saatte 1 Yeni Parça)</span>
           <h2 class="text-lg font-extrabold text-slate-900 mt-0.5">Aday Sohbet Ekranı</h2>
         </div>
-        <div id="chatMemberStatusBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900">
-          Sohbet için üye/rumuz girişi gerekli
+        <div class="flex items-center gap-2 flex-wrap">
+          <span id="chatScheduleMetaBadge" class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-900"></span>
+          <span id="chatMemberStatusBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900">
+            Sohbet için üye/rumuz girişi gerekli
+          </span>
         </div>
       </div>
 
       <!-- ÜYELİK / RUMUZ GİRİŞ ŞERİDİ -->
       <div class="px-6 py-3 bg-slate-900 text-white border-b border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div class="text-xs text-slate-300">
-          Canlı sohbete katılmak için <b class="text-emerald-300">Ad Soyad / Rumuz</b> ve <b class="text-emerald-300">Aday Üye Kodu / E-posta</b> ile giriş yap:
+          Canlı sohbete mesaj yazmak için <b class="text-emerald-300">Ad Soyad / Rumuz</b> ve <b class="text-emerald-300">Üye No / E-posta</b> ile giriş yap:
         </div>
         <form onsubmit="loginChatMember(event)" class="flex flex-wrap items-center gap-2">
           <input id="memberNameInput" type="text" maxlength="30" required placeholder="Ad Soyad (Örn: Mert Demir)" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white" />
@@ -565,18 +568,22 @@
         </form>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[320px]">
+      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[340px]">
         <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-slate-200 bg-slate-50/70 p-3 space-y-1.5" id="chatRoomsList"></div>
         <div class="lg:col-span-8 flex flex-col justify-between p-4 sm:p-5 bg-slate-950 text-white">
           <div>
-            <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-800">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-800">
               <div>
                 <h3 id="activeChatRoomTitle" class="font-extrabold text-base text-white">Lisans odası</h3>
                 <p id="activeChatRoomDesc" class="text-xs text-slate-400">4 yıllık mezunlar • P3 tercih ve kadro sohbeti</p>
               </div>
-              <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-2.5 py-0.5 rounded-full font-semibold">Üyeli Sohbet Odası</span>
+              <div class="flex items-center gap-2">
+                <button type="button" onclick="advanceChatChunkManually()" class="text-[11px] bg-indigo-600 hover:bg-indigo-500 text-white px-2.5 py-1 rounded-lg font-bold transition">
+                  +5 Mesaj Parçası Ekle
+                </button>
+              </div>
             </div>
-            <div id="chatMessagesBox" class="mt-3 space-y-2.5 max-h-52 overflow-y-auto pr-1"></div>
+            <div id="chatMessagesBox" class="mt-3 space-y-2.5 max-h-60 overflow-y-auto pr-1"></div>
           </div>
 
           <form onsubmit="sendChatMessage(event)" class="mt-4 pt-3 border-t border-slate-800 flex flex-col sm:flex-row gap-2">
@@ -612,7 +619,7 @@
         <input id="forumMessage" type="text" maxlength="240" required placeholder="Adaylara sormak istediğin soruyu yaz..." class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm bg-white" />
       </form>
 
-      <div id="forumList" class="mt-4 space-y-3 max-h-[540px] overflow-y-auto pr-1"></div>
+      <div id="forumList" class="mt-4 space-y-3 max-h-[580px] overflow-y-auto pr-1"></div>
     </div>
 
     <!-- SSS (14 SIKÇA SORULAN SORU) -->
@@ -743,23 +750,59 @@
         replies: [
           { author: "Emre Kaya", text: "İKM alımlarında boy ve kilo sınırları aranır; zabıt kâtipliğinde ise boy/kilo barajı yerine klavye sınavı ve sözlü mülakat vardır." }
         ]
+      },
+      {
+        id: "q-4",
+        author: "Deniz Korkmaz",
+        topic: "KPSS Tercih",
+        text: "Lisans P3 puanı 81 olan biri için büyükşehirlerde büro personeli mi yoksa taşra kadroları mı daha gerçekçi olur?",
+        replies: [
+          { author: "Tarık Özkan", text: "Büyükşehirlerde kontenjan fazla ama başvuran da çok; taşra ve belge isteyen kadrolarda sıralama avantajı daha belirgin olabiliyor." }
+        ]
+      },
+      {
+        id: "q-5",
+        author: "Büşra Yıldız",
+        topic: "Sağlık & Teknik",
+        text: "Sağlık teknikeri ve laborant kadrolarında vardiya/nöbet düzeni nasıl işliyor, tercih yaparken nelere dikkat etmeli?",
+        replies: [
+          { author: "Mert Demir", text: "Hastane ve laboratuvar birimlerinde gece/hafta sonu nöbeti çıkabiliyor; ulaşım ve lojman imkanlarını mutlaka incelemek lazım." }
+        ]
+      },
+      {
+        id: "q-6",
+        author: "Kaan Tekin",
+        topic: "Kâtiplik",
+        text: "Q klavyede 85 net civarındayım, F klavyeye geçmek zaman kaybettirir mi yoksa uzun vadede avantaj sağlar mı?",
+        replies: [
+          { author: "Selin Yılmaz", text: "Sınava az süre kaldıysa mevcut klavyende hatasızlığı artır; vaktin varsa F klavye temel sıra dersleriyle kademeli geçiş yapabilirsin." }
+        ]
+      },
+      {
+        id: "q-7",
+        author: "Zeynep Arslan",
+        topic: "Boy / Mülakat",
+        text: "Sözlü mülakat aşamasında adaylardan en çok hangi konularda hazırlıklı olmaları bekleniyor?",
+        replies: [
+          { author: "Burak Şahin", text: "Kurumun görev alanı, genel kültür ve adayların kendini kısa, net ve tutarlı ifade etmesi mülakatta öne çıkıyor." }
+        ]
       }
     ];
 
     const FAQ_ITEMS = [
       { q: "1. Üyelik yapmadan profilim ve klavye skorlarım saklanır mı?", a: "Evet. Öğrenim düzeyi, puan, çoklu il seçimi, belgeler, kayıtlı ilanlar, simülasyon geçmişi, oyun rekoru ve forum kayıtları tarayıcıdaki LocalStorage'da saklanır." },
       { q: "2. Canlı sohbet odasına neden üye/rumuz girişi gerekiyor?", a: "Odadaki mesajların kim tarafından yazıldığı net görünsün ve sohbet düzeni korunsun diye canlı sohbet odasına mesaj göndermeden önce ad/rumuz ve üye bilgisiyle giriş yapılması gerekir." },
-      { q: "3. Forumdaki sorulara başka adaylar nasıl cevap verebilir?", a: "Her sorunun altında yer alan 'Cevap Yaz' kutusuna adını ve cevabını yazıp 'Cevapla' butonuna basarak doğrudan o sorunun altına yanıt ekleyebilirsin." },
-      { q: "4. Kâtiplik sınav simülasyonu kaç dakika sürer?", a: "Sınav simülasyonu 3 dakika (180 saniye) süreli olarak çalışır; anlık net kelime, doğruluk oranı ve hata sayısı ekranda gösterilir." },
-      { q: "5. Hem F klavye hem Q klavye çalışabiliyor muyum?", a: "Evet. Sınav simülasyonunda ve klavye derslerinde Türkçe F Klavye veya Türkçe Q Klavye seçimi yaparak çalışabilirsin." },
-      { q: "6. Kullanıcılar kendi aralarında nasıl yarışabilir?", a: "Yarış & Düello sekmesinden kendi skorunu liderlik tablosuna ekleyebilir veya 'Benim Skor Kodumu Üret' butonuyla arkadaşınla skor karşılaştırması yapabilirsin." },
-      { q: "7. Tercih robotunda öğrenim düzeyi seçimi nasıl çalışır?", a: "Lisans seçildiğinde Lisans, Önlisans ve Ortaöğretim düzeyindeki ilanlar; Önlisans seçildiğinde Önlisans ve Ortaöğretim ilanları birlikte listelenir." },
-      { q: "8. KPSS puan alanını boş bırakabilir miyim?", a: "Evet. Puan alanı isteğe bağlıdır; boş bırakırsan puan barajı filtresi uygulanmadan öğrenim, bölüm, il ve belge kriterlerine göre ilanlar gösterilir." },
-      { q: "9. 'Sınırda' etiketi ne anlama gelir?", a: "Girdiğin KPSS puanının ilan taban puanına çok yakın (yaklaşık 3 puan içinde) olduğunu göstermek için bilgilendirme amaçlı kullanılır." },
-      { q: "10. Hangi kadrolarda boy ve kilo şartı aranır?", a: "İnfaz ve koruma memurluğu, polis/POMEM/PMYO ve askeri (MSB/Jandarma) kadrolarında boy/kilo ve fiziki/mülakat şartları bulunur; düz memuriyetlerde genelde yoktur." },
-      { q: "11. Özel belgelerimi (ör. SRC, ÖGG, klavye sertifikası) nasıl ekleyebilirim?", a: "Tercih Robotu bölümündeki hazır belge kutularını işaretleyebilir veya 'Farklı belgeni ekle' alanından kendi belgeni ekleyebilirsin." },
-      { q: "12. İlanlara doğrudan bu siteden mi başvuruluyor?", a: "Hayır; ilan kartlarındaki 'Resmî Site' bağlantısı seni doğrudan ilgili resmî kurum veya ilan portalına yönlendirir." },
-      { q: "13. Önceki seneler taban puanları kesin midir?", a: "Hayır. Tablodaki puanlar geçmiş dönem genel referans aralıklarıdır; her alımda resmî kılavuz ve kontenjanlara göre değişebilir." },
+      { q: "3. Canlı sohbette mesajlar nasıl akıyor?", a: "Her odada gerçek aday isimleriyle kurgulanmış 320 mesajlık soru-cevap akışı bulunur; mesajlar 5'er mesajlık parçalar halinde ilerler ve her 5,5 saatte bir eski mesajlar silinmeden yeni parça eklenir." },
+      { q: "4. Forumdaki sorulara başka adaylar nasıl cevap verebilir?", a: "Her sorunun altında yer alan 'Cevap Yaz' kutusuna adını ve cevabını yazıp 'Cevapla' butonuna basarak doğrudan o sorunun altına yanıt ekleyebilirsin." },
+      { q: "5. Kâtiplik sınav simülasyonu kaç dakika sürer?", a: "Sınav simülasyonu 3 dakika (180 saniye) süreli olarak çalışır; anlık net kelime, doğruluk oranı ve hata sayısı ekranda gösterilir." },
+      { q: "6. Hem F klavye hem Q klavye çalışabiliyor muyum?", a: "Evet. Sınav simülasyonunda ve klavye derslerinde Türkçe F Klavye veya Türkçe Q Klavye seçimi yaparak çalışabilirsin." },
+      { q: "7. Kullanıcılar kendi aralarında nasıl yarışabilir?", a: "Yarış & Düello sekmesinden kendi skorunu liderlik tablosuna ekleyebilir veya 'Benim Skor Kodumu Üret' butonuyla arkadaşınla skor karşılaştırması yapabilirsin." },
+      { q: "8. Tercih robotunda öğrenim düzeyi seçimi nasıl çalışır?", a: "Lisans seçildiğinde Lisans, Önlisans ve Ortaöğretim düzeyindeki ilanlar; Önlisans seçildiğinde Önlisans ve Ortaöğretim ilanları birlikte listelenir." },
+      { q: "9. KPSS puan alanını boş bırakabilir miyim?", a: "Evet. Puan alanı isteğe bağlıdır; boş bırakırsan puan barajı filtresi uygulanmadan öğrenim, bölüm, il ve belge kriterlerine göre ilanlar gösterilir." },
+      { q: "10. 'Sınırda' etiketi ne anlama gelir?", a: "Girdiğin KPSS puanının ilan taban puanına çok yakın (yaklaşık 3 puan içinde) olduğunu göstermek için bilgilendirme amaçlı kullanılır." },
+      { q: "11. Hangi kadrolarda boy ve kilo şartı aranır?", a: "İnfaz ve koruma memurluğu, polis/POMEM/PMYO ve askeri (MSB/Jandarma) kadrolarında boy/kilo ve fiziki/mülakat şartları bulunur; düz memuriyetlerde genelde yoktur." },
+      { q: "12. Özel belgelerimi (ör. SRC, ÖGG, klavye sertifikası) nasıl ekleyebilirim?", a: "Tercih Robotu bölümündeki hazır belge kutularını işaretleyebilir veya 'Farklı belgeni ekle' alanından kendi belgeni ekleyebilirsin." },
+      { q: "13. İlanlara doğrudan bu siteden mi başvuruluyor?", a: "Hayır; ilan kartlarındaki 'Resmî Site' bağlantısı seni doğrudan ilgili resmî kurum veya ilan portalına yönlendirir." },
       { q: "14. Yeni ilan açıldığında nasıl haberdar olabilirim?", a: "Sayfadaki Telegram Bot bağlantısı üzerinden @kamu_ilan_kpss_bot kanalına geçebilir veya ilgilendiğin ilanları 'Kaydet' butonuyla favorilerine alabilirsin." }
     ];
 
@@ -770,10 +813,102 @@
       { id: "tercih", name: "Tercih dönemi odası", desc: "Tercih listeleri, il seçimi ve puan yorumları", badge: "Tercih" }
     ];
 
+    const CHAT_NAMES = [
+      "Emre Kaya", "Zeynep Arslan", "Mert Demir", "Selin Yılmaz",
+      "Burak Şahin", "Elif Çelik", "Kerem Aydın", "Hazal Koç",
+      "Deniz Korkmaz", "Tarık Özkan", "Büşra Yıldız", "Kaan Tekin"
+    ];
+
+    const CHAT_DIALOGUES = {
+      lisans: [
+        ["P3 puanım 82, sence merkezî yerleştirmede büro kadrosu gelir mi?", "82 bandında il ve bölüm seçimine göre güzel ihtimaller var, özellikle taşra ve özel şartlı kadrolara bakmak lazım."],
+        ["Kurumsal alımlarda mülakat oluyor mu yoksa sadece puan mı bakılıyor?", "Çoğu merkezî kadroda mülakat yok ama bakanlık/kurum bazlı bazı sözleşmeli alımlarda sözlü mülakat olabiliyor."],
+        ["İkinci tercih döneminde sıralama nasıl etkilenir?", "Önceki atamalarda yerleşip kayıt yaptırmayanlar veya yeni açılan kadrolar sıralamayı oynatabiliyor."],
+        ["Büyükşehirlerde mi şans daha yüksek küçük illerde mi?", "Küçük illerde tercih eden sayısı daha az olabiliyor ama kadro sayısı da sınırlı; ikisini dengeli dizmek en sağlıklısı."],
+        ["Mezuniyet belgesinde bölüm adı birebir tutmalı mı?", "Evet, kılavuzdaki nitelik kodu ve mezuniyet alanı birebir uyuşmalı, aksi halde atama aşamasında sorun çıkar."]
+      ],
+      onlisans: [
+        ["P93 puanım 77, kâtiplik ve önlisans memurluk için nasıl bir plan yapmalıyım?", "Bir yandan P93 tercihlerini takip ederken diğer yandan 3 dakikalık klavye pratiklerini aksatmamak çok mantıklı."],
+        ["Adalet mezunları ile diğer önlisans mezunları arasında fark var mı?", "Bazı kadrolarda adalet bölümü önceliği veya şartı aranabiliyor, genel kadrolarda ise tüm önlisans adayları başvurabiliyor."],
+        ["Sağlık teknikeri alımlarında belge şartı ne zaman istenir?", "Başvuru ve atama kılavuzunda belirtilen diploma veya sertifikanın başvuru süresi içinde hazır olması gerekir."],
+        ["Önlisans düzeyinde en çok hangi illerde alım açılıyor?", "Ankara, İstanbul, İzmir gibi büyük merkezlerin yanında bölge müdürlüğü bulunan illerde düzenli alımlar görülebiliyor."],
+        ["Klavyede net sayarken yanlış kelime nasıl hesaplanıyor?", "Yazılan toplam kelimeden hatalı kelimeler düşülerek net hesaplanır; bu yüzden hız kadar doğruluk da kritik."]
+      ],
+      ortaogretim: [
+        ["P94 puanım 74, lise mezunları için en gerçekçi kadrolar hangileri?", "Büro, hizmetli, şoför ve ÖGG gibi kadrolarda belge ve il şartlarına göre farklı puan aralıkları görülebiliyor."],
+        ["SRC ve psikoteknik belgeleri şoför kadrolarında zorunlu mu?", "Ağır vasıta ve ilgili taşımacılık kadrolarında geçerli ehliyetle birlikte SRC ve psikoteknik şartı aranabiliyor."],
+        ["ÖGG kimliği olmayan adaylar güvenlik kadrosuna başvurabilir mi?", "Hayır, ilgili ilanın son başvuru tarihinde geçerli özel güvenlik kimlik kartına sahip olmak gerekir."],
+        ["Ortaöğretim kadrolarında boy/kilo sınırı var mı?", "Düz memuriyet ve hizmetli kadrolarında genelde yok; İKM, polis veya askeri teminlerde boy/kilo şartı bulunuyor."],
+        ["İŞKUR üzerinden açılan sürekli işçi ilanlarını nasıl takip ediyorsunuz?", "Hem İŞKUR portalını hem de buradaki filtreleri düzenli kontrol ederek başvuru tarihlerini kaçırmamaya çalışıyoruz."]
+      ],
+      tercih: [
+        ["Tercih listesinde ilk sıralara yüksek puanlı yerleri mi yazmalı?", "Evet, yüksekten düşüğe doğru kendi puanına ve sıralamana göre gerçekçi bir huni kurmak en doğru yaklaşım."],
+        ["İstemediğimiz bir yeri sırf açıkta kalmamak için yazmak doğru mu?", "Gidebileceğin ve çalışabileceğin illeri yazmak daha sağlıklı; yerleşip gitmemek sonraki süreçlerde dezavantaj yaratabilir."],
+        ["Puanım sınırda görünen kadroları listeye eklemeli miyim?", "Kontenjan artışları veya vazgeçmeler ihtimaline karşı birkaç sınırda kadroyu alt sıralarda denemek mantıklı olabilir."],
+        ["Tercih kılavuzundaki özel şartlar kutucuğu ne işe yarıyor?", "Cinsiyet, belge, yaş veya kurum içi şart gibi kritik detayları gösterir; mutlaka tek tek okumak lazım."],
+        ["Tercih süresi bittikten sonra değişiklik yapılabiliyor mu?", "Hayır, sistem kapandıktan sonra tercih değişikliği yapılmıyor; onaylamadan önce tüm kodları iki kez kontrol etmelisin."]
+      ]
+    };
+
+    const CHAT_CHUNK_SIZE = 5;
+    const CHAT_TOTAL_PER_ROOM = 320; // 64 parça x 5 mesaj = 320 mesaj
+    const CHAT_INTERVAL_MS = 5.5 * 60 * 60 * 1000; // 5,5 saatte bir yeni 5 mesajlık parça
+
+    function buildRoomPool320(roomId) {
+      const pairs = CHAT_DIALOGUES[roomId] || CHAT_DIALOGUES.lisans;
+      const pool = [];
+      for (let i = 0; i < CHAT_TOTAL_PER_ROOM; i++) {
+        const pair = pairs[Math.floor(i / 2) % pairs.length];
+        const isQuestion = i % 2 === 0;
+        const asker = CHAT_NAMES[(i * 3) % CHAT_NAMES.length];
+        const answerer = CHAT_NAMES[(i * 3 + 5) % CHAT_NAMES.length];
+        const author = isQuestion ? asker : answerer;
+        const text = isQuestion ? pair[0] : pair[1];
+        const chunkNo = Math.floor(i / CHAT_CHUNK_SIZE) + 1;
+        pool.push({
+          id: `${roomId}-auto-${i}`,
+          author,
+          text,
+          chunkNo,
+          time: `Parça #${chunkNo}`
+        });
+      }
+      return pool;
+    }
+
+    function getChatTimelineState() {
+      const now = Date.now();
+      let state = null;
+      try { state = JSON.parse(localStorage.getItem("kpss_chat_timeline_v1")); } catch (e) {}
+      if (!state || typeof state.anchorTime !== "number") {
+        state = {
+          anchorTime: now - (4 * CHAT_INTERVAL_MS), // İlk açılışta 5 parça (25 mesaj) hazır gelsin, sonra 5,5 saatte 1 parça eklensin
+          manualBonusChunks: 0
+        };
+        localStorage.setItem("kpss_chat_timeline_v1", JSON.stringify(state));
+      }
+      const elapsedChunks = Math.floor((now - state.anchorTime) / CHAT_INTERVAL_MS);
+      const totalChunksUnlocked = Math.min(
+        CHAT_TOTAL_PER_ROOM / CHAT_CHUNK_SIZE,
+        Math.max(5, 5 + elapsedChunks + (state.manualBonusChunks || 0))
+      );
+      const msIntoCurrentInterval = (now - state.anchorTime) % CHAT_INTERVAL_MS;
+      const nextChunkInMs = CHAT_INTERVAL_MS - msIntoCurrentInterval;
+      return { state, totalChunksUnlocked, nextChunkInMs };
+    }
+
+    function advanceChatChunkManually() {
+      const { state } = getChatTimelineState();
+      state.manualBonusChunks = (state.manualBonusChunks || 0) + 1;
+      localStorage.setItem("kpss_chat_timeline_v1", JSON.stringify(state));
+      renderChatRooms();
+    }
+
     const CITIES = ["Adana", "Ankara", "İstanbul", "İzmir", "Bursa", "Antalya", "Konya", "Gaziantep", "Kayseri", "Eskişehir", "Samsun", "Trabzon"];
     const EDU_RANK = { "Ortaöğretim": 1, "Önlisans": 2, "Lisans": 3 };
     const NEAR_SCORE_MARGIN = 3;
     const TOTAL_HERO_PAGES = 30;
+    const HERO_AUTO_INTERVAL_MS = 4000; // 1'den 30'a 4 saniyede bir otomatik geçiş
     const INITIAL_VISIBLE_JOBS = 10;
     const LOAD_MORE_STEP = 10;
 
@@ -811,6 +946,7 @@
 
     let ITEMS = [...FALLBACK_ITEMS];
     let currentSlideIdx = 0;
+    let heroAutoTimer = null;
     let activeStatusFilter = "ALL";
     let customDocs = [];
     let selectedCities = [];
@@ -861,7 +997,10 @@
 
       let slideData;
       if (currentSlideIdx < HERO_FEATURED_SLIDES.length) {
-        slideData = HERO_FEATURED_SLIDES[currentSlideIdx];
+        slideData = {
+          ...HERO_FEATURED_SLIDES[currentSlideIdx],
+          badge: `${HERO_FEATURED_SLIDES[currentSlideIdx].badge.split("•")[0].trim()} • Sayfa ${currentSlideIdx + 1} / ${TOTAL_HERO_PAGES} (4 sn otomatik)`
+        };
       } else {
         const pool = getAllCombinedPool();
         const item = pool[(currentSlideIdx - HERO_FEATURED_SLIDES.length) % Math.max(1, pool.length)] || FALLBACK_ITEMS[0];
@@ -869,7 +1008,7 @@
           institution: (item.source || item.institution || "KAMU İLANI").toUpperCase(),
           headline: item.title.toUpperCase(),
           sub: `${item.education} • ${item.city || "Türkiye Geneli"} • ${item.summary}`,
-          badge: `İlan Vitrini • Sayfa ${currentSlideIdx + 1} / ${TOTAL_HERO_PAGES}`,
+          badge: `İlan Vitrini • Sayfa ${currentSlideIdx + 1} / ${TOTAL_HERO_PAGES} (4 sn otomatik)`,
           url: item.officialUrl,
           theme: "from-slate-950 via-cyan-950 to-slate-900"
         };
@@ -892,9 +1031,17 @@
       }).join("");
     }
 
-    function goSlide(idx) { currentSlideIdx = idx; renderHeroSlide(); }
-    function nextSlide() { currentSlideIdx = (currentSlideIdx + 1) % TOTAL_HERO_PAGES; renderHeroSlide(); }
-    function prevSlide() { currentSlideIdx = (currentSlideIdx - 1 + TOTAL_HERO_PAGES) % TOTAL_HERO_PAGES; renderHeroSlide(); }
+    function startHeroAutoSlider() {
+      if (heroAutoTimer) clearInterval(heroAutoTimer);
+      heroAutoTimer = setInterval(() => {
+        currentSlideIdx = (currentSlideIdx + 1) % TOTAL_HERO_PAGES;
+        renderHeroSlide();
+      }, HERO_AUTO_INTERVAL_MS);
+    }
+
+    function goSlide(idx) { currentSlideIdx = idx; renderHeroSlide(); startHeroAutoSlider(); }
+    function nextSlide() { currentSlideIdx = (currentSlideIdx + 1) % TOTAL_HERO_PAGES; renderHeroSlide(); startHeroAutoSlider(); }
+    function prevSlide() { currentSlideIdx = (currentSlideIdx - 1 + TOTAL_HERO_PAGES) % TOTAL_HERO_PAGES; renderHeroSlide(); startHeroAutoSlider(); }
 
     function isAskeriItem(item) {
       if (!item) return false;
@@ -1646,7 +1793,7 @@
       `).join("");
     }
 
-    // ÜYELİ CANLI SOHBET
+    // ÜYELİ CANLI SOHBET (320 MESAJ / ODA • 5 MESAJ = 1 PARÇA • 5,5 SAATTE 1 YENİ PARÇA)
     function getChatMember() {
       try { const m = JSON.parse(localStorage.getItem("kpss_chat_member")); return (m && m.name && m.memberId) ? m : null; } catch (e) { return null; }
     }
@@ -1685,31 +1832,42 @@
       updateChatMemberUI();
     }
 
-    function getChatStore() {
+    function getUserCustomRoomMessages() {
       try {
-        const d = JSON.parse(localStorage.getItem("kpss_chat_rooms"));
+        const d = JSON.parse(localStorage.getItem("kpss_chat_user_msgs_v1"));
         if (d && typeof d === "object") return d;
       } catch (e) {}
-      return {
-        lisans: [{ author: "Emre Kaya", text: "Lisans kadrolarında hem merkezî hem kurumsal ilanları birlikte takip ediyorum.", time: "Bugün" }],
-        onlisans: [{ author: "Zeynep Arslan", text: "Ön lisans P93 ve kâtiplik ilanları için F klavye çalışmasına erken başlamak iyi oluyor.", time: "Bugün" }],
-        ortaogretim: [{ author: "Burak Şahin", text: "Lise düzeyinde ehliyet/SRC/ÖGG belgeleri olanlar şartları dikkatle okumalı.", time: "Bugün" }],
-        tercih: [{ author: "Elif Çelik", text: "Tercih listesinde il sıralamasını ve taban puanları birlikte değerlendirmek önemli.", time: "Bugün" }]
-      };
+      return { lisans: [], onlisans: [], ortaogretim: [], tercih: [] };
+    }
+
+    function getCombinedRoomMessages(roomId, totalChunksUnlocked) {
+      const pool = buildRoomPool320(roomId);
+      const visibleSeedCount = Math.min(CHAT_TOTAL_PER_ROOM, totalChunksUnlocked * CHAT_CHUNK_SIZE);
+      const visibleSeed = pool.slice(0, visibleSeedCount);
+      const customStore = getUserCustomRoomMessages();
+      const customMsgs = Array.isArray(customStore[roomId]) ? customStore[roomId] : [];
+      return [...visibleSeed, ...customMsgs];
     }
 
     function renderChatRooms() {
-      const store = getChatStore();
+      const { totalChunksUnlocked, nextChunkInMs } = getChatTimelineState();
+      const nextHours = Math.max(0.1, (nextChunkInMs / (1000 * 60 * 60))).toFixed(1);
+      const metaBadge = document.getElementById("chatScheduleMetaBadge");
+      if (metaBadge) {
+        metaBadge.textContent = `Açık Parça: ${totalChunksUnlocked} / 64 (5'er mesaj) • Sonraki parça: ~${nextHours} sa`;
+      }
+
       const roomsEl = document.getElementById("chatRoomsList");
       if (!roomsEl) return;
 
       roomsEl.innerHTML = CHAT_ROOMS.map(room => {
-        const msgs = Array.isArray(store[room.id]) ? store[room.id] : [];
+        const msgs = getCombinedRoomMessages(room.id, totalChunksUnlocked);
         const active = room.id === activeChatRoomId;
         const cls = active
           ? "w-full text-left px-3.5 py-2.5 rounded-xl bg-slate-900 text-white border border-slate-800 transition"
           : "w-full text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-200/70 text-slate-800 transition";
-        const subText = msgs.length > 0 ? `${msgs.length} mesaj • ${msgs[msgs.length - 1].text.slice(0, 28)}...` : "Henüz mesaj yok";
+        const lastMsg = msgs[msgs.length - 1];
+        const subText = lastMsg ? `${msgs.length}/320 mesaj • ${lastMsg.author}: ${lastMsg.text.slice(0, 24)}...` : "Henüz mesaj yok";
         return `
           <button type="button" onclick="selectChatRoom('${room.id}')" class="${cls}">
             <div class="flex items-center justify-between gap-2">
@@ -1723,22 +1881,29 @@
 
       const currentRoom = CHAT_ROOMS.find(r => r.id === activeChatRoomId) || CHAT_ROOMS[0];
       document.getElementById("activeChatRoomTitle").textContent = currentRoom.name;
-      document.getElementById("activeChatRoomDesc").textContent = currentRoom.desc;
+      document.getElementById("activeChatRoomDesc").textContent = `${currentRoom.desc} • ${totalChunksUnlocked * 5} hazır mesaj akışta`;
 
-      const roomMsgs = Array.isArray(store[currentRoom.id]) ? store[currentRoom.id] : [];
+      const roomMsgs = getCombinedRoomMessages(currentRoom.id, totalChunksUnlocked);
       const msgBox = document.getElementById("chatMessagesBox");
       if (roomMsgs.length === 0) {
-        msgBox.innerHTML = `<div class="text-center py-8 text-xs text-slate-400">Bu odada henüz mesaj yok. Üye girişi yapıp ilk mesajı sen yaz!</div>`;
+        msgBox.innerHTML = `<div class="text-center py-8 text-xs text-slate-400">Bu odada henüz mesaj yok.</div>`;
       } else {
-        msgBox.innerHTML = roomMsgs.map(m => `
-          <div class="bg-slate-900 border border-slate-800 rounded-xl p-3">
-            <div class="flex items-center justify-between gap-2 text-[11px]">
-              <span class="font-bold text-emerald-300">${m.author}</span>
-              <span class="text-slate-500">${m.time || "Şimdi"}</span>
+        msgBox.innerHTML = roomMsgs.map((m, idx) => {
+          const isChunkStart = idx > 0 && idx % CHAT_CHUNK_SIZE === 0;
+          const divider = isChunkStart
+            ? `<div class="text-[10px] font-bold text-indigo-300/80 border-t border-slate-800/80 pt-1.5 mt-1">── 5 Mesajlık Yeni Parça (${m.time || "Akış"}) ──</div>`
+            : "";
+          return `
+            ${divider}
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-3">
+              <div class="flex items-center justify-between gap-2 text-[11px]">
+                <span class="font-bold text-emerald-300">${m.author}</span>
+                <span class="text-slate-500">${m.time || "Şimdi"}</span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-200 mt-1 leading-relaxed">${m.text}</p>
             </div>
-            <p class="text-xs sm:text-sm text-slate-200 mt-1 leading-relaxed">${m.text}</p>
-          </div>
-        `).join("");
+          `;
+        }).join("");
       }
     }
 
@@ -1755,18 +1920,20 @@
       const textInput = document.getElementById("chatTextInput");
       const text = (textInput.value || "").trim();
       if (!text) return;
-      const store = getChatStore();
+      const store = getUserCustomRoomMessages();
       if (!Array.isArray(store[activeChatRoomId])) store[activeChatRoomId] = [];
-      store[activeChatRoomId].push({ author: member.name, text, time: "Şimdi" });
-      localStorage.setItem("kpss_chat_rooms", JSON.stringify(store));
+      store[activeChatRoomId].push({ author: member.name, text, time: "Şimdi (Üye)" });
+      localStorage.setItem("kpss_chat_user_msgs_v1", JSON.stringify(store));
       textInput.value = "";
       renderChatRooms();
+      const box = document.getElementById("chatMessagesBox");
+      if (box) box.scrollTop = box.scrollHeight;
     }
 
     // FORUM (SORU BIRAKMA + CEVAPLAMA)
     function getForumPosts() {
       try {
-        const posts = JSON.parse(localStorage.getItem("kpss_forum_posts_v2"));
+        const posts = JSON.parse(localStorage.getItem("kpss_forum_posts_v3"));
         if (Array.isArray(posts) && posts.length > 0) return posts;
       } catch (e) {}
       return DEFAULT_FORUM_POSTS;
@@ -1813,7 +1980,7 @@
       if (!author || !text) return;
       const posts = getForumPosts();
       posts.unshift({ id: `q-${Date.now()}`, author, topic, text, replies: [] });
-      localStorage.setItem("kpss_forum_posts_v2", JSON.stringify(posts.slice(0, 40)));
+      localStorage.setItem("kpss_forum_posts_v3", JSON.stringify(posts.slice(0, 50)));
       document.getElementById("forumMessage").value = "";
       renderForum();
     }
@@ -1828,7 +1995,7 @@
       if (!target) return;
       if (!Array.isArray(target.replies)) target.replies = [];
       target.replies.push({ author: rAuthor, text: rText });
-      localStorage.setItem("kpss_forum_posts_v2", JSON.stringify(posts));
+      localStorage.setItem("kpss_forum_posts_v3", JSON.stringify(posts));
       renderForum();
     }
 
@@ -1920,6 +2087,7 @@
       renderProfessionsTable();
       updateChatMemberUI();
       renderChatRooms();
+      setInterval(renderChatRooms, 60000);
       renderForum();
       renderFaqList();
       try {
@@ -1930,6 +2098,7 @@
         }
       } catch (e) {}
       renderHeroSlide();
+      startHeroAutoSlider();
       renderStatusMenu();
       applyProfileMatch(false);
     }
