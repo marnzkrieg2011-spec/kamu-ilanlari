@@ -1385,5 +1385,53 @@
     "details": "Bu kayıt Isinolsa Memur kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
     "officialUrl": "https://www.isinolsa.com/bu-hafta-759-kisilik-isci-personel-ve-memur-alimi-icin-31-ilan-yayimlandi/",
     "fetchedAt": "2026-11-20T17:46:45.473365+00:00"
+  },
+  {
+    "id": "memurlar-825733",
+    "source": "Memurlar.net Ilan",
+    "group": "genel",
+    "category": "Büro",
+    "education": "Lisans",
+    "minScore": 0,
+    "requiredDocs": [],
+    "title": "İstanbul Personel Yönetim Aş. 4 İşçi Alacak",
+    "institution": "Memurlar.net Ilan",
+    "deadline": "Güncel İlan",
+    "summary": "Memurlar.net Ilan üzerinden yakalanan güncel alım/ilan kaydı.",
+    "details": "Bu kayıt Memurlar.net Ilan kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
+    "officialUrl": "https://ilan.memurlar.net/ilan/87049/istanbul-personel-yonetim-as-4-isci-alacak.html",
+    "fetchedAt": "2026-11-21T06:53:50.734541+00:00"
+  },
+  {
+    "id": "memurlar-416351",
+    "source": "Memurlar.net Ilan",
+    "group": "genel",
+    "category": "Öğretmen",
+    "education": "Lisans",
+    "minScore": 0,
+    "requiredDocs": [],
+    "title": "İstanbul Medeniyet Üniversitesi Öğretim Üyesi Alım İlanı",
+    "institution": "Memurlar.net Ilan",
+    "deadline": "Güncel İlan",
+    "summary": "Memurlar.net Ilan üzerinden yakalanan güncel alım/ilan kaydı.",
+    "details": "Bu kayıt Memurlar.net Ilan kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
+    "officialUrl": "https://ilan.memurlar.net/ilan/87048/istanbul-medeniyet-universitesi-ogretim-uyesi-alim-ilani.html",
+    "fetchedAt": "2026-11-21T06:53:50.734598+00:00"
+  },
+  {
+    "id": "isinolsa-822879",
+    "source": "Isinolsa Memur",
+    "group": "genel",
+    "category": "Büro",
+    "education": "Lisans",
+    "minScore": 0,
+    "requiredDocs": [],
+    "title": "TİGEM KPSS 2026/2 İle 82 Personel Alacak! Kontenjanlar Açıklandı!",
+    "institution": "Isinolsa Memur",
+    "deadline": "Güncel İlan",
+    "summary": "Isinolsa Memur üzerinden yakalanan güncel alım/ilan kaydı.",
+    "details": "Bu kayıt Isinolsa Memur kaynağından otomatik çekilmiştir. Güncel başvuru tarihleri, nitelik kodları ve özel şartlar için resmi bağlantıyı inceleyiniz.",
+    "officialUrl": "https://www.isinolsa.com/tigem-kpss-2026-2-ile-82-personel-alacak-kontenjanlar-aciklandi/",
+    "fetchedAt": "2026-11-21T06:53:51.963035+00:00"
   }
 ]
