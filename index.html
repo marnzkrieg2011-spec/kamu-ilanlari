@@ -705,15 +705,19 @@
             <h2 class="text-xl font-extrabold text-slate-900">Harp Okulları & Astsubay MYO</h2>
             <button type="button" onclick="openMsuInterviewModal()" class="bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 font-extrabold text-xs px-3 py-1 rounded-lg transition cursor-pointer">🎤 Mülakat Bilgileri & FYT Puan Tablosu</button>
             <button type="button" onclick="openInterviewQuestionsModal('HARP')" class="bg-slate-900 hover:bg-slate-800 text-amber-300 font-extrabold text-xs px-3 py-1 rounded-lg transition cursor-pointer">📋 Örnek Mülakat Soruları (50)</button>
+            <a href="https://www.shopier.com/mulakathazirlik/53233561" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3 py-1 rounded-lg transition">Harp Aday Hazırlık Seti Almak İsterseniz ↗</a>
             <button type="button" id="msuCollapseBtn" onclick="toggleSectionCollapse('msuBodyWrap', 'msuCollapseBtn')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-2.5 py-1 rounded-lg transition cursor-pointer">▶ Göster</button>
           </div>
           <p class="text-xs text-slate-500 mt-0.5">Harp Okulları (Subay) ve Astsubay MYO seçim aşamaları: boy-kilo ölçümü, 400m koşu - mekik - şınav FYT puan cetveli, psikolojik testler ve sözlü mülakat.</p>
         </div>
 
-        <div class="flex flex-wrap gap-1.5">
-          <button type="button" onclick="filterMsu('ALL')" id="msuBtn-ALL" class="msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white">Tümü</button>
-          <button type="button" onclick="filterMsu('HARP')" id="msuBtn-HARP" class="msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-900">Harp Okulları (Subay)</button>
-          <button type="button" onclick="filterMsu('MYO')" id="msuBtn-MYO" class="msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Astsubay MYO & Bando</button>
+        <div class="flex flex-col items-start lg:items-end gap-1.5">
+          <a href="https://personeltemin.msb.gov.tr/" target="_blank" rel="noopener noreferrer" class="bg-amber-900 hover:bg-amber-800 text-amber-200 font-extrabold text-xs px-3 py-1.5 rounded-lg transition">MSB Personel Temin ↗</a>
+          <div class="flex flex-wrap gap-1.5">
+            <button type="button" onclick="filterMsu('ALL')" id="msuBtn-ALL" class="msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white">Tümü</button>
+            <button type="button" onclick="filterMsu('HARP')" id="msuBtn-HARP" class="msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-900">Harp Okulları (Subay)</button>
+            <button type="button" onclick="filterMsu('MYO')" id="msuBtn-MYO" class="msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Astsubay MYO & Bando</button>
+          </div>
         </div>
       </div>
 
@@ -745,16 +749,23 @@
             <h2 class="text-xl font-extrabold text-slate-900">Uzman Erbaş & Er Bilgilendirme</h2>
             <button type="button" onclick="openInterviewModal(activeForceTab)" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-950 border border-emerald-300 font-extrabold text-xs px-3 py-1 rounded-lg transition cursor-pointer">🎤 Mülakat Detayı & Spor Puan Tablosu</button>
             <button type="button" onclick="openInterviewQuestionsModal('UZMAN')" class="bg-slate-900 hover:bg-slate-800 text-emerald-300 font-extrabold text-xs px-3 py-1 rounded-lg transition cursor-pointer">📋 Örnek Mülakat Soruları (50)</button>
+            <a href="https://www.shopier.com/mulakathazirlik/53233030" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3 py-1 rounded-lg transition">Uzman Aday Hazırlık Seti Almak İsterseniz ↗</a>
             <button type="button" id="uzmanCollapseBtn" onclick="toggleSectionCollapse('uzmanBodyWrap', 'uzmanCollapseBtn')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-2.5 py-1 rounded-lg transition cursor-pointer">▶ Göster</button>
           </div>
           <p id="uzmanTopDynamicSubtitle" class="text-xs text-slate-500 mt-0.5">Kara Kuvvetleri uzman erbaş ve sözleşmeli er alımlarında KPSS puanı şartı aranmaz; başvuru sonrası boy-kilo, mekik-şınav-400m hedef koşusu ve sözlü mülakat uygulanır.</p>
         </div>
 
-        <div class="flex flex-wrap gap-1.5">
-          <button type="button" onclick="selectForceTab('KARA')" id="forceBtn-KARA" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-900 text-white">Kara</button>
-          <button type="button" onclick="selectForceTab('HAVA')" id="forceBtn-HAVA" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Hava</button>
-          <button type="button" onclick="selectForceTab('DENIZ')" id="forceBtn-DENIZ" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Deniz</button>
-          <button type="button" onclick="selectForceTab('JANDARMA')" id="forceBtn-JANDARMA" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Jandarma</button>
+        <div class="flex flex-col items-start lg:items-end gap-1.5">
+          <div class="flex flex-wrap gap-1.5">
+            <a href="https://personeltemin.msb.gov.tr/" target="_blank" rel="noopener noreferrer" class="bg-emerald-900 hover:bg-emerald-800 text-emerald-200 font-extrabold text-xs px-3 py-1 rounded-lg transition">MSB Pertem ↗</a>
+            <a href="https://personeltemin.jandarma.gov.tr/" target="_blank" rel="noopener noreferrer" class="bg-slate-900 hover:bg-slate-800 text-amber-300 font-extrabold text-xs px-3 py-1 rounded-lg transition">Jandarma Pertem ↗</a>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <button type="button" onclick="selectForceTab('KARA')" id="forceBtn-KARA" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-900 text-white">Kara</button>
+            <button type="button" onclick="selectForceTab('HAVA')" id="forceBtn-HAVA" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Hava</button>
+            <button type="button" onclick="selectForceTab('DENIZ')" id="forceBtn-DENIZ" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Deniz</button>
+            <button type="button" onclick="selectForceTab('JANDARMA')" id="forceBtn-JANDARMA" class="force-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Jandarma</button>
+          </div>
         </div>
       </div>
 
@@ -775,6 +786,7 @@
             <h2 class="text-xl font-extrabold text-slate-900">POMEM Bilgilendirme, Şartlar & Mülakat Rehberi</h2>
             <button type="button" onclick="openPomemInterviewModal()" class="bg-sky-100 hover:bg-sky-200 text-sky-950 border border-sky-300 font-extrabold text-xs px-3 py-1 rounded-lg transition cursor-pointer">🎤 POMEM Mülakat & Parkur Puan Tablosu</button>
             <button type="button" onclick="openInterviewQuestionsModal('POMEM')" class="bg-slate-900 hover:bg-slate-800 text-sky-300 font-extrabold text-xs px-3 py-1 rounded-lg transition cursor-pointer">📋 Örnek Mülakat Soruları (50)</button>
+            <a href="https://www.shopier.com/mulakathazirlik/53234130" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3 py-1 rounded-lg transition">POMEM Aday Hazırlık Seti Almak İsterseniz ↗</a>
             <button type="button" id="pomemCollapseBtn" onclick="toggleSectionCollapse('pomemBodyWrap', 'pomemCollapseBtn')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-2.5 py-1 rounded-lg transition cursor-pointer">▶ Göster</button>
           </div>
           <p class="text-xs text-slate-500 mt-0.5">Lisans ve önlisans mezunları için başvuru kriterleri, KPSS taban puanları, boy/BKİ sınırları, 7 istasyonlu parkur saniye-puan cetveli ve sözlü mülakat süreci.</p>
@@ -960,6 +972,55 @@
       </div>
     </div>
   </footer>
+
+  <!-- SİTEYE GİRİŞTE AÇILAN PENCERE (MÜLAKAT SORULARI & HAZIRLIK SETLERİ) -->
+  <div id="welcomeWelcomeModal" onclick="closeWelcomeModal()" class="hidden fixed inset-0 bg-slate-950/80 z-50 flex items-center justify-center p-4">
+    <div onclick="event.stopPropagation()" class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl relative border border-slate-200">
+      <button type="button" onclick="closeWelcomeModal()" aria-label="Pencereyi Kapat" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-rose-100 text-slate-700 hover:text-rose-700 text-xl font-extrabold flex items-center justify-center cursor-pointer transition">&times;</button>
+
+      <span class="inline-block bg-indigo-100 text-indigo-900 text-xs font-extrabold px-2.5 py-0.5 rounded">Mülakat & Hazırlık Rehberi</span>
+      <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-2 pr-8 leading-snug">
+        Uzman, Harp Okulu ve POMEM için mülakat sorularına bakmak ister misiniz?
+      </h3>
+      <p class="text-xs text-slate-600 mt-1.5">
+        İsterseniz aşağıdaki seçeneklerle ilgili 50 örnek mülakat sorusuna gidebilir veya aday hazırlık setlerini inceleyebilirsiniz.
+      </p>
+
+      <div class="mt-4 space-y-2 text-xs">
+        <button type="button" onclick="scrollToInterviewSectionFromWelcome('UZMAN')" class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-950 font-extrabold text-left cursor-pointer transition">
+          <span>⚔️ Uzman Mülakat Soruları (50 Soru)</span>
+          <span>↓</span>
+        </button>
+        <button type="button" onclick="scrollToInterviewSectionFromWelcome('HARP')" class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-950 font-extrabold text-left cursor-pointer transition">
+          <span>🎖️ Harp Okulu Mülakat Soruları (50 Soru)</span>
+          <span>↓</span>
+        </button>
+        <button type="button" onclick="scrollToInterviewSectionFromWelcome('POMEM')" class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-sky-50 hover:bg-sky-100 border border-sky-200 text-sky-950 font-extrabold text-left cursor-pointer transition">
+          <span>🛡️ POMEM Mülakat Soruları (50 Soru)</span>
+          <span>↓</span>
+        </button>
+      </div>
+
+      <div class="mt-4 pt-4 border-t border-slate-200 space-y-2 text-xs">
+        <div class="font-extrabold text-slate-800">Aday Hazırlık Setleri (Shopier):</div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <a href="https://www.shopier.com/mulakathazirlik/53233030" target="_blank" rel="noopener noreferrer" class="text-center bg-slate-900 hover:bg-slate-800 text-emerald-300 font-extrabold px-3 py-2.5 rounded-xl transition">
+            Uzman Seti Al ↗
+          </a>
+          <a href="https://www.shopier.com/mulakathazirlik/53233561" target="_blank" rel="noopener noreferrer" class="text-center bg-slate-900 hover:bg-slate-800 text-amber-300 font-extrabold px-3 py-2.5 rounded-xl transition">
+            Harp Seti Al ↗
+          </a>
+          <a href="https://www.shopier.com/mulakathazirlik/53234130" target="_blank" rel="noopener noreferrer" class="text-center bg-slate-900 hover:bg-slate-800 text-sky-300 font-extrabold px-3 py-2.5 rounded-xl transition">
+            POMEM Seti Al ↗
+          </a>
+        </div>
+      </div>
+
+      <button type="button" onclick="closeWelcomeModal()" class="mt-4 w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-2 rounded-xl text-xs cursor-pointer transition">
+        İstemiyorum, Pencereyi Kapat
+      </button>
+    </div>
+  </div>
 
   <!-- AÇILIR DETAY & PUAN TABLOSU PENCERESİ -->
   <div id="detailModal" class="hidden fixed inset-0 bg-slate-950/75 z-50 flex items-center justify-center p-4">
@@ -2022,6 +2083,42 @@
       `).join("");
     }
 
+    /* ================= GİRİŞTE AÇILAN PENCERE KONTROLLERİ ================= */
+    function openWelcomeModal() {
+      const el = document.getElementById("welcomeWelcomeModal");
+      if (el) el.classList.remove("hidden");
+    }
+
+    function closeWelcomeModal() {
+      const el = document.getElementById("welcomeWelcomeModal");
+      if (el) el.classList.add("hidden");
+    }
+
+    function scrollToInterviewSectionFromWelcome(domainKey) {
+      closeWelcomeModal();
+      const targetMap = {
+        UZMAN: { sectionId: "uzmanErBolumu", bodyId: "uzmanBodyWrap", btnId: "uzmanCollapseBtn" },
+        HARP: { sectionId: "msuBolumu", bodyId: "msuBodyWrap", btnId: "msuCollapseBtn" },
+        POMEM: { sectionId: "pomemBolumu", bodyId: "pomemBodyWrap", btnId: "pomemCollapseBtn" }
+      };
+      const cfg = targetMap[domainKey] || targetMap.POMEM;
+      const bodyEl = document.getElementById(cfg.bodyId);
+      const btnEl = document.getElementById(cfg.btnId);
+      if (bodyEl && bodyEl.classList.contains("hidden")) {
+        bodyEl.classList.remove("hidden");
+        if (btnEl) btnEl.textContent = "▼ Gizle";
+      }
+      const secEl = document.getElementById(cfg.sectionId);
+      if (secEl) {
+        const headerOffset = 76;
+        const rectTop = secEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: Math.max(0, rectTop), behavior: "smooth" });
+      }
+      setTimeout(() => {
+        openInterviewQuestionsModal(domainKey);
+      }, 350);
+    }
+
     /* ================= AÇILIR PENCERE (MODAL) FONKSİYONLARI ================= */
     function openMsuInterviewModal() {
       document.getElementById("detailContent").innerHTML = `
@@ -2720,331 +2817,521 @@
       document.getElementById("listHeading").textContent = "KAMU PERSONEL İLANLARI";
       document.getElementById("profileEdu").value = "ALL"; document.getElementById("profileScore").value = ""; document.getElementById("profileCat").value = "ALL"; document.getElementById("searchKeywordInput").value = "";
       document.querySelectorAll(".profile-doc-check").forEach(cb => { cb.checked = false; });
-      customDocs = []; selectedCities = [];
-      renderCityChips(); renderCustomDocChips(); renderStatusMenu(); localStorage.removeItem("kpss_profile"); updateProfileSummaryBadge(); applyProfileMatch(false);
+      customDocs = []; selectedCities = []; renderCustomDocChips(); renderCityChips(); renderStatusMenu();
+      localStorage.removeItem("kpss_profile"); updateProfileSummaryBadge(); applyProfileMatch(false);
     }
 
     function openDetail(id) {
-      const item = getAllCombinedPool().find(x => x.id === id);
-      if (!item || isJobExplicitlyInactiveOrExpired(item)) return;
+      const cleanId = String(id).replace(/-slot-\d+$/, "");
+      const item = getAllCombinedPool().find(x => x.id === cleanId);
+      if (!item || isJobExplicitlyInactiveOrExpired(item)) { alert("Bu ilanın başvuru süresi dolmuş veya doğrulanamamıştır."); return; }
       const portalUrl = resolveActiveJobPortalUrl(item);
-      const docsText = (item.requiredDocs && item.requiredDocs.length > 0) ? item.requiredDocs.map(d => escapeHtml(d)).join(", ") : "Belirtilmemiş / Genel";
       document.getElementById("detailContent").innerHTML = `
-        <div class="flex items-center gap-2 flex-wrap">
-          <span class="bg-emerald-100 text-emerald-900 text-xs font-extrabold px-2.5 py-0.5 rounded">${escapeHtml(item.activeStatus || "Aktif & Güncel")}</span>
-          <span class="bg-slate-100 text-slate-700 text-xs font-bold px-2.5 py-0.5 rounded">${escapeHtml(item.education)}</span>
-          <span class="bg-slate-100 text-slate-700 text-xs font-bold px-2.5 py-0.5 rounded">${escapeHtml(item.city || "Türkiye Geneli")}</span>
-        </div>
+        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded">${escapeHtml(item.activeStatus || "Aktif & Güncel")} • ${escapeHtml(item.source)}</span>
         <h3 class="text-xl font-extrabold text-slate-900 mt-2">${escapeHtml(item.title)}</h3>
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mt-4 space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
-          <div><b class="text-slate-900">Kurum / Kaynak:</b> ${escapeHtml(item.institution)}</div>
-          <div><b class="text-slate-900">Yayımlanma Tarihi:</b> ${escapeHtml(item.publishedDate || item.dateLabel)}</div>
-          <div><b class="text-slate-900">Son Başvuru Tarihi:</b> ${escapeHtml(item.deadline)}</div>
-          <div><b class="text-slate-900">Aktiflik Durumu:</b> ${escapeHtml(item.activeStatus || "Aktif & Güncel")}</div>
-          <div><b class="text-slate-900">Gerekli Belgeler / Şartlar:</b> ${docsText}</div>
-          <div class="pt-2 border-t border-slate-200"><b class="text-slate-900">İlan Özeti:</b> ${escapeHtml(item.details || item.summary)}</div>
+        <div class="text-xs text-slate-500 mt-1">Kurum: <b>${escapeHtml(item.institution)}</b> • İl: <b>${escapeHtml(item.city || "Türkiye Geneli")}</b> • Yayımlanma: <b>${escapeHtml(item.publishedDate || item.dateLabel)}</b> • Son Başvuru: <b>${escapeHtml(item.deadline)}</b></div>
+        <p class="text-sm text-slate-700 mt-4 leading-relaxed">${escapeHtml(item.details)}</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <a href="${escapeHtml(portalUrl)}" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition">İlan Bağlantısı ↗</a>
+          <button type="button" onclick="closeDetailModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2.5 px-4 rounded-lg text-sm cursor-pointer">Kapat</button>
         </div>
-        <a href="${escapeHtml(portalUrl)}" target="_blank" rel="noopener noreferrer" class="mt-5 inline-block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-sm">İlan Bağlantısına Git ↗</a>
       `;
-      document.getElementById("detailModal").classList.remove("hidden");
-    }
-
-    function openLegalModal(key) {
-      const doc = LEGAL_DOCS[key];
-      if (!doc) return;
-      document.getElementById("detailContent").innerHTML = `<span class="bg-slate-900 text-emerald-300 text-xs font-extrabold px-2.5 py-0.5 rounded">${escapeHtml(doc.badge)}</span><h3 class="text-xl font-extrabold text-slate-900 mt-2">${escapeHtml(doc.title)}</h3><div class="mt-4 space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed">${doc.paragraphs.map(p => `<p class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">${escapeHtml(p)}</p>`).join("")}</div><button type="button" onclick="closeDetailModal()" class="mt-5 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-sm cursor-pointer">Kapat</button>`;
       document.getElementById("detailModal").classList.remove("hidden");
     }
 
     function closeDetailModal() { document.getElementById("detailModal").classList.add("hidden"); }
 
-    function renderAds() {
-      [["ad-slot-top", AD_CONFIG.top], ["ad-slot-bottom", AD_CONFIG.bottom]].forEach(([id, cfg]) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const safeAdUrl = sanitizeExternalUrl(cfg.url);
-        el.innerHTML = safeAdUrl ? `<a href="${escapeHtml(safeAdUrl)}" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-700 hover:text-emerald-700">${escapeHtml(cfg.label)} ↗</a>` : `<span class="text-slate-400">${escapeHtml(cfg.label)}</span>`;
-      });
+    function openLegalModal(key) {
+      const doc = LEGAL_DOCS[key]; if (!doc) return;
+      document.getElementById("detailContent").innerHTML = `<span class="bg-slate-200 text-slate-800 text-xs font-bold px-2.5 py-0.5 rounded">${escapeHtml(doc.badge)}</span><h3 class="text-xl font-extrabold text-slate-900 mt-2">${escapeHtml(doc.title)}</h3>${doc.paragraphs.map(p => `<p class="text-sm text-slate-700 mt-3 leading-relaxed">${escapeHtml(p)}</p>`).join("")}<button type="button" onclick="closeDetailModal()" class="mt-6 w-full bg-slate-900 text-white font-bold py-2.5 rounded-lg text-sm cursor-pointer">Kapat</button>`;
+      document.getElementById("detailModal").classList.remove("hidden");
     }
 
-    function goHome(e) { if (e) e.preventDefault(); resetFilters(); window.scrollTo({ top: 0, behavior: "smooth" }); }
-    function getSavedTheme() { try { return localStorage.getItem("kpss_theme_mode") === "dark" ? "dark" : "light"; } catch (e) { return "light"; } }
-    function applyThemeMode(mode) { const isDark = mode === "dark"; document.documentElement.classList.toggle("dark-theme", isDark); try { localStorage.setItem("kpss_theme_mode", isDark ? "dark" : "light"); } catch (e) {} const btn = document.getElementById("themeToggleHeaderBtn"); if (btn) btn.textContent = isDark ? "☀️ Gündüz" : "🌙 Gece"; }
-    function toggleThemeMode() { applyThemeMode(getSavedTheme() === "dark" ? "light" : "dark"); }
-
-    function toggleMobileDrawer(forceState = null) {
-      const el = document.getElementById("mobileMenuBackdrop");
-      if (!el) return;
-      const shouldOpen = typeof forceState === "boolean" ? forceState : el.classList.contains("hidden");
-      el.classList.toggle("hidden", !shouldOpen);
-      if (shouldOpen) { renderMobileDrawerAccount(); updateSavedCountUI(); }
+    function openCronGuideModal() {
+      document.getElementById("detailContent").innerHTML = `<span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded">Günlük Otomatik Güncelleme & Denetim</span><h3 class="text-xl font-extrabold text-slate-900 mt-2">24 Saatte Bir Otomatik İlan Denetimi</h3><p class="text-sm text-slate-700 mt-3 leading-relaxed">Sistem <b>jobs.json</b> kaynağını her 24 saatte bir kontrol eder; süresi dolmuş ve doğrulanmamış ilanları otomatik gizler.</p><button type="button" onclick="closeDetailModal()" class="mt-6 w-full bg-slate-900 text-white font-bold py-2.5 rounded-lg text-sm cursor-pointer">Kapat</button>`;
+      document.getElementById("detailModal").classList.remove("hidden");
     }
 
-    function renderMobileDrawerAccount() {
-      const box = document.getElementById("mobileDrawerAccountBox");
-      if (!box) return;
-      const session = getActiveSession();
-      box.innerHTML = session
-        ? `<div class="font-extrabold text-emerald-300">✓ Giriş Yapıldı: ${escapeHtml(session.fullName)}</div><div class="text-slate-400 mt-0.5">${escapeHtml(session.email)}</div><div class="flex gap-2 mt-2.5"><button type="button" onclick="toggleMobileDrawer(false); openProfileModal();" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-1.5 rounded-lg cursor-pointer">Profilim</button><button type="button" onclick="logoutAccount(); renderMobileDrawerAccount();" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-3 py-1.5 rounded-lg cursor-pointer">Çıkış</button></div>`
-        : `<div class="font-bold text-slate-200">Henüz giriş yapılmadı</div><div class="text-slate-400 mt-0.5">Profil ve canlı sohbet için giriş yap veya üye ol.</div><div class="flex gap-2 mt-2.5"><button type="button" onclick="toggleMobileDrawer(false); openAuthModal('login');" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-1.5 rounded-lg cursor-pointer">Giriş Yap</button><button type="button" onclick="toggleMobileDrawer(false); openAuthModal('register');" class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-1.5 rounded-lg cursor-pointer">Üye Ol</button></div>`;
-    }
-
-    function getAccountsMap() { try { const raw = JSON.parse(localStorage.getItem("kpss_user_accounts_v1")); return (raw && typeof raw === "object") ? raw : {}; } catch (e) { return {}; } }
-    function saveAccountsMap(map) { localStorage.setItem("kpss_user_accounts_v1", JSON.stringify(map)); }
-    function getActiveSession() { try { const s = JSON.parse(localStorage.getItem("kpss_active_session_v1")); if (s && s.email) return s; } catch (e) {} return null; }
-    function setActiveSession(account) {
-      if (!account) localStorage.removeItem("kpss_active_session_v1");
-      else localStorage.setItem("kpss_active_session_v1", JSON.stringify({ email: account.email, fullName: account.fullName, role: account.role || "Aday", city: account.city || "", phone: account.phone || "", kpssScore: account.kpssScore || "", eduLevel: account.eduLevel || "Lisans", bio: account.bio || "" }));
-      renderHeaderAuth(); updateChatMemberUI(); renderMobileDrawerAccount();
-    }
-
-    function renderHeaderAuth() {
-      const area = document.getElementById("headerAuthArea");
-      if (!area) return;
-      const s = getActiveSession();
-      area.innerHTML = s
-        ? `<button type="button" onclick="openProfileModal()" class="bg-slate-800 hover:bg-slate-700 text-emerald-300 font-extrabold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg border border-slate-700 transition cursor-pointer">👤 ${escapeHtml(s.fullName.split(" ")[0])}</button><button type="button" onclick="logoutAccount()" class="bg-slate-900 hover:bg-rose-950 text-slate-300 hover:text-rose-300 font-semibold text-[11px] sm:text-xs px-2 py-1.5 rounded-lg border border-slate-800 transition cursor-pointer">Çıkış</button>`
-        : `<button type="button" onclick="openAuthModal('login')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg transition cursor-pointer">Giriş Yap</button><button type="button" onclick="openAuthModal('register')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg transition cursor-pointer">Üye Ol</button>`;
-    }
-
-    function openProfileOrAuth() { if (getActiveSession()) openProfileModal(); else openAuthModal("login"); }
-    function openAuthModal(tab = "login") {
-      const isLogin = tab === "login";
+    function openUniRobotModal() {
       document.getElementById("detailContent").innerHTML = `
-        <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-200 pr-6">
-          <div><span class="bg-indigo-100 text-indigo-800 text-xs font-extrabold px-2.5 py-0.5 rounded">Üyelik & Hesap</span><h3 class="text-xl font-extrabold text-slate-900 mt-1">${isLogin ? "Hesabına Giriş Yap" : "Yeni Aday Hesabı Oluştur"}</h3></div>
-          <div class="flex gap-1"><button type="button" onclick="openAuthModal('login')" class="px-3 py-1.5 rounded-lg text-xs font-extrabold cursor-pointer ${isLogin ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-700"}">Giriş Yap</button><button type="button" onclick="openAuthModal('register')" class="px-3 py-1.5 rounded-lg text-xs font-extrabold cursor-pointer ${!isLogin ? "bg-emerald-600 text-white" : "bg-slate-100 text-slate-700"}">Üye Ol</button></div>
+        <div class="flex items-center justify-between gap-2 flex-wrap pr-6">
+          <div><span class="bg-sky-100 text-sky-900 text-xs font-extrabold px-2.5 py-0.5 rounded">2026 YKS Referans Robotu</span><h3 class="text-xl font-extrabold text-slate-900 mt-1">2026 Üniversite Tercih & Puan Robotu</h3></div>
+          <a href="${escapeHtml(PORTAL_URLS.YOK)}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-sky-700 underline">YÖK Atlas ↗</a>
         </div>
-        ${isLogin ? `<form onsubmit="handleLoginSubmit(event)" class="mt-4 space-y-3 text-xs sm:text-sm"><div><label class="block font-bold text-slate-700 mb-1">E-posta Adresi</label><input id="loginEmailInput" type="email" required placeholder="ornek@mail.com" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" /></div><div><label class="block font-bold text-slate-700 mb-1">Şifre</label><input id="loginPasswordInput" type="password" required placeholder="Şifren" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" /></div><div id="authErrorBox" class="text-rose-600 font-bold text-xs hidden"></div><button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold py-2.5 rounded-xl cursor-pointer">Giriş Yap</button></form>`
-          : `<form onsubmit="handleRegisterSubmit(event)" class="mt-4 space-y-3 text-xs sm:text-sm"><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="block font-bold text-slate-700 mb-1">Ad Soyad</label><input id="regNameInput" type="text" required maxlength="50" placeholder="Örn: Emre Kaya" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" /></div><div><label class="block font-bold text-slate-700 mb-1">E-posta Adresi</label><input id="regEmailInput" type="email" required placeholder="ornek@mail.com" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" /></div></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="block font-bold text-slate-700 mb-1">Şifre (En az 4 karakter)</label><input id="regPasswordInput" type="password" required minlength="4" placeholder="••••••••" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" /></div><div><label class="block font-bold text-slate-700 mb-1">Öğrenim Düzeyi</label><select id="regEduInput" class="w-full border border-slate-300 rounded-xl px-3 py-2.5 bg-white"><option value="Lisans">Lisans</option><option value="Önlisans">Önlisans</option><option value="Ortaöğretim">Ortaöğretim</option></select></div></div><div id="authErrorBox" class="text-rose-600 font-bold text-xs hidden"></div><button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-2.5 rounded-xl cursor-pointer">Üyeliği Tamamla ve Giriş Yap</button></form>`}
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+          <div><label class="block text-xs font-bold text-slate-600 mb-1">Puan Türü</label><select id="uniScoreType" onchange="renderUniRobotResults()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-white"><option value="ALL">Tüm Puan Türleri</option><option value="SAY">SAY (Sayısal)</option><option value="EA">EA (Eşit Ağırlık)</option><option value="SÖZ">SÖZ (Sözel)</option></select></div>
+          <div><label class="block text-xs font-bold text-slate-600 mb-1">2026 Tahmini / Ref Puanın</label><input id="uniUserScore" oninput="renderUniRobotResults()" type="number" step="0.1" min="0" max="600" placeholder="Örn: 435" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" /></div>
+          <div><label class="block text-xs font-bold text-slate-600 mb-1">İl Filtresi</label><select id="uniCityFilter" onchange="renderUniRobotResults()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-white"><option value="ALL">Tüm İller</option>${CITIES.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("")}</select></div>
+        </div>
+        <div id="uniRobotResultsList" class="mt-4 space-y-2.5 max-h-80 overflow-y-auto"></div>
+      `;
+      document.getElementById("detailModal").classList.remove("hidden");
+      renderUniRobotResults();
+    }
+
+    function renderUniRobotResults() {
+      const scoreType = document.getElementById("uniScoreType")?.value || "ALL";
+      const cityVal = document.getElementById("uniCityFilter")?.value || "ALL";
+      const rawScore = document.getElementById("uniUserScore")?.value;
+      const userScore = rawScore !== "" && rawScore !== undefined ? Number(rawScore) : null;
+      const list = UNI_PROGRAMS_2026.filter(p => (scoreType === "ALL" || p.scoreType === scoreType) && (cityVal === "ALL" || p.city === cityVal));
+      const box = document.getElementById("uniRobotResultsList");
+      if (!box) return;
+      box.innerHTML = list.map(p => {
+        let statusBadge = `<span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2 py-0.5 rounded">${escapeHtml(p.scoreType)} • 2026 Ref: ${p.refMinScore2026}</span>`;
+        if (userScore !== null && !Number.isNaN(userScore)) {
+          statusBadge = userScore >= p.refMinScore2026
+            ? `<span class="bg-emerald-100 text-emerald-800 text-[11px] font-extrabold px-2 py-0.5 rounded">✓ Puanın Uygun (${p.refMinScore2026})</span>`
+            : `<span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2 py-0.5 rounded">Ref: ${p.refMinScore2026}</span>`;
+        }
+        return `<div class="border border-slate-200 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-slate-50/60"><div><div class="font-bold text-sm text-slate-900">${escapeHtml(p.dept)}</div><div class="text-xs text-slate-600">${escapeHtml(p.uni)} • <b>${escapeHtml(p.city)}</b> • Kontenjan Ref: ${p.refQuota2026}</div></div><div class="flex items-center gap-2 shrink-0">${statusBadge}<a href="${escapeHtml(PORTAL_URLS.YOK)}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-sky-700 hover:underline">YÖK Atlas ↗</a></div></div>`;
+      }).join("");
+    }
+
+    /* ================= 50 ÖRNEK MÜLAKAT SORUSU (HARP / UZMAN / POMEM) ================= */
+    const INTERVIEW_50_QUESTIONS_BY_DOMAIN = {
+      HARP: [
+        "1. Neden Harp Okulu'nda subay adayı olarak eğitim almak istiyorsunuz?",
+        "2. Subaylıkta liderlik ile yöneticilik arasındaki farkı nasıl tanımlarsınız?",
+        "3. Stres ve baskı altında hızlı karar vermeniz gereken bir anı anlatır mısınız?",
+        "4. Disiplin sizin için ne ifade eder; kendi hayatınızda nasıl uygularsınız?",
+        "5. Bir timde görev paylaşımı yaparken anlaşmazlık çıkarsa nasıl çözersiniz?",
+        "6. Harp Okulu'nun yatılı ve yoğun temposuna nasıl uyum sağlarsınız?",
+        "7. Emir-komuta zincirine bağlı kalmanın bir ordudaki önemi nedir?",
+        "8. Hata yaptığınızı fark ettiğinizde nasıl bir tutum sergilersiniz?",
+        "9. Fiziksel dayanıklılığınızı ve mental direncinizi nasıl ölçüyorsunuz?",
+        "10. Türk Silahlı Kuvvetleri'nde görev almanın en büyük sorumluluğu sizce nedir?",
+        "11. Kriz anlarında soğukkanlı kalmak için hangi yöntemleri kullanırsınız?",
+        "12. Birlik ruhu ve takım arkadaşlığı sizce neden hayati önem taşır?",
+        "13. Başarısız olduğunuz veya zorlandığınız bir süreci nasıl yönetip aştınız?",
+        "14. İletişim ve ikna kabiliyetinizin güçlü olduğunu düşündüğünüz bir örnek verir misiniz?",
+        "15. Ailenizden ve sivil yaşamdan uzun süre ayrı kalmak sizi nasıl etkiler?",
+        "16. Sorumluluk almaktan kaçınmayan bir insan olduğunuzu nasıl kanıtlarsınız?",
+        "17. Haksızlığa veya kuralsızlığa şahit olduğunuzda nasıl davranırsınız?",
+        "18. Subay adayında bulunması gereken ilk üç temel özellik hangileridir?",
+        "19. Zaman yönetimini nasıl planlarsınız; geciken işleriniz olur mu?",
+        "20. Eleştiri aldığınızda savunmaya mı geçersiniz yoksa ders mi çıkarırsınız?",
+        "21. Kara, Hava veya Deniz kuvvetleri arasında hangi alan ilginizi çekiyor ve neden?",
+        "22. Zor koşullarda başkalarına moral ve motivasyon verebilir misiniz?",
+        "23. Güvenilirlik ve ketumiyet (sır saklama) askerlikte ne anlama gelir?",
+        "24. Kendi güçlü ve geliştirilmesi gereken yönlerinizi dürüstçe sıralar mısınız?",
+        "25. Hedeflerinize ulaşmak için bugüne kadar hangi fedakârlıkları yaptınız?",
+        "26. Beklenmedik bir emir veya plan değişikliğine nasıl tepki verirsiniz?",
+        "27. Kuralların mantığını sorguladığınızda yine de uyar mısınız?",
+        "28. Bir grupta sessiz kalan bir arkadaşı sürece nasıl dâhil edersiniz?",
+        "29. Atatürk'ün 'Yurtta sulh, cihanda sulh' sözünü nasıl yorumlarsınız?",
+        "30. Cumhuriyetimizin temel nitelikleri hakkında ne düşünüyorsunuz?",
+        "31. Türkiye'nin jeopolitik konumunun savunma açısından önemi nedir?",
+        "32. Teknoloji ve savunma sanayii gelişmeleri subaylık mesleğini nasıl etkiliyor?",
+        "33. Kendi kararlarınızın sorumluluğunu üstlendiğiniz bir olayı paylaşır mısınız?",
+        "34. Baskı altında konuşurken heyecanınızı nasıl kontrol edersiniz?",
+        "35. Sabırlı olmak sizce doğuştan mı gelir yoksa sonradan mı kazanılır?",
+        "36. Bir liderin astlarına örnek olması neden gereklidir?",
+        "37. Üstünüzle fikir ayrılığına düşerseniz bunu nasıl ifade edersiniz?",
+        "38. Spor yapmanın karakter gelişimine katkısı sizce nedir?",
+        "39. Belirsizlik ortamında yön bulmak için nasıl hareket edersiniz?",
+        "40. Vatan sevgisi sizin için soyut bir kavram mı yoksa somut bir eylem mi?",
+        "41. Hızlı düşünme ile acele etme arasındaki çizgiyi nasıl çizersiniz?",
+        "42. Geçmişte verdiğiniz en zor karar hangisiydi ve neden?",
+        "43. Sorumluluğunuzdaki bir iş aksadığında mazeret mi üretirsiniz, çözüm mü?",
+        "44. Kendi kendinizi motive etme yöntemleriniz nelerdir?",
+        "45. Millî birlik ve beraberlik kavramını nasıl açıklarsınız?",
+        "46. Bir ekip üyesi olarak liderin kararını desteklemediğinizde ne yaparsınız?",
+        "47. Öğrenmeye açık olduğunuzu gösteren bir deneyiminiz var mı?",
+        "48. Zor bir fiziksel parkurda yorulduğunuzda pes etmemenizi ne sağlar?",
+        "49. 10 yıl sonra kendinizi nerede ve nasıl bir subay olarak görüyorsunuz?",
+        "50. Komisyonumuza son olarak eklemek istediğiniz bir şey var mı?"
+      ],
+      UZMAN: [
+        "1. Neden Uzman Erbaş (Uzman Çavuş / Uzman Onbaşı) olmak istiyorsunuz?",
+        "2. Askerlik mesleğinde disiplin ve emirlere uyma sizin için ne ifade eder?",
+        "3. Zorlu arazi, iklim veya nöbet şartlarına nasıl uyum sağlarsınız?",
+        "4. Birlik içinde arkadaşınızla anlaşmazlık yaşarsanız nasıl çözersiniz?",
+        "5. Kriz ve acil durumlarda soğukkanlılığınızı nasıl korursunuz?",
+        "6. Uzman erbaşın birlik içindeki görev ve sorumlulukları sizce nelerdir?",
+        "7. Hata yaptığınızda bunu kabul edip telafi etme yaklaşımınız nasıldır?",
+        "8. Ailenizden uzak görev yapmaya hazır mısınız; bu durum sizi nasıl etkiler?",
+        "9. Fiziksel kondisyonunuzu ve spor alışkanlığınızı nasıl sürdürüyorsunuz?",
+        "10. Ast-üst ilişkisinde saygı ve mesafe nasıl korunmalıdır?",
+        "11. Beklenmedik bir görev değişikliğinde tutumunuz ne olur?",
+        "12. Takım çalışmasında üzerinize düşen payı nasıl yerine getirirsiniz?",
+        "13. Stresli anlarda öfke veya heyecan kontrolünü nasıl sağlarsınız?",
+        "14. Güvenilir bir personel olmanın temel şartları nelerdir?",
+        "15. Geçmişte üstlendiğiniz en büyük sorumluluk neydi?",
+        "16. Kurallara uymayan birini gördüğünüzde nasıl hareket edersiniz?",
+        "17. Kendi güçlü yanlarınız ve geliştirmeniz gereken yönleriniz nelerdir?",
+        "18. Uykusuzluk ve yorgunluk altında dikkatini nasıl toplarsınız?",
+        "19. Bir görevde başarısız olursanız bundan ne ders çıkarırsınız?",
+        "20. Sabırlı ve kararlı olduğunuzu gösteren bir örnek verir misiniz?",
+        "21. Komutanınızın verdiği bir talimatı tam anlamazsanız ne yaparsınız?",
+        "22. Vatan ve millet hizmeti sizin için ne anlama geliyor?",
+        "23. Arkadaş çevreniz sizi nasıl biri olarak tanımlar?",
+        "24. Zor bir karar vermek zorunda kaldığınız bir anı anlatır mısınız?",
+        "25. Mesleki bilgi ve becerilerinizi geliştirmek için ne yaparsınız?",
+        "26. Eleştiri karşısında nasıl bir tepki verirsiniz?",
+        "27. Operasyonel veya saha görevlerinde ekip uyumunun önemi nedir?",
+        "28. Kendinizi baskı altında hissettiğinizde nasıl odaklanırsınız?",
+        "29. Dürüstlük ve samimiyet sizin için ne kadar önemlidir?",
+        "30. Askerlikte zamanında hareket etmenin önemi nedir?",
+        "31. Yeni bir ortama ve ekibe ne kadar sürede adapte olursunuz?",
+        "32. Başkalarının işini sahiplenme ve yardımlaşma anlayışınız nasıldır?",
+        "33. Zor bir konuda ikna edici olabildiğiniz bir durumu paylaşır mısınız?",
+        "34. Sorumluluktan kaçan bir ekip arkadaşıyla nasıl çalışırsınız?",
+        "35. Hayatınızda pişmanlık duyduğunuz bir olay var mı, ne öğretti?",
+        "36. İletişimde net ve açık olmanın faydaları sizce nelerdir?",
+        "37. Tehlike veya belirsizlik anında ilk yapacağınız şey nedir?",
+        "38. Düzenli ve planlı yaşamak size ne kazandırır?",
+        "39. Çektiğiniz soruyu veya konuyu kendi cümlelerinizle özetler misiniz?",
+        "40. Bu konunun günlük hayat veya görev bilinciyle bağlantısı nedir?",
+        "41. Kuvvet komutanlığımızın / kurumumuzun misyonu hakkında ne biliyorsunuz?",
+        "42. Uzun vadeli mesleki hedefiniz nedir?",
+        "43. Sizi diğer adaylardan ayıran en önemli özelliğiniz nedir?",
+        "44. Hızlı karar vermeniz gereken bir durumda riski nasıl tartarsınız?",
+        "45. Moraliniz düşükken görevinizi aksatmamayı nasıl başarırsınız?",
+        "46. İnce eleyip sık dokuduğunuz bir iş örneği verir misiniz?",
+        "47. Ortak bir hedefte fedakârlık yaptığınız bir anı anlatır mısınız?",
+        "48. Kurumsal gizlilik ve bilgi güvenliği neden önemlidir?",
+        "49. Bu mesleği seçmenizde ailenizin etkisi nedir?",
+        "50. Son olarak komisyonumuza iletmek istediğiniz bir mesaj var mı?"
+      ],
+      POMEM: [
+        "1. Neden polis memuru olmak istiyorsunuz?",
+        "2. Toplumda polislik mesleğine duyulan güven nasıl artırılır?",
+        "3. Vatandaşla iletişimde sabır ve nezaket neden önemlidir?",
+        "4. Öfkeli veya gergin bir vatandaşla karşılaştığınızda nasıl davranırsınız?",
+        "5. Hukukun üstünlüğü ve kanunlara bağlılık ne anlama gelir?",
+        "6. Polis memurunda bulunması gereken en önemli özellik sizce nedir?",
+        "7. Stresli ve yoğun vardiya temposuna nasıl ayak uydurursunuz?",
+        "8. Haksızlığa uğradığınızı düşündüğünüzde nasıl tepki verirsiniz?",
+        "9. Ekip çalışmasının emniyet teşkilatındaki önemi nedir?",
+        "10. Kriz anlarında soğukkanlı ve ölçülü kalmayı nasıl başarırsınız?",
+        "11. Adalet ve tarafsızlık ilkelerini nasıl tanımlarsınız?",
+        "12. Zor bir karar aldığınız ve arkasında durduğunuz bir anı anlatır mısınız?",
+        "13. Kendi güçlü ve geliştirilmesi gereken yönleriniz nelerdir?",
+        "14. İletişim becerinizin güçlü olduğunu gösteren bir örnek verir misiniz?",
+        "15. Sorumluluk almaktan çekinmediğinizi nasıl gösterirsiniz?",
+        "16. Eleştiri aldığınızda nasıl değerlendirirsiniz?",
+        "17. Güvenilirlik ve gizlilik ilkesi meslekte neden kritiktir?",
+        "18. Beklenmedik bir olay karşısında paniklemeden nasıl hareket edersiniz?",
+        "19. Toplum destekli polislik anlayışı size ne ifade ediyor?",
+        "20. Kendi kendinizi motive etme yöntemleriniz nelerdir?",
+        "21. Başarısız olduğunuz veya zorlandığınız bir süreci nasıl yönetiniz?",
+        "22. Farklı görüş ve yaşam tarzlarına saygı göstermek neden önemlidir?",
+        "23. Amir-memur ilişkisinde disiplin ve uyum nasıl sağlanır?",
+        "24. Sabırlı olmanın size kazandırdığı bir durumu paylaşır mısınız?",
+        "25. Hata yaptığınızı fark ettiğinizde ne yaparsınız?",
+        "26. Zaman yönetimi ve düzen alışkanlıklarınız nasıldır?",
+        "27. Kamu malını ve kamu görevini koruma bilincini nasıl açıklarsınız?",
+        "28. Çektiğiniz mülakat sorusunu özetleyip yorumlar mısınız?",
+        "29. Bu konunun polis mesleğiyle bağlantısını nasıl kurarsınız?",
+        "30. Vatandaşın sorununu dinlemek ile çözmek arasındaki denge nedir?",
+        "31. Fiziksel ve ruhsal sağlığınızı korumak için neler yapıyorsunuz?",
+        "32. Zor bir durumda inisiyatif aldığınız bir olayı anlatır mısınız?",
+        "33. Ön yargılarla nasıl mücadele edersiniz?",
+        "34. Meslek etiğinin bozulmaması için nelere dikkat edilmelidir?",
+        "35. Ailenizin polis olmanıza yaklaşımı nasıldır?",
+        "36. Arkadaşlarınız sizi nasıl biri olarak tanımlar?",
+        "37. İkna kabiliyetinizi kullandığınız bir örnek verir misiniz?",
+        "38. Kuralların toplum düzenindeki yeri nedir?",
+        "39. Yoğun baskı altında doğru ifade kurmayı nasıl başarırsınız?",
+        "40. Geçmişte verdiğiniz en zor karar hangisiydi?",
+        "41. Empati kurmak mesleki kararlarınızı nasıl etkiler?",
+        "42. Hedeflerinize ulaşmak için nasıl bir çalışma planı izlediniz?",
+        "43. Sizi bu göreve hazır kılan en güçlü yönünüz nedir?",
+        "44. Kriz anında ekip arkadaşlarınızı nasıl yönlendirirsiniz?",
+        "45. Atatürk'ün polis teşkilatına bakışını nasıl değerlendirirsiniz?",
+        "46. Sürekli kendini geliştirmenin önemi sizce nedir?",
+        "47. Kararsız kaldığınız bir anı ve çözüm yolunuzu anlatır mısınız?",
+        "48. Toplum düzenini korumada bireysel sorumluluk nedir?",
+        "49. Meslekte uzun vadeli hedefiniz nedir?",
+        "50. Son olarak komisyonumuza eklemek istediğiniz bir şey var mı?"
+      ]
+    };
+
+    function openInterviewQuestionsModal(domainKey = "HARP") {
+      const activeKey = INTERVIEW_50_QUESTIONS_BY_DOMAIN[domainKey] ? domainKey : "HARP";
+      const labels = {
+        HARP: "Harp Okulu (50 Soru)",
+        UZMAN: "Uzman (50 Soru)",
+        POMEM: "POMEM (50 Soru)"
+      };
+      const questions = INTERVIEW_50_QUESTIONS_BY_DOMAIN[activeKey];
+      document.getElementById("detailContent").innerHTML = `
+        <div class="flex items-center justify-between gap-2 flex-wrap pr-6">
+          <div>
+            <span class="bg-indigo-100 text-indigo-900 text-xs font-extrabold px-2.5 py-0.5 rounded">Mülakat Soru Bankası • 50 Örnek Soru</span>
+            <h3 class="text-xl font-extrabold text-slate-900 mt-1.5">${escapeHtml(labels[activeKey])} — Örnek Mülakat Soruları</h3>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            ${["HARP", "UZMAN", "POMEM"].map(k => `
+              <button type="button" onclick="openInterviewQuestionsModal('${k}')" class="px-3 py-1.5 rounded-lg text-xs font-extrabold cursor-pointer ${k === activeKey ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}">
+                ${escapeHtml(labels[k])}
+              </button>
+            `).join("")}
+          </div>
+        </div>
+        <p class="text-xs text-slate-500 mt-2">Komisyon önünde karşılaşabileceğiniz temel mülakat sorularını sesli yanıtlayarak prova yapabilirsiniz.</p>
+        <div class="mt-4 space-y-2 max-h-[58vh] overflow-y-auto pr-1">
+          ${questions.map(q => `
+            <div class="bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-slate-800">
+              ${escapeHtml(q)}
+            </div>
+          `).join("")}
+        </div>
+        <button type="button" onclick="closeDetailModal()" class="mt-5 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-sm cursor-pointer">Kapat</button>
       `;
       document.getElementById("detailModal").classList.remove("hidden");
     }
 
-    function handleLoginSubmit(e) {
-      e.preventDefault();
-      const email = (document.getElementById("loginEmailInput").value || "").trim().toLowerCase();
-      const pass = document.getElementById("loginPasswordInput").value || "";
-      const errBox = document.getElementById("authErrorBox");
-      const accounts = getAccountsMap();
-      const acc = accounts[email];
-      if (!acc || acc.password !== pass) { errBox.textContent = "E-posta veya şifre hatalı."; errBox.classList.remove("hidden"); return; }
-      setActiveSession(acc); closeDetailModal();
+    function toggleSectionCollapse(bodyId, btnId) {
+      const bodyEl = document.getElementById(bodyId);
+      const btnEl = document.getElementById(btnId);
+      if (!bodyEl) return;
+      const isHidden = bodyEl.classList.contains("hidden");
+      if (isHidden) {
+        bodyEl.classList.remove("hidden");
+        if (btnEl) btnEl.textContent = "▼ Gizle";
+      } else {
+        bodyEl.classList.add("hidden");
+        if (btnEl) btnEl.textContent = "▶ Göster";
+      }
+    }
+
+    function filterMsu(group) {
+      activeMsuFilter = group;
+      document.querySelectorAll(".msu-filter-btn").forEach(b => { b.className = b.id === `msuBtn-${group}` ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white" : "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700"; });
+      renderMsuCards();
+    }
+    function renderMsuCards() {
+      const list = activeMsuFilter === "ALL" ? MSU_UNITS : MSU_UNITS.filter(x => x.group === activeMsuFilter);
+      document.getElementById("msuCardsGrid").innerHTML = list.map(u => `<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between"><div><div class="flex items-center justify-between gap-2"><span class="bg-amber-100 text-amber-900 font-extrabold text-[11px] px-2 py-0.5 rounded">${escapeHtml(u.group)}</span><span class="text-[11px] font-bold text-slate-700">${escapeHtml(u.refScore)}</span></div><h3 class="font-extrabold text-sm text-slate-900 mt-2">${escapeHtml(u.title)}</h3><div class="text-[11px] font-semibold text-emerald-800 mt-0.5">${escapeHtml(u.refQuota)}</div><p class="text-slate-600 mt-1.5 leading-relaxed">${escapeHtml(u.info)}</p><p class="text-slate-500 mt-1.5 text-[11px]"><b>Şartlar:</b> ${escapeHtml(u.reqs)}</p></div><div class="mt-3 pt-2.5 border-t border-slate-200 flex items-center justify-between gap-2"><button type="button" onclick="openMsuDetailModal('${escapeHtml(u.id)}')" class="text-xs font-extrabold text-amber-800 hover:underline cursor-pointer">Mülakat & FYT Detayı →</button><a href="${escapeHtml(PORTAL_URLS.MSB)}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-slate-700 hover:underline">MSB Pertem ↗</a></div></div>`).join("");
+    }
+
+    const USERS_KEY = "kpss_auth_users_v1";
+    const SESSION_KEY = "kpss_auth_session_v1";
+    let authModalMode = "login";
+    function getUsersMap() { try { return JSON.parse(localStorage.getItem(USERS_KEY)) || {}; } catch (e) { return {}; } }
+    function saveUsersMap(map) { localStorage.setItem(USERS_KEY, JSON.stringify(map)); }
+    function getActiveSession() { try { return JSON.parse(localStorage.getItem(SESSION_KEY)) || null; } catch (e) { return null; } }
+    function setActiveSession(sess) { if (sess) localStorage.setItem(SESSION_KEY, JSON.stringify(sess)); else localStorage.removeItem(SESSION_KEY); renderAuthUI(); updateChatMemberUI(); }
+
+    function renderAuthUI() {
+      const s = getActiveSession();
+      const area = document.getElementById("headerAuthArea");
+      const drawerBox = document.getElementById("mobileDrawerAccountBox");
+      if (area) {
+        if (s) {
+          area.innerHTML = `<button type="button" onclick="openAuthModal('profile')" class="bg-slate-800 hover:bg-slate-700 text-emerald-300 font-extrabold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg transition cursor-pointer">👤 ${escapeHtml(s.fullName.split(" ")[0])}</button><button type="button" onclick="logoutMember()" class="bg-rose-600 hover:bg-rose-500 text-white font-bold text-[11px] sm:text-xs px-2 py-1.5 rounded-lg transition cursor-pointer">Çıkış</button>`;
+        } else {
+          area.innerHTML = `<button type="button" onclick="openAuthModal('login')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg transition cursor-pointer">Giriş Yap</button><button type="button" onclick="openAuthModal('register')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg transition cursor-pointer">Üye Ol</button>`;
+        }
+      }
+      if (drawerBox) {
+        if (s) {
+          drawerBox.innerHTML = `<div class="font-extrabold text-emerald-300">Giriş Yapıldı: ${escapeHtml(s.fullName)}</div><div class="text-[11px] text-slate-400 mt-0.5">@${escapeHtml(s.username)}</div><div class="mt-2 flex gap-2"><button type="button" onclick="toggleMobileDrawer(false); openAuthModal('profile');" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white font-bold py-1.5 rounded-lg cursor-pointer">Profilim</button><button type="button" onclick="toggleMobileDrawer(false); logoutMember();" class="bg-rose-600 hover:bg-rose-500 text-white font-bold px-3 py-1.5 rounded-lg cursor-pointer">Çıkış</button></div>`;
+        } else {
+          drawerBox.innerHTML = `<div class="font-bold text-slate-200">Misafir Kullanıcı</div><div class="text-[11px] text-slate-400 mt-0.5">Sohbette yazmak ve profilini kaydetmek için giriş yap.</div><div class="mt-2 flex gap-2"><button type="button" onclick="toggleMobileDrawer(false); openAuthModal('login');" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold py-1.5 rounded-lg cursor-pointer">Giriş Yap</button><button type="button" onclick="toggleMobileDrawer(false); openAuthModal('register');" class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-1.5 rounded-lg cursor-pointer">Üye Ol</button></div>`;
+        }
+      }
+    }
+
+    function openProfileOrAuth() { openAuthModal(getActiveSession() ? "profile" : "login"); }
+    function openAuthModal(mode = "login") {
+      authModalMode = mode; const s = getActiveSession();
+      if (mode === "profile" && s) {
+        document.getElementById("detailContent").innerHTML = `<span class="bg-emerald-100 text-emerald-900 text-xs font-extrabold px-2.5 py-0.5 rounded">Üye Profili</span><h3 class="text-xl font-extrabold text-slate-900 mt-2">${escapeHtml(s.fullName)}</h3><p class="text-xs text-slate-500 mt-0.5">Kullanıcı Adı: <b>@${escapeHtml(s.username)}</b> • Sohbet ve profil kayıtları bu hesapla eşleştirilir.</p><div class="mt-5 flex flex-wrap gap-2"><button type="button" onclick="logoutMember(); closeDetailModal();" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2 rounded-lg text-xs cursor-pointer">Çıkış Yap</button><button type="button" onclick="closeDetailModal()" class="bg-slate-200 text-slate-800 font-bold px-4 py-2 rounded-lg text-xs cursor-pointer">Kapat</button></div>`;
+        document.getElementById("detailModal").classList.remove("hidden"); return;
+      }
+      const isReg = mode === "register";
+      document.getElementById("detailContent").innerHTML = `
+        <div class="flex gap-2 mb-4 border-b border-slate-200 pb-3"><button type="button" onclick="openAuthModal('login')" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold cursor-pointer ${!isReg ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-700"}">Giriş Yap</button><button type="button" onclick="openAuthModal('register')" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold cursor-pointer ${isReg ? "bg-emerald-600 text-white" : "bg-slate-100 text-slate-700"}">Üye Ol</button></div>
+        <h3 class="text-lg font-extrabold text-slate-900">${isReg ? "Yeni Aday Hesabı Oluştur" : "Üye Girişi Yap"}</h3>
+        <form onsubmit="${isReg ? "handleRegisterSubmit(event)" : "handleLoginSubmit(event)"}" class="mt-3 space-y-3 text-xs">
+          ${isReg ? `<div><label class="block font-bold text-slate-700 mb-1">Ad Soyad</label><input id="authFullName" type="text" required maxlength="40" placeholder="Örn: Zeynep Arslan" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" /></div>` : ""}
+          <div><label class="block font-bold text-slate-700 mb-1">Kullanıcı Adı</label><input id="authUsername" type="text" required maxlength="24" placeholder="Örn: zeyneparslan" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" /></div>
+          <div><label class="block font-bold text-slate-700 mb-1">Şifre</label><input id="authPassword" type="password" required minlength="4" maxlength="40" placeholder="En az 4 karakter" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" /></div>
+          <div id="authFeedbackMsg" class="text-rose-600 font-semibold min-h-[1rem]"></div>
+          <button type="submit" class="w-full ${isReg ? "bg-emerald-600 hover:bg-emerald-700" : "bg-indigo-600 hover:bg-indigo-700"} text-white font-extrabold py-2.5 rounded-lg text-sm cursor-pointer">${isReg ? "Üyeliği Tamamla" : "Giriş Yap"}</button>
+        </form>
+      `;
+      document.getElementById("detailModal").classList.remove("hidden");
     }
 
     function handleRegisterSubmit(e) {
       e.preventDefault();
-      const fullName = sanitizePublicText((document.getElementById("regNameInput").value || "").trim());
-      const email = (document.getElementById("regEmailInput").value || "").trim().toLowerCase();
-      const password = document.getElementById("regPasswordInput").value || "";
-      const eduLevel = document.getElementById("regEduInput").value || "Lisans";
-      const errBox = document.getElementById("authErrorBox");
-      if (!fullName || !email || password.length < 4) { errBox.textContent = "Lütfen tüm alanları geçerli şekilde doldur."; errBox.classList.remove("hidden"); return; }
-      const accounts = getAccountsMap();
-      const newAcc = { fullName, email, password, role: "Aday", city: "", phone: "", kpssScore: "", eduLevel, bio: "" };
-      accounts[email] = newAcc; saveAccountsMap(accounts); setActiveSession(newAcc); closeDetailModal();
+      const fullName = sanitizePublicText((document.getElementById("authFullName")?.value || "").trim());
+      const username = (document.getElementById("authUsername")?.value || "").trim().toLowerCase().replace(/[^a-z0-9_.-]/g, "");
+      const password = document.getElementById("authPassword")?.value || "";
+      const msgEl = document.getElementById("authFeedbackMsg");
+      if (!fullName || username.length < 3 || password.length < 4) { msgEl.textContent = "Ad soyad, en az 3 karakter kullanıcı adı ve 4 karakter şifre girin."; return; }
+      const users = getUsersMap();
+      if (users[username]) { msgEl.textContent = "Bu kullanıcı adı zaten kayıtlı. Giriş yapmayı deneyin."; return; }
+      users[username] = { fullName, username, password }; saveUsersMap(users); setActiveSession({ fullName, username }); closeDetailModal();
     }
 
-    function logoutAccount() { setActiveSession(null); closeDetailModal(); }
-
-    function openProfileModal() {
-      const s = getActiveSession();
-      if (!s) { openAuthModal("login"); return; }
-      const acc = getAccountsMap()[s.email] || s;
-      document.getElementById("detailContent").innerHTML = `
-        <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-200 pr-6"><div><span class="bg-emerald-100 text-emerald-900 text-xs font-extrabold px-2.5 py-0.5 rounded">Aday Profili</span><h3 class="text-xl font-extrabold text-slate-900 mt-1">${escapeHtml(acc.fullName)}</h3><p class="text-xs text-slate-500">${escapeHtml(acc.email)}</p></div><button type="button" onclick="logoutAccount()" class="bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs px-3 py-1.5 rounded-lg border border-rose-200 cursor-pointer">Çıkış Yap</button></div>
-        <form onsubmit="saveProfileModalData(event)" class="mt-4 space-y-3 text-xs sm:text-sm"><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="block font-bold text-slate-700 mb-1">Ad Soyad</label><input id="profFullNameInput" type="text" required value="${escapeHtml(acc.fullName)}" class="w-full border border-slate-300 rounded-xl px-3 py-2" /></div><div><label class="block font-bold text-slate-700 mb-1">Hedef / Mevcut İl</label><input id="profCityInput" type="text" value="${escapeHtml(acc.city || "")}" placeholder="Örn: Ankara" class="w-full border border-slate-300 rounded-xl px-3 py-2" /></div></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="block font-bold text-slate-700 mb-1">KPSS Puanı</label><input id="profScoreInput" type="text" value="${escapeHtml(acc.kpssScore || "")}" placeholder="Örn: 82.4" class="w-full border border-slate-300 rounded-xl px-3 py-2" /></div><div><label class="block font-bold text-slate-700 mb-1">Öğrenim Düzeyi</label><select id="profEduInput" class="w-full border border-slate-300 rounded-xl px-3 py-2 bg-white"><option value="Lisans" ${acc.eduLevel === "Lisans" ? "selected" : ""}>Lisans</option><option value="Önlisans" ${acc.eduLevel === "Önlisans" ? "selected" : ""}>Önlisans</option><option value="Ortaöğretim" ${acc.eduLevel === "Ortaöğretim" ? "selected" : ""}>Ortaöğretim</option></select></div></div><div><label class="block font-bold text-slate-700 mb-1">Kısa Not / Hedef Kadro</label><textarea id="profBioInput" rows="2" placeholder="Hedeflediğin kurum veya kadrolar..." class="w-full border border-slate-300 rounded-xl px-3 py-2">${escapeHtml(acc.bio || "")}</textarea></div><div id="profSaveFeedback" class="text-emerald-700 font-bold text-xs hidden">✓ Profil bilgileri kaydedildi.</div><button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold py-2.5 rounded-xl cursor-pointer">Profil Bilgilerini Kaydet</button></form>
-      `;
-      document.getElementById("detailModal").classList.remove("hidden");
-    }
-
-    function saveProfileModalData(e) {
+    function handleLoginSubmit(e) {
       e.preventDefault();
-      const s = getActiveSession();
-      if (!s) return;
-      const accounts = getAccountsMap();
-      const existing = accounts[s.email] || { email: s.email, password: "" };
-      const updated = { ...existing, fullName: sanitizePublicText((document.getElementById("profFullNameInput").value || "").trim()) || existing.fullName, city: sanitizePublicText((document.getElementById("profCityInput").value || "").trim()), kpssScore: sanitizePublicText((document.getElementById("profScoreInput").value || "").trim()), eduLevel: document.getElementById("profEduInput").value, bio: sanitizePublicText((document.getElementById("profBioInput").value || "").trim()) };
-      accounts[s.email] = updated; saveAccountsMap(accounts); setActiveSession(updated);
-      const fb = document.getElementById("profSaveFeedback");
-      if (fb) fb.classList.remove("hidden");
+      const username = (document.getElementById("authUsername")?.value || "").trim().toLowerCase().replace(/[^a-z0-9_.-]/g, "");
+      const password = document.getElementById("authPassword")?.value || "";
+      const msgEl = document.getElementById("authFeedbackMsg");
+      const users = getUsersMap(); const found = users[username];
+      if (!found || found.password !== password) { msgEl.textContent = "Kullanıcı adı veya şifre hatalı."; return; }
+      setActiveSession({ fullName: found.fullName, username: found.username }); closeDetailModal();
     }
 
-    function toggleSectionCollapse(bodyId, btnId) {
-      const body = document.getElementById(bodyId);
-      const btn = document.getElementById(btnId);
-      if (!body) return;
-      const willShow = body.classList.contains("hidden");
-      body.classList.toggle("hidden", !willShow);
-      if (btn) btn.textContent = willShow ? "▼ Gizle" : "▶ Göster";
-    }
+    function logoutMember() { setActiveSession(null); }
+
+    const SIM_TEXTS = [
+      "Cumhuriyet başsavcılığı tarafından yürütülen soruşturma kapsamında ifade tutanağı düzenlenmiş, tanık beyanları eksiksiz kayda geçirilmiş ve ilgili evraklar mahkeme kalemine teslim edilmiştir. Duruşma zaptında tarafların talepleri açıkça belirtilmiş, tebligat işlemlerinin gecikmeksizin yapılmasına karar verilmiştir.",
+      "Dava dilekçesi ve ekleri incelendikten sonra tensip zaptı hazırlanmış, belirlenen yasal süreler içinde cevap dilekçesinin sunulması gerektiği ihtar edilmiştir. Tebligat mazbatalarının dosyaya girmesiyle birlikte yargılama aşamasına geçilmiş ve duruşma günü taraflara bildirilmiştir.",
+      "İcra müdürlüğü dosyasında borçluya ödeme emri gönderilmiş, yasal itiraz süresinin dolması üzerine takip kesinleşmiştir. İstinaf kanun yoluna başvuru süreleri ve harç makbuzları yazı işleri müdürü nezaretinde kontrol edilerek üst mahkemeye gönderilmek üzere hazırlanmıştır."
+    ];
+    const LESSONS_DATA = [
+      { title: "Temel sıra: sol el", desc: "A S D F ve komşu tuşları hatasız yazmaya odaklan.", F: "a s d f g a s d f g a s d f g a s d f g", Q: "a s d f g a s d f g a s d f g a s d f g" },
+      { title: "Temel sıra: sağ el", desc: "K L Ş İ ve komşu tuşları ritmik şekilde çalış.", F: "k l ş i k l ş i k l ş i k l ş i k l ş i", Q: "j k l ş i j k l ş i j k l ş i j k l ş i" },
+      { title: "Hukuk heceleri", desc: "Mahkeme, karar, dava, tutanak ve tebliğ hecelerini yaz.", F: "mahkeme karar dava tutanak teblig karar dava", Q: "mahkeme karar dava tutanak teblig karar dava" },
+      { title: "Resmî kalıp kelimeler", desc: "Cumhuriyet, savcılık, müdürlük ve duruşma kelimelerini yaz.", F: "cumhuriyet savcilik mudurluk durusma dosya", Q: "cumhuriyet savcilik mudurluk durusma dosya" }
+    ];
+    const WORD_BANKS = {
+      hukuk: ["mahkeme", "duruşma", "tutanak", "tebligat", "savcılık", "iddianame", "istinaf", "temyiz", "bilirkişi", "müzekkere", "tensip", "gerekçeli"],
+      uzun: ["cumhuriyet", "değerlendirme", "soruşturma", "yükümlülük", "bilgilendirme", "karşılaştırma", "gerçekleştirme", "düzenlemeler"],
+      rakam: ["2026/145", "15.04.2026", "30 gün", "90 kelime", "12.500 TL", "2025/892", "09:30", "14 gün"],
+      genel: ["kurum", "başvuru", "belge", "onay", "kayıt", "sınav", "sonuç", "görev", "tarih", "kadro", "aday", "süreç"]
+    };
+    const DOSYA_PHRASES = ["Sanık suçlamayı kabul etmedi.", "Tanık beyanı tutanağa geçirildi.", "Duruşma ileri bir tarihe bırakıldı.", "Tebligat mazbatası dosyaya eklendi.", "Bilirkişi raporu mahkemeye sunuldu.", "İstinaf dilekçesi süresinde verildi."];
+    const HATA_WORDS = [
+      { wrong: "mahkme", right: "mahkeme", hint: "'e' harfi eksik" },
+      { wrong: "teblgat", right: "tebligat", hint: "'i' harfi eksik" },
+      { wrong: "durusma", right: "duruşma", hint: "'ş' harfini kullan" },
+      { wrong: "savcilık", right: "savcılık", hint: "'ı' harfini kontrol et" },
+      { wrong: "bilirkisi", right: "bilirkişi", hint: "'ş' ve 'i' harflerine dikkat" },
+      { wrong: "iddianme", right: "iddianame", hint: "'a' harfi eksik" }
+    ];
+    const DEFAULT_LEADERBOARD = [
+      { nick: "Zeynep Arslan", net: 108, acc: "%99", layout: "F" },
+      { nick: "Emre Kaya", net: 97, acc: "%98", layout: "F" },
+      { nick: "Mert Demir", net: 92, acc: "%97", layout: "Q" },
+      { nick: "Selin Aydın", net: 86, acc: "%96", layout: "F" }
+    ];
 
     function toggleKatiplikPanel(forceOpen = null) {
       const drawer = document.getElementById("katiplikDrawer");
       const btn = document.getElementById("katiplikToggleBtn");
       if (!drawer) return;
-      katiplikOpen = typeof forceOpen === "boolean" ? forceOpen : !katiplikOpen;
+      katiplikOpen = typeof forceOpen === "boolean" ? forceOpen : drawer.classList.contains("hidden");
       drawer.classList.toggle("hidden", !katiplikOpen);
       if (btn) btn.textContent = katiplikOpen ? "✕ KÂTİPLİK & ANTRENMANI KAPAT" : "⌨️ KÂTİPLİK & ANTRENMANI AÇ";
-      if (katiplikOpen) {
-        initSimText(); renderSimHistory(); renderLessonButtons(); selectLesson(activeLessonIdx); resetWordDrill(); renderRaceLeaderboard();
-        document.getElementById("katiplikMerkeziBolumu").scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      if (katiplikOpen) { initSimText(); selectLesson(activeLessonIdx); resetWordDrill(); prepareHataQuestion(); renderLeaderboard(); }
     }
 
     function switchKatiplikTab(tab) {
-      if (!katiplikOpen) toggleKatiplikPanel(true);
-      document.querySelectorAll(".k-tab-btn").forEach(b => {
-        const isRace = b.id === "kTab-race";
-        b.className = b.id === `kTab-${tab}` ? "k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white transition" : (isRace ? "k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-amber-100 text-amber-950 hover:bg-amber-200 transition" : "k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition");
-      });
       document.querySelectorAll(".k-panel").forEach(p => p.classList.add("hidden"));
-      document.getElementById(`kPanel-${tab}`).classList.remove("hidden");
+      document.querySelectorAll(".k-tab-btn").forEach(b => { b.className = b.id === "kTab-race" ? "k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-amber-100 text-amber-950 hover:bg-amber-200 transition" : "k-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition"; });
+      document.getElementById(`kPanel-${tab}`)?.classList.remove("hidden");
+      const activeBtn = document.getElementById(`kTab-${tab}`);
+      if (activeBtn) activeBtn.className = "k-tab-btn px-3 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white transition";
       if (tab === "lessons") selectLesson(activeLessonIdx);
       if (tab === "words") resetWordDrill();
-      if (tab === "race") renderRaceLeaderboard();
+      if (tab === "games") { prepareHataQuestion(); updateGameBestUI(); }
+      if (tab === "race") renderLeaderboard();
     }
-
-    const SIM_TEXTS = [
-      "Cumhuriyet başsavcılığı yazı işleri müdürlüğü kaleminde düzenlenen duruşma zaptında sanık müdafii ve katılan vekilinin beyanları eksiksiz zapta geçirilmiş, tebligat mazbataları dosya muhteviyatına eklenerek müteakip celse için gün tayin edilmiştir.",
-      "Mahkeme kalemince verilen süre kesin olup yasal süresi içinde istinaf dilekçesi sunulmadığı takdirde hükmün kesinleşeceği taraf vekillerine ihtar edilmiş, elektronik tebligat adreslerinin güncelliği UYAP üzerinden kontrol edilmiştir.",
-      "İcra müdürlüğü dosyasından gönderilen ödeme emrine karşı yasal itiraz süresi içerisinde itiraz dilekçesi ibraz edilmiş, icra mahkemesi hakimi tarafından tensip zaptı düzenlenerek duruşma günü tensiben belirlenmiştir."
-    ];
 
     function initSimText() {
-      const idx = Number(document.getElementById("simTextSelect").value || 0);
-      const txt = SIM_TEXTS[idx] || SIM_TEXTS[0];
-      const box = document.getElementById("simTargetText");
-      if (!box) return;
-      box.innerHTML = txt.split("").map((ch, i) => `<span id="sim-ch-${i}" class="rounded px-0.5 ${i === 0 ? "bg-indigo-100 text-indigo-900 font-bold underline" : ""}">${escapeHtml(ch)}</span>`).join("");
-      const inp = document.getElementById("simInputArea");
-      if (inp) inp.value = "";
-      updateSimLiveStats();
-    }
-
-    function startSim() {
-      if (simTimerId) clearInterval(simTimerId);
+      if (simTimerId) { clearInterval(simTimerId); simTimerId = null; }
       simRemainingSec = 180;
-      initSimText();
-      const inp = document.getElementById("simInputArea");
-      inp.disabled = false; inp.focus();
-      updateSimTimerDisplay();
-      simTimerId = setInterval(() => {
-        simRemainingSec--; updateSimTimerDisplay();
-        if (simRemainingSec <= 0) { clearInterval(simTimerId); simTimerId = null; finishSim(); }
-      }, 1000);
+      const idx = Number(document.getElementById("simTextSelect")?.value || 0);
+      const text = SIM_TEXTS[idx] || SIM_TEXTS[0];
+      const targetEl = document.getElementById("simTargetText");
+      const inputEl = document.getElementById("simInputArea");
+      if (targetEl) targetEl.textContent = text;
+      if (inputEl) { inputEl.value = ""; inputEl.disabled = false; }
+      updateSimTimerLabel(); updateSimStatsUI(0, 0, 100);
     }
 
-    function updateSimTimerDisplay() {
+    function updateSimTimerLabel() {
       const m = String(Math.floor(simRemainingSec / 60)).padStart(2, "0");
       const s = String(simRemainingSec % 60).padStart(2, "0");
       const el = document.getElementById("simTimerDisplay");
       if (el) el.textContent = `${m}:${s}`;
     }
 
-    function onSimInput() { updateSimLiveStats(); }
+    function startSim() {
+      initSimText();
+      const inputEl = document.getElementById("simInputArea");
+      if (inputEl) { inputEl.disabled = false; inputEl.focus(); }
+      simTimerId = setInterval(() => {
+        simRemainingSec -= 1;
+        updateSimTimerLabel();
+        if (simRemainingSec <= 0) { clearInterval(simTimerId); simTimerId = null; finishSim(); }
+      }, 1000);
+    }
 
-    function updateSimLiveStats() {
+    function computeSimMetrics() {
       const idx = Number(document.getElementById("simTextSelect")?.value || 0);
       const target = SIM_TEXTS[idx] || SIM_TEXTS[0];
       const typed = document.getElementById("simInputArea")?.value || "";
       let errors = 0;
-      for (let i = 0; i < target.length; i++) {
-        const span = document.getElementById(`sim-ch-${i}`);
-        if (!span) continue;
-        if (i < typed.length) {
-          if (typed[i] === target[i]) span.className = "rounded px-0.5 text-emerald-700 bg-emerald-50";
-          else { span.className = "rounded px-0.5 text-rose-700 bg-rose-100 font-bold"; errors++; }
-        } else span.className = i === typed.length ? "rounded px-0.5 bg-indigo-100 text-indigo-900 font-bold underline" : "rounded px-0.5 text-slate-800";
-      }
-      if (typed.length > target.length) errors += typed.length - target.length;
-      const elapsedSec = Math.max(1, 180 - simRemainingSec);
-      const grossWords = typed.trim() ? typed.trim().split(/\s+/).length : 0;
-      const netWords = Math.max(0, Math.round((grossWords - errors * 0.5) * (180 / elapsedSec)));
-      const acc = typed.length > 0 ? Math.max(0, Math.round(((typed.length - errors) / typed.length) * 100)) : 100;
-      document.getElementById("simNetDisplay").textContent = String(netWords);
-      document.getElementById("simAccDisplay").textContent = `%${acc}`;
-      document.getElementById("simKeystrokesDisplay").textContent = String(typed.length);
-      document.getElementById("simErrorsDisplay").textContent = String(errors);
-      return { netWords, acc, errors };
+      for (let i = 0; i < typed.length; i++) { if (typed[i] !== target[i]) errors += 1; }
+      const correctChars = Math.max(0, typed.length - errors);
+      const netWords = Math.max(0, Math.round((correctChars / 5) - (errors * 0.5)));
+      const acc = typed.length > 0 ? Math.max(0, Math.round((correctChars / typed.length) * 100)) : 100;
+      return { typedLen: typed.length, errors, netWords, acc };
     }
+
+    function updateSimStatsUI(keystrokes, errors, acc, netOverride = null) {
+      const m = netOverride !== null ? { typedLen: keystrokes, errors, netWords: netOverride, acc } : computeSimMetrics();
+      if (document.getElementById("simNetDisplay")) document.getElementById("simNetDisplay").textContent = String(m.netWords);
+      if (document.getElementById("simAccDisplay")) document.getElementById("simAccDisplay").textContent = `%${m.acc}`;
+      if (document.getElementById("simKeystrokesDisplay")) document.getElementById("simKeystrokesDisplay").textContent = String(m.typedLen);
+      if (document.getElementById("simErrorsDisplay")) document.getElementById("simErrorsDisplay").textContent = String(m.errors);
+    }
+
+    function onSimInput() { const m = computeSimMetrics(); updateSimStatsUI(m.typedLen, m.errors, m.acc, m.netWords); }
 
     function finishSim() {
       if (simTimerId) { clearInterval(simTimerId); simTimerId = null; }
-      const stats = updateSimLiveStats();
-      const layout = document.getElementById("simLayoutSelect").value;
-      const record = { net: stats.netWords, acc: stats.acc, errors: stats.errors, layout, date: new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }) };
-      const hist = getSimHistory(); hist.unshift(record);
-      localStorage.setItem("kpss_katip_sim_history", JSON.stringify(hist.slice(0, 12)));
+      const m = computeSimMetrics();
+      const layout = document.getElementById("simLayoutSelect")?.value || "F";
+      const hist = getSimHistory();
+      hist.unshift({ date: new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }), layout, net: m.netWords, acc: `%${m.acc}`, errors: m.errors });
+      localStorage.setItem("kpss_sim_history_v1", JSON.stringify(hist.slice(0, 12)));
       renderSimHistory();
     }
 
-    function getSimHistory() { try { const a = JSON.parse(localStorage.getItem("kpss_katip_sim_history")); return Array.isArray(a) ? a : []; } catch (e) { return []; } }
-    function clearSimHistory() { localStorage.removeItem("kpss_katip_sim_history"); renderSimHistory(); }
-
+    function getSimHistory() { try { const a = JSON.parse(localStorage.getItem("kpss_sim_history_v1")); return Array.isArray(a) ? a : []; } catch (e) { return []; } }
+    function clearSimHistory() { localStorage.removeItem("kpss_sim_history_v1"); renderSimHistory(); }
     function renderSimHistory() {
-      const box = document.getElementById("simHistoryList");
-      if (!box) return;
+      const box = document.getElementById("simHistoryList"); if (!box) return;
       const hist = getSimHistory();
-      if (hist.length === 0) { box.innerHTML = `<div class="text-slate-400">Henüz kayıtlı simülasyon yok.</div>`; return; }
-      box.innerHTML = hist.map(h => `<div class="flex items-center justify-between bg-white border border-slate-200 rounded-lg px-2.5 py-1.5"><span><b>${escapeHtml(h.net)} Net</b> • %${escapeHtml(h.acc)} • ${escapeHtml(h.layout)}</span><span class="text-slate-400">${escapeHtml(h.date)}</span></div>`).join("");
-    }
-
-    const F_KEYBOARD_ROWS = [["f", "g", "ğ", "ı", "o", "d", "r", "n", "h", "p", "q", "w", "x"], ["u", "i", "e", "a", "ü", "t", "k", "m", "l", "y", "ş"], ["j", "ö", "v", "c", "ç", "z", "s", "b", ".," ]];
-    const Q_KEYBOARD_ROWS = [["q", "w", "e", "r", "t", "y", "u", "ı", "o", "p", "ğ", "ü"], ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ş", "i"], ["z", "x", "c", "v", "b", "n", "m", "ö", "ç"]];
-    const KEYBOARD_LESSONS = [
-      { title: "Ders 1: Temel Sıra (Sol & Sağ El)", desc: "Parmaklarını ana sıraya yerleştirip harf dizilerini hatasız yaz.", sampleF: "a e u i k m l y a e u i k m l y", sampleQ: "a s d f j k l ş a s d f j k l ş" },
-      { title: "Ders 2: Üst Sıra Geçişleri", desc: "Üst sıradaki harflerle orta sırayı birleştir.", sampleF: "f g r n t k m l f g r n t k m l", sampleQ: "q w e r u ı o p q w e r u ı o p" },
-      { title: "Ders 3: Alt Sıra & Noktalama", desc: "Alt sıra harfleriyle hız ve denge çalışması.", sampleF: "v c ç z s b v c ç z s b", sampleQ: "z x c v b n m ö ç z x c v b n m" },
-      { title: "Ders 4: Mahkeme & Kalem Kelimeleri", desc: "Sık geçen adliye kelimelerini akıcı yaz.", sampleF: "mahkeme karar dosya duruşma kalem tebligat", sampleQ: "mahkeme karar dosya duruşma kalem tebligat" }
-    ];
-
-    function renderLessonButtons() {
-      const bar = document.getElementById("lessonButtonsBar");
-      if (!bar) return;
-      bar.innerHTML = KEYBOARD_LESSONS.map((l, idx) => `<button type="button" onclick="selectLesson(${idx})" class="px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer ${idx === activeLessonIdx ? "bg-slate-900 text-white" : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"}">${idx + 1}. Ders</button>`).join("");
+      box.innerHTML = hist.length === 0 ? `<div class="text-slate-400">Henüz kayıtlı simülasyon yok.</div>` : hist.map(h => `<div class="bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 flex items-center justify-between"><span><b>${escapeHtml(h.net)} Net</b> (${escapeHtml(h.layout)} Klavye • ${escapeHtml(h.acc)})</span><span class="text-slate-400">${escapeHtml(h.date)}</span></div>`).join("");
     }
 
     function selectLesson(idx) {
-      activeLessonIdx = idx; renderLessonButtons();
-      const l = KEYBOARD_LESSONS[idx] || KEYBOARD_LESSONS[0];
+      activeLessonIdx = idx;
       const layout = document.getElementById("lessonLayoutSelect")?.value || "F";
-      const sample = layout === "F" ? l.sampleF : l.sampleQ;
-      document.getElementById("lessonTitle").textContent = `${l.title} (${layout} Klavye)`;
-      document.getElementById("lessonDesc").textContent = l.desc;
-      document.getElementById("lessonTargetBox").textContent = sample;
-      const inp = document.getElementById("lessonInput");
-      inp.value = ""; inp.dataset.target = sample;
-      document.getElementById("lessonStatsText").textContent = "Doğruluk: %100";
-      renderVisualKeyboard(layout, sample[0] || "");
+      const les = LESSONS_DATA[idx] || LESSONS_DATA[0];
+      document.getElementById("lessonButtonsBar").innerHTML = LESSONS_DATA.map((l, i) => `<button type="button" onclick="selectLesson(${i})" class="px-2.5 py-1.5 rounded-lg text-xs font-bold ${i === idx ? "bg-indigo-600 text-white" : "bg-white border border-slate-200 text-slate-700"}">${i + 1}. ${escapeHtml(l.title.split(":")[0])}</button>`).join("");
+      document.getElementById("lessonTitle").textContent = les.title; document.getElementById("lessonDesc").textContent = les.desc;
+      document.getElementById("lessonTargetBox").textContent = les[layout] || les.F; document.getElementById("lessonInput").value = "";
+      document.getElementById("lessonStatsText").textContent = "Doğruluk: %100"; renderVisualKeyboard(layout);
     }
 
     function onLessonInput() {
-      const inp = document.getElementById("lessonInput");
-      const target = inp.dataset.target || "";
-      const typed = inp.value || "";
-      let ok = 0;
-      for (let i = 0; i < typed.length; i++) if (typed[i] === target[i]) ok++;
-      const acc = typed.length > 0 ? Math.round((ok / typed.length) * 100) : 100;
-      document.getElementById("lessonStatsText").textContent = `Doğruluk: %${acc} (${typed.length}/${target.length})`;
       const layout = document.getElementById("lessonLayoutSelect")?.value || "F";
-      renderVisualKeyboard(layout, target[typed.length] || "");
+      const target = (LESSONS_DATA[activeLessonIdx] || LESSONS_DATA[0])[layout] || "";
+      const typed = document.getElementById("lessonInput")?.value || "";
+      let ok = 0;
+      for (let i = 0; i < typed.length; i++) { if (typed[i] === target[i]) ok += 1; }
+      const acc = typed.length > 0 ? Math.round((ok / typed.length) * 100) : 100;
+      document.getElementById("lessonStatsText").textContent = typed.length >= target.length && acc >= 85 ? `✓ Ders Tamamlandı • Doğruluk: %${acc}` : `Doğruluk: %${acc} (${typed.length}/${target.length})`;
     }
 
-    function renderVisualKeyboard(layout, activeChar) {
-      const box = document.getElementById("lessonVisualKeyboard");
-      if (!box) return;
-      const rows = layout === "F" ? F_KEYBOARD_ROWS : Q_KEYBOARD_ROWS;
-      const normAct = normalizeText(activeChar);
-      box.innerHTML = rows.map(row => `<div class="flex justify-center gap-1.5 flex-wrap">${row.map(k => { const isHit = normAct && normalizeText(k).includes(normAct); return `<span class="min-w-[32px] h-9 px-2 rounded-lg border text-xs font-extrabold flex items-center justify-center ${isHit ? "bg-emerald-500 text-slate-950 border-emerald-600 scale-105 shadow" : "bg-white text-slate-800 border-slate-300"}">${escapeHtml(k.toUpperCase())}</span>`; }).join("")}</div>`).join("");
+    function renderVisualKeyboard(layout) {
+      const rowsF = [["f", "g", "ğ", "ı", "o", "d", "r", "n", "h", "p", "q", "w", "x"], ["u", "i", "e", "a", "ü", "t", "k", "m", "y", "ş", "v", "z"], ["j", "ö", "c", "ç", "b", "s", "l", "ğ"]];
+      const rowsQ = [["q", "w", "e", "r", "t", "y", "u", "ı", "o", "p", "ğ", "ü"], ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ş", "i"], ["z", "x", "c", "v", "b", "n", "m", "ö", "ç"]];
+      const rows = layout === "Q" ? rowsQ : rowsF;
+      document.getElementById("lessonVisualKeyboard").innerHTML = rows.map(r => `<div class="flex justify-center gap-1">${r.map(k => `<span class="w-8 h-8 rounded-lg bg-white border border-slate-300 flex items-center justify-center font-mono text-xs font-bold text-slate-800 shadow-2xs">${escapeHtml(k.toUpperCase())}</span>`).join("")}</div>`).join("");
     }
-
-    const WORD_BANKS = {
-      hukuk: ["mahkeme", "duruşma", "tebligat", "dilekçe", "istinaf", "temyiz", "müdafaa", "bilirkişi", "tensip", "gerekçeli", "haciz", "vekalet", "mübaşir", "zabıt", "şahit", "karar"],
-      uzun: ["cumhuriyet", "başsavcılığı", "değerlendirme", "soruşturma", "yükümlülük", "bilgilendirme", "gerçekleştirilmesi", "düzenlenmiştir", "kamuoyuna", "başvurular"],
-      rakam: ["2026/145", "15/06/2026", "30 gün", "90 kelime", "70.50 puan", "12.400 TL", "24 saat", "3 dakika", "100 puan", "48 saniye"],
-      genel: ["kamu", "personel", "alımı", "başvuru", "kadro", "kurum", "sınav", "sonuç", "belge", "şart", "ilan", "görev", "süreç", "merkez", "hizmet", "bölüm"]
-    };
 
     function setWordDrillMode(mode) {
       wordDrillMode = mode;
@@ -3053,20 +3340,16 @@
     }
 
     function resetWordDrill() {
-      const bank = WORD_BANKS[wordDrillMode] || WORD_BANKS.hukuk;
-      wordQueue = Array.from({ length: 12 }, (_, i) => bank[(i + Math.floor(Math.random() * bank.length)) % bank.length]);
+      const pool = WORD_BANKS[wordDrillMode] || WORD_BANKS.hukuk;
+      wordQueue = Array.from({ length: 12 }, (_, i) => pool[(i + Math.floor(Math.random() * pool.length)) % pool.length]);
       wordIdx = 0; wordCorrect = 0; wordWrong = 0;
-      document.getElementById("wordCorrectCount").textContent = "0";
-      document.getElementById("wordWrongCount").textContent = "0";
-      const inp = document.getElementById("wordDrillInput");
-      if (inp) inp.value = "";
+      document.getElementById("wordCorrectCount").textContent = "0"; document.getElementById("wordWrongCount").textContent = "0"; document.getElementById("wordDrillInput").value = "";
       renderWordQueue();
     }
 
     function renderWordQueue() {
-      const box = document.getElementById("wordQueueBox");
-      if (!box) return;
-      box.innerHTML = wordQueue.map((w, i) => `<span class="px-3 py-1.5 rounded-lg border ${i === wordIdx ? "bg-indigo-600 text-white border-indigo-600 font-extrabold" : (i < wordIdx ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-slate-50 text-slate-700 border-slate-200")}">${escapeHtml(w)}</span>`).join("");
+      const box = document.getElementById("wordQueueBox"); if (!box) return;
+      box.innerHTML = wordQueue.map((w, i) => `<span class="px-2.5 py-1 rounded-lg text-xs ${i === wordIdx ? "bg-indigo-600 text-white font-extrabold" : (i < wordIdx ? "bg-emerald-100 text-emerald-800" : "bg-slate-100 text-slate-700")}">${escapeHtml(w)}</span>`).join("");
     }
 
     function onWordDrillKeydown(e) {
@@ -3075,279 +3358,164 @@
       const inp = document.getElementById("wordDrillInput");
       const val = (inp.value || "").trim();
       if (!val) return;
-      const target = wordQueue[wordIdx] || "";
-      if (val === target) wordCorrect++; else wordWrong++;
-      document.getElementById("wordCorrectCount").textContent = String(wordCorrect);
-      document.getElementById("wordWrongCount").textContent = String(wordWrong);
-      inp.value = ""; wordIdx++;
+      if (val === wordQueue[wordIdx]) { wordCorrect += 1; document.getElementById("wordCorrectCount").textContent = String(wordCorrect); }
+      else { wordWrong += 1; document.getElementById("wordWrongCount").textContent = String(wordWrong); }
+      inp.value = ""; wordIdx += 1;
       if (wordIdx >= wordQueue.length) resetWordDrill(); else renderWordQueue();
     }
 
-    const DOSYA_PHRASES = ["sanık müdafii beyanını sundu", "tebligat mazbatası dosyada", "duruşma gelecek celseye bırakıldı", "istinaf kanun yolu açıktır", "bilirkişi raporu taraflara tebliğ edildi", "ödeme emrine süresi içinde itiraz edildi"];
-
     function selectGameMode(mode) {
-      document.getElementById("gTab-dosya").className = mode === "dosya" ? "px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950" : "px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800";
-      document.getElementById("gTab-hata").className = mode === "hata" ? "px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950" : "px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800";
       document.getElementById("gameBox-dosya").classList.toggle("hidden", mode !== "dosya");
       document.getElementById("gameBox-hata").classList.toggle("hidden", mode !== "hata");
-      if (mode === "hata") startHataGame();
+      document.getElementById("gTab-dosya").className = mode === "dosya" ? "px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950" : "px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800";
+      document.getElementById("gTab-hata").className = mode === "hata" ? "px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-slate-950" : "px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-800";
     }
 
-    function updateGameBestScore(candidate) {
-      const prev = Number(localStorage.getItem("kpss_katip_game_best") || 0);
-      const best = Math.max(prev, candidate);
-      localStorage.setItem("kpss_katip_game_best", String(best));
-      const el = document.getElementById("gameBestScore");
-      if (el) el.textContent = String(best);
-    }
+    function getBestGameScore() { return Number(localStorage.getItem("kpss_game_best_score_v1") || "0"); }
+    function saveBestGameScore(sc) { if (sc > getBestGameScore()) localStorage.setItem("kpss_game_best_score_v1", String(sc)); updateGameBestUI(); }
+    function updateGameBestUI() { const el = document.getElementById("gameBestScore"); if (el) el.textContent = String(getBestGameScore()); }
 
     function startDosyaGame() {
       if (dosyaInterval) clearInterval(dosyaInterval);
       dosyaScore = 0; dosyaLevel = 1; dosyaStreak = 1; dosyaLives = 3; dosyaActive = true;
-      nextDosyaPhrase();
-      const inp = document.getElementById("dosyaInput");
-      inp.value = ""; inp.focus();
+      pickNextDosyaPhrase(); updateDosyaHUD();
+      const inp = document.getElementById("dosyaInput"); inp.value = ""; inp.focus();
       dosyaInterval = setInterval(() => {
         if (!dosyaActive) return;
-        dosyaTimeLeft -= 1.5 + dosyaLevel * 0.25;
+        dosyaTimeLeft -= Math.max(1.2, 2.2 + dosyaLevel * 0.25);
         document.getElementById("dosyaTimeBar").style.width = `${Math.max(0, dosyaTimeLeft)}%`;
         if (dosyaTimeLeft <= 0) {
-          dosyaLives--; dosyaStreak = 1;
+          dosyaLives -= 1; dosyaStreak = 1;
           if (dosyaLives <= 0) { dosyaActive = false; clearInterval(dosyaInterval); document.getElementById("dosyaTargetPhrase").textContent = `Oyun Bitti! Toplam Puan: ${dosyaScore}`; }
-          else nextDosyaPhrase();
-          updateDosyaHud();
+          else pickNextDosyaPhrase();
+          updateDosyaHUD();
         }
-      }, 100);
+      }, 120);
     }
 
-    function nextDosyaPhrase() {
-      dosyaCurrentTarget = DOSYA_PHRASES[Math.floor(Math.random() * DOSYA_PHRASES.length)];
-      dosyaTimeLeft = 100;
-      document.getElementById("dosyaTargetPhrase").textContent = dosyaCurrentTarget;
-      const inp = document.getElementById("dosyaInput");
-      if (inp) inp.value = "";
-      updateDosyaHud();
-    }
-
-    function updateDosyaHud() {
-      document.getElementById("dosyaScore").textContent = String(dosyaScore);
-      document.getElementById("dosyaLevel").textContent = String(dosyaLevel);
-      document.getElementById("dosyaStreak").textContent = `x${dosyaStreak}`;
-      document.getElementById("dosyaLives").textContent = String(dosyaLives);
-    }
-
+    function pickNextDosyaPhrase() { dosyaCurrentTarget = DOSYA_PHRASES[Math.floor(Math.random() * DOSYA_PHRASES.length)]; dosyaTimeLeft = 100; document.getElementById("dosyaTargetPhrase").textContent = dosyaCurrentTarget; document.getElementById("dosyaInput").value = ""; }
     function onDosyaInput() {
       if (!dosyaActive) return;
       const inp = document.getElementById("dosyaInput");
-      if (inp.value === dosyaCurrentTarget) {
-        dosyaScore += 10 * dosyaStreak; dosyaStreak++;
-        dosyaLevel = 1 + Math.floor(dosyaScore / 60);
-        updateGameBestScore(dosyaScore); nextDosyaPhrase();
-      }
+      if (inp.value === dosyaCurrentTarget) { dosyaScore += 15 * dosyaStreak; dosyaStreak = Math.min(5, dosyaStreak + 1); dosyaLevel = 1 + Math.floor(dosyaScore / 75); saveBestGameScore(dosyaScore); pickNextDosyaPhrase(); updateDosyaHUD(); }
     }
+    function updateDosyaHUD() { document.getElementById("dosyaScore").textContent = String(dosyaScore); document.getElementById("dosyaLevel").textContent = String(dosyaLevel); document.getElementById("dosyaStreak").textContent = `x${dosyaStreak}`; document.getElementById("dosyaLives").textContent = String(dosyaLives); }
 
-    const HATA_WORDS = [
-      { wrong: "mahkme", right: "mahkeme", hint: "Eksik 'e' harfi" },
-      { wrong: "teblgat", right: "tebligat", hint: "Eksik 'i' harfi" },
-      { wrong: "duruşma", right: "duruşma", hint: "Doğru yazım (aynen yaz)" },
-      { wrong: "dilekce", right: "dilekçe", hint: "'c' yerine 'ç'" },
-      { wrong: "bilirkişi", right: "bilirkişi", hint: "Doğru yazım (aynen yaz)" },
-      { wrong: "istinaf", right: "istinaf", hint: "Doğru yazım (aynen yaz)" }
-    ];
-
-    function startHataGame() { hataCurrentItem = HATA_WORDS[Math.floor(Math.random() * HATA_WORDS.length)]; document.getElementById("hataWrongWord").textContent = hataCurrentItem.wrong; document.getElementById("hataHint").textContent = `İpucu: ${hataCurrentItem.hint}`; document.getElementById("hataAnswerInput").value = ""; }
-
+    function startHataGame() { hataScore = 0; hataCount = 0; document.getElementById("hataScore").textContent = "0"; document.getElementById("hataCount").textContent = "0"; prepareHataQuestion(); }
+    function prepareHataQuestion() { hataCurrentItem = HATA_WORDS[Math.floor(Math.random() * HATA_WORDS.length)]; document.getElementById("hataWrongWord").textContent = hataCurrentItem.wrong; document.getElementById("hataHint").textContent = `İpucu: ${hataCurrentItem.hint}`; const inp = document.getElementById("hataAnswerInput"); if (inp) inp.value = ""; }
     function submitHataAnswer(e) {
       e.preventDefault();
-      const ans = (document.getElementById("hataAnswerInput").value || "").trim();
-      if (ans === hataCurrentItem.right) { hataScore += 15; hataCount++; updateGameBestScore(hataScore); }
-      document.getElementById("hataScore").textContent = String(hataScore);
-      document.getElementById("hataCount").textContent = String(hataCount);
-      startHataGame();
+      const inp = document.getElementById("hataAnswerInput");
+      if ((inp.value || "").trim() === hataCurrentItem.right) { hataScore += 20; hataCount += 1; saveBestGameScore(hataScore); document.getElementById("hataScore").textContent = String(hataScore); document.getElementById("hataCount").textContent = String(hataCount); }
+      prepareHataQuestion();
     }
 
-    const DEFAULT_RACE_SCORES = [
-      { nick: "Zeynep Arslan", net: 96, acc: 98, layout: "F" },
-      { nick: "Emre Kaya", net: 91, acc: 96, layout: "F" },
-      { nick: "Burak Şahin", net: 86, acc: 95, layout: "Q" }
-    ];
-
-    function getRaceScores() { try { const a = JSON.parse(localStorage.getItem("kpss_katip_race_scores")); if (Array.isArray(a) && a.length > 0) return a; } catch (e) {} return [...DEFAULT_RACE_SCORES]; }
-
+    function getUserLeaderboard() { try { const a = JSON.parse(localStorage.getItem("kpss_user_leaderboard_v1")); return Array.isArray(a) ? a : []; } catch (e) { return []; } }
     function publishCurrentSimToRace() {
-      const nickInput = document.getElementById("raceNickInput")?.value.trim();
-      const s = getActiveSession();
-      const nick = sanitizePublicText(nickInput || (s ? s.fullName : "") || "Aday");
-      const hist = getSimHistory();
-      const latestNet = hist.length > 0 ? hist[0].net : (Number(document.getElementById("simNetDisplay")?.textContent) || 80);
-      const latestAcc = hist.length > 0 ? hist[0].acc : 96;
+      const m = computeSimMetrics();
+      const nick = sanitizePublicText((document.getElementById("raceNickInput")?.value || "").trim() || getActiveSession()?.fullName || "Aday Skor");
       const layout = document.getElementById("simLayoutSelect")?.value || "F";
-      const list = getRaceScores();
-      list.push({ nick, net: latestNet, acc: latestAcc, layout });
-      list.sort((a, b) => b.net - a.net);
-      localStorage.setItem("kpss_katip_race_scores", JSON.stringify(list.slice(0, 15)));
-      renderRaceLeaderboard(); switchKatiplikTab("race");
+      const list = getUserLeaderboard();
+      list.push({ nick, net: m.netWords, acc: `%${m.acc}`, layout });
+      localStorage.setItem("kpss_user_leaderboard_v1", JSON.stringify(list));
+      renderLeaderboard(); switchKatiplikTab("race");
     }
 
-    function renderRaceLeaderboard() {
-      const box = document.getElementById("raceLeaderboardList");
-      if (!box) return;
-      const list = getRaceScores().sort((a, b) => b.net - a.net);
-      box.innerHTML = list.map((r, i) => `<div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-3.5 py-2.5"><div class="flex items-center gap-2.5"><span class="w-6 h-6 rounded-full flex items-center justify-center font-extrabold text-xs ${i === 0 ? "bg-amber-400 text-slate-950" : "bg-slate-100 text-slate-700"}">${i + 1}</span><div><div class="font-extrabold text-slate-900">${escapeHtml(r.nick)}</div><div class="text-[11px] text-slate-500">${escapeHtml(r.layout)} Klavye • Doğruluk %${escapeHtml(r.acc)}</div></div></div><div class="text-sm font-extrabold text-emerald-700">${escapeHtml(r.net)} Net</div></div>`).join("");
+    function renderLeaderboard() {
+      const box = document.getElementById("raceLeaderboardList"); if (!box) return;
+      const all = [...DEFAULT_LEADERBOARD, ...getUserLeaderboard()].sort((a, b) => b.net - a.net);
+      box.innerHTML = all.slice(0, 12).map((row, i) => `<div class="bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 flex items-center justify-between"><div class="flex items-center gap-2.5"><span class="w-6 h-6 rounded-full bg-slate-900 text-white font-extrabold flex items-center justify-center text-[11px]">${i + 1}</span><div><div class="font-extrabold text-slate-900">${escapeHtml(row.nick)}</div><div class="text-[11px] text-slate-500">${escapeHtml(row.layout)} Klavye • Doğruluk ${escapeHtml(row.acc)}</div></div></div><div class="text-sm font-extrabold text-emerald-700">${escapeHtml(row.net)} Net</div></div>`).join("");
     }
 
     function generateChallengeCode() {
-      const s = getActiveSession();
-      const nick = sanitizePublicText(document.getElementById("raceNickInput")?.value.trim() || (s ? s.fullName : "") || "Aday").replace(/\|/g, "");
-      const hist = getSimHistory();
-      const net = hist.length > 0 ? hist[0].net : (Number(document.getElementById("simNetDisplay")?.textContent) || 85);
-      const acc = hist.length > 0 ? hist[0].acc : 97;
+      const m = computeSimMetrics();
+      const nick = sanitizePublicText((document.getElementById("raceNickInput")?.value || "").trim() || getActiveSession()?.fullName || "BEN").replace(/\|/g, "");
       const layout = document.getElementById("simLayoutSelect")?.value || "F";
-      document.getElementById("myChallengeCodeBox").value = `${nick}|${net}|%${acc}|${layout}`;
+      document.getElementById("myChallengeCodeBox").value = `${nick}|${m.netWords}|%${m.acc}|${layout}`;
     }
 
     function compareWithRival() {
       const raw = (document.getElementById("rivalCodeInput")?.value || "").trim();
       const parts = raw.split("|");
-      const box = document.getElementById("duelResultBox");
-      if (parts.length < 2 || Number.isNaN(Number(parts[1]))) { box.textContent = "Geçerli bir düello kodu gir (Örn: ZEYNEP ARSLAN|96|%98|F)."; return; }
+      const duelBox = document.getElementById("duelResultBox");
+      if (parts.length < 2 || Number.isNaN(Number(parts[1]))) { duelBox.textContent = "Geçerli bir skor kodu gir (Örn: ZEYNEP ARSLAN|96|%98|F)."; return; }
       const rivalName = sanitizePublicText(parts[0] || "Rakip");
       const rivalNet = Number(parts[1]);
-      const hist = getSimHistory();
-      const myNet = hist.length > 0 ? hist[0].net : (Number(document.getElementById("simNetDisplay")?.textContent) || 80);
-      box.innerHTML = myNet > rivalNet ? `<b class="text-emerald-400">Sen öndesin!</b> Senin netin: <b>${myNet}</b> — ${escapeHtml(rivalName)} neti: <b>${rivalNet}</b>.` : (myNet < rivalNet ? `<b class="text-amber-300">${escapeHtml(rivalName)} önde!</b> Rakip neti: <b>${rivalNet}</b> — Senin netin: <b>${myNet}</b>.` : `<b class="text-sky-300">Berabere!</b> İkiniz de <b>${myNet}</b> net yaptınız.`);
+      const rivalAcc = sanitizePublicText(parts[2] || "%95");
+      const myNet = computeSimMetrics().netWords;
+      const verdict = myNet > rivalNet ? `Sen öndesin! (+${myNet - rivalNet} net)` : (myNet < rivalNet ? `${rivalName} önde (+${rivalNet - myNet} net)` : "Berabere!");
+      duelBox.innerHTML = `<b>${escapeHtml(rivalName)}</b>: ${rivalNet} Net (${escapeHtml(rivalAcc)}) • Senin Netin: <b>${myNet} Net</b> → <span class="text-emerald-300 font-extrabold">${escapeHtml(verdict)}</span>`;
     }
 
-    function openUniRobotModal() {
-      document.getElementById("detailContent").innerHTML = `
-        <span class="bg-sky-100 text-sky-900 text-xs font-extrabold px-2.5 py-0.5 rounded">2026 YKS & Üniversite Tercih Robotu</span>
-        <h3 class="text-xl font-extrabold text-slate-900 mt-2">2026 Üniversite Programları & Kontenjan Rehberi</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-4">
-          <input id="uniScoreInput" oninput="renderUniRobotResults()" type="number" step="0.1" placeholder="Puanın (Örn: 430)" class="border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm" />
-          <select id="uniTypeSelect" onchange="renderUniRobotResults()" class="border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm bg-white"><option value="ALL">Tüm Puan Türleri</option><option value="SAY">SAY (Sayısal)</option><option value="EA">EA (Eşit Ağırlık)</option><option value="SÖZ">SÖZ (Sözel)</option></select>
-          <select id="uniCitySelect" onchange="renderUniRobotResults()" class="border border-slate-300 rounded-lg px-3 py-2 text-xs sm:text-sm bg-white"><option value="ALL">Tüm İller</option>${CITIES.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("")}</select>
-        </div>
-        <div id="uniRobotResultsList" class="mt-4 space-y-2.5 max-h-80 overflow-y-auto"></div>
-        <a href="${PORTAL_URLS.YOK}" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block w-full text-center bg-sky-600 hover:bg-sky-700 text-white font-bold py-2.5 rounded-lg text-xs sm:text-sm">YÖK Atlas Resmî Sayfasına Git ↗</a>
-      `;
-      document.getElementById("detailModal").classList.remove("hidden");
-      renderUniRobotResults();
+    /* ================= GECE / GÜNDÜZ MODU & MENÜ DRAWER ================= */
+    function applyThemeMode(mode) {
+      const isDark = mode === "dark";
+      document.documentElement.classList.toggle("dark-theme", isDark);
+      try { localStorage.setItem("kpss_theme_mode", isDark ? "dark" : "light"); } catch (e) {}
+      const btn = document.getElementById("themeToggleHeaderBtn");
+      if (btn) btn.textContent = isDark ? "☀️ Gündüz" : "🌙 Gece";
     }
 
-    function renderUniRobotResults() {
-      const scoreVal = document.getElementById("uniScoreInput")?.value;
-      const score = scoreVal !== "" && scoreVal !== undefined ? Number(scoreVal) : null;
-      const pType = document.getElementById("uniTypeSelect")?.value || "ALL";
-      const city = document.getElementById("uniCitySelect")?.value || "ALL";
-      const list = UNI_PROGRAMS_2026.filter(p => (pType === "ALL" || p.scoreType === pType) && (city === "ALL" || p.city === city) && (score === null || score + 25 >= p.refMinScore2026));
-      document.getElementById("uniRobotResultsList").innerHTML = list.length === 0 ? `<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-500 text-center">Bu filtreye uygun 2026 programı bulunamadı.</div>` : list.map(p => {
-        let badge = `<span class="bg-slate-200 text-slate-800 text-[11px] font-bold px-2 py-0.5 rounded">${escapeHtml(p.scoreType)}</span>`;
-        if (score !== null) badge = score >= p.refMinScore2026 ? `<span class="bg-emerald-100 text-emerald-800 text-[11px] font-extrabold px-2 py-0.5 rounded">✓ Puanın Uygun</span>` : `<span class="bg-amber-100 text-amber-900 text-[11px] font-extrabold px-2 py-0.5 rounded">~ Hedef Bölge</span>`;
-        return `<div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex items-center justify-between gap-3"><div><div class="font-bold text-slate-900 text-xs sm:text-sm">${escapeHtml(p.uni)} — ${escapeHtml(p.dept)}</div><div class="text-[11px] text-slate-500 mt-0.5">${escapeHtml(p.city)} • 2026 Ref Puan: <b>${escapeHtml(p.refMinScore2026)}</b> • 2026 Ref Kontenjan: <b>${escapeHtml(p.refQuota2026)}</b></div></div>${badge}</div>`;
-      }).join("");
+    function toggleThemeMode() {
+      const isDarkNow = document.documentElement.classList.contains("dark-theme");
+      applyThemeMode(isDarkNow ? "light" : "dark");
     }
 
-    function filterMsu(grp) { activeMsuFilter = grp; document.querySelectorAll(".msu-filter-btn").forEach(b => { b.className = b.id === `msuBtn-${grp}` ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white" : (b.id === "msuBtn-HARP" ? "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 text-amber-900" : "msu-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700"); }); renderMsuCards(); }
-    function renderMsuCards() { const list = activeMsuFilter === "ALL" ? MSU_UNITS : MSU_UNITS.filter(x => x.group === activeMsuFilter); document.getElementById("msuCardsGrid").innerHTML = list.map(u => `<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between"><div><div class="flex items-center justify-between gap-2"><span class="bg-amber-100 text-amber-950 font-extrabold text-[11px] px-2 py-0.5 rounded">${escapeHtml(u.group)}</span><span class="text-[11px] font-bold text-emerald-800">${escapeHtml(u.refScore)}</span></div><h3 class="font-extrabold text-sm text-slate-900 mt-2">${escapeHtml(u.title)}</h3><p class="text-[11px] font-semibold text-sky-900 mt-1">${escapeHtml(u.refQuota)}</p><p class="text-slate-600 mt-1.5 leading-relaxed">${escapeHtml(u.info)}</p><p class="text-slate-700 mt-2 bg-white border border-slate-200 rounded-lg p-2.5 leading-relaxed"><b>Şartlar:</b> ${escapeHtml(u.reqs)}</p></div><div class="mt-3 flex items-center justify-between gap-2"><button type="button" onclick="openMsuDetailModal('${escapeHtml(u.id)}')" class="text-xs font-extrabold text-amber-900 hover:underline cursor-pointer">Mülakat & FYT Detayı →</button><a href="${PORTAL_URLS.MSB}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-emerald-700 hover:underline">MSB Temin ↗</a></div></div>`).join(""); }
-
-    /* ================= MÜLAKAT SORULARI (50 ÖRNEK SORU BANKASI) ================= */
-    const INTERVIEW_QUESTIONS_BANK = {
-      HARP: [
-        "Neden subay/astsubay olmak istiyorsunuz ve bu mesleğin en zor yanı sizce nedir?",
-        "Türk Silahlı Kuvvetleri'nde disiplin ve emir-komuta zincirini nasıl tanımlarsınız?",
-        "Stresli ve yüksek baskı altında geçen bir görevde nasıl karar alırsınız?",
-        "Liderlik ile yöneticilik arasındaki temel fark sizce nedir?",
-        "Harp Okulu / MYO yatılı eğitim hayatına ve ağır fiziksel tempoya hazır mısınız?",
-        "Bir tim komutanı olsaydınız, geride kalan veya morali bozulan bir arkadaşınızı nasıl motive ederdiniz?",
-        "Kendi hata veya eksiklerinizi nasıl kabul eder ve düzeltirsiniz?",
-        "Ülke savunmasında caydırıcılık kavramı sizin için ne ifade ediyor?",
-        "Teknolojik gelişmelerin modern askeri harekâtlara etkisini nasıl değerlendirirsiniz?",
-        "Takım çalışmasında bireysel egoları nasıl yönetirsiniz?"
-      ],
-      UZMAN: [
-        "Neden uzman erbaş / sözleşmeli er olmak istiyorsunuz?",
-        "Uzman çavuş / onbaşı rütbesinin birlik içindeki sorumluluğu nedir?",
-        "Sınır hattında veya zorlu arazi şartlarında görev yaparken nelere dikkat etmelisiniz?",
-        "Komutanınızdan gelen bir emri tam anladığınızdan nasıl emin olursunuz?",
-        "Ailenizin bu mesleğe bakışı nedir, uzun süreli görevlere hazır mısınız?",
-        "Görev sırasında öfke kontrolü ve soğukkanlılık neden önemlidir?",
-        "Birlik içinde uyuşmazlık yaşayan iki arkadaşınız olsa nasıl davranırsınız?",
-        "Askerlikte vefa, sadakat ve ketumiyet kavramlarını açıklayınız.",
-        "Fiziki kondisyonunuzu görev süresince nasıl koruyacaksınız?",
-        "Sivil hayattan askeri düzene geçişte sizi en çok ne zorlayabilir?"
-      ],
-      POMEM: [
-        "Neden polis memuru olmak istiyorsunuz?",
-        "Hukukun üstünlüğü ve insan haklarına saygı polis görevinde nasıl birleşir?",
-        "Kalabalık veya gergin bir olay anında ilk müdahale yaklaşımınız ne olur?",
-        "Vatandaşla iletişimde empati ve sabır neden gereklidir?",
-        "Mesai saatlerinin düzensiz olması ve vardiyalı çalışma düzenine hazır mısınız?",
-        "Bir amirinizden mevzuata aykırı bir talep gelse nasıl hareket edersiniz?",
-        "Polislikte ön yargısız yaklaşımın önemi nedir?",
-        "Zor bir olay sonrasında psikolojik dayanıklılığınızı nasıl korursunuz?",
-        "Toplum destekli polislik anlayışını kısaca anlatır mısınız?",
-        "Kendinizi 5 yıl sonra teşkilat içinde nerede görüyorsunuz?"
-      ]
-    };
-
-    function openInterviewQuestionsModal(domainKey = "POMEM") {
-      const key = INTERVIEW_QUESTIONS_BANK[domainKey] ? domainKey : "POMEM";
-      const baseList = INTERVIEW_QUESTIONS_BANK[key];
-      const questions50 = Array.from({ length: 50 }, (_, i) => `${i + 1}. ${baseList[i % baseList.length]}`);
-      const labelMap = { HARP: "MSÜ Harp Okulları & MYO", UZMAN: "Uzman Erbaş & Er", POMEM: "POMEM Polis Adayları" };
-      document.getElementById("detailContent").innerHTML = `
-        <div class="flex items-center justify-between gap-2 flex-wrap pr-6">
-          <div><span class="bg-slate-900 text-amber-300 text-xs font-extrabold px-2.5 py-0.5 rounded">Mülakat Hazırlık Rehberi</span><h3 class="text-xl font-extrabold text-slate-900 mt-1.5">${escapeHtml(labelMap[key])} — 50 Örnek Mülakat Sorusu</h3></div>
-          <div class="flex gap-1">${["POMEM", "HARP", "UZMAN"].map(k => `<button type="button" onclick="openInterviewQuestionsModal('${k}')" class="px-2.5 py-1 rounded-lg text-xs font-extrabold cursor-pointer ${k === key ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}">${escapeHtml(labelMap[k].split(" ")[0])}</button>`).join("")}</div>
-        </div>
-        <div class="mt-4 max-h-96 overflow-y-auto space-y-2 pr-1 text-xs sm:text-sm">${questions50.map(q => `<div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 font-medium">${escapeHtml(q)}</div>`).join("")}</div>
-        <button type="button" onclick="closeDetailModal()" class="mt-5 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-sm cursor-pointer">Kapat</button>
-      `;
-      document.getElementById("detailModal").classList.remove("hidden");
+    function toggleMobileDrawer(open) {
+      const backdrop = document.getElementById("mobileMenuBackdrop");
+      if (!backdrop) return;
+      backdrop.classList.toggle("hidden", !open);
+      if (open) renderAuthUI();
     }
 
-    function openCronGuideModal() {
-      document.getElementById("detailContent").innerHTML = `<span class="bg-slate-900 text-emerald-300 text-xs font-extrabold px-2.5 py-0.5 rounded">Otomatik İlan Güncelleme & Denetim</span><h3 class="text-xl font-extrabold text-slate-900 mt-2">24 Saatlik Otomatik Süre ve Kaynak Kontrolü</h3><p class="text-xs sm:text-sm text-slate-700 mt-3 leading-relaxed">Site açıldığında ve her 24 saatte bir <code>./jobs.json</code> ve aktif katalog taranır; son başvuru tarihi geçmiş ilanlar, pasif/kaldırılmış kayıtlar ve resmî kurum dışı bağlantılar otomatik elenir.</p><button type="button" onclick="closeDetailModal()" class="mt-5 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-sm cursor-pointer">Kapat</button>`;
-      document.getElementById("detailModal").classList.remove("hidden");
-    }
-
-    function initApp() {
-      applyThemeMode(getSavedTheme());
-      initLiveViewerCounter();
-      loadSavedIds();
-      renderAds();
-      renderCityChips();
-
-      const p = getProfile();
-      if (p.edu) document.getElementById("profileEdu").value = p.edu;
-      if (p.scoreVal) document.getElementById("profileScore").value = p.scoreVal;
-      if (p.cat) document.getElementById("profileCat").value = p.cat;
-      if (p.telegram) document.getElementById("profileTelegram").value = p.telegram;
-      if (Array.isArray(p.presetDocs)) document.querySelectorAll(".profile-doc-check").forEach(cb => { cb.checked = p.presetDocs.includes(cb.value); });
-      if (Array.isArray(p.customDocs)) customDocs = [...p.customDocs];
-      if (Array.isArray(p.cities)) selectedCities = [...p.cities];
-
-      renderCityChips();
-      renderCustomDocChips();
-      updateProfileSummaryBadge();
-      renderHeaderAuth();
-      renderLatestJobPreview();
+    function goHome(e) {
+      if (e) e.preventDefault();
+      showSavedOnly = false;
+      activeStatusFilter = "ALL";
+      document.getElementById("listHeading").textContent = "KAMU PERSONEL İLANLARI";
       renderStatusMenu();
       applyProfileMatch(false);
-      renderHeroSlide();
-      startHeroAutoSlider();
-      renderMsuCards();
-      renderForceSection();
-      renderProfessionsTable();
-      updateChatMemberUI();
-      renderChatRooms();
-      renderForumList();
-      selectFaqCategory("KPSS");
-      scheduleDailyAutoCheck();
-      triggerSiteArrivalBurst();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    initApp();
+    function renderAds() {
+      const topSlot = document.getElementById("ad-slot-top");
+      const bottomSlot = document.getElementById("ad-slot-bottom");
+      if (topSlot) topSlot.innerHTML = `<span class="text-[11px] font-semibold text-slate-500">${escapeHtml(AD_CONFIG.top.label)}</span>`;
+      if (bottomSlot) bottomSlot.innerHTML = `<span class="text-[11px] font-semibold text-slate-500">${escapeHtml(AD_CONFIG.bottom.label)}</span>`;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        const savedTheme = localStorage.getItem("kpss_theme_mode");
+        if (savedTheme === "dark") applyThemeMode("dark");
+        else applyThemeMode("light");
+      } catch (e) {}
+
+      initLiveViewerCounter();
+      renderAds();
+      const savedProfile = getProfile();
+      customDocs = Array.isArray(savedProfile.customDocs) ? savedProfile.customDocs : [];
+      selectedCities = Array.isArray(savedProfile.cities) ? savedProfile.cities : [];
+      if (savedProfile.edu) document.getElementById("profileEdu").value = savedProfile.edu;
+      if (savedProfile.scoreVal !== undefined) document.getElementById("profileScore").value = savedProfile.scoreVal;
+      if (savedProfile.cat) document.getElementById("profileCat").value = savedProfile.cat;
+      if (savedProfile.telegram) document.getElementById("profileTelegram").value = savedProfile.telegram;
+      if (Array.isArray(savedProfile.presetDocs)) {
+        document.querySelectorAll(".profile-doc-check").forEach(cb => { cb.checked = savedProfile.presetDocs.includes(cb.value); });
+      }
+      renderCityChips(); renderCustomDocChips(); updateProfileSummaryBadge(); loadSavedIds();
+      renderAuthUI(); updateChatMemberUI();
+      renderHeroSlide(); startHeroAutoSlider(); renderStatusMenu(); applyProfileMatch(false); renderLatestJobPreview();
+      renderProfessionsTable(); renderMsuCards(); selectForceTab("KARA");
+      renderChatRooms(); renderForumList(); selectFaqCategory("KPSS");
+      scheduleDailyAutoCheck();
+      triggerSiteArrivalBurst();
+
+      setTimeout(() => {
+        openWelcomeModal();
+      }, 250);
+    });
   </script>
 </body>
 </html>
